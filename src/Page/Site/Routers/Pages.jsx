@@ -1,5 +1,5 @@
 
-import Home from '../Page/Home/Home'
+import Home from '../Page/Home/Home';
 
 const routes = [
     {

@@ -1,22 +1,12 @@
-import { Menu, Button } from 'antd';
+import React from "react";
 
-import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
-} from '@ant-design/icons';
 
-const { SubMenu } = Menu;
+const Home = () =>{
 
-const Header = () => {
 
-    return (
-        <></>
+    return(
+        <>Home Admin</>
     );
 }
 
-export default Header;
+export default Home

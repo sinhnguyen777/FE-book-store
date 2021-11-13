@@ -2,21 +2,26 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
-import Side from './Page/Site/Side'
-
-import Admin from './Page/Admin/Admin'
+import Admin from './Page/Admin/Admin';
+import Home from "./Page/Site/Page/Home/Home";
+import RouterWrapper from './Routers/Routes';
 
 function App() {
   return (
     <div>
       <Router>
-        <Route  path="/">
-          <Side></Side>
+        <Route exact path="/">
+          <RouterWrapper />
         </Route>
 
-        <Route  path="/admin">
-          <Admin></Admin>
+        <Route path="/side">
+          <RouterWrapper />
         </Route>
+
+        <Route path="/admin">
+          <Admin />
+        </Route>
+
       </Router>
     </div>
   );

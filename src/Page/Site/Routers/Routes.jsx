@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
 import pages from './Pages';
 
 const renderRoutes = () => {

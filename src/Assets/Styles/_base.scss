@@ -11,13 +11,6 @@
 
 html {
     font-size: 62.5%;
-
-    @include desktop{
-        font-size: 50%;
-    }
-    @include tablet{
-        font-size: 30%;
-    }
 }
 
 
@@ -36,10 +29,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar {
     width: 10px;
     background-color: #f5f5f5;
-    
-    @include tablet{
-        width: 5px;
-    }
+
 }
 
 body::-webkit-scrollbar-thumb {
@@ -70,80 +60,6 @@ video {
 
 img {
     max-width: 100%;
-}
-
-.container {
-    width: 100%;
-    max-width: 1569px;
-    margin: 0 auto;
-
-    @include laptop{
-        max-width: 1140px;
-    }
-
-    @include desktop{
-        max-width:960px;
-    }
-
-    @include maxWidth(900){
-        max-width: 720px;
-    }
-
-    @include maxWidth(700){
-      max-width: 520px;
-    }
-
-    @include tablet{
-        max-width: 720px;
-    }
-
-    
-    @include maxWidth(700){
-        max-width: 520px;
-      }
-
-    @include mobile{
-        max-width: 300px;
-    }
-}
-
-.container-fluid{
-    width: 100%;
-    max-width: 1720px;
-    margin: 0 auto;
-
-    @include laptop{
-        max-width: 1360px;
-    }
-
-    @include desktop{
-        max-width:1280px;
-    }
-
-    @include large{
-        max-width: 900px;
-    }
-
-    @include maxWidth(900){
-        max-width: 800px;
-    }
-
-    @include maxWidth(700){
-      max-width: 500px;
-    }
-
-    @include tablet{
-        max-width: 720px;
-    }
-
-    
-    @include maxWidth(700){
-        max-width: 520px;
-      }
-
-    @include mobile{
-        max-width: 300px;
-    }
 }
 
 .main {

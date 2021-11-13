@@ -4,17 +4,17 @@ import './App.css';
 
 import Side from './Page/Site/Side'
 
-import Admin from './Page/Admin/Adim'
+import Admin from './Page/Admin/Admin'
 
 function App() {
   return (
     <div>
       <Router>
-        <Route exact path="/">
+        <Route  path="/">
           <Side></Side>
         </Route>
 
-        <Route exact path="/admin">
+        <Route  path="/admin">
           <Admin></Admin>
         </Route>
       </Router>

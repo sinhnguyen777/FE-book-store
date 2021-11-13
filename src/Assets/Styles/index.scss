@@ -2,16 +2,22 @@
 @import "./mixins.scss";
 @import "./base";
 
+// import Component
+
 @import "./components/header";
 @import "./components/footer";
 @import "./components/section";
-@import "./components/banner"
+@import "./components/banner";
 
 
+//  import Page
+
+@import "./page/Home/home";
+@import "./page/ListProduct/listProduct";
 
 
-
-
+// import Admin
+@import "./Admin/admin"
 
 
 

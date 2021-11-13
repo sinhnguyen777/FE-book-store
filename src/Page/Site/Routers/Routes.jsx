@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import Footer from '../Layout/Footer/footer';
+import Header from '../Layout/Header/header';
 import pages from './Pages';
 
 const renderRoutes = () => {
     return (
         <>
             <Switch>
-                {/* chỗ import Header */}
-
+                <Header/>
                 {pages.map((item) => {
                     return (
                         <Route
@@ -19,7 +20,7 @@ const renderRoutes = () => {
                     );
                 })}
 
-                {/* chỗ import Footer */}
+                <Footer/>
             </Switch>
         </>
     );

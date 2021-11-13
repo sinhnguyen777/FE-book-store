@@ -1,6 +1,9 @@
 // Montserrat
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500&family=Satisfy&display=swap");
-
+// Cormorant Garamond
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500&family=Satisfy&display=swap');
+// Josefin Sans
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500&family=Satisfy&display=swap');
 * {
     padding: 0px;
     margin: 0px;
@@ -13,10 +16,8 @@ html {
     font-size: 62.5%;
 }
 
-
-
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     overflow-x: hidden;
 }
 

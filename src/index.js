@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 // import css antd
 import 'antd/dist/antd.css';
 
+// import Sass
+import './Assets/Styles/index.scss'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -7,7 +7,8 @@ const routes = [
         path: '/',
         component: Home,
         exact: true,
-    }, {
+    },
+    {
         path: '/cata',
         component: Cata,
         exact: true,

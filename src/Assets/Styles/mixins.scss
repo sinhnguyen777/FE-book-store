@@ -16,6 +16,12 @@
   }
 }
 
+@mixin large {
+  @media only screen and (max-width: $large) {
+      @content;
+  }
+}
+
 @mixin absoluteCenter($direction: "left") {
   position: absolute;
 

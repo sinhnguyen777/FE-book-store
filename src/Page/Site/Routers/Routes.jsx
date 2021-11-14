@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Switch, Route } from 'react-router-dom';
-import pages from './Pages';
+import routes from './Pages';
 
 const renderRoutes = () => {
     return (
         <>
             <Switch>
                 {/* chỗ import Header */}
-
-                {pages.map((item) => {
+                {routes.map((item) => {
                     return (
                         <Route
                             key={item.path}

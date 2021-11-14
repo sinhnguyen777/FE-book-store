@@ -9,12 +9,13 @@ const renderRoutes = () => {
                 {/* chỗ import Header */}
 
                 {pages.map((item) => {
+                    console.log(item);
                     return (
                         <Route
                             key={item.path}
-                            exact={item.exact}
                             path={item.path}
                             component={item.component}
+                            exact={item.exact}
                         />
                     );
                 })}

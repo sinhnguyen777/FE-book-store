@@ -1,0 +1,158 @@
+.banner{
+    width: 100%;
+    padding: 0 15px;
+    &_item{
+        height: 500px;
+        color: $white;
+        background-color: #000;
+        position: relative;
+        &_txt{
+            p{
+                margin: 0;
+            }
+            &_chapterone{
+                z-index: 5;
+                pointer-events: auto;
+                font-family: "Josefin Sans",sans-serif;
+                text-transform: uppercase;
+                visibility: visible;
+                line-height: 25px;
+                letter-spacing: 4px;
+                font-weight: 400;
+                font-size: 12px;
+                border-color: rgb(85, 85, 85);
+                border-style: none;
+                margin: 0px;
+                opacity: 1;
+                border-radius: 0px;
+                padding: 0px;
+                color: rgb(153, 153, 153);
+                white-space: nowrap;
+                transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+                transform-origin: 50% 50% 0px;
+                
+                @include mobile {
+                    font-size: 10px;
+                    line-height: 15px;
+                }
+            }
+            &_main{
+                z-index: 6;
+                line-height: 70px;
+                letter-spacing: 0px;
+                font-weight: 500;
+                font-size: 60px;
+                border-color: rgb(85, 85, 85);
+                border-style: none;
+                white-space: nowrap;
+                margin: 0px;
+                padding: 0px;
+                color: $black;
+                padding-bottom: 20px;
+                animation-delay: 1s;
+                opacity: 1;
+                @include tablet {
+                    font-size: 50px;
+                }
+                
+                @include mobile {
+                    font-size: 25px;
+                    line-height: 30px;
+                    padding-bottom: 7px;
+                }
+            }
+            &_decs{
+                z-index: 7;
+                visibility: visible;
+                line-height: 33px;
+                font-weight: 400;
+                font-size: 25px;
+                border-color: rgb(85, 85, 85);
+                color: rgb(85, 85, 85);
+                width: 598px;
+                height: auto;
+                opacity: 1;
+                padding-bottom: 50px;
+                animation-delay: 2s;
+                @include tablet {
+                    font-size: 25px;
+                }
+                @include tablets {
+                    width: 100%;
+                }
+                @include mobile {   
+                    font-size: 16px;
+                    line-height: 20px;
+                    padding-bottom: 30px;
+                }
+            }
+            &_read{
+                margin-bottom: 0;
+            }
+        }
+    }
+    .one{
+        background-image: url(../../../Assets/Images/Banner/bgone.jpg);
+        background-size: cover;
+        &_txt{
+            @include absoluteCenter($direction: "both");
+            p{
+                animation: textshow1 1.5s;
+                animation-delay: 1s;
+                animation-fill-mode: forwards;
+            }
+            &_chapterone{
+                text-align: center;
+                @include flex(center, center);
+            }
+        }
+    }
+    .true{
+        background: rgb(40, 40, 40);
+        position: relative;
+        &_pic{
+            width: 444px;
+            height: 431px;
+            position: absolute;
+            bottom: 0;
+
+            @include large {
+                width: 0;
+            }
+        }
+        &_txt{
+
+            @include absoluteCenter($direction: "both");
+            p{
+                animation: textshow2 1.5s;
+                animation-delay: 1s;
+                animation-fill-mode: forwards;
+            }
+            margin-left: 115px;
+            @include large {
+                margin-left: 0px;
+            }
+            &_chapterone{
+                text-align: left;
+            }
+            &_chapterone:nth-child(2),
+            &_chapterone:nth-child(3){
+                color: $white;
+            }
+        } 
+        
+    }
+    .three{
+        background: rgb(239, 230, 213);
+        background-size: cover;
+    }
+}
+
+@keyframes textshow1 {
+    0% { transform: translate3d(0, 50%, 0); opacity: 0;}
+    100% { transform: translate3d(0, 0, 0); opacity: 1;}
+}
+@keyframes textshow2 {
+    0% { transform: translate3d(-50%, 0, 0); opacity: 0;}
+    100% { transform: translate3d(0, 0, 0); opacity: 1;}
+}

@@ -1,0 +1,44 @@
+.btn{
+    color: $black;
+    padding: 7px 34px 4px 39px;
+    font-size: 13px;
+    line-height: 2.857em;
+    font-weight: 400;
+    cursor: pointer;
+    font-family: "Josefin Sans",sans-serif;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid #858483;
+    transition: background-color .3s ease-out;
+    &:hover{
+        color: $white;
+        border-color: #363636!important;
+        background-color: #363636!important;
+    }
+    @include mobile {
+        line-height: 2em;
+        padding: 7px 22px 4px 25px;
+    }
+}
+
+.ButtonBanner{
+    color: $white;
+    background-color: #d14031;
+    border: 1px solid transparent;
+    &:hover{
+        border-color: #ad362a!important;
+        background-color: #ad362a!important;
+    }
+}
+
+.ButtonPara{
+    color: $white;
+    background-color: transparent;
+    border: 1px solid #858483;
+    &:hover{
+        border-color: #a6c2b1!important;
+        background-color: $white!important;
+        color: $black!important;
+    }
+}

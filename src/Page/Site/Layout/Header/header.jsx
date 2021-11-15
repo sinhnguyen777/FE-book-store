@@ -5,15 +5,15 @@ import { BarsOutlined, CloseOutlined, SearchOutlined, ShoppingOutlined, UserOutl
 
 const mainNav = [
     {
-        display: "Home",
+        display: "Trang chủ",
         path : "/"
     },
     {
-        display: "Page",
+        display: "Về chúng tôi",
         path : "/page"
     },
     {
-        display: "Event",
+        display: "Sự kiện",
         path : "/event"
     },
     {
@@ -21,7 +21,7 @@ const mainNav = [
         path : "/blog"
     },
     {
-        display: "Shop",
+        display: "Cửa hàng",
         path : "/shop"
     }
 ]

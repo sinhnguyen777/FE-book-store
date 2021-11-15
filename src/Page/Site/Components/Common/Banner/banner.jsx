@@ -1,28 +1,36 @@
 import { Carousel } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { ButtonBanner } from '../Button/Button';
 import imgbn1 from '../../../../../Assets/Images/Banner/slide-banner-1.jpg'
 import imgbn2 from '../../../../../Assets/Images/Banner/slide-banner-2.png'
 import imgbn2_1 from '../../../../../Assets/Images/Banner/slide-banner-2_1.png'
 import imgbn2_2 from '../../../../../Assets/Images/Banner/slide-banner-2_2.png'
+import Aos from'aos'
+import "aos/dist/aos.css"
 
 function onChange(a, b, c) {
     console.log(a, b, c);
   }
 
 const Banner = () => {
+
+    useEffect(()=>{
+        Aos.init({duration:2000 })
+        
+    })
     return (
         <div className="banner">
-            <Carousel afterChange={onChange} >
+            <Carousel afterChange={onChange} effect={'fade'} >
                 <div>
-                    <div className="banner_item three">
+                    <div className="banner_item three" >
                         <img className="three_pic" src={imgbn2} alt="" />
                         <img className="three_pic1" src={imgbn2_1} alt="" />
                         <img className="three_pic2" src={imgbn2_2} alt="" />
                         <div className="banner_item_txt three_txt">
                         <p className="banner_item_txt_chapterone three_txt_chapterone">It’s ChapterOne</p>
                             <p className="banner_item_txt_main three_txt_chapterone">Your world of words</p>
+
                             <p className="banner_item_txt_decs three_txt_chapterone">Lorem ipsum dolor sit amet, 
                                 consectetur adipisicing elit, 
                                 sed do eiusmod tempor incididunt 
@@ -61,11 +69,14 @@ const Banner = () => {
                         <div className="banner_item_txt one_txt">
                             <p className="banner_item_txt_chapterone one_txt_chapterone">It’s ChapterOne</p>
                             <p className="banner_item_txt_main one_txt_chapterone">Your world of words</p>
-                            <p className="banner_item_txt_decs one_txt_chapterone">Lorem ipsum dolor sit amet, 
-                                consectetur adipisicing elit, 
-                                sed do eiusmod tempor incididunt 
-                                ut labore et dolore magna
-                            </p>
+                            <div data-aos="fade-up" data-aos-once="true">
+                                <p className="banner_item_txt_decs one_txt_chapterone">Lorem ipsum dolor sit amet, 
+                                    consectetur adipisicing elit, 
+                                    sed do eiusmod tempor incididunt 
+                                    ut labore et dolore magna
+                                </p>
+                            </div>
+                            
                             <p className="banner_item_txt_read one_txt_chapterone">
                                 <Link to='/'>
                                     <ButtonBanner/>

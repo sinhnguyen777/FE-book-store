@@ -11,8 +11,15 @@
 
             &_list{
                 width: 100%;
-                @include flex(center, center);
             }
+        }
+        &_parallax{
+            width: 100%;
+            
+        }
+        &_author{
+            width: 100%;
+            padding-top: 138px !important;
         }
     }
 }

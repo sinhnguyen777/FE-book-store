@@ -9,11 +9,13 @@
 @import "./components/section";
 @import "./components/banner";
 @import "./components/button";
+@import "./components/tab";
 
 
 //  import Page
 
 @import "./page/Home/home";
+@import "./page/Home/bestseller";
 @import "./page/ListProduct/listProduct";
 
 

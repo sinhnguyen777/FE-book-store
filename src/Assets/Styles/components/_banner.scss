@@ -130,10 +130,14 @@
             }
             margin-left: 115px;
             @include large {
+                @include absoluteCenter($direction: "both");
                 margin-left: 0px;
             }
             &_chapterone{
                 text-align: left;
+                @include large {
+                    text-align: center;
+                }
             }
             &_chapterone:nth-child(2),
             &_chapterone:nth-child(3){
@@ -145,6 +149,63 @@
     .three{
         background: rgb(239, 230, 213);
         background-size: cover;
+        &_pic{
+            position: absolute;
+            bottom: 0;
+            @include large {
+                width: 0;
+            }
+        }
+        &_pic1{
+            position: absolute;
+            width: 244px;
+            height: 214px;  
+            right: 30%;
+            bottom: 30%;
+            @include large {
+                left: 0;
+                bottom:0 ;
+            }
+            @include mobile {
+                width: 0;
+            }
+        }
+        &_pic2{
+            position: absolute;
+            width: 79px;
+            height: 159px;
+            right: 11%;
+            bottom: 15%;
+            @include large {
+                right: 0;
+                bottom:0 ;
+            }
+            @include mobile {
+                width: 0;
+            }
+        }
+        &_txt{
+            @include absoluteCenter($direction: "right");
+            @include absoluteCenter($direction: "top");
+            p{
+                animation: textshow2 1.5s;
+                animation-delay: 1s;
+                animation-fill-mode: forwards;
+            }
+            margin-left: 115px;
+            @include large {
+                @include absoluteCenter($direction: "both");
+                margin-left: 0px;
+            }
+            &_chapterone{
+                text-align: left;
+                @include large {
+                    text-align: center;
+                }
+            }
+            
+        } 
+
     }
 }
 
@@ -153,6 +214,6 @@
     100% { transform: translate3d(0, 0, 0); opacity: 1;}
 }
 @keyframes textshow2 {
-    0% { transform: translate3d(-50%, 0, 0); opacity: 0;}
+    0% { transform: translate3d(50%, 0, 0); opacity: 0;}
     100% { transform: translate3d(0, 0, 0); opacity: 1;}
 }

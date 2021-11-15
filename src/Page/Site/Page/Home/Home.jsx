@@ -21,7 +21,20 @@ const Home = () => {
                 <div className="home_content_parallax">
                     <ParallaxProvider>
                         <ParallaxImg imgsrc={imgprl} height="550px" opacity=".5">
-                            <ButtonPara/>
+                            <div className="home_content_parallax_inner">
+                                <p className="home_content_parallax_icon">❦</p>
+                                <p className="home_content_parallax_txt">
+                                    Dịch vụ của chúng tôi
+                                </p>
+                                <p className="home_content_parallax_main">
+                                    Cung cấp các dịch vụ đọc sách điện tử,
+                                    truyện tranh online mọi lúc mọi nơi
+                                    trên nhiều thiết bị.
+                                </p>
+                                <p className="home_content_parallax_read">
+                                    <ButtonPara/>
+                                </p>
+                            </div>
                         </ParallaxImg>
                     </ParallaxProvider>                 
                 </div>

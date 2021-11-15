@@ -15,7 +15,35 @@
         }
         &_parallax{
             width: 100%;
-            
+            &_inner{
+                @include absoluteCenter($direction: "both");
+            }
+            &_icon{
+                font-size: 20px;
+                margin-bottom: 11px;
+            }
+            &_txt{
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: .35em;
+                margin: 12px 0;
+                font-weight: 500;
+                font-family: "Josefin Sans",sans-serif;
+            }
+            &_main{
+                font-size: 35px;
+                font-weight: 500;
+                color: $white;
+                letter-spacing: .01em;
+                line-height: 40px;
+                @include tablets {
+                    font-size: 25px;
+                }
+                @include mobile {
+                    font-size: 19px;
+                    line-height: 32px;
+                }
+            }
         }
         &_author{
             width: 100%;

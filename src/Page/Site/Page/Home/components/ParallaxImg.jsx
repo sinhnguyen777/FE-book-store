@@ -6,6 +6,7 @@ const ParallaxImg = (props) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        textAlign: 'center',
         height: '100%',
         color: 'white',
         backgroundColor: `rgba(0, 0, 0, ${props.opacity == null && '0'})`,

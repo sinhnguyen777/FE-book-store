@@ -10,16 +10,16 @@ const { TabPane } = Tabs;
 const Tab = () => {
     return (
         <Tabs defaultActiveKey="1" centered>
-            <TabPane tab="Best-Sellers" key="1">
+            <TabPane tab="Bán chạy nhất" key="1">
                 <ListBestSeller/>
             </TabPane>
-            <TabPane tab="Fantasy" key="2">
+            <TabPane tab="Tưởng tượng" key="2">
                 <ListFantasy/>
             </TabPane>
-            <TabPane tab="History" key="3">
+            <TabPane tab="Lịch sử" key="3">
                 <ListHistory/>
             </TabPane>
-            <TabPane tab="Art" key="4">
+            <TabPane tab="Nghệ thuật" key="4">
                 <ListArt/>
             </TabPane>
         </Tabs>

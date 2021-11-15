@@ -3,7 +3,7 @@ import React from 'react'
 const ButtonMain = () => {
     return (
         <button className="btn">
-            Read more
+            Đọc thêm
         </button>
     )
 }
@@ -11,7 +11,7 @@ const ButtonMain = () => {
 export const ButtonBanner = () => {
     return (
         <button className="ButtonBanner btn">
-            Read more
+            Đọc thêm
         </button>
     )
 }
@@ -19,7 +19,7 @@ export const ButtonBanner = () => {
 export const ButtonPara = () => {
     return (
         <button className="ButtonPara btn">
-            Read more
+            Đọc thêm
         </button>
     )
 }

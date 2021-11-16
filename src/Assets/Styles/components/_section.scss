@@ -1,4 +1,9 @@
 .section-home {
     width: 1300px;
     margin: 0 auto;
+    position: relative;
+    z-index: 20;
+    @include large {
+        width: 100%;
+    }
 }

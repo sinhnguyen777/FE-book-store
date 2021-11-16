@@ -5,11 +5,9 @@
     margin-bottom: 60px!important;
 }
 .ant-tabs-nav-list{
-
-    @include tablets{
+    
+    @include tablet{
         flex-wrap: wrap;
-    }
-    @include mobile{
         @include flex(center, center);  
     }
 }
@@ -29,6 +27,9 @@
     .ant-tabs-tab-btn{
         color: $white !important;
     }
+}
+.ant-tabs-tabpane{
+    display: flex;
 }
 .ant-tabs-tab-btn{
     color: $black !important;

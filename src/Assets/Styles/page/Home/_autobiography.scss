@@ -1,0 +1,10 @@
+.AutobiographyItemMonth {
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 100px!important;
+    position: relative;
+    background-image: url(../../../../Assets//Images/Home/home-2-rev-2-img-1.jpg);
+    &_text{
+        @include absoluteCenter($direction: "left");
+    }
+}

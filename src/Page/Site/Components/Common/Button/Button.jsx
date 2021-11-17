@@ -23,6 +23,20 @@ export const ButtonPara = () => {
         </button>
     )
 }
+export const ButtonCart = () => {
+    return (
+        <button className="btn">
+            View Cart
+        </button>
+    )
+}
+export const ButtonCheckout = () => {
+    return (
+        <button className=" ButtonBanner btn">
+            Checkout
+        </button>
+    )
+}
 
 
 

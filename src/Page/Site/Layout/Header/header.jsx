@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../../../Assets/Images/logo.png'
 import { BarsOutlined, CloseOutlined, SearchOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
+import { Drawer } from 'antd';
+import CartHeader from './cartHeader';
 
 const mainNav = [
     {
@@ -52,6 +54,16 @@ const Header = () => {
     const showSearch = useRef(null)
 
     const searchToggle = () => showSearch.current.classList.toggle('show')
+
+    const [visible, setVisible] = useState(false);
+
+    const showDrawer = () => {
+        setVisible(true);
+    };
+
+    const onClose = () => {
+        setVisible(false);
+    };
     return (
         <header className="header" ref={headerRef}>
             <div className="header_container">
@@ -87,7 +99,7 @@ const Header = () => {
                             <SearchOutlined />
                         </div>
                         <div className="header_menu_item header_menu_right_item">
-                            <Link to="/cart">
+                            <Link to="/" onClick={showDrawer}>
                                 <ShoppingOutlined />
                             </Link>
                         </div>
@@ -112,6 +124,11 @@ const Header = () => {
                         </button>
                     </div>
                 </form>
+            </div>
+            <div className="header_cart">
+                <Drawer title="Shopping" placement="right" onClose={onClose} visible={visible}>
+                    <CartHeader/>
+                </Drawer>
             </div>
         </header>
     )

@@ -156,6 +156,9 @@
     margin-top: 200px;
     position: relative;
     min-height: 550px;
+    @include mobile {
+        min-height: 480px;
+    }
     &_text{
         position: absolute;
         right: 100px;
@@ -261,6 +264,12 @@
         height: 123px;
         @include tablet {
             width: 0;   
+        }
+        @include mobile {
+            bottom: 100px;
+            right: 25px;
+            width: 120px;
+            height: 75px;
         }
         
     }

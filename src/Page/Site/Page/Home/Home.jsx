@@ -7,6 +7,7 @@ import imgprl from '../../../../Assets/Images/Home/home-2-parallax-image-1.jpg'
 import { ButtonPara } from '../../Components/Common/Button/Button'
 import Author from './components/Author'
 import Autobiography from './components/Autobiography'
+import Partner from './components/Partner'
 
 const Home = () => {
     return (
@@ -49,7 +50,7 @@ const Home = () => {
                     <Autobiography/>
                 </div>
                 <div className="home_content_autobiographys_partner">
-                    
+                    <Partner/>
                 </div>
             </div>
         </div>

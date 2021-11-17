@@ -164,6 +164,13 @@
         &_autobiographys{
             width: 100%;
             padding: 110px 0;
+            @include mobile {
+                padding: 0;
+            }
+        }
+        &_partner{
+            width: 100%;
+            padding: 0 15px;
         }
     }
 }

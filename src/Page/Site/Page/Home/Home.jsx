@@ -48,6 +48,9 @@ const Home = () => {
                 <div className="home_content_autobiographys">
                     <Autobiography/>
                 </div>
+                <div className="home_content_autobiographys_partner">
+                    
+                </div>
             </div>
         </div>
     )

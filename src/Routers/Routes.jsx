@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Switch, Route } from 'react-router-dom';
-import Admin from '../Page/Admin/Admin';
 import Footer from '../Page/Site/Layout/Footer/footer';
 import Header from '../Page/Site/Layout/Header/header';
 import pages from './Pages';

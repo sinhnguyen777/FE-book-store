@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { Menu, Button } from 'antd';
-
 import {
-    InboxOutlined,
-    ContainerOutlined,
-    ShoppingCartOutlined,
-    HomeOutlined,
+    ContainerOutlined, HomeOutlined, InboxOutlined, ShoppingCartOutlined
 } from '@ant-design/icons';
-
+import { Menu } from 'antd';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+
 
 
 const { SubMenu } = Menu;
@@ -24,16 +21,16 @@ const HeaderCmp = (props) => {
                 inlineCollapsed={props.collapsed}
             >
                 <Menu.Item key="/admin" icon={<HomeOutlined />}>
-                    <Link to="/admin">Home</Link>
+                    <Link to={"/admin"}>Trang chủ</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/cata" icon={<InboxOutlined />}>
-                    <Link to="/admin/cata">Catalog</Link>
+                    <Link to={"/admin/cata"}>Danh mục</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/products" icon={<ContainerOutlined />}>
-                    <Link to="/admin/products">Book</Link>
+                    <Link to="/admin/products">Sách</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/order" icon={<ShoppingCartOutlined />}>
-                    <Link to="/admin/order">Order</Link>                   
+                    <Link to="/admin/order">Đơn Hàng</Link>                   
                 </Menu.Item>
                 <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="Navigation Two">
                     <Menu.Item key="9">Option 9</Menu.Item>

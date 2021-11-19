@@ -1,12 +1,10 @@
 import { Avatar, Layout } from 'antd';
 import React, { useState } from 'react';
 import HeaderCmp from './Layout/Header/header';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 import RouterWrapper from './Routers/Routes'
-import Home from './Page/Home/Home';
 import Logo from '../../Assets/Images/Admin/logo.png';
 import { UserOutlined } from '@ant-design/icons';
-import Menu from 'rc-menu/lib/Menu';
 
 
 const { Header, Sider, Content } = Layout;
@@ -20,6 +18,7 @@ const Admin = () => {
     }
 
     return (
+
         <Layout className="Admin">
             <Header className="site-layout-background">
                 <div className="Logo">
@@ -39,16 +38,17 @@ const Admin = () => {
                 <Content
                     className="site-layout-background"
                     style={{
-                        margin: '24px 16px',
                         padding: 24,
                     }}
                 >
-                    <Router>
-                        <Route path="/" component={RouterWrapper} />
-                    </Router>
+                    <Switch>
+                        <Route path="/" component={RouterWrapper}></Route>
+                    </Switch>
+
                 </Content>
             </Layout>
         </Layout>
+
     );
 }
 

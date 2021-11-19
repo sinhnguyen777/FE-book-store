@@ -37,6 +37,13 @@ export const ButtonCheckout = () => {
         </button>
     )
 }
+export const ButtonGoHome = () => {
+    return (
+        <button className=" btn">
+            Go back home
+        </button>
+    )
+}
 
 
 

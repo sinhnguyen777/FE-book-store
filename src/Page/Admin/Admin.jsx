@@ -43,8 +43,7 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
-                {admin.fullName}
-                    {/* <div className="FullName"></div> */}
+                    {admin.fullName}
                     <Link to='/loginad'><Avatar size={40} icon={<UserOutlined />} /></Link>
                     <Button type="button" onClick={handleLogout}>Đăng xuất</Button>
                 </div>

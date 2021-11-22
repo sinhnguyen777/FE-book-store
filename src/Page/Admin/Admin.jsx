@@ -32,7 +32,7 @@ const Admin = () => {
     let history = useHistory();
     const handleLogout = () => {
         removeUserSession();
-        history.push('/loginad');
+        history.push('/admins/login');
     }
     return (
 
@@ -43,7 +43,7 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
-                    {admin.fullName}
+                    {/* {admin.fullName} */}
                     <Link to='/loginad'><Avatar size={40} icon={<UserOutlined />} /></Link>
                     <Button type="button" onClick={handleLogout}>Đăng xuất</Button>
                 </div>

@@ -2,36 +2,36 @@ import axiosClient from "./axiosCilent";
 import axiosClientAuth from "./axiosClientAuth";
 
 
-const cataApi={
+const permissionApi={
 
-    GetCata(){
-        const url = '/catalogs';
+    GetPermission(){
+        const url = '/permissions';
         const res = axiosClient.get(url)
         .then(res=>{
             return res.data;
         })
         return res
     },
-    GetCataById (id){
-        const url = `/catalogs/${id}`;
+    GetPermissionById (id){
+        const url = `/permissions/${id}`;
         const res = axiosClient.get(url)
         .then(res=>{
             return res.data;
         })
         return res;
     },
-    UpdateCata(data){
-        const url = '/catalogs/edit';
+    UpdatePermission(data){
+        const url = '/permissions/edit';
         return axiosClient.put(url , data)
     },
-    AddCata(data){
-        const url = '/catalogs/create';
+    AddPermission(data){
+        const url = '/permissions/create';
         return axiosClient.post(url , data)
     },
-    DelCata( id){
-        const url = `/catalogs/del/${id}`;
+    DelPermission( id){
+        const url = `/permissions/del/${id}`;
         return axiosClientAuth.delete(url)
     },
 };
 
-export default cataApi; 
+export default permissionApi; 

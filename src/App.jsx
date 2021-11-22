@@ -22,7 +22,7 @@ function App() {
           <Admin />
         </Route>
 
-        <Route path="/loginad">
+        <Route exact path="/admins/login">
           <LoginAd />
         </Route>
 

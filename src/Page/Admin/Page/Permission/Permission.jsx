@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Button, PageHeader, Row, Col } from 'antd';
-import ListCata from './Components/ListCata'
-import FromCata from "./Components/FormCata";
-import FromCataAdd from "./Components/FormCataAdd";
-import cataApi from "../../../../api/cataApi";
 import Swal from 'sweetalert2';
 import { useHistory } from "react-router";
+import permissionApi from "../../../../api/permissionApi";
+import FromPermisAdd from "./Components/FormPermissAdd";
+import ListPermission from "./Components/ListPermission";
 
 
-const CatalogPage = () => {
+const Permission = () => {
     const [demo, setdemo] = useState('')
-  const [DataCata, setDataCata] = useState([]);
+    const [DataPermission, setDataPermission] = useState([]);
 
     let history = useHistory();
 
     const handleSubmitFrom = (values)=>{
-        const fetchUpdateCata = async (data) => {
+        const fetchUpdatePermission = async (data) => {
             try {
-                const res = await cataApi.AddCata(data);
+                const res = await permissionApi.AddPermission(data);
                 if (res.status == 200) {
                     Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
                             console.log(1);
                             setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/cata' })
+                            history.push({ pathname: '/admin/permission' })
                         }
                     })
                 }
@@ -33,20 +32,20 @@ const CatalogPage = () => {
             }
         }
 
-        fetchUpdateCata(values);
+        fetchUpdatePermission(values);
     };
 
     const handleRemove = (id)=>{
         try{
-            const fetchRemoveCata = async (data) => {
+            const fetchRemovePermissions = async (data) => {
                 try {
-                    const res = await cataApi.DelCata(data);
+                    const res = await permissionApi.DelPermission(data);
                     if (res.status == 200) {
                         Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
                             if (result.isConfirmed) {
                                 console.log(1);
                                 setdemo(pre=>pre+1);
-                                history.push({ pathname: '/admin/cata' })
+                                history.push({ pathname: '/admin/permission' })
                             }
                         })
                     }
@@ -56,13 +55,13 @@ const CatalogPage = () => {
                         if (result.isConfirmed) {
                             console.log(1);
                             setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/cata' })
+                            history.push({ pathname: '/admin/permission' })
                         }
                     })
                 }
             }
     
-            fetchRemoveCata(id);
+            fetchRemovePermissions(id);
     
         }
         catch(err){
@@ -71,33 +70,33 @@ const CatalogPage = () => {
     }
 
     useEffect(() => {
-        const fetchCata = async () => {
-          const res = await cataApi.GetCata()
-          setDataCata(res)
+        const fetchPermissions = async () => {
+          const res = await permissionApi.GetPermission()
+          setDataPermission(res);
         }
     
-        fetchCata();
+        fetchPermissions();
       }, [demo])
 
     return (
         <div className="CatalogsPage">
             <PageHeader
                 className="site-page-header"
-                title="Trang Danh mục"
+                title="Trang quyền"
             />
 
             <div className="BoxForm">
-                <div className="title">Thêm Danh Mục</div>
-                <FromCataAdd handleSubmitFrom={handleSubmitFrom} />
+                <div className="title">Thêm quyền</div>
+                <FromPermisAdd handleSubmitFrom={handleSubmitFrom} />
             </div>
 
             <Row className='ListCata'>
                 <Col span={24}>
-                    <ListCata data={DataCata.data} handleRemove={handleRemove} />
+                    <ListPermission data={DataPermission.data} handleRemove={handleRemove} />
                 </Col>
             </Row>
         </div>
     );
 }
 
-export default CatalogPage;
+export default Permission;

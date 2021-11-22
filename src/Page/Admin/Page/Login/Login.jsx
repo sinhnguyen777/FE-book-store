@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router';
+import adminApi from '../../../../api/adminApi';
 import login from '../../../../Assets/Images/Admin/bg1.jpg'
 import logout from '../../../../Assets/Images/Admin/bg2.jpg'
+
+
 
 const LoginAd = () => {
     const [show, setshow] = useState(false);
@@ -8,9 +12,26 @@ const LoginAd = () => {
     const toggleForm=()=>{
         setshow(!show)
     }
+    let history = useHistory();
+    const username = useFormInput('');
+    const password = useFormInput('');
 
-    const [admin, setaAdmin] = useState();
-
+    const setUserSession = (token, data) => {
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('admin', JSON.stringify(data));
+    }
+    
+    const handleLogin = () => {
+        adminApi.LoginAdmin({username: username.value, password: password.value })
+    .then(res => {
+        setUserSession(res.data.token, res.data.data[0]);
+        history.push('/admin');
+        console.log(res);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+    }
     return (
         <div className="BoxContent">
             <section>
@@ -19,11 +40,11 @@ const LoginAd = () => {
                 <div className="user signinBx">
                     <div className="imgBx"><img src={login} alt="" /></div>
                     <div className="formBx">
-                    <form action>
+                    <form action="" >
                         <h2>Đăng Nhập</h2>
-                        <input type="text" name id placeholder="Username" />
-                        <input type="password" name id placeholder="Password" />
-                        <button type="button">Đăng Nhập</button>
+                        <input type="text" {...username} name id placeholder="Username" />
+                        <input type="password" {...password} name id placeholder="Password" />
+                        <button type="button" onClick={handleLogin}>Đăng Nhập</button>
                         <p className="signup">Bạn Chưa Có Tài khoản? <span onClick={toggleForm}>Đăng Ký.</span></p>
                     </form>
                       
@@ -41,13 +62,7 @@ const LoginAd = () => {
                         <button type="submit">Đăng Ký</button>
                         <p className="signup">Bạn Đã Có Tài Khoản ? <span onClick={toggleForm}>Đăng Nhập.</span></p>
                     </form>
-                        {/* <GoogleLogin className="BtnLogin"
-                            clientId="287127474844-d6cc3k4gkl9pj6ccd8euoirubdk9c8q0.apps.googleusercontent.com"
-                            buttonText="Login"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        /> */}
+                        
                     </div>
                     <div className="imgBx"><img src={logout} alt="" /></div>
                 </div>
@@ -56,5 +71,15 @@ const LoginAd = () => {
         </div>
     )
 }
-
+const useFormInput = initialValue => {
+    const [value, setValue] = useState(initialValue);
+   
+    const handleChange = e => {
+      setValue(e.target.value);
+    }
+    return {
+      value,
+      onChange: handleChange
+    }
+  }
 export default LoginAd

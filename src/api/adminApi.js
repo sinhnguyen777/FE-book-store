@@ -8,7 +8,7 @@ const adminApi={
         return axiosClient.post(url , data)
     },
     LoginAdmin(data){
-        const url = '/admins/register';
+        const url = '/admins/login';
         return axiosClient.post(url , data)
     }
 };

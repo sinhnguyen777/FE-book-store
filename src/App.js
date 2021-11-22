@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Route exact path="/">
+        <Route path="/">
           <RouterWrapper />
         </Route>
 

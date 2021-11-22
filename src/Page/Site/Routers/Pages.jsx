@@ -1,5 +1,6 @@
-import Home from '../Page/Site/Page/Home/Home';
-import ProductDetail from '../Page/Site/Page/ProductDetail/ProductDetail';
+
+import Home from '../Page/Home/Home'
+import ProductDetail from '../Page/ProductDetail/ProductDetail';
 
 const routes = [
     {

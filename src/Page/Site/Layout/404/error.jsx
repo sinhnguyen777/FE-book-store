@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ButtonGoHome } from '../../Components/Common/Button/Button'
-// import img from '../../../../Assets/Images/summer-3.png'
 
 const Error = () => {
     return (

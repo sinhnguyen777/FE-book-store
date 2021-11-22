@@ -30,6 +30,7 @@ const routes = [
         component: Order,
         exact: true,
     }
+    
 
 ];
 

@@ -1,7 +1,7 @@
 import { Avatar, Layout } from 'antd';
 import React, { useState } from 'react';
 import HeaderCmp from './Layout/Header/header';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import RouterWrapper from './Routers/Routes'
 import Logo from '../../Assets/Images/Admin/logo.png';
 import { UserOutlined } from '@ant-design/icons';
@@ -26,7 +26,7 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
-                    <Avatar size={40} icon={<UserOutlined />} />
+                    <Link to='/loginad'><Avatar size={40} icon={<UserOutlined />} /></Link>
                 </div>
 
             </Header>

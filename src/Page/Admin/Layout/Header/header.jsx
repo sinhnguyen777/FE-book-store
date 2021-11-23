@@ -1,5 +1,5 @@
 import {
-    ContainerOutlined, HomeOutlined, InboxOutlined, ShoppingCartOutlined
+    ContainerOutlined, FormOutlined, HomeOutlined, InboxOutlined, ShoppingCartOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React from 'react';
@@ -31,6 +31,9 @@ const HeaderCmp = (props) => {
                 </Menu.Item>
                 <Menu.Item key="/admin/order" icon={<ShoppingCartOutlined />}>
                     <Link to="/admin/order">Đơn Hàng</Link>                   
+                </Menu.Item>
+                <Menu.Item key="/admin/permission" icon={<FormOutlined />}>
+                    <Link to="/admin/permission">Quyền Admin</Link>                   
                 </Menu.Item>
                 <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="Navigation Two">
                     <Menu.Item key="9">Option 9</Menu.Item>

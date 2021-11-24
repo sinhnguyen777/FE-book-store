@@ -1,4 +1,5 @@
 import axiosClient from "./axiosCilent";
+import axiosClientAuth from "./axiosClientAuth";
 
 
 const cataApi={
@@ -29,7 +30,7 @@ const cataApi={
     },
     DelCata(id){
         const url = `/catalogs/del/${id}`;
-        return axiosClient.delete(url)
+        return axiosClientAuth.delete(url)
     },
 };
 

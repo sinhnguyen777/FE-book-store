@@ -2,17 +2,19 @@
   width: 100%;
   height: $header-height;
   position: fixed;
-  z-index: 99;
+  z-index: 100;
+  top: 0;
+  left: 0;
   background: $white;
   transition: height 0.3s ease;
-  
+
   &.shrink {
     height: $header-shrink-height;
     box-shadow: $box-shadow;
     z-index: 100;
 
     @include mobile {
-        height: $header-mobile-height;
+      height: $header-mobile-height;
     }
   }
 
@@ -139,7 +141,7 @@
       }
     }
   }
-  &_search{
+  &_search {
     position: absolute;
     right: 103px;
     top: 100%;
@@ -149,60 +151,81 @@
     margin: 0;
     background-color: #282828;
     overflow: hidden;
-    z-index: 9999;
     box-shadow: $box-shadow;
     display: none;
-    &.show{
-        display: block;
+    transition: all 0.5s;
+    @include tablet {
+      width: 90%;
+      right: 35px;
+      left: 35px;
+    }
+    @include mobile {
+      width: 90%;
+      right: 15px;
+      left: 15px;
+      height: 60px;
+      padding: 5px 20px;
+    }
+    &.show {
+      display: block;
+      overflow: hidden;
+      transition: all 0.5s;
+
+      animation: run 0.5s;
+
+      @keyframes run {
+        from {
+          height: 0;
+          padding: 0;
+        }
+        to {
+          height: 90px;
+        }
+      }
     }
     .form_holder {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        vertical-align: middle;
-        border-bottom: 1px solid #575757;
-        
-        .search_field{
-            width: calc(100% - 40px);
-            padding: 0 0 0 7px;
-            letter-spacing: 0;
-            font-size: 19px;
-            height: 44px;
-            line-height: 42px;
-            color: #999;
-            background-color: transparent;
-            border: 0;
-            border-radius: 0;
-            outline: 0;
-            transition: color .2s ease-out;
-        }
-        .search_submit{
-            font-size: 12px;
-            line-height: 1em;
-            color: #fff;
-            letter-spacing: .35em;
-            font-family: "Josefin Sans",sans-serif;
-            width: 40px;
-            padding: 0;
-            text-align: right;
-            cursor: pointer;           
-        }
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      border-bottom: 1px solid #575757;
+
+      .search_field {
+        width: calc(100% - 40px);
+        padding: 0 0 0 7px;
+        letter-spacing: 0;
+        font-size: 19px;
+        height: 44px;
+        line-height: 42px;
+        color: #999;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        outline: 0;
+        transition: color 0.2s ease-out;
+      }
+      .search_submit {
+        font-size: 12px;
+        line-height: 1em;
+        color: #fff;
+        letter-spacing: 0.35em;
+        font-family: "Josefin Sans", sans-serif;
+        width: 40px;
+        padding: 0;
+        text-align: right;
+        cursor: pointer;
+      }
     }
-    .form_holder::before{
-        content: '';
-        width: 1px;
-        height: 18px;
-        background: #8a8a8a;
-        position: absolute;
-        display: block;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
+    .form_holder::before {
+      content: "";
+      width: 1px;
+      height: 18px;
+      background: #8a8a8a;
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }
-
-
-
-
-

@@ -3,6 +3,9 @@ import CatalogPage from "../Page/Catalogs/Catalog"
 import Product from "../Page/Products/product";
 import Order from "../Page/order/oder";
 import EditCata from "../Page/Catalogs/pages/editCata";
+import Permission from "../Page/Permission/Permission";
+import EditPermission from "../Page/Permission/pages/editPermission";
+import Role from "../Page/Role/Role";
 
 
 const routes = [
@@ -26,10 +29,28 @@ const routes = [
         exact: true,
     },
     {
+        path: '/admin/permission',
+        component: Permission,
+        exact: true,
+    },
+    {
+        path: '/admin/permission/edit/:id',
+        component: EditPermission,
+    },
+    {
         path: '/admin/order',
         component: Order,
         exact: true,
+    },
+    {
+        path: '/admin/role',
+        component: Role,
+    },
+    {
+        path: '/admin/role/edit/:id',
+        component: EditPermission,
     }
+    
 
 ];
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, PageHeader, Row, Col } from 'antd';
+import { PageHeader, Row, Col } from 'antd';
 import ListCata from './Components/ListCata'
-import FromCata from "./Components/FormCata";
 import FromCataAdd from "./Components/FormCataAdd";
 import cataApi from "../../../../api/cataApi";
 import Swal from 'sweetalert2';
@@ -39,7 +38,6 @@ const CatalogPage = () => {
     const handleRemove = (id)=>{
         try{
             const fetchRemoveCata = async (data) => {
-                console.log(1);
                 try {
                     const res = await cataApi.DelCata(data);
                     if (res.status == 200) {
@@ -51,9 +49,15 @@ const CatalogPage = () => {
                             }
                         })
                     }
-                    console.log(res);
                 } catch (err) {
                     console.log(err);
+                    Swal.fire('...', 'Không đủ Thẩm quyền đề xóa', 'error').then((result) => {
+                        if (result.isConfirmed) {
+                            console.log(1);
+                            setdemo(pre=>pre+1);
+                            history.push({ pathname: '/admin/cata' })
+                        }
+                    })
                 }
             }
     

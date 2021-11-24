@@ -1,10 +1,11 @@
-import { Avatar, Layout } from 'antd';
+import { Avatar, Button, Layout } from 'antd';
 import React, { useState } from 'react';
 import HeaderCmp from './Layout/Header/header';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import RouterWrapper from './Routers/Routes'
 import Logo from '../../Assets/Images/Admin/logo.png';
 import { UserOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router';
 
 
 const { Header, Sider, Content } = Layout;
@@ -17,6 +18,22 @@ const Admin = () => {
         setcollapsed(!collapsed);
     }
 
+    const getAdmin = () => {
+        const adminStr = sessionStorage.getItem('admin');
+        if (adminStr) return JSON.parse(adminStr);
+        else return null;
+    }
+
+    const removeUserSession = () => {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('admin');
+    }
+    const admin = getAdmin();
+    let history = useHistory();
+    const handleLogout = () => {
+        removeUserSession();
+        history.push('/admins/login');
+    }
     return (
 
         <Layout className="Admin">
@@ -26,7 +43,11 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
-                    <Avatar size={40} icon={<UserOutlined />} />
+                    { admin ? 
+                        <Button type="button" title="Đăng xuất" onClick={handleLogout}>{admin.fullName}</Button>
+                        : 
+                        <Link title="Đăng nhập" to='/admins/login'><Avatar size={40} icon={<UserOutlined />} /></Link> 
+                    }
                 </div>
 
             </Header>

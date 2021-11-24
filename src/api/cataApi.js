@@ -27,7 +27,7 @@ const cataApi={
         const url = '/catalogs/create';
         return axiosClient.post(url , data)
     },
-    DelCata( id){
+    DelCata(id){
         const url = `/catalogs/del/${id}`;
         return axiosClient.delete(url)
     },

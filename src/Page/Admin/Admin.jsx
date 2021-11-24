@@ -19,14 +19,14 @@ const Admin = () => {
     }
 
     const getAdmin = () => {
-        const adminStr = sessionStorage.getItem('admin');
+        const adminStr = localStorage.getItem('admin');
         if (adminStr) return JSON.parse(adminStr);
         else return null;
     }
 
     const removeUserSession = () => {
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('admin');
+        localStorage.removeItem('token');
+        localStorage.removeItem('admin');
     }
     const admin = getAdmin();
     let history = useHistory();

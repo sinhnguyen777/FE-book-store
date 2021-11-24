@@ -5,6 +5,7 @@ import Admin from './Page/Admin/Admin';
 import Error from "./Page/Site/Layout/404/error";
 import RouterWrapper from './Routers/Routes';
 import LoginAd from './Page/Admin/Page/Login/Login'
+import AccessToken from "./Page/Admin/Page/resetPass";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
 
         <Route exact path="/admins/login">
           <LoginAd />
+        </Route>
+
+        <Route exact path="/admins/reset/:token">
+          <AccessToken />
         </Route>
 
         <Route path="/error">

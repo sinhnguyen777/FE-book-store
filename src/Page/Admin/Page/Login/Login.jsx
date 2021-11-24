@@ -45,7 +45,7 @@ const LoginAd = () => {
                         <input type="text" {...username} name id placeholder="Username" />
                         <input type="password" {...password} name id placeholder="Password" />
                         <button type="button" onClick={handleLogin}>Đăng Nhập</button>
-                        <p className="signup">Bạn Chưa Có Tài khoản? <span onClick={toggleForm}>Đăng Ký.</span></p>
+                        <p className="signup">Bạn Quên Mật Khẩu? <span onClick={toggleForm}>Lấy Lại Mật Khẩu.</span></p>
                     </form>
                       
                     </div>
@@ -53,13 +53,10 @@ const LoginAd = () => {
 
                 <div className="user signupBx">
                     <div className="formBx">
-                    <form action>
-                        <h2>Tạo Tài Khoản</h2>
-                        <input type="text" name id placeholder="Nhâp UserName" />
-                        <input type="text" name id placeholder="Đia Chỉ Email" />
-                        <input type="password" name id placeholder="Mật Khẩu" />
-                        <input type="password" name id placeholder="Nhập lại Mật Khẩu" />
-                        <button type="submit">Đăng Ký</button>
+                    <form>
+                        <h2>Quên Mật Khẩu</h2>
+                        <input type="email" name id placeholder="Nhập Email" />
+                        <button type="submit" onClick={handleLogin}>Lấy Lại Mật Khẩu</button>
                         <p className="signup">Bạn Đã Có Tài Khoản ? <span onClick={toggleForm}>Đăng Nhập.</span></p>
                     </form>
                         

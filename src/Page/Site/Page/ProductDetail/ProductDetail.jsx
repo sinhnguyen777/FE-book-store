@@ -8,7 +8,7 @@ import {
     Image,
     Rate,
     Comment,
-    Divider,
+    Tabs,
     Avatar,
     List,
 } from 'antd';
@@ -52,6 +52,8 @@ export default function ProductDetail() {
             imageBottomComment: 'https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/review-3.png',
         },
     ];
+    const { TabPane } = Tabs;
+
     return (
         <div style={{ width: '100%' }}>
             <div className="banner_product_detail">
@@ -60,7 +62,7 @@ export default function ProductDetail() {
                     <h2>Shop List</h2>
                 </div>
             </div>
-            <Layout className="layout" style={{ padding: '80px 80px', background: 'none' }}>
+            <Layout className="layout" >
                 <Row>
                     <Col span={8} style={{ padding: '0 22px 0 0' }}>
                         <div className="image_product_detail_gallery">
@@ -114,7 +116,6 @@ export default function ProductDetail() {
                             </div>
 
                         </div>
-                        {/* <Divider /> */}
                         <Comment
                             className="comment_product_detail"
                             author={<a className="author_comment">BELGIUM</a>}
@@ -142,7 +143,6 @@ export default function ProductDetail() {
                                 </div>
                             }
                         />
-                        {/* <Divider /> */}
                         <List
                             className="comment-list"
                             itemLayout="horizontal"
@@ -164,6 +164,19 @@ export default function ProductDetail() {
                         />
                     </Col>
                 </Row>
+                {/* <Row className="tabs_product_detail">
+                    <Tabs className="description_tab" defaultActiveKey="1"  centered type="card">
+                        <TabPane tab="Tab 1" key="1">
+                            Content of Tab Pane 1
+                        </TabPane>
+                        <TabPane tab="Tab 2" key="2">
+                            Content of Tab Pane 2
+                        </TabPane>
+                        <TabPane tab="Tab 3" key="3">
+                            Content of Tab Pane 3
+                        </TabPane>
+                    </Tabs>
+                </Row> */}
             </Layout>
         </div>
     )

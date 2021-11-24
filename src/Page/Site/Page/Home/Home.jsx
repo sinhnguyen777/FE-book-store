@@ -5,9 +5,9 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 import ParallaxImg from './Components/ParallaxImg'
 import imgprl from '../../../../Assets/Images/Home/home-2-parallax-image-1.jpg'
 import { ButtonPara } from '../../Components/Common/Button/Button'
-import Author from './Components/Author'
 import Autobiography from './Components/Autobiography'
 import Partner from './Components/Partner'
+import Author from './Components/Author'
 
 const Home = () => {
     return (
@@ -43,7 +43,7 @@ const Home = () => {
                 </div>
                 <div className="home_content_author">
                     <section className="section-home">
-                        <Author/>
+                        <Author />
                     </section>
                 </div>
                 <div className="home_content_autobiographys">

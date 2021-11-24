@@ -4,24 +4,61 @@ import { Link } from 'react-router-dom'
 
 const footerPublishers = [
     {
-        display: "Bestsellers",
+        display: "Giới thiệu chung",
         path : "/"
     },
     {
-        display: "Interviews",
+        display: "Sản phẩm",
         path : "/"
     },
     {
-        display: "Authors Story",
+        display: "Tin tức",
         path : "/"
     },
     {
-        display: "Book Fairs",
+        display: "Liên hệ",
         path : "/"
     },
     {
-        display: "Help (FAQ)",
+        display: "Thỏa thuận dịch vụ",
         path : "/"
+    }
+]
+
+const footerOrders = [
+    {
+        display: "Đơn hàng của tôi",
+        path : "/"
+    },
+    {
+        display: "Đơn hàng vận chuyển",
+        path : "/"
+    },
+    {
+        display: "Lịch sử hủy / Đổi / Trả hàng",
+        path : "/"
+    },
+    {
+        display: "Lịch sử đánh giá sản phẩm",
+        path : "/"
+    }
+]
+const footerAccounts = [
+    {
+        display: "Đăng ký tài khoản",
+        path: "/"
+    },
+    {
+        display: "Đăng nhập",
+        path: "/"
+    },
+    {
+        display: "Cấp độ thành viên",
+        path: "/"
+    },
+    {
+        display: "Phiếu mua hàng",
+        path: "/"
     }
 ]
 const Footer = () => {
@@ -30,27 +67,13 @@ const Footer = () => {
             <div className="footer_top">
                 <div className="footer_top_inner">
                     <div className="footer_top_inner_content">
-                        
-                        <div className="footer_top_inner_content_item">
-                            <div className="footer_title">Publishers</div>
-                            <div className="footer_content">
-                                {
-                                    footerPublishers.map((item, index) => (
-                                        <p key={index}>
-                                            <Link to={item.path}>
-                                                {item.display}
-                                            </Link>
-                                        </p>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className="footer_top_inner_content_item">
-                            <div className="footer_title">Contact</div>
+                    <div className="footer_top_inner_content_item">
+                            <div className="footer_title">Liên hệ</div>
                             <div className="footer_content">
                                 <p className="footer_content_txt contb">
-                                    Stay in touch with everything ChapterOne,
-                                    follow us on social media and learn about new promotions.
+                                    Giữ liên lạc với mọi thứ của ChapterOne, 
+                                    theo dõi chúng tôi trên mạng xã hội và 
+                                    tìm hiểu về các chương trình khuyến mãi mới.
                                 </p>
                                 <p className="footer_content_icons newb">
                                     <div className="footer_content_icon">
@@ -77,24 +100,47 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="footer_top_inner_content_item">
-                            <div className="footer_title">News & Update</div>
+                            <div className="footer_title">Thông tin hữu ích</div>
                             <div className="footer_content">
-                                <p className="footer_content_txt">
-                                    We’d love it if you subscribed to our newsletter!
-                                     You’ll love it too.
-                                </p>
-                                <p className="footer_content_icons">
-                                    
-                                </p>
+                                {
+                                    footerPublishers.map((item, index) => (
+                                        <p key={index}>
+                                            <Link to={item.path}>
+                                                {item.display}
+                                            </Link>
+                                        </p>
+                                    ))
+                                }
                             </div>
                         </div>
+                        
                         <div className="footer_top_inner_content_item">
-                            <div className="footer_title">Social media</div>
+                            <div className="footer_title">Đơn hàng</div>
                             <div className="footer_content">
-                                <p className="footer_content_txt">
-                                    
-                                </p>
-                                
+                                {
+                                    footerOrders.map((item, index) => (
+                                        <p key={index}>
+                                            <Link to={item.path}>
+                                                {item.display}
+                                            </Link>
+                                        </p>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <div className="footer_top_inner_content_item">
+                            <div className="footer_title">Tài khoản</div>
+                            <div className="footer_content">
+                                {
+                                    footerAccounts.map((item, index) => (
+                                        <p key={index}>
+                                            <Link to={item.path}>
+                                                {item.display}
+                                            </Link>
+                                        </p>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -103,7 +149,7 @@ const Footer = () => {
             <div className="footer_bottom">
                 <div className="footer_bottom_content">
                     <p>
-                       <span>&copy; 2021, ALL RIGHTS RESERVED</span>
+                       <span>&copy; 2021, CHAPTERONE</span>
                        
                     </p>
                 </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Switch, Route } from 'react-router-dom';
-import Admin from '../Page/Admin/Admin';
 import Footer from '../Page/Site/Layout/Footer/footer';
 import Header from '../Page/Site/Layout/Header/header';
 import pages from './Pages';
@@ -11,12 +10,13 @@ const renderRoutes = () => {
             <Switch basename="side">
                 <Header />
                 {pages.map((item) => {
+                    console.log(item);
                     return (
                         <Route
                             key={item.path}
-                            exact={item.exact}
                             path={item.path}
                             component={item.component}
+                            exact={item.exact}
                         />
                     );
                 })}

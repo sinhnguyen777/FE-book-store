@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { Menu, Button } from 'antd';
-
 import {
-    InboxOutlined,
-    ContainerOutlined,
-    ShoppingCartOutlined,
-    HomeOutlined,
+    ApartmentOutlined,
+    ContainerOutlined, FormOutlined, HomeOutlined, InboxOutlined, SettingOutlined, ShoppingCartOutlined
 } from '@ant-design/icons';
-
+import { Menu } from 'antd';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+
 
 
 const { SubMenu } = Menu;
@@ -24,17 +22,27 @@ const HeaderCmp = (props) => {
                 inlineCollapsed={props.collapsed}
             >
                 <Menu.Item key="/admin" icon={<HomeOutlined />}>
-                    <Link to="/admin">Home</Link>
+                    <Link to={"/admin"}>Trang chủ</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/cata" icon={<InboxOutlined />}>
-                    <Link to="/admin/cata">Catalog</Link>
+                    <Link to={"/admin/cata"}>Danh mục</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/products" icon={<ContainerOutlined />}>
-                    <Link to="/admin/products">Book</Link>
+                    <Link to="/admin/products">Sách</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/order" icon={<ShoppingCartOutlined />}>
-                    <Link to="/admin/order">Order</Link>                   
+                    <Link to="/admin/order">Đơn Hàng</Link>                   
                 </Menu.Item>
+               
+                <SubMenu key="sub1" icon={<SettingOutlined />} title="Quản trị">
+                    <Menu.Item key="/admin/permission" icon={<FormOutlined />}>
+                        <Link to="/admin/permission">Danh sách quyền</Link>                   
+                    </Menu.Item>
+                    <Menu.Item key="/admin/role" icon={<ApartmentOutlined />}>
+                        <Link to="/admin/role">Chức vụ</Link>                   
+                    </Menu.Item>
+                    
+                </SubMenu>
                 <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="Navigation Two">
                     <Menu.Item key="9">Option 9</Menu.Item>
                     <Menu.Item key="10">Option 10</Menu.Item>

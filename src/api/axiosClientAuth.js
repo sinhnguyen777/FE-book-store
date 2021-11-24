@@ -14,7 +14,7 @@ const axiosClientAuth = axios.create({
 axiosClientAuth.interceptors.request.use(async (config) => {
   const customHeaders = {};
 
-  const accessToken = sessionStorage.getItem("token");
+  const accessToken = localStorage.getItem("token");
   if (accessToken) {
     customHeaders.Authorization = accessToken;
   }

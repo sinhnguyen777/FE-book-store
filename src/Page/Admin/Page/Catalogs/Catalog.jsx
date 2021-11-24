@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, PageHeader, Row, Col } from 'antd';
+import { PageHeader, Row, Col } from 'antd';
 import ListCata from './Components/ListCata'
-import FromCata from "./Components/FormCata";
 import FromCataAdd from "./Components/FormCataAdd";
 import cataApi from "../../../../api/cataApi";
 import Swal from 'sweetalert2';

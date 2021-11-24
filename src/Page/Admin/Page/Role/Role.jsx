@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Button, PageHeader, Row, Col } from 'antd';
+import { PageHeader, Row, Col } from 'antd';
 import Swal from 'sweetalert2';
 import { useHistory } from "react-router";
-import permissionApi from "../../../../api/permissionApi";
-import FromPermisAdd from "./Components/FormPermissAdd";
-import ListPermission from "./Components/ListPermission";
+import roleApi from "../../../../api/roleApi";
+import FromRoleAdd from "./Components/FormRoleAdd";
+import ListRole from "./Components/ListRole";
 
 
-const Permission = () => {
+const Role = () => {
     const [demo, setdemo] = useState('')
-    const [DataPermission, setDataPermission] = useState([]);
-    let history = useHistory();
+    const [DataRole, setDataRole] = useState([]);
 
+    let history = useHistory();
     const handleSubmitFrom = (values)=>{
-        const fetchUpdatePermission = async (data) => {
+        const fetchUpdateRole = async (data) => {
             try {
-                const res = await permissionApi.AddPermission(data);
+                const res = await roleApi.AddRole(data);
                 if (res.status == 200) {
                     Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
                             console.log(1);
                             setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/permission' })
+                            history.push({ pathname: '/admin/role' })
                         }
                     })
                 }
@@ -31,20 +31,20 @@ const Permission = () => {
             }
         }
 
-        fetchUpdatePermission(values);
+        fetchUpdateRole(values);
     };
 
     const handleRemove = (id)=>{
         try{
-            const fetchRemovePermissions = async (data) => {
+            const fetchRemoveRole = async (data) => {
                 try {
-                    const res = await permissionApi.DelPermission(data);
+                    const res = await roleApi.DelRole(data);
                     if (res.status == 200) {
                         Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
                             if (result.isConfirmed) {
                                 console.log(1);
                                 setdemo(pre=>pre+1);
-                                history.push({ pathname: '/admin/permission' })
+                                history.push({ pathname: '/admin/role' })
                             }
                         })
                     }
@@ -54,13 +54,13 @@ const Permission = () => {
                         if (result.isConfirmed) {
                             console.log(1);
                             setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/permission' })
+                            history.push({ pathname: '/admin/role' })
                         }
                     })
                 }
             }
     
-            fetchRemovePermissions(id);
+            fetchRemoveRole(id);
     
         }
         catch(err){
@@ -69,33 +69,33 @@ const Permission = () => {
     }
 
     useEffect(() => {
-        const fetchPermissions = async () => {
-          const res = await permissionApi.GetPermission()
-          setDataPermission(res);
+        const fetchRole = async () => {
+          const res = await roleApi.GetRole()
+          setDataRole(res);
         }
     
-        fetchPermissions();
+        fetchRole();
       }, [demo])
 
     return (
         <div className="CatalogsPage">
             <PageHeader
                 className="site-page-header"
-                title="Trang quyền"
+                title="Trang chức vụ"
             />
 
             <div className="BoxForm">
-                <div className="title">Thêm quyền</div>
-                <FromPermisAdd handleSubmitFrom={handleSubmitFrom} />
+                <div className="title">Thêm chức vụ</div>
+                <FromRoleAdd handleSubmitFrom={handleSubmitFrom} />
             </div>
 
             <Row className='ListCata'>
                 <Col span={24}>
-                    <ListPermission data={DataPermission.data} handleRemove={handleRemove} />
+                    <ListRole data={DataRole.data} handleRemove={handleRemove} />
                 </Col>
             </Row>
         </div>
     );
 }
 
-export default Permission;
+export default Role;

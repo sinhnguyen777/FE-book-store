@@ -43,9 +43,11 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
-                    {/* {admin.fullName} */}
-                    <Link to='/loginad'><Avatar size={40} icon={<UserOutlined />} /></Link>
-                    <Button type="button" onClick={handleLogout}>Đăng xuất</Button>
+                    { admin ? 
+                        <Button type="button" title="Đăng xuất" onClick={handleLogout}>{admin.fullName}</Button>
+                        : 
+                        <Link title="Đăng nhập" to='/admins/login'><Avatar size={40} icon={<UserOutlined />} /></Link> 
+                    }
                 </div>
 
             </Header>

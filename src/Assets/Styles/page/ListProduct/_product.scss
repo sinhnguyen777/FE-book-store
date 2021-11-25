@@ -1,12 +1,27 @@
 .List-filter{
     width: 100%;
     display: flex;
+    margin-bottom: 50px;
     &_result{
         width: 50%;
+        font-size: 19px;
+        line-height: 50px;
+        font-weight: 500;
     }
     &_sort{
         width: 50%;
         @include flex(flex-end,flex-end);
-        
+        .ant-select-selector {
+            font-family: "Josefin Sans",sans-serif;
+            height: 50px !important;
+            padding: 13px 19px !important;
+            font-size: 17px;
+            text-transform: capitalize;
+            letter-spacing: .07em;
+            line-height: 24px;
+            font-weight: 300;
+            color: #999;
+            
+        }
     }
 }

@@ -19,7 +19,7 @@ const ResetPass = () => {
             console.log(values);
             const res = await adminApi.NewPass(values);
             console.log(res);
-            Swal.fire('Đăng Nhập Thành Công', `Chào Mừng  đên với trang quản trị `, 'success');
+            Swal.fire('Đổi mật khẩu thành công', `Đăng nhập để tiếp tục`, 'success');
             history.push('/admins/login');
         }
         catch (err) {

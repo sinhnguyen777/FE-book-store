@@ -12,6 +12,7 @@ import {
     Avatar,
     List,
 } from 'antd';
+import { BannerProduct } from '../../Components/Common/Banner/banner';
 
 export default function ProductDetail() {
 
@@ -56,12 +57,11 @@ export default function ProductDetail() {
 
     return (
         <div style={{ width: '100%' }}>
-            <div className="banner_product_detail">
-                <div className="title_banner_product">
-                    <h6>PRODUCTS</h6>
-                    <h2>Shop List</h2>
-                </div>
-            </div>
+            <BannerProduct>
+                <h6>PRODUCTS</h6>
+                <h2>Shop List</h2>
+            </BannerProduct>
+            
             <Layout className="layout" >
                 <Row>
                     <Col span={8} style={{ padding: '0 22px 0 0' }}>

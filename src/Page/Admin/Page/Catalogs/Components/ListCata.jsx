@@ -1,7 +1,6 @@
 import { Button, Table } from 'antd';
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import cataApi from "../../../../../api/cataApi";
 
 const ListCata = (props) => {
   const columns = [

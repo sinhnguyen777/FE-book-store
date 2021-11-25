@@ -1,0 +1,12 @@
+.List-filter{
+    width: 100%;
+    display: flex;
+    &_result{
+        width: 50%;
+    }
+    &_sort{
+        width: 50%;
+        @include flex(flex-end,flex-end);
+        
+    }
+}

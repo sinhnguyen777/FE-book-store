@@ -6,6 +6,8 @@ import EditCata from "../Page/Catalogs/pages/editCata";
 import Permission from "../Page/Permission/Permission";
 import EditPermission from "../Page/Permission/pages/editPermission";
 import Role from "../Page/Role/Role";
+import Vip from "../Page/Vip/Vip";
+import EditVip from "../Page/Vip/pages/editVip";
 
 
 const routes = [
@@ -47,8 +49,13 @@ const routes = [
         component: Role,
     },
     {
-        path: '/admin/role/edit/:id',
-        component: EditPermission,
+        path: '/admin/vip',
+        component: Vip,
+        exact: true,
+    },
+    {
+        path: '/admin/vip/edit/:id',
+        component: EditVip,
     }
     
 

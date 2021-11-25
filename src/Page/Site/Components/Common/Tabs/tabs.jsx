@@ -1,9 +1,9 @@
 import { Tabs } from 'antd';
 import React from 'react'
-import ListBestSeller from '../../../Page/Home/components/listBestSeller';
-import ListFantasy from '../../../Page/Home/components/listFantasy';
-import ListHistory from '../../../Page/Home/components/listHistory';
-import ListArt from '../../../Page/Home/components/listArt';
+import ListBestSeller from '../../../Page/Home/Components/listBestSeller';
+import ListFantasy from '../../../Page/Home/Components/listFantasy';
+import ListHistory from '../../../Page/Home/Components/listHistory';
+import ListArt from '../../../Page/Home/Components/listArt';
 
 
 const { TabPane } = Tabs;

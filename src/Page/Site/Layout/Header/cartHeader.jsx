@@ -30,7 +30,7 @@ const CartHeader = () => {
             </div>
             
             <div className="CartHeaderItem_bton">
-                <p><ButtonCart/></p>
+                <p><Link to='/cart'><ButtonCart/></Link></p>
                 <p><ButtonCheckout/></p>
             </div>
             

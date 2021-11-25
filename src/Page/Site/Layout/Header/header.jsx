@@ -113,10 +113,8 @@ const Header = () => {
                         <div className="header_menu_item header_menu_right_item" onClick={searchToggle}>
                             <SearchOutlined />
                         </div>
-                        <div className="header_menu_item header_menu_right_item">
-                            <Link to="/" onClick={showDrawer}>
-                                <ShoppingOutlined />
-                            </Link>
+                        <div className="header_menu_item header_menu_right_item" onClick={showDrawer}>
+                            <ShoppingOutlined />
                         </div>
                         <div className="header_menu_item header_menu_right_item">
                             <Link to='/login'>

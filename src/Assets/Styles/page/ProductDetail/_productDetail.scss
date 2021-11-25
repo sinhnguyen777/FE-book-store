@@ -1,14 +1,18 @@
 .banner_product_detail {
+  margin-top: 90px;
   background-image: url("../../../Images/Pages/ProductDetail/banner.jpg");
-  height: 400px;
+  height: 300px;
   background-color: #fbf9f6;
   background-repeat: no-repeat;
-  background-position: 0px 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-position: center 0;
+  @include flex(center, center);
+  @include tablet {
+    margin-top: $header-tablet-height;
+  }
+  @include mobile {
+      margin-top: $header-mobile-height;
+  }
   .title_banner_product {
-    padding-top: $header-height;
     text-align: center;
     h6 {
       display: block;

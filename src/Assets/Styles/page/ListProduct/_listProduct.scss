@@ -1,0 +1,23 @@
+.list-product{
+    display: flex;
+    @include large {
+        flex-wrap: wrap;
+    }
+    &_list{
+        width: 75%;
+        padding-right: 60px;
+        margin-bottom: 20px;
+        @include large {
+            width: 100%;
+            padding-right: 0;
+        }
+    }
+    &_filter{
+        width: 20%;
+        padding-left: 60px;
+        @include large {
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+}

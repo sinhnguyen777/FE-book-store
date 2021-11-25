@@ -98,4 +98,14 @@ const Banner = () => {
     )
 }
 
+export const BannerProduct = (props) => {
+    return (
+    <div className="banner_product_detail">
+        <div className="title_banner_product">
+           {props.children}
+        </div>
+    </div>
+    )
+}
+
 export default Banner

@@ -20,6 +20,7 @@ const ListPro = () => {
                 >
                     <Option value="new">Sắp xếp theo thứ tự mới nhất</Option>
                     <Option value="pricelow">Sắp xếp theo giá: thấp đến cao</Option>
+                    <Option value="pricehigh">Sắp xếp theo giá: cao đến thấp</Option>
                 </Select>
                 </form>
             </div>

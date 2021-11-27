@@ -1,14 +1,14 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import renderRoutes from './Routers/Routes'
+// import renderRoutes from './Routers/Routes'
 
-const Side = () => {
+// const Side = () => {
 
-    return (
-        <Router>
-            <Route path="/" component={renderRoutes} />
-        </Router>
-    )
-}
+//     return (
+//         <Router>
+//             <Route path="/" component={renderRoutes} />
+//         </Router>
+//     )
+// }
 
-export default Side
+// export default Side

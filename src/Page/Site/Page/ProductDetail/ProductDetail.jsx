@@ -13,6 +13,8 @@ import {
 } from 'antd';
 import { BannerProduct } from '../../Components/Common/Banner/banner';
 import FormReview from './Components/FormReview';
+import RelatedProducts from './Components/RelatedProducts';
+
 
 export default function ProductDetail() {
 
@@ -201,6 +203,7 @@ export default function ProductDetail() {
                         </TabPane>
                     </Tabs>
                 </Row>
+                <RelatedProducts />
             </Layout>
         </div>
     )

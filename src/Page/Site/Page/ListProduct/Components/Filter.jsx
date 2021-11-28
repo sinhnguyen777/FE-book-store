@@ -81,7 +81,7 @@ const Filter = () => {
                         catalog.data ?
                         catalog.data.map((item,index) => ( 
                             <p key={index}>
-                                <Link to='/shop'>{item.nameCata}</Link>
+                                <Link to={`/product-category/${item._id}`}>{item.nameCata}</Link>
                             </p>
                         )) : <LoadingOutlined/>
                     }

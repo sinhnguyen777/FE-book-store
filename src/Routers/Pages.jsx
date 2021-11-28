@@ -1,5 +1,6 @@
 import Cart from '../Page/Site/Page/Cart/Cart';
 import Home from '../Page/Site/Page/Home/Home';
+import ProductCategory from '../Page/Site/Page/ListProduct/Components/ProductCategory';
 import ListProduct from '../Page/Site/Page/ListProduct/ListProduct';
 import ProductDetail from '../Page/Site/Page/ProductDetail/ProductDetail';
 
@@ -17,6 +18,11 @@ const routes = [
     {
         path: '/product-detail',
         component: ProductDetail,
+        exact: true,
+    },
+    {
+        path: '/product-category/:id',
+        component: ProductCategory,
         exact: true,
     },
     {

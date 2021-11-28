@@ -3,6 +3,8 @@ import Home from '../Page/Site/Page/Home/Home';
 import ProductCategory from '../Page/Site/Page/ListProduct/Components/ProductCategory';
 import ListProduct from '../Page/Site/Page/ListProduct/ListProduct';
 import ProductDetail from '../Page/Site/Page/ProductDetail/ProductDetail';
+import Option from '../Page/Site/Page/Option/Option';
+import About from '../Page/Site/Page/About/About';
 
 const routes = [
     {
@@ -28,6 +30,16 @@ const routes = [
     {
         path: '/cart',
         component: Cart,
+        exact: true,
+    },
+    {
+        path: '/option',
+        component: Option,
+        exact: true,
+    },
+    {
+        path: '/page',
+        component: About,
         exact: true,
     },
 ];

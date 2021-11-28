@@ -19,6 +19,14 @@ const prouctApi={
         })
         return res
     },
+    GetProductsBySlug(slug){
+        const url = `/products/slug/${slug}`;
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
     GetProductsNew(){       
         const url = '/products';
         const res = axiosClient.get(url)

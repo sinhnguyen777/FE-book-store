@@ -192,6 +192,51 @@
       margin-bottom: 10px;
     }
 
+    .ant-tabs-nav{
+      margin-bottom: 0 !important;
+    }
+
+    .description_tab{
+      .content_tab_description{
+        p{
+          text-align: center;
+          margin: 28px auto 0;
+          font-size: $txt-p;
+        }
+      }
+      .content_tab_infomation{
+        margin: 28px auto 0;
+        width: auto;
+        min-width: 630px;
+        p{
+          margin: 0;
+          font-size: $txt-p;
+        }
+      }
+
+      .content_tab_reviews{
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 15px auto 0;
+        width: auto;
+        min-width: 630px;
+        max-width: 880px;
+        p{
+          text-align: center;
+          font-size: $txt-p;
+        }
+        .rely_title{
+          display: flex;
+          justify-content: space-between;
+          font-size: 25px;
+          line-height: 1.25em;
+          font-weight: 500;
+          margin: 0 0 20px;
+        }
+      }
+    }
+
   }
 }
 

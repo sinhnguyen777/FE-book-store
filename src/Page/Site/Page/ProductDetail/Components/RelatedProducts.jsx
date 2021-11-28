@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Divider, List } from 'antd';
+import { Card, List } from 'antd';
 import { NavLink } from 'react-router-dom';
 
 export default function RelatedProducts() {

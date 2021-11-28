@@ -5,6 +5,7 @@ import ListProduct from '../Page/Site/Page/ListProduct/ListProduct';
 import ProductDetail from '../Page/Site/Page/ProductDetail/ProductDetail';
 import Option from '../Page/Site/Page/Option/Option';
 import About from '../Page/Site/Page/About/About';
+import Event from '../Page/Site/Page/Event/Event';
 
 const routes = [
     {
@@ -40,6 +41,11 @@ const routes = [
     {
         path: '/page',
         component: About,
+        exact: true,
+    },
+    {
+        path: '/event',
+        component: Event,
         exact: true,
     },
 ];

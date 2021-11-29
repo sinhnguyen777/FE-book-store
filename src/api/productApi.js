@@ -1,8 +1,13 @@
 import axiosClient from "./axiosCilent";
+import axiosClientForm from "./axiosCilentForm";
 
 
 const prouctApi={
 
+    AddProduct(data){
+        const url = '/products/create';
+        return axiosClientForm.post(url , data)
+    },
     GetProducts(){
         const url = '/products';
         const res = axiosClient.get(url)

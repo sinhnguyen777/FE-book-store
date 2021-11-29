@@ -1,25 +1,29 @@
-import { Button, Upload, Modal, Col, Input, PageHeader, Row, Select } from "antd";
-import { PlusOutlined } from '@ant-design/icons';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Col, Input, PageHeader, Row, Select } from "antd";
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import cataApi from "../../../../api/cataApi";
+import prouctApi from '../../../../api/productApi';
 import InputField from "../../Components/Common/FromControl/InputField";
-import SelectField from "../../Components/Common/FromControl/SelectField";
 import ListProduct from "./Components/ListProduct";
 
 const { TextArea } = Input;
 const { Option } = Select;
 
-const uploadButton = ()=>{
+const uploadButton = () => {
     <div>
         <PlusOutlined />
         <div style={{ marginTop: 8 }}>Upload</div>
-      </div>
+    </div>
 }
 
 const Product = () => {
     const [ValueSelect, setValueSelect] = useState("");
     const [ValueCata, setValueCata] = useState([])
+    const [ValuesProduct, setValuesProduct] = useState([])
+
+    const [multipleFiles, setMultipleFiles] = useState('');
     const forms = useForm({
         defaultValues: {
             nameProduct: "",
@@ -37,18 +41,49 @@ const Product = () => {
         }
 
         fetchIdCata()
+
+        const fetchProducts = async () => {
+            const res = await prouctApi.GetProducts();
+            setValuesProduct(res.data)
+        }
+
+        fetchProducts()
+
+        console.log();
     }, [])
 
     function handleChange(value) {
         setValueSelect(value)
     }
 
-    const handleSubmitFrom = (values) => {
-        const data = {
-            ...values,
-            "idCata": ValueSelect
+    const MultipleFileChange = (e) => {
+        setMultipleFiles(e.target.files);
+    }
+
+    const handleSubmitFrom = async (values) => {
+        try {
+
+            const formData = new FormData();
+
+            formData.append('nameProduct', values.nameProduct);
+            formData.append('price', values.price);
+            formData.append('description', values.description);
+            formData.append('author', values.author);
+            formData.append('nxb', values.nxb);
+            formData.append('idCatalog', ValueSelect);
+            formData.append('productHot', values.productHot);
+            formData.append('productSale', values.productSale);
+
+            for (let i = 0; i < multipleFiles.length; i++) {
+                formData.append('images', multipleFiles[i]);
+            }
+
+            await axios.post('https://beonlinelibrary.herokuapp.com/products/create', formData);
         }
-        console.log(data);
+        catch (err) {
+            console.log(err);
+        }
+
     }
 
     function getBase64(file) {
@@ -75,7 +110,7 @@ const Product = () => {
 
         setpreviewImage(file.url || file.preview);
         setPreviewVisible(true);
-        setpreviewTitle( file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
+        setpreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
     };
 
     const handleChangeUpload = ({ fileList }) => {
@@ -92,9 +127,9 @@ const Product = () => {
             <div className="BoxForm">
                 <div className="title">Thêm Sách</div>
 
-                <form onSubmit={forms.handleSubmit(handleSubmitFrom)}>
+                <form encType="multipart/form-data" onSubmit={forms.handleSubmit(handleSubmitFrom)}>
                     <div className="BoxForm">
-                        <Upload
+                        {/* <Upload
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                             listType="picture-card"
                             fileList={fileList}
@@ -110,7 +145,12 @@ const Product = () => {
                             onCancel={handleCancel}
                         >
                             <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                        </Modal>
+                        </Modal> */}
+
+                        <div className="form-group">
+                            <label>Select Multiple Files</label>
+                            <input type="file" onChange={(e) => MultipleFileChange(e)} className="form-control" multiple />
+                        </div>
                     </div>
 
                     <div className="BoxForm">
@@ -120,9 +160,9 @@ const Product = () => {
                         </div>
 
                         <div className="GroupForm">
-                            <label htmlFor="idCata">Id Danh Mục</label>
+                            <label htmlFor="idCatalog">Id Danh Mục</label>
 
-                            <Select defaultValue={ValueSelect} name="idCata" className="BoxSelect" onChange={handleChange} ref={forms.register} >
+                            <Select defaultValue={ValueSelect} name="idCatalog" className="BoxSelect" onChange={handleChange} ref={forms.register} >
                                 {
                                     ValueCata
                                         ?
@@ -146,8 +186,8 @@ const Product = () => {
                         </div>
 
                         <div className="GroupForm">
-                            <label htmlFor="Nbx">Nhà Xuất Bản</label>
-                            <InputField name="Nbx" type='text' form={forms}></InputField>
+                            <label htmlFor="nxb">Nhà Xuất Bản</label>
+                            <InputField name="nxb" type='text' form={forms}></InputField>
                         </div>
                     </div>
 
@@ -175,7 +215,14 @@ const Product = () => {
 
             <Row className='ListProduct'>
                 <Col span={24}>
-                    <ListProduct />
+                    {
+                        ValuesProduct.length > 0
+                            ?
+                            <ListProduct data={ValuesProduct} dataCata={ValueCata} />
+                            :
+
+                            <LoadingOutlined />
+                    }
                 </Col>
             </Row>
         </div>

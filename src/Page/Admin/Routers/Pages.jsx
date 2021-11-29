@@ -6,6 +6,8 @@ import EditCata from "../Page/Catalogs/pages/editCata";
 import Permission from "../Page/Permission/Permission";
 import EditPermission from "../Page/Permission/pages/editPermission";
 import Role from "../Page/Role/Role";
+import Chapter from "../Page/Products/pages/Chapter";
+import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 
 
 const routes = [
@@ -26,6 +28,16 @@ const routes = [
     {
         path: '/admin/products',
         component: Product,
+        exact: true,
+    },
+    {
+        path: '/admin/products/Listchapter/:id',
+        component: Chapter,
+        exact: true,
+    },
+    {
+        path: '/admin/products/chapter/:id',
+        component: ContentChapter,
         exact: true,
     },
     {

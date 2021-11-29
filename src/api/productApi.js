@@ -24,6 +24,14 @@ const prouctApi={
         })
         return res
     },
+    GetProductsBySlug(slug){
+        const url = `/products/slug/${slug}`;
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
     GetProductsNew(){       
         const url = '/products';
         const res = axiosClient.get(url)
@@ -32,6 +40,18 @@ const prouctApi={
         })
         .then(data=>{
             const getdata = data.filter(item=>item.productNew === true);
+            return getdata
+        })
+        return res
+    },
+    GetProductsSale(){       
+        const url = '/products';
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        .then(data=>{
+            const getdata = data.filter(item=>item.productSale === true);
             return getdata
         })
         return res
@@ -56,7 +76,7 @@ const prouctApi={
             return res.data;
         })
         .then(data=>{
-            const getdata = data.filter(item=>item.idCata == id);
+            const getdata = data.filter(item=>item.idCatalog == id);
             return getdata
         })
         return res

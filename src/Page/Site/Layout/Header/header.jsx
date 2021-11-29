@@ -13,7 +13,7 @@ const mainNav = [
         path : "/"
     },
     {
-        display: "Về chúng tôi",
+        display: "Thông tin",
         path : "/page"
     },
     {
@@ -21,11 +21,11 @@ const mainNav = [
         path : "/event"
     },
     {
-        display: "Blog",
-        path : "/blog"
+        display: "Dịch vụ",
+        path : "/option"
     },
     {
-        display: "Cửa hàng",
+        display: "Sách",
         path : "/shop"
     }
 ]

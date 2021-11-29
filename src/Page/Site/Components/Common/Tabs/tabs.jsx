@@ -1,26 +1,26 @@
 import { Tabs } from 'antd';
 import React from 'react'
-import ListBestSeller from '../../../Page/Home/Components/listBestSeller';
-import ListFantasy from '../../../Page/Home/Components/listFantasy';
-import ListHistory from '../../../Page/Home/Components/listHistory';
-import ListArt from '../../../Page/Home/Components/listArt';
+import ListBestSeller from '../../../Page/Home/Components/ListBestSeller';
+import ListHot from '../../../Page/Home/Components/ListHot';
+import ListNew from '../../../Page/Home/Components/ListNew';
+import ListSale from '../../../Page/Home/Components/ListSale';
 
 
 const { TabPane } = Tabs;
 const Tab = () => {
     return (
         <Tabs defaultActiveKey="1" centered>
-            <TabPane tab="Bán chạy nhất" key="1">
+            <TabPane tab="Hot nhất" key="1">
+                <ListHot/>
+            </TabPane>
+            <TabPane tab="Mới nhất" key="2">
+                <ListNew/>
+            </TabPane>
+            <TabPane tab="Đang giảm giá" key="3">
+                <ListSale/>
+            </TabPane>
+            <TabPane tab="Bán chạy nhất" key="4">
                 <ListBestSeller/>
-            </TabPane>
-            <TabPane tab="Tưởng tượng" key="2">
-                <ListFantasy/>
-            </TabPane>
-            <TabPane tab="Lịch sử" key="3">
-                <ListHistory/>
-            </TabPane>
-            <TabPane tab="Nghệ thuật" key="4">
-                <ListArt/>
             </TabPane>
         </Tabs>
     )

@@ -1,0 +1,26 @@
+.clock {
+  width: 100%;
+  position: relative;
+  display: flex;
+  section {
+    width: 25%;
+    text-transform: uppercase;
+    p {
+      font-size: 35px;
+      color: $black;
+      margin-bottom: 20px;
+      @include mobile {
+        font-size: 27px;
+      }
+    }
+    small {
+      font-size: 12px;
+      color: #999999;
+      font-family: "Josefin Sans";
+      letter-spacing: 0.35em;
+      @include mobile {
+        font-size: 8px;
+      }
+    }
+  }
+}

@@ -21,7 +21,15 @@
 @import "./page/Home/partner";
 @import "./page/ListProduct/listProduct";
 @import "./page/ListProduct/product";
-@import './page/ProductDetail/productDetail';
+
+@import "./page/ListProduct/filter";
+@import './page/Option/option';
+@import './page/About/about';
+@import './page/Event/event';
+@import './page/Event/clock';
+
+@import './page/ProductDetail/index.scss';
+
 
 // import Admin
 @import "./Admin/admin";

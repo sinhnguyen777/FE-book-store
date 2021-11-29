@@ -2,6 +2,34 @@
     width: 100%;
     .ListProduct {
         width: 100%;
+
+        .BoxList {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-shadow: $box-shadow;
+
+            .BoxProduct {
+                width: 100%;
+                height: 300px;
+                display: flex;
+                background: #fff;
+                padding: 10px;
+
+                margin: 10px 0;
+
+                .imgItem {
+                    width: 30%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
     }
 
     .BoxForm {

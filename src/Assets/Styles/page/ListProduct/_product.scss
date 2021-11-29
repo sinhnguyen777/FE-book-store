@@ -34,6 +34,12 @@
   padding: 0 15px;
   margin: 0 0 30px;
   position: relative;
+  @include tablet {
+    width: 50%;
+  }
+  @include mobile {
+    width: 100%;
+  }
   &_inner {
     position: relative;
     display: inline-block;

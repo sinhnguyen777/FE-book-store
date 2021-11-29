@@ -1,8 +1,20 @@
+import { UpOutlined } from '@ant-design/icons'
+import { BackTop } from 'antd'
 import React from 'react'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import Filter from './Components/Filter'
 import ListPro from './Components/ListPro'
 
+const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 4,
+    backgroundColor: '#d14031',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+};
 const ListProduct = () => {
     return (
         <div>
@@ -16,6 +28,9 @@ const ListProduct = () => {
                     <div className="list-product_filter"><Filter/></div>
                 </div>
             </div>
+            <BackTop>
+                <div style={style}><UpOutlined /></div>
+            </BackTop>
         </div>
     )
 }

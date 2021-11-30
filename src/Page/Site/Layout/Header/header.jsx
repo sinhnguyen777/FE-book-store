@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import logo from '../../../../Assets/Images/logo.png'
 import { BarsOutlined, CloseOutlined, SearchOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
 
+
 const mainNav = [
     {
         display: "Home",

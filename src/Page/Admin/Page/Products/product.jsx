@@ -116,7 +116,7 @@ const Product = () => {
     const handleChangeUpload = ({ fileList }) => {
         setfileList(fileList)
     }
-
+    
     return (
         <div className="ProductPage">
             <PageHeader

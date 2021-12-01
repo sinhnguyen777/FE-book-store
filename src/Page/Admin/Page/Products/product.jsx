@@ -148,7 +148,7 @@ const Product = () => {
                         </Modal> */}
 
                         <div className="form-group">
-                            <label>Select Multiple Files</label>
+                            <label style={{ width: '100%',display: 'block', margin: '10px 0'}}>Hình</label> 
                             <input type="file" onChange={(e) => MultipleFileChange(e)} className="form-control" multiple />
                         </div>
                     </div>

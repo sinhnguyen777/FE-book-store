@@ -1,0 +1,94 @@
+.about_banner {
+  margin-top: 90px;
+  background-image: url(../../../Images/Banner/about-banner.jpg);
+  height: 300px;
+  background-color: #fbf9f6;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  @include flex(center, center);
+  @include tablet {
+    margin-top: $header-tablet-height;
+  }
+  @include mobile {
+    margin-top: $header-mobile-height;
+  }
+  &_title {
+    text-align: center;
+    h6 {
+      display: block;
+      margin: 8px 0 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: $white;
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      font-family: "Josefin Sans", sans-serif;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 35px;
+      line-height: 1.142em;
+      color: $white;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      -ms-word-wrap: break-word;
+      word-wrap: break-word;
+    }
+  }
+}
+.about_list {
+  width: 100%;
+  display: flex;
+  padding-top: 150px;
+  flex-wrap: wrap;
+}
+.ItemAbout {
+  width: 33.3333%;
+  @include large {
+      width: 50%;
+  }
+  @include tablets{
+      width: 100%;
+      margin-bottom: 40px;
+  }
+  &_images {
+    width: 100%;
+  }
+  &_image {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 9;
+  }
+  &_info {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    &_icon {
+      margin: 6px 0 -7px;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 19px;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: $black;
+      line-height: 30px;
+    }
+    &_name {
+      color: $black;
+      margin: 25px 0;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      font-size: 25px;
+      line-height: 1.25em;
+    }
+    &_text {
+      font-size: 19px;
+      margin-top: 14px;
+      padding: 0 70px;
+      @include tablets{
+        padding: 0 ;
+    }
+    }
+  }
+}

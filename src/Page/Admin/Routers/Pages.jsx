@@ -6,9 +6,12 @@ import EditCata from "../Page/Catalogs/pages/editCata";
 import Permission from "../Page/Permission/Permission";
 import EditPermission from "../Page/Permission/pages/editPermission";
 import Role from "../Page/Role/Role";
+import Vip from "../Page/Vip/Vip";
+import EditVip from "../Page/Vip/pages/editVip";
 import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 import Member from "../Page/Member";
+
 
 
 const routes = [
@@ -72,7 +75,15 @@ const routes = [
         exact: true,
         component: Member,
     },
-
+    {
+        path:'/admin/vip',
+        component: Vip,
+        exact: true,
+    },
+    {
+        path: '/admin/vip/edit/:id',
+        component: EditVip,
+    }
 ];
 
 export default routes;

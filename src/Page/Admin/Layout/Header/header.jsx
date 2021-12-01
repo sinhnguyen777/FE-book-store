@@ -1,6 +1,14 @@
 import {
     ApartmentOutlined,
-    ContainerOutlined, FormOutlined, HomeOutlined, InboxOutlined, SettingOutlined, ShoppingCartOutlined, TeamOutlined
+    ContainerOutlined, 
+    FormOutlined, 
+    HomeOutlined, 
+    InboxOutlined, 
+    SettingOutlined, 
+    ShoppingCartOutlined, 
+    TeamOutlined, 
+    StrikethroughOutlined
+
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React from 'react';
@@ -32,6 +40,10 @@ const HeaderCmp = (props) => {
                 </Menu.Item>
                 <Menu.Item key="/admin/order" icon={<ShoppingCartOutlined />}>
                     <Link to="/admin/order">Đơn Hàng</Link>
+                </Menu.Item>
+
+                <Menu.Item key="/admin/vip" icon={<StrikethroughOutlined />}>
+                    <Link to="/admin/vip">Gói VIP</Link>
                 </Menu.Item>
 
                 <SubMenu key="sub1" icon={<SettingOutlined />} title="Quản trị">

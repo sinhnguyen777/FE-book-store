@@ -13,7 +13,7 @@ const mainNav = [
         path : "/"
     },
     {
-        display: "Về chúng tôi",
+        display: "Thông tin",
         path : "/page"
     },
     {
@@ -21,11 +21,11 @@ const mainNav = [
         path : "/event"
     },
     {
-        display: "Blog",
-        path : "/blog"
+        display: "Dịch vụ",
+        path : "/option"
     },
     {
-        display: "Cửa hàng",
+        display: "Sách",
         path : "/shop"
     }
 ]
@@ -113,10 +113,8 @@ const Header = () => {
                         <div className="header_menu_item header_menu_right_item" onClick={searchToggle}>
                             <SearchOutlined />
                         </div>
-                        <div className="header_menu_item header_menu_right_item">
-                            <Link to="/" onClick={showDrawer}>
-                                <ShoppingOutlined />
-                            </Link>
+                        <div className="header_menu_item header_menu_right_item" onClick={showDrawer}>
+                            <ShoppingOutlined />
                         </div>
                         <div className="header_menu_item header_menu_right_item">
                             <Link to='/login'>

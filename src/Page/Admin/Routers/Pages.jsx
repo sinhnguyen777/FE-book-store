@@ -8,6 +8,7 @@ import EditPermission from "../Page/Permission/pages/editPermission";
 import Role from "../Page/Role/Role";
 import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
+import Member from "../Page/Member";
 
 
 const routes = [
@@ -48,6 +49,8 @@ const routes = [
     {
         path: '/admin/permission/edit/:id',
         component: EditPermission,
+        exact: true,
+
     },
     {
         path: '/admin/order',
@@ -56,13 +59,19 @@ const routes = [
     },
     {
         path: '/admin/role',
+        exact: true,
         component: Role,
     },
     {
         path: '/admin/role/edit/:id',
         component: EditPermission,
-    }
-    
+        exact: true,
+    },
+    {
+        path: '/admin/member',
+        exact: true,
+        component: Member,
+    },
 
 ];
 

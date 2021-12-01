@@ -49,8 +49,7 @@ const tailFormItemLayout = {
 };
 
 // change form
-$(function() {
-    $(".btn").click(function() {
+function changeForm(){
         $(".form-signin").toggleClass("form-signin-left");
         $(".form-signup").toggleClass("form-signup-left");
         $(".frame").toggleClass("frame-long");
@@ -58,26 +57,18 @@ $(function() {
         $(".signin-active").toggleClass("signin-inactive");
         $(".forgot").toggleClass("forgot-left");
         $(this).removeClass("idle").addClass("active");
-    });
-});
+};
 
-$(function() {
-    $(".btn-signup").click(function() {
-        $(".nav").toggleClass("nav-up");
-        $(".form-signup-left").toggleClass("form-signup-down");
-        $(".success").toggleClass("success-left");
-        $(".frame").toggleClass("frame-short");
-    });
-});   
+
 //  end change form
 function Register() {
   const [form] = Form.useForm();
-  const [avatar,setAvatar] = useState("");
-  const [fullname,setFullname] = useState("");
+  const [fullName,setFullname] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const [avatar,setAvatar] = useState("");
   //register
-  const [phone,setSdt] = useState("");
+  const [sdt,setSdt] = useState("");
   const [address,setAddress] = useState("");
   //authentication
   const [token,setToken] = useState("");
@@ -107,6 +98,11 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
      };
 //  end form token
 
+// reset form
+     function resetForm(){
+          form.resetFields();
+     }
+
 //  Asset Token
      async function authen() {
           let code = {token};
@@ -120,7 +116,9 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                });
                if (result.status===200) {
                     result = await result.json();
-                    if (result.code===200) {
+                    console.log(result);
+                    if (result.code==="200") {
+                         resetForm(); // reset form
                          setVisible(false); //đóng form 
                          message.success(result.message); // success từ message BE
                     }
@@ -165,26 +163,17 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
 //Register
           async function register(e) {
                e.preventDefault();
-               let item = {fullname,email,phone,avatar,address,password};
-               let result = await fetch('https://beonlinelibrary.herokuapp.com/users/register', {
-                   method: 'POST',
-                   headers: {
-                       "Content-Type": "application/json",
-                       "Accept": "application/json"
-                   },
-                   body: JSON.stringify(item)
-               });
-               // console.log(result);
-                    if (result.status===200) {
-                         result = await result.json();
-                         if (result.message) {
-                              message.error(result.message);
-                         }
-                         else {
-                              message.success('Hợp lệ');
-                              setVisible(true);
-                         }
-                    }
+               let item = {
+                    'fullName': fullName,
+                    'email': email,
+                    'phone': Number(sdt),
+                    'password': password,
+                    'address': address,
+                    'avatar': avatar,
+                    'blockMail': false
+               };
+               console.log(avatar);
+            
           }
 
  
@@ -208,8 +197,8 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
            <div className="frame">
              <div className="nav">
                  <ul className="links">
-                     <li className="signin-active" ><a className="btn">ĐĂNG NHẬP</a></li>
-                     <li className="signup-inactive"><a className="btn">ĐĂNG KÝ </a></li>
+                     <li className="signin-active" ><a className="btn" onClick={changeForm}>ĐĂNG NHẬP</a></li>
+                     <li className="signup-inactive"><a className="btn" onClick={changeForm}>ĐĂNG KÝ </a></li>
                  </ul>
              </div>
              <div ng-app ng-init="checked = false" className="frame-child">
@@ -349,6 +338,7 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                     >
                     <Input
                          addonBefore={prefixSelector}
+                         typeof="number"
                          onChange={(e)=>setSdt(e.target.value)}
                          style={{
                          width: '100%',
@@ -399,11 +389,11 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                     </Form.Item>     
                  
                     <Form.Item {...tailFormItemLayout}>
-                    <Button  onClick={() => {form.resetFields();}} type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit">
                          Đăng ký
                     </Button>
                     <Button onClick={() => {form.resetFields();}}  style={{ margin: '0 8px' }} >
-                         Clear
+                         Đặt lại
                     </Button>
                     </Form.Item>
                     <Modal

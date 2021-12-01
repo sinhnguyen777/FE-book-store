@@ -1,7 +1,7 @@
 import Cart from '../Page/Site/Page/Cart/Cart';
 import Home from '../Page/Site/Page/Home/Home';
 import ListProduct from '../Page/Site/Page/ListProduct/ListProduct';
-import ProductDetail from '../Page/Site/Page/ProductDetail/ProductDetail';
+import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
 
 const routes = [
     {

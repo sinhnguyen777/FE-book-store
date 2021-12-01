@@ -1,3 +1,4 @@
+
 .list-product{
     display: flex;
     @include large {
@@ -13,7 +14,7 @@
         }
     }
     &_filter{
-        width: 20%;
+        width: 25%;
         padding-left: 60px;
         @include large {
             width: 100%;

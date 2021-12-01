@@ -8,9 +8,22 @@ import { ButtonPara } from '../../Components/Common/Button/Button'
 import Autobiography from './Components/Autobiography'
 import Partner from './Components/Partner'
 import Author from './Components/Author'
+import { BackTop } from 'antd'
+import { UpOutlined } from '@ant-design/icons'
 
+const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 4,
+    backgroundColor: '#d14031',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+};
 const Home = () => {
     return (
+        <>
         <div className="home">
             <div className="home_content">
                 <div className="home_content_banner">
@@ -54,6 +67,10 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        <BackTop>
+            <div style={style}><UpOutlined /></div>
+        </BackTop>
+        </>
     )
 }
 

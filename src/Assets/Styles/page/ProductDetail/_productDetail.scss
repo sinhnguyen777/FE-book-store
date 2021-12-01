@@ -2,6 +2,12 @@
 .layout {
   padding: 80px 80px;
   background: none;
+  @include tablet {
+    padding: 80px 70px;
+  }
+  @include tablets {
+    padding: 80px 25px;
+  }
   .layout_product_detail {
     padding: "0 22px 0 0" !important;
   }

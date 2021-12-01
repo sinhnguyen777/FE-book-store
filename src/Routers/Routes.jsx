@@ -10,7 +10,6 @@ const renderRoutes = () => {
             <Switch basename="side">
                 <Header />
                 {pages.map((item) => {
-                    console.log(item);
                     return (
                         <Route
                             key={item.path}

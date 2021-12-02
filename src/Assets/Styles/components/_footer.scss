@@ -4,10 +4,10 @@
     display: inline-block;
     width: 100%;
     vertical-align: middle;
-    a:hover{
+    a:hover {
         color: $white;
     }
-    &_title{
+    &_title {
         margin-bottom: calc(31px - 7px);
         font-size: 25px;
         margin: 0 0 31px;
@@ -15,38 +15,33 @@
         font-weight: 500;
         letter-spacing: .01em;
     }
-
-    &_content{
+    &_content {
         color: #c4c4c4;
         font-size: 17px;
         letter-spacing: 0;
         line-height: 28px;
-        p{
+        p {
             margin: 0 0 5px;
-           
         }
-        .contb{
+        .contb {
             margin-bottom: 10px;
         }
-        .newb{
+        .newb {
             margin-bottom: 35px;
         }
-        &_icons{
+        &_icons {
             display: flex;
             margin-top: 10px;
         }
-        &_icon{
+        &_icon {
             margin-right: 16px;
         }
     }
-
-
-    &_top{
+    &_top {
         position: relative;
         background-color: #282828;
         border-top: 0 solid #e1e1e1;
-
-        &_inner{
+        &_inner {
             padding: 73px 0 75px;
             width: 1300px;
             margin: 0 auto;
@@ -74,24 +69,23 @@
             }
         }
     }
-    &_bottom{
+    &_bottom {
         @include flex(center, center);
         width: 100%;
         vertical-align: middle;
         background-color: #000;
         border-top: 0 solid #e1e1e1;
-        &_content{
+        &_content {
             padding: 18px 0;
             margin: 0 auto;
             color: #fff;
-            font-family: "Josefin Sans",sans-serif;
+            font-family: "Josefin Sans", sans-serif;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: .35em;
-
-            p{
+            p {
                 margin: 0;
-                span{
+                span {
                     color: $white;
                 }
             }

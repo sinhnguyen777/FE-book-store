@@ -1,25 +1,29 @@
 @import "./variables";
 @import "./mixins.scss";
 @import "./base";
-
 // import Component
-
 @import "./components/header";
 @import "./components/footer";
 @import "./components/section";
 @import "./components/banner";
+
 @import "./components/button";
 @import "./components/tab";
 @import "./components/error";
 
-
 //  import Page
-
 @import "./page/Home/home";
 @import "./page/Home/cartheader";
 @import "./page/Home/autobiography";
 @import "./page/Home/partner";
 @import "./page/ListProduct/listProduct";
+
+@import "./page/Clients/clients";
+// @import "./page/Accounts/login";
+@import "./page/Accounts/register";
+// import Admin
+@import "./Admin/admin";
+
 @import "./page/ListProduct/product";
 @import "./page/Cart/cart";
 

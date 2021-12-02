@@ -12,7 +12,6 @@ import { BackTop } from 'antd'
 import { UpOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 
-
 const style = {
     height: 40,
     width: 40,

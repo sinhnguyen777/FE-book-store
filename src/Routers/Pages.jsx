@@ -34,7 +34,7 @@ const routes = [
         component: Account,
         exact: true,
     },
-    
+    {
         path: '/shop',
         component: ListProduct,
         exact: true,

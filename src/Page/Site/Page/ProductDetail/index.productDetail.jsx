@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
     Layout,
@@ -12,19 +12,31 @@ import { BannerProduct } from '../../Components/Common/Banner/banner';
 import FormReview from './Components/FormReview';
 import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
-
+import { useRouteMatch } from 'react-router';
+import prouctApi from '../../../../api/productApi';
+import Slider from '@ant-design/react-slick';
 
 export default function ProductDetail() {
 
     const [visible, setVisible] = useState(false);
 
     const { TabPane } = Tabs;
-
+    const match =  useRouteMatch()
+    const [productDetail, setProductDetail] = useState()
+    useEffect(() => {
+        const slug = match.params.slug;
+        const fetchProductID = async () => {
+            const res = await prouctApi.GetProductsBySlug(slug)
+            setProductDetail(res.data)
+        }
+        fetchProductID(slug)
+    }, [])
+    console.log(productDetail);
     return (
         <div style={{ width: '100%' }}>
             <BannerProduct>
-                <h6>PRODUCTS</h6>
-                <h2>Shop List</h2>
+                <h6>Sách</h6>
+                <h2>Thư viện sách</h2>
             </BannerProduct>
 
             <Layout className="layout" >
@@ -41,12 +53,14 @@ export default function ProductDetail() {
                     >
                         {/* <Col span={8} style={{ padding: '0 22px 0 0' }}> */}
                         <div className="image_product_detail_gallery">
-                            <Image
-                                preview={{ visible: false }}
+                            <Slider>
+                                <Image
+                                    preview={{ visible: false }}
 
-                                src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg"
-                                onClick={() => setVisible(true)}
-                            />
+                                    src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg"
+                                    onClick={() => setVisible(true)}
+                                />
+                            </Slider>
                             <div style={{ display: 'none' }}>
                                 <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
                                     <Image src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg" />

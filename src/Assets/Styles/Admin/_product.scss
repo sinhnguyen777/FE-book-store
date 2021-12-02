@@ -1,0 +1,69 @@
+.ProductPage {
+    width: 100%;
+    .ListProduct {
+        width: 100%;
+
+        .BoxList {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-shadow: $box-shadow;
+
+            .BoxProduct {
+                width: 100%;
+                height: 300px;
+                display: flex;
+                background: #fff;
+                padding: 10px;
+
+                margin: 10px 0;
+
+                .imgItem {
+                    width: 30%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    .BoxForm {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+
+        form {
+            display: flex;
+            justify-content: space-between;
+
+            .BoxForm {
+                width: 33%;
+                background: #fff;
+                box-shadow: $box-shadow;
+                padding: 20px;
+
+                .GroupForm {
+                    margin-bottom: 10px;
+                    textarea {
+                        width: 100%;
+                        height: 200px;
+                        resize: none;
+                        border: 1px solid #eaeaea;
+                        outline: none;
+                        padding: 10px;
+                    }
+                }
+            }
+
+            .BoxSelect {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+}

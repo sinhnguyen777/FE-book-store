@@ -45,11 +45,26 @@
             padding: 73px 0 75px;
             width: 1300px;
             margin: 0 auto;
-            &_content {
+            @include large {
+                width: 100%;
+            }
+            &_content{
+                width: 100%;
                 display: flex;
-                &_item {
+                @include tablet {
+                    flex-wrap: wrap;
+                }
+                &_item{
                     width: 25%;
                     padding: 0 15px;
+
+                    @include tablet {
+                        width: calc(100%/2);
+                        margin-bottom: 40px;
+                    }
+                    @include mobile {
+                        width: 100%;
+                    }
                 }
             }
         }

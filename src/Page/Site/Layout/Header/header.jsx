@@ -1,32 +1,38 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../../../Assets/Images/logo.png'
 import { BarsOutlined, CloseOutlined, SearchOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
+import { Drawer } from 'antd';
+import CartHeader from './cartHeader';
+import { useForm } from 'react-hook-form';
+import prouctApi from '../../../../api/productApi';
 
 
 const mainNav = [
     {
-        display: "Home",
+        display: "Trang chủ",
         path : "/"
     },
     {
-        display: "Page",
+        display: "Thông tin",
         path : "/page"
     },
     {
-        display: "Event",
+        display: "Sự kiện",
         path : "/event"
     },
     {
-        display: "Blog",
-        path : "/blog"
+        display: "Dịch vụ",
+        path : "/option"
     },
     {
-        display: "Shop",
+        display: "Sách",
         path : "/shop"
     }
 ]
 const Header = () => {
+
+    const forms = useForm();
     
     const { pathname } = useLocation()
     const activeNav = mainNav.findIndex(e => e.path === pathname)
@@ -53,6 +59,27 @@ const Header = () => {
     const showSearch = useRef(null)
 
     const searchToggle = () => showSearch.current.classList.toggle('show')
+
+    const [visible, setVisible] = useState(false);
+
+    const showDrawer = () => {
+        setVisible(true);
+    };
+
+    const onClose = () => {
+        setVisible(false);
+    };
+
+    const handleSearchName = async (values) => {
+        const { search } = values;
+        const res = await prouctApi.GetProductsByname(search);
+        console.log(res);
+    }
+    const handleSearchAuthor = async (values) => {
+        const { search } = values;
+        const res = await prouctApi.GetProductsByauthor(search);
+        console.log(res);
+    }
     return (
         <header className="header" ref={headerRef}>
             <div className="header_container">
@@ -87,10 +114,8 @@ const Header = () => {
                         <div className="header_menu_item header_menu_right_item" onClick={searchToggle}>
                             <SearchOutlined />
                         </div>
-                        <div className="header_menu_item header_menu_right_item">
-                            <Link to="/cart">
-                                <ShoppingOutlined />
-                            </Link>
+                        <div className="header_menu_item header_menu_right_item" onClick={showDrawer}>
+                            <ShoppingOutlined />
                         </div>
                         <div className="header_menu_item header_menu_right_item">
                             <Link to='/login'>
@@ -105,14 +130,19 @@ const Header = () => {
                 </div>
             </div>
             <div className="header_search" ref={showSearch}>
-                <form action="" >
+                <form action="" onSubmit={forms.handleSubmit(handleSearchName)} onSubmit={forms.handleSubmit(handleSearchAuthor)} >
                     <div className="form_holder" >
-                        <input type="text" name="search" id="search" autocomplete="off" required className="search_field" placeholder="Search" />
+                        <input type="text" name="search" id="search" autocomplete="off" required className="search_field" placeholder="Search" ref={forms.register} />
                         <button type="submit" className="search_submit search_field">
                             <span className="search_label">GO</span>
                         </button>
                     </div>
                 </form>
+            </div>
+            <div className="header_cart">
+                <Drawer title="Shopping" placement="right" onClose={onClose} visible={visible}>
+                    <CartHeader/>
+                </Drawer>
             </div>
         </header>
     )

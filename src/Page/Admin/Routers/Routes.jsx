@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import React , {useEffect} from 'react';
+import { Switch, Route } from 'react-router-dom';
 import pages from './Pages';
-
 const renderRoutes = () => {
+    
     return (
         <>
-            <Switch basename='/admin'>
+            <Switch >
                 {pages.map((item) => {
                     return (
                         <Route

@@ -1,0 +1,204 @@
+
+.layout {
+  padding: 80px 80px;
+  background: none;
+  @include tablet {
+    padding: 80px 70px;
+  }
+  @include tablets {
+    padding: 80px 25px;
+  }
+  .layout_product_detail {
+    padding: "0 22px 0 0" !important;
+  }
+
+  .product_detail {
+    .title_author {
+      letter-spacing: 0.35em;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #999;
+      -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+      transform: translateY(-3px);
+      display: inline-block;
+    }
+    .title_product_detail {
+      font-size: 35px;
+      line-height: 1.142em;
+      display: block;
+      margin: -9px 0 0;
+      color: $txt-main-color;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      word-wrap: break-word;
+    }
+    .price_product_detail {
+      display: flex;
+      margin: 18px 0 0;
+      line-height: 1;
+      color: $txt-main-color;
+      font-size: 25px;
+    }
+    .description_product_detail {
+      padding-right: 8%;
+      width: 100%;
+      display: inline-block;
+      margin: 26px 0 0;
+      box-sizing: border-box;
+      vertical-align: middle;
+      p {
+        font-size: $txt-p;
+        margin: 0;
+      }
+    }
+    .out_of_stock {
+      color: $gray;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin: 41px 0 0;
+      display: inline-block;
+      background-color: transparent;
+      border: 2px solid #efe6d5;
+      text-align: center;
+      line-height: 2.857em;
+      letter-spacing: 0.35em;
+      padding: 9px 27px 5px 32px;
+    }
+    .product_meta {
+      margin: 51px 0 0;
+      color: $gray;
+      span {
+        font-size: $txt-p;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .comment_product_detail {
+    display: table;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    margin: 42px 0 50px;
+    padding: 37px 0 45px;
+    width: 100%;
+    .author_comment {
+      letter-spacing: 0.35em;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0;
+      display: inline-block;
+    }
+    .avatar_comment {
+      // width: 80px;
+      // height: 80px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .author_comment_title {
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: $txt-main-color;
+      word-wrap: break-word;
+      font-size: 25px;
+      line-height: 1.25em;
+    }
+    .description_comment {
+      display: block;
+      letter-spacing: -0.01em;
+      margin: 15px 0 -3px;
+      font-size: $txt-p;
+    }
+  }
+
+  .comment-list {
+    .item_comment {
+      background-color: #fbf9f6;
+      padding: 33px 45px;
+      margin-bottom: 10px;
+      p {
+        font-size: $txt-p;
+        color: $gray;
+      }
+      .content_item_comment {
+        margin-left: 0 !important;
+      }
+      .bottom_item_comment {
+        .right_bottom_item_comment {
+          padding-left: 22px;
+          line-height: 26px;
+          font-size: $txt-p;
+          color: $txt-main-color;
+        }
+      }
+    }
+  }
+
+  .tabs_product_detail {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    margin: 65px 0 0;
+
+    // customs ant design ( Tabs )
+
+    .ant-tabs-nav-list {
+      margin-bottom: 10px;
+    }
+
+    .ant-tabs-nav {
+      margin-bottom: 0 !important;
+    }
+
+    .description_tab {
+      .content_tab_description {
+        p {
+          text-align: center;
+          margin: 28px auto 0;
+          font-size: $txt-p;
+        }
+      }
+      .content_tab_infomation {
+        margin: 28px auto 0;
+        width: auto;
+        min-width: 630px;
+        p {
+          margin: 0;
+          font-size: $txt-p;
+        }
+      }
+
+      .content_tab_reviews {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 15px auto 0;
+        width: auto;
+        min-width: 630px;
+        max-width: 880px;
+        p {
+          text-align: center;
+          font-size: $txt-p;
+        }
+        .rely_title {
+          display: flex;
+          justify-content: space-between;
+          font-size: 25px;
+          line-height: 1.25em;
+          font-weight: 500;
+          margin: 0 0 20px;
+        }
+      }
+    }
+  }
+}

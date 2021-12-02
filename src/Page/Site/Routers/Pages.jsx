@@ -1,25 +1,25 @@
 
-import Home from '../Page/Home/index.home';
-import Client from '../Page/Clients/index.client';
+// import Home from '../Page/Home/Home'
+// import ListProduct from '../Page/ListProduct/ListProduct';
+// import ProductDetail from '../Page/ProductDetail/ProductDetail';
 
-function name(params) {
-    
-}
+// const routes = [
+//     {
+//         path: '/',
+//         component: Home,
+//         exact: true,
+//     },
+//     {
+//         path: '/product',
+//         component: ListProduct,
+//         exact: true,
+//     },
+//     {
+//         path: '/product-detail',
+//         component: ProductDetail,
+//         exact: true,
+//     }
+// ];
 
-const routes = [
-    {
-        path: '/client',
-        component: Client,
-        exact: true
-    },
-    {
-        path: '/',
-        component: Home,
-        exact: true,
-    }
 
-    
-];
-
-
-export default routes;
+// export default routes;

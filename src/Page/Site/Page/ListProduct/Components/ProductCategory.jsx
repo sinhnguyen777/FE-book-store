@@ -14,12 +14,15 @@ const ProductCategory = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             const res = await prouctApi.GetProductsByCataID()
-            setProduct(res)
+            setProduct(res.data)
         }
         fetchProduct();
         
     }, [])
-    console.log(product.data);
+
+    // Pagination
+    
+
     return (
         <div>
             <div className="List-filter">
@@ -38,7 +41,7 @@ const ProductCategory = () => {
                 </form>
             </div>
             <div className="List-product">
-               <ItemProduct data={product.data}/>
+               <ItemProduct data={product}/>
                
             </div>
             <div className="List-pagination">

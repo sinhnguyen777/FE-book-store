@@ -1,17 +1,21 @@
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { render } from 'react-dom';
+
 import './App.css';
 import Admin from './Page/Admin/Admin';
 import Error from "./Page/Site/Layout/404/error";
 import RouterWrapper from './Routers/Routes';
 import LoginAd from './Page/Admin/Page/Login/Login'
 import AccessToken from "./Page/Admin/Page/resetPass";
+import ChangePass from "./Page/Admin/Page/ChangePass/ChangePass";
 
 function App() {
   return (
     <div>
       <Router>
-        <Route path="/">
+        <Route exact path="/">
           <RouterWrapper />
         </Route>
 
@@ -26,7 +30,9 @@ function App() {
         <Route exact path="/admins/login">
           <LoginAd />
         </Route>
-
+        <Route exact path="/admins/changepass">
+          <ChangePass />
+        </Route>
         <Route exact path="/admins/reset/:token">
           <AccessToken />
         </Route>

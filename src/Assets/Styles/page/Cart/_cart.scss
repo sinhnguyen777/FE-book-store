@@ -1,0 +1,110 @@
+.shop-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: middle;
+    width: 100%;
+
+    thead {
+        tr{
+            border: 0;
+            border-bottom: 1px solid #e1e1e1;
+            th{
+                padding: 10px 8px;
+                text-align: left;
+                color: #000;
+                font-weight: 500;
+                letter-spacing: .01em;
+                word-wrap: break-word;
+                font-size: 21px;
+                line-height: 1.19em;
+                margin: 0;
+                border : 0;
+            }
+            .cart-product-remove{
+
+            }
+        }
+    }
+    tbody{
+        tr{
+            border: 0;
+            td{
+                padding: 25px 8px;
+                vertical-align: middle;
+                text-align: inherit;
+                font-size: 19px;
+            }
+            .cart-product-remove{
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .cart-product-image{
+                width: 86px;
+                padding-right: 10px;
+            }
+            .cart-product-quantity{
+                &_item{
+                    font-size: 19px;
+                    width: 100px;
+                    @include flex (center, center);
+                    padding: 10px;
+                    border: 1px solid #999;
+                    &_input{
+                        margin: 0 20px;
+                    }
+                }
+            }
+        }
+        .cart-item{
+            border-bottom: 1px solid #e1e1e1;
+        }
+    }
+}
+.cart-total{
+    margin: 1px 0 20px;
+    h2{
+        position: relative;
+        display: block;
+        margin: 0 0 26px;
+        color: #000;
+        font-weight: 500;
+        letter-spacing: .01em;
+        font-size: 35px;
+        line-height: 1.142em;
+    }
+    table{
+        margin: 0 0 40px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        vertical-align: middle;
+        width: 100%;
+        tbody{
+            tr{
+                border: 0;
+                border-bottom: 1px solid #e1e1e1;
+
+                th{
+                    width: 20%;
+                    padding-right: 5px;
+                    border: 0;
+                    color: #000;
+                    font-weight: 500;
+                    letter-spacing: .01em;
+                    word-wrap: break-word;
+                    font-size: 21px;
+                    line-height: 1.19em;
+                    margin: 0;
+                    padding: 14px 0;
+                    text-align: left;
+                    vertical-align: middle;
+                }
+                td{
+                    padding: 14px 0;
+                    text-align: left;
+                    vertical-align: middle;
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+}

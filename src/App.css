@@ -12,15 +12,3 @@
 .ant-card-head-title {
   font-weight: bold;
 }
-
-.BoxTexChapter {
-  display: none;
-}
-.RemoveRole {
-  display: flex;
-  flex-direction: column-reverse;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: stretch;
-}

@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
     Form,
     Input,
-    InputNumber,
-    Cascader,
-    Select,
     Row,
     Col,
-    Checkbox,
     Button,
     Divider,
     Layout,
-    Table, Tag, Space
+    Table, 
 } from 'antd';
 import { BannerProduct } from '../../Components/Common/Banner/banner';
 
@@ -36,7 +32,7 @@ export default function Checkout() {
             title: 'Sản phẩm',
             dataIndex: 'name',
             key: 'name',
-            render: text => <a>{text}</a>,
+            render: text => <a href>{text}</a>,
         },
         {
             title: 'Toàn bộ',

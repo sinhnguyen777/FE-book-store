@@ -11,7 +11,6 @@ import Author from './Components/Author'
 import { BackTop } from 'antd'
 import { UpOutlined } from '@ant-design/icons'
 
-
 const style = {
     height: 40,
     width: 40,

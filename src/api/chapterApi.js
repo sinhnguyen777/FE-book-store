@@ -29,17 +29,16 @@ const ChapterApi={
         })
         return res;
     },
-    AddChapter(data){
-        const url = '/chapter/create';
-        return axiosClient.post(url , data)
-    },
 
-    UpdateChapter(data){
+    UpdateCata(data){
         const url = '/chapter/edit';
         return axiosClient.put(url , data)
     },
-
-    DelChapter(id){
+    AddCata(data){
+        const url = '/chapter/create';
+        return axiosClient.post(url , data)
+    },
+    DelCata(id){
         const url = `/chapter/del/${id}`;
         return axiosClientAuth.delete(url)
     },

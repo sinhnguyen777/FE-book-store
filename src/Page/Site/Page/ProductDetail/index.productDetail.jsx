@@ -7,6 +7,9 @@ import {
     Image,
     Rate,
     Tabs,
+    Avatar,
+    Input,
+    
 } from 'antd';
 import { BannerProduct } from '../../Components/Common/Banner/banner';
 import FormReview from './Components/FormReview';
@@ -14,7 +17,8 @@ import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
 import { useRouteMatch } from 'react-router';
 import prouctApi from '../../../../api/productApi';
-import Slider from '@ant-design/react-slick';
+import { CheckOutlined, EnterOutlined, LoadingOutlined } from '@ant-design/icons';
+import Slider from "react-slick";
 
 export default function ProductDetail() {
 
@@ -22,7 +26,7 @@ export default function ProductDetail() {
 
     const { TabPane } = Tabs;
     const match =  useRouteMatch()
-    const [productDetail, setProductDetail] = useState()
+    const [productDetail, setProductDetail] = useState({})
     useEffect(() => {
         const slug = match.params.slug;
         const fetchProductID = async () => {
@@ -32,11 +36,15 @@ export default function ProductDetail() {
         fetchProductID(slug)
     }, [])
     console.log(productDetail);
+
+    const [nav1, setNav1] = useState(null)
+    const [nav2, setNav2] = useState(null)
+    
     return (
         <div style={{ width: '100%' }}>
             <BannerProduct>
                 <h6>Sách</h6>
-                <h2>Thư viện sách</h2>
+                <h2>Chi tiết sách</h2>
             </BannerProduct>
 
             <Layout className="layout" >
@@ -51,21 +59,54 @@ export default function ProductDetail() {
                         
                         className="layout_product_detail"
                     >
-                        {/* <Col span={8} style={{ padding: '0 22px 0 0' }}> */}
                         <div className="image_product_detail_gallery">
-                            <Slider>
-                                <Image
-                                    preview={{ visible: false }}
+                        <Slider asNavFor={nav2} ref={c => setNav1(c)}>
+                                 {productDetail[0] ?
+                                    productDetail[0].images.map(item => (
+                                        <div style={{width: '100%'}}>
+                                            <Image
+                                                preview={{ visible: false }}
+                                                src={`https://beonlinelibrary.herokuapp.com/${item.image}`}
+                                                onClick={() => setVisible(true)}
+                                            />
+                                            <div style={{ display: 'none' }}>
+                                                <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
+                                                    <Image src={`https://beonlinelibrary.herokuapp.com/${item.image}`} />
+                                                </Image.PreviewGroup>
+                                            </div>
+                                        </div>
+                                    )) : <LoadingOutlined />
+                                }
+                            
+                        </Slider>
+                        <Slider
+                           asNavFor={nav1}
+                           ref={c => setNav2(c)}
+                           slidesToShow={productDetail[0]?productDetail[0].images.length: <LoadingOutlined />}
+                           swipeToSlide={true}
+                           focusOnSelect={true}
+                           arrows={false}
+                           className="slider-images"
+                            >
+                            
+                                {productDetail[0]?productDetail[0].images.map(item => (
+                                        <img src={`https://beonlinelibrary.herokuapp.com/${item.image}`}/>
+                                )) : <LoadingOutlined />}
+                            
+                            
+                            
+                        </Slider>
+                            {/* <Image
+                                preview={{ visible: false }}
 
-                                    src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg"
-                                    onClick={() => setVisible(true)}
-                                />
-                            </Slider>
+                                src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg"
+                                onClick={() => setVisible(true)}
+                            />
                             <div style={{ display: 'none' }}>
                                 <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
                                     <Image src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg" />
                                 </Image.PreviewGroup>
-                            </div>
+                            </div> */}
 
                         </div>
                     </Col>
@@ -75,73 +116,70 @@ export default function ProductDetail() {
                         md={24}
                         lg={16}
                         xl={16}
-                        // span={16}
                         style={{ padding: '0 0 0 22px' }}
                     >
-                        <div className="product_detail">
-                            <div className="title_author">
-                                <Link to="/author">by james hoffman</Link>
-                            </div>
-                            <h2 className="title_product_detail">Amster Hamster Trip</h2>
-                            <p className="price_product_detail">$38.00</p>
-                            <div className="description_product_detail">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit. Simul vidisse eu vim. Probo tincidunt ne vel.
-                                </p>
-                            </div>
-                            <p className="out_of_stock">Out of stock</p>
-                            <div className="product_meta">
-                                <span>SKU: $39</span>
-                                <p>
-                                    <span>
-                                        Categories:
-                                        <Link to=""> Art</Link>
-                                        ,
-                                        <Link to=""> Best Sellers</Link>
-                                        ,
-                                        <Link to=""> History</Link>
-                                    </span>
-                                </p>
-                                <p>
-                                    <span>
-                                        Tags:
-                                        <Link to=""> Bestseller</Link>
-                                        ,
-                                        <Link to=""> Fiction</Link>
-                                    </span>
-                                </p>
-                            </div>
-
-                        </div>
-                        <Comments />
+                        {
+                            productDetail[0]? 
+                            <div className="product_detail">
+                                <div className="title_author">
+                                    {productDetail[0].author}
+                                </div>
+                                <h2 className="title_product_detail">{productDetail[0].nameProduct}</h2>
+                                <p className="price_product_detail">Nhà xuất bản: {productDetail[0].nxb}</p>
+                                <div className="price_product_detail_sp">
+                                    {productDetail[0].productHot== true ? <p className="price_product_detail_sp_hot">hot <CheckOutlined /></p> : null}
+                                    {productDetail[0].productHot== true ? <p className="price_product_detail_sp_sale">sale <CheckOutlined /></p> : null}
+                                </div>
+                                <p className="price_product_detail_price">Giá: {productDetail[0].price}</p>
+                                <Link to={`/read-book/${productDetail[0]._id}`}>
+                                    <button  className="btn">Đọc thử</button>
+                                </Link>
+                                <Link to='/cart'>
+                                    <button style={{marginLeft: '40px'}} className="btn ButtonBanner">Mua sách</button>
+                                </Link>
+                                <div className="description_product_detail">
+                                    <p dangerouslySetInnerHTML={{ __html: productDetail[0].description }}/>
+                                </div>
+                            </div> : <LoadingOutlined />
+                        }
+                        
                     </Col>
                 </Row>
                 <Row className="tabs_product_detail">
-                    <Tabs className="description_tab" defaultActiveKey="1" centered >
-                        <TabPane tab="description" key="1">
-                            <div className="content_tab_description">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                                </p>
-                            </div>
-                        </TabPane>
-                        <TabPane tab="additional infomation" key="2">
+                <Comments />
+                    {/* <Tabs className="description_tab" defaultActiveKey="1" centered >
+                        <TabPane tab="Bình luận" key="2">
                             <div className="content_tab_infomation">
-                                <p>
-                                    Weight:
-                                    <span>0.5 kg</span>
-                                </p>
-                                <p>
-                                    Dimensions:
-                                    <span>56 × 23 × 27 cm</span>
-                                </p>
-                                <p>
-                                    Type:
-                                    <span>Paperback, Hardcover, Audiobook, Audio CD, Kindle</span>
-                                </p>
+                                <div className="content_tab_infomation_avatar">
+                                    <Avatar
+                                        className="avatar_comment"
+                                        src="https://znews-photo.zadn.vn/w660/Uploaded/unvjuas/2021_10_14/rose_blackpink_vogue_korea_x_ysl_may_2021_3.jpg"
+                                        alt="Han Solo"
+                                        size={{
+                                            xs: 24,
+                                            sm: 32,
+                                            md: 40,
+                                            lg: 64,
+                                            xl: 60,
+                                            xxl: 100,
+                                        }}
+                                    />
+                                </div>
+                                <div className="content_tab_infomation_content">
+                                    <form style={{width: '100%'}} action="">
+                                        <div className="form-comment">
+                                            <input className="comment-field" type="text" placeholder="Viết bình luận..."/>
+                                            <button type="submit" className="comment-submit comment-field">
+                                                <span><EnterOutlined /></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    
+
+                                </div>
                             </div>
                         </TabPane>
-                        <TabPane tab="reviews ( 1 )" key="3">
+                        <TabPane tab="Đánh giá" key="3">
                             <div className="content_tab_reviews">
                                 <p>There are no reviews yet.</p>
                                 <span className="rely_title">
@@ -151,7 +189,7 @@ export default function ProductDetail() {
                                 <FormReview />
                             </div>
                         </TabPane>
-                    </Tabs>
+                    </Tabs> */}
                 </Row>
                 <RelatedProducts />
             </Layout>

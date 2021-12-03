@@ -1,8 +1,5 @@
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import React, { useState } from 'react';
-import { render } from 'react-dom';
-
 import './App.css';
 import Admin from './Page/Admin/Admin';
 import Error from "./Page/Site/Layout/404/error";

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import {
     Layout,
     Row,
@@ -12,13 +13,19 @@ import { BannerProduct } from '../../Components/Common/Banner/banner';
 import FormReview from './Components/FormReview';
 import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
-
+import { getProductDetail } from '../../../../redux/actions/ProductAction';
 
 export default function ProductDetail() {
-
     const [visible, setVisible] = useState(false);
-
     const { TabPane } = Tabs;
+    const data = useSelector(state => state.products)
+
+    // console.log(data);
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getProductDetail())
+    }, [])
 
     return (
         <div style={{ width: '100%' }}>
@@ -36,7 +43,7 @@ export default function ProductDetail() {
                         lg={8}
                         xl={8}
                         // span={8}
-                        
+
                         className="layout_product_detail"
                     >
                         {/* <Col span={8} style={{ padding: '0 22px 0 0' }}> */}

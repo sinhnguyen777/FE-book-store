@@ -7,7 +7,7 @@ const Cart = () => {
             <BannerProduct>
                 <h2>Giỏ hàng</h2>
             </BannerProduct>
-            
+
         </div>
     )
 }

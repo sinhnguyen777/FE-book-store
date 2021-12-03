@@ -11,6 +11,9 @@ import Author from './Components/Author'
 import { BackTop } from 'antd'
 import { UpOutlined } from '@ant-design/icons'
 
+import { Link } from 'react-router-dom'
+
+
 const style = {
     height: 40,
     width: 40,
@@ -48,7 +51,7 @@ const Home = () => {
                                     trên nhiều thiết bị.
                                 </p>
                                 <p className="home_content_parallax_read">
-                                    <ButtonPara/>
+                                    <Link to='/shop'><ButtonPara/></Link>
                                 </p>
                             </div>
                         </ParallaxImg>

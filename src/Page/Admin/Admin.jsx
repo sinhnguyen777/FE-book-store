@@ -1,4 +1,4 @@
-import { Avatar, Button, Layout } from 'antd';
+import { Avatar, Button, Dropdown, Layout,Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
 import HeaderCmp from './Layout/Header/header';
 import { Switch, Route, Link } from 'react-router-dom';
@@ -61,6 +61,21 @@ const Admin = () => {
         removeUserSession();
         history.push('/admins/login');
     }
+    const menu = (
+        <Menu>
+          <Menu.Item>
+            <Link  rel="noopener noreferrer" to="/admins/changepass">
+                Đổi mật khẩu
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link rel="noopener noreferrer" to="/admins/login" onClick={handleLogout}>
+              Đăng xuất
+            </Link>
+          </Menu.Item>
+         
+        </Menu>
+      );
     return (
 
         <Layout className="Admin">
@@ -70,11 +85,14 @@ const Admin = () => {
                 </div>
 
                 <div className="BoxRight">
+                <Dropdown overlay={menu} placement="bottomCenter">
                     {admin ?
-                        <Button type="button" title="Đăng xuất" onClick={handleLogout}>{admin.fullName}</Button>
+                        <Button type="button" title="Đăng xuất" >{admin.fullName}</Button>
                         :
                         <Link title="Đăng nhập" to='/admins/login'><Avatar size={40} icon={<UserOutlined />} /></Link>
                     }
+                </Dropdown>
+                    
                 </div>
 
             </Header>

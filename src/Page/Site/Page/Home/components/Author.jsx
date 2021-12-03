@@ -35,7 +35,7 @@ const Author = () => {
         <>
             <div className="home_content_author_inner">
                     <div className="home_content_author_inner_subtitle">dịch vụ của chúng tôi</div>
-                    <div className="home_content_author_inner_title">Tác giả của tháng</div>
+                    <div className="home_content_author_inner_title">Tác giả nổi bật</div>
                     <div className="home_content_author_inner_text">
                         Xây dựng thành công từ thất bại.Sự chán nản và thất bại là
                         hai bước đệm chắc chắn nhất dẫn tới thành công - Dale Carnegie.

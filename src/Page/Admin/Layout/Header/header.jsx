@@ -1,14 +1,6 @@
 import {
     ApartmentOutlined,
-    ContainerOutlined, 
-    FormOutlined, 
-    HomeOutlined, 
-    InboxOutlined, 
-    SettingOutlined, 
-    ShoppingCartOutlined, 
-    TeamOutlined, 
-    StrikethroughOutlined
-
+    ContainerOutlined, FormOutlined, HomeOutlined, InboxOutlined, SettingOutlined, ShoppingCartOutlined, StrikethroughOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React from 'react';
@@ -39,24 +31,19 @@ const HeaderCmp = (props) => {
                     <Link to="/admin/products">Sách</Link>
                 </Menu.Item>
                 <Menu.Item key="/admin/order" icon={<ShoppingCartOutlined />}>
-                    <Link to="/admin/order">Đơn Hàng</Link>
+                    <Link to="/admin/order">Đơn Hàng</Link>                   
                 </Menu.Item>
-
                 <Menu.Item key="/admin/vip" icon={<StrikethroughOutlined />}>
-                    <Link to="/admin/vip">Gói VIP</Link>
+                    <Link to="/admin/vip">Gói VIP</Link>                   
                 </Menu.Item>
-
                 <SubMenu key="sub1" icon={<SettingOutlined />} title="Quản trị">
                     <Menu.Item key="/admin/permission" icon={<FormOutlined />}>
-                        <Link to="/admin/permission">Danh sách quyền</Link>
+                        <Link to="/admin/permission">Danh sách quyền</Link>                   
                     </Menu.Item>
                     <Menu.Item key="/admin/role" icon={<ApartmentOutlined />}>
-                        <Link to="/admin/role">Chức vụ</Link>
+                        <Link to="/admin/role">Chức vụ</Link>                   
                     </Menu.Item>
-                    <Menu.Item key="/admin/member" icon={<TeamOutlined />}>
-                        <Link to="/admin/member">Thành Viên</Link>
-                    </Menu.Item>
-
+                    
                 </SubMenu>
                 <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="Navigation Two">
                     <Menu.Item key="9">Option 9</Menu.Item>

@@ -2,118 +2,118 @@ import axiosClient from "./axiosCilent";
 import axiosClientForm from "./axiosCilentForm";
 
 
-const prouctApi = {
-    AddProduct(data) {
+const prouctApi={
+
+    AddProduct(data){
         const url = '/products/create';
-        return axiosClientForm.post(url, data)
+        return axiosClientForm.post(url , data)
     },
-    GetProducts(filter) {
+    GetProducts(){
         const url = '/products';
-        console.log(filter);
-        const res = axiosClient.get(url,{ params: filter })
-            .then(res => {
-                return res.data;
-            })
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-    GetProductsById(id) {
+    GetProductsById(id){
         const url = `/products/${id}`;
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-    GetProductsBySlug(slug) {
+    GetProductsBySlug(slug){
         const url = `/products/slug/${slug}`;
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-    GetProductsNew() {
+    GetProductsNew(){       
         const url = '/products';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
-            .then(data => {
-                const getdata = data.filter(item => item.productNew === true);
-                return getdata
-            })
+        .then(res=>{
+            return res.data;
+        })
+        .then(data=>{
+            const getdata = data.filter(item=>item.productNew === true);
+            return getdata
+        })
         return res
     },
-    GetProductsSale() {
+    GetProductsSale(){       
         const url = '/products';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
-            .then(data => {
-                const getdata = data.filter(item => item.productSale === true);
-                return getdata
-            })
+        .then(res=>{
+            return res.data;
+        })
+        .then(data=>{
+            const getdata = data.filter(item=>item.productSale === true);
+            return getdata
+        })
         return res
     },
-    GetProductsHot() {
+    GetProductsHot(){       
         const url = '/products';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
-            .then(data => {
-                let getdata = data.filter(item => item.productHot === true)
-                console.log(getdata);
-                return getdata;
-            })
+        .then(res=>{
+            return res.data;
+        })
+        .then(data=>{
+            let getdata = data.filter(item=>item.productHot === true)
+            console.log(getdata);
+            return getdata;
+        })
         return res
     },
-    GetProductsByCataID(id) {
+    GetProductsByCataID(id){       
         const url = '/products';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
-            .then(data => {
-                const getdata = data.filter(item => item.idCatalog == id);
-                return getdata
-            })
+        .then(res=>{
+            return res.data;
+        })
+        .then(data=>{
+            const getdata = data.filter(item=>item.idCatalog == id);
+            return getdata
+        })
         return res
     },
-    GetProductsByname(name) {
+    GetProductsByname(name){       
         const url = `/products/searchName?nameProduct=${name}`;
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-
-    GetProductsByauthor(author) {
+    
+    GetProductsByauthor(author){       
         const url = `/products/searchAuthor?author=${author}`;
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-    GetCmt() {
+    GetCmt(){
         const url = '/products';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
-    Getkh() {
+    Getkh(){
         const url = '/user';
         const res = axiosClient.get(url)
-            .then(res => {
-                return res.data;
-            })
+        .then(res=>{
+            return res.data;
+        })
         return res
     },
 };
 
-export default prouctApi;
+export default prouctApi; 

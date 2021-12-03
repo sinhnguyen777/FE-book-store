@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Pagination, Select } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import ItemProduct from './ItemProduct';
 import prouctApi from '../../../../../api/productApi';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
+
 function handleChange(value) {
     console.log(value); 
-}
-const ProductCategory = () => {
+  }
+const ListPro = () => {
     const [product, setProduct] = useState([])
-    
     useEffect(() => {
         const fetchProduct = async () => {
-            const res = await prouctApi.GetProductsByCataID()
+            const res = await prouctApi.GetProducts()
             setProduct(res)
         }
         fetchProduct();
         
     }, [])
-    console.log(product.data);
     return (
-        <div>
+        <>
             <div className="List-filter">
                 <div className="List-filter_result">Trang 1/12 của {product.data?product.data.length:<LoadingOutlined/>} sản phẩm</div>
                 <form action="" className="List-filter_sort">
@@ -44,8 +44,10 @@ const ProductCategory = () => {
             <div className="List-pagination">
                 <Pagination size="small" total={50} />
             </div>
-        </div>
+
+        </>
     )
 }
 
-export default ProductCategory
+export default ListPro
+

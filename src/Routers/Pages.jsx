@@ -6,6 +6,7 @@ import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
 import Option from '../Page/Site/Page/Option/Option';
 import About from '../Page/Site/Page/About/About';
 import Event from '../Page/Site/Page/Event/Event';
+import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
     {
         path: '/cart',
         component: Cart,
+        exact: true,
+    },
+    {
+        path: '/checkout',
+        component: Checkout,
         exact: true,
     },
     {

@@ -6,6 +6,7 @@ import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
 import Option from '../Page/Site/Page/Option/Option';
 import About from '../Page/Site/Page/About/About';
 import Event from '../Page/Site/Page/Event/Event';
+import Readbook from '../Page/Site/Page/Readbook/Readbook';
 
 const routes = [
     {
@@ -19,8 +20,13 @@ const routes = [
         exact: true,
     },
     {
-        path: '/product-detail',
+        path: '/product-detail/:slug',
         component: ProductDetail,
+        exact: true,
+    },
+    {
+        path: '/read-book/:id',
+        component: Readbook,
         exact: true,
     },
     {

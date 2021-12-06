@@ -1,12 +1,9 @@
-import { LoadingOutlined, UpOutlined } from '@ant-design/icons'
-import { BackTop, Pagination, Select } from 'antd'
-import React, { useEffect, useState } from 'react'
-import prouctApi from '../../../../api/productApi'
+import { UpOutlined } from '@ant-design/icons'
+import { BackTop } from 'antd'
+import React from 'react'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import Filter from './Components/Filter'
-import ItemProduct from './Components/ItemProduct'
-
-const { Option } = Select;
+import ListPro from './Components/ListPro'
 
 const style = {
     height: 40,
@@ -19,48 +16,6 @@ const style = {
     fontSize: 14,
 };
 const ListProduct = () => {
-    const [product, setProduct] = useState([])
-    const [currentPage, setCurrentpage] = useState(1)
-    const [postPerPage, setpostPerPage] = useState(9)
-    const [filter, setfilter] = useState({})
-
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const res = await prouctApi.GetProducts(filter)
-            setProduct(res.data)
-        }
-        fetchProduct();
-
-    }, [filter])
-
-    // values Select
-    function handleChange(value) {
-        console.log(value);
-    }
-
-
-    const total = product.length
-    // Pagination
-    const indexOfLast = currentPage * postPerPage;
-    const idextOfFirst = indexOfLast - postPerPage;
-    const currentProduct = product.slice(idextOfFirst, indexOfLast)
-
-    const handleChangePage = (page) => {
-        setCurrentpage(page);
-    }
-
-
-    // fillter Cata
-
-    const handleListCata = (values) => {
-        console.log(values);
-        const newData = {
-            ...filter,
-            idCatalog: values
-        }
-        console.log(newData);
-        setfilter(newData)
-    }
     return (
         <div>
             <BannerProduct>
@@ -95,6 +50,7 @@ const ListProduct = () => {
                     <div className="list-product_filter">
                         <Filter filter={filter} handleListCata={handleListCata} />
                     </div>
+
                 </div>
             </div>
             <BackTop>

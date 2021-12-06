@@ -1,0 +1,9 @@
+.BoxListPM {
+  display: flex;
+  flex-wrap: wrap;
+
+  .ant-card {
+    margin: 10px;
+    min-width: 300px;
+  }
+}

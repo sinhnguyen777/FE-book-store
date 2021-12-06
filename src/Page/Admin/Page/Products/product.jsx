@@ -116,7 +116,7 @@ const Product = () => {
     const handleChangeUpload = ({ fileList }) => {
         setfileList(fileList)
     }
-    
+
     return (
         <div className="ProductPage">
             <PageHeader
@@ -148,7 +148,7 @@ const Product = () => {
                         </Modal> */}
 
                         <div className="form-group">
-                            <label style={{ width: '100%',display: 'block', margin: '10px 0'}}>Hình</label> 
+                            <label>Select Multiple Files</label>
                             <input type="file" onChange={(e) => MultipleFileChange(e)} className="form-control" multiple />
                         </div>
                     </div>

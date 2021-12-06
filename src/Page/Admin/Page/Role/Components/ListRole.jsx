@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons';
-import { Button, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import React from "react";
 import ListPermission from './lisPremission';
 
@@ -15,18 +15,13 @@ const ListRole = (props) => {
           data ?
           data.map((item,index)=> (
             <TabPane tab={item.name} key={index}>
-              <ListPermission data={item.listPermissions} />
-              <div className="RemoveRole">
-                <Button onClick={() => props.handleRemove(item._id)}>Xóa Chức Vụ</Button>
-              </div>
+              < ListPermission data={item.listPermissions} />
             </TabPane>
           ))
         :
         <LoadingOutlined />
         } 
       </Tabs>
-      
-      
     </>
   );
 }

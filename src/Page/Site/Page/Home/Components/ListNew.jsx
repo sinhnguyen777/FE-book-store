@@ -6,15 +6,14 @@ const ListNew = () => {
     useEffect(() => {
        const fetchProductNew = async () => {
             const res = await prouctApi.GetProducts()
-            setProductNew(res.data)
+            setProductNew(res)
        }
        fetchProductNew()
     }, [])
     console.log(productNew);
-    const data = productNew.slice(0,10)
     return (
         <div className="List-product">
-            <ItemProduct data={data}/>
+            <ItemProduct data={productNew.data}/>
         
         </div>
     )

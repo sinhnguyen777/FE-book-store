@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import {
     Layout,
     Row,
@@ -19,21 +20,24 @@ import { useRouteMatch } from 'react-router';
 import prouctApi from '../../../../api/productApi';
 import { CheckOutlined, EnterOutlined, LoadingOutlined } from '@ant-design/icons';
 import Slider from "react-slick";
+import { getProductDetail } from '../../../../redux/actions/ProductAction';
+
 
 export default function ProductDetail() {
-
     const [visible, setVisible] = useState(false);
-
     const { TabPane } = Tabs;
     const match =  useRouteMatch()
     const [productDetail, setProductDetail] = useState({})
+
+    const data = useSelector(state => state.products)
+
+    // console.log(data);
+
+    const dispatch = useDispatch()
+
     useEffect(() => {
-        const slug = match.params.slug;
-        const fetchProductID = async () => {
-            const res = await prouctApi.GetProductsBySlug(slug)
-            setProductDetail(res.data)
-        }
-        fetchProductID(slug)
+        dispatch(
+          ())
     }, [])
     console.log(productDetail);
 
@@ -56,7 +60,7 @@ export default function ProductDetail() {
                         lg={8}
                         xl={8}
                         // span={8}
-                        
+
                         className="layout_product_detail"
                     >
                         <div className="image_product_detail_gallery">

@@ -17,13 +17,16 @@ import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
 import { useRouteMatch } from 'react-router';
 import prouctApi from '../../../../api/productApi';
-import { CheckOutlined, EnterOutlined, LoadingOutlined } from '@ant-design/icons';
+import { CheckOutlined, EnterOutlined, HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import Slider from "react-slick";
 
 export default function ProductDetail() {
 
     const [visible, setVisible] = useState(false);
-
+    const [like, setLike] = useState(false);
+    const handleClickLike = ()=>{
+        setLike(!like);
+      }
     const { TabPane } = Tabs;
     const match =  useRouteMatch()
     const [productDetail, setProductDetail] = useState({})
@@ -137,6 +140,15 @@ export default function ProductDetail() {
                                 <Link to='/cart'>
                                     <button style={{marginLeft: '40px'}} className="btn ButtonBanner">Mua sách</button>
                                 </Link>
+                                <span className="btn-heart" style={{marginLeft: '40px'}}>
+                                   {
+                                       like ?
+                                       <button onClick={handleClickLike} className="btn-heart_true"> <HeartOutlined/> </button>
+                                       :
+                                       <button onClick={handleClickLike} className="btn-heart_false"> <HeartOutlined/> </button>
+
+                                   }
+                               </span>
                                 <div className="description_product_detail">
                                     <p dangerouslySetInnerHTML={{ __html: productDetail[0].description }}/>
                                 </div>

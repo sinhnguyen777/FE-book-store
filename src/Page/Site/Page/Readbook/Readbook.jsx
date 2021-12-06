@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
-import { Select } from 'antd';
+import { BackTop, Select } from 'antd';
 import ChapterApi from '../../../../api/chapterApi';
 import { useRouteMatch } from 'react-router';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, UpOutlined } from '@ant-design/icons';
 const { Option } = Select;
+const style = {
+    height: 40,
+    width: 40,
+    lineHeight: '40px',
+    borderRadius: 4,
+    backgroundColor: '#d14031',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 14,
+};
 function onChange(value) {
     console.log(`selected ${value}`);
   }
@@ -103,6 +113,9 @@ const Readbook = () => {
                     }
                 </div>
             </div>
+            <BackTop>
+                <div style={style}><UpOutlined /></div>
+            </BackTop>
        </>
     )
 }

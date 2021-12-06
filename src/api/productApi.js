@@ -8,12 +8,13 @@ const prouctApi={
         const url = '/products/create';
         return axiosClientForm.post(url , data)
     },
-    GetProducts(){
+    GetProducts(filter) {
         const url = '/products';
-        const res = axiosClient.get(url)
-        .then(res=>{
-            return res.data;
-        })
+        console.log(filter);
+        const res = axiosClient.get(url,{ params: filter })
+            .then(res => {
+                return res.data;
+            })
         return res
     },
     GetProductsById(id){

@@ -2,7 +2,7 @@ import {  GET_PRODUCTBYID } from "../constants";
 
 const initalState = {
     
-    data: null
+    data: []
 }
 
 const ProductReducers = (state = initalState, payload) => {

@@ -20,7 +20,7 @@ const routes = [
         exact: true,
     },
     {
-        path: '/product-detail',
+        path: '/product-detail/:id',
         component: ProductDetail,
         exact: true,
     },

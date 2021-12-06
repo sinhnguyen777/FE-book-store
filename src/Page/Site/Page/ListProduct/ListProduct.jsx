@@ -24,8 +24,33 @@ const ListProduct = () => {
             </BannerProduct>
             <div className="layout">
                 <div className="list-product">
-                    <div className="list-product_list"><ListPro/></div>
-                    <div className="list-product_filter"><Filter/></div>
+                    <div className="list-product_list">
+                        <div className="List-filter">
+                            <div className="List-filter_result">Trang 1/2 của {product ? product.length : <LoadingOutlined />} sản phẩm</div>
+                            <form action="" className="List-filter_sort">
+                                <Select
+                                    labelInValue
+                                    defaultValue={{ value: 'new' }}
+                                    style={{ width: 230, height: 50 }}
+                                    onChange={handleChange}
+                                >
+                                    <Option value="new">Sắp xếp theo thứ tự mới nhất</Option>
+                                    <Option value="pricelow">Sắp xếp theo giá: thấp đến cao</Option>
+                                    <Option value="pricehigh">Sắp xếp theo giá: cao đến thấp</Option>
+                                </Select>
+                            </form>
+                        </div>
+                        <div className="List-product">
+                            <ItemProduct data={currentProduct} />
+                        </div>
+                        <div className="List-pagination">
+                            <Pagination size="small" onChange={handleChangePage} pageSize={9} total={total} />
+                        </div>
+                    </div>
+                    <div className="list-product_filter">
+                        <Filter filter={filter} handleListCata={handleListCata} />
+                    </div>
+
                 </div>
             </div>
             <BackTop>

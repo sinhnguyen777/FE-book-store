@@ -71,7 +71,7 @@ const ListProduct = () => {
                 <div className="list-product">
                     <div className="list-product_list">
                         <div className="List-filter">
-                            <div className="List-filter_result">Trang 1/12 của {product ? product.length : <LoadingOutlined />} sản phẩm</div>
+                            <div className="List-filter_result">Trang 1/2 của {product ? product.length : <LoadingOutlined />} sản phẩm</div>
                             <form action="" className="List-filter_sort">
                                 <Select
                                     labelInValue

@@ -43,18 +43,19 @@
     }
 }
 .btn-heart {
-  button {
-    font-size: 19px;
-    line-height: 2.857em;
-    font-weight: 400;
-    cursor: pointer;
-    font-family: "Josefin Sans", sans-serif;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: 0;
+
+    button {
+      font-size: 19px;
+      line-height: 2.857em;
+      font-weight: 400;
+      cursor: pointer;
+      font-family: "Josefin Sans", sans-serif;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      background-color: transparent;
+      border: 0;
+    }
+    &_true {
+      color: #d14031;
+    }
   }
-  &_true {
-    color: #d14031;
-  }
-}

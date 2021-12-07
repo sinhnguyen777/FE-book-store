@@ -17,7 +17,8 @@ import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
 import { useRouteMatch } from 'react-router';
 import prouctApi from '../../../../api/productApi';
-import { CheckOutlined,  HeartOutlined, LoadingOutlined } from '@ant-design/icons';
+
+import { CheckOutlined, HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import Slider from "react-slick";
 
 export default function ProductDetail() {
@@ -140,7 +141,8 @@ export default function ProductDetail() {
                                 <Link to='/cart'>
                                     <button style={{marginLeft: '40px'}} className="btn ButtonBanner">Mua sách</button>
                                 </Link>
-                               <span className="btn-heart" style={{marginLeft: '40px'}}>
+
+                                <span className="btn-heart" style={{marginLeft: '40px'}}>
                                    {
                                        like ?
                                        <button onClick={handleClickLike} className="btn-heart_true"> <HeartOutlined/> </button>

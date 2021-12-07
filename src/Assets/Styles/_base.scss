@@ -15,14 +15,12 @@
 // html {
 //     font-size: 62.5%;
 // }
-
 body {
-    font-family: 'Cormorant Garamond', serif;
+    // font-family: 'Cormorant Garamond', serif;
     overflow-x: hidden;
 }
 
 // custom Scrollbar
-
 body::-webkit-scrollbar-track {
     background-color: #f5f5f5;
 }
@@ -30,7 +28,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar {
     width: 10px;
     background-color: #f5f5f5;
-
 }
 
 body::-webkit-scrollbar-thumb {
@@ -43,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $txt-bold-color;
+    color: $txt-bold-color;
 }
 
 ul {
@@ -67,13 +64,10 @@ img {
     margin-top: $header-height;
     margin-bottom: 2rem;
     min-height: 100vh;
-
     // @include tablet {
     //     margin-top: calc(#{$header-tablet-height} + 20px);
     // }
-
     // @include mobile {
     //     margin-top: calc(#{$header-mobile-height} + 10px);
     // }
 }
-

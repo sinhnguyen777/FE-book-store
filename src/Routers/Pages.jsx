@@ -8,6 +8,8 @@ import About from '../Page/Site/Page/About/About';
 import Event from '../Page/Site/Page/Event/Event';
 import Readbook from '../Page/Site/Page/Readbook/Readbook';
 import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
+import Account from '../Page/Site/Page/Account/Account';
+import Login from '../Page/Site/Page/Login/Login';
 
 const routes = [
     {
@@ -60,6 +62,16 @@ const routes = [
         component: Event,
         exact: true,
     },
+    {
+        path: '/login',
+        component: Login,
+        exact: true,
+    },
+    {
+        path: '/account',
+        component: Account,
+        exact: true,
+    }
 ];
 
 export default routes;

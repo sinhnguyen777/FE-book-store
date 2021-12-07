@@ -1,9 +1,7 @@
 @import "./variables";
 @import "./mixins.scss";
 @import "./base";
-
 // import Component
-
 @import "./components/header";
 @import "./components/footer";
 @import "./components/section";
@@ -11,10 +9,7 @@
 @import "./components/button";
 @import "./components/tab";
 @import "./components/error";
-
-
 //  import Page
-
 @import "./page/Home/home";
 @import "./page/Home/cartheader";
 @import "./page/Home/autobiography";
@@ -30,8 +25,8 @@
 @import './page/Event/clock';
 @import './page/Checkout/index.scss';
 @import './page/ProductDetail/index.scss';
-
-
+@import './page/Account/formlogin';
+@import './page/Account/account';
 // import Admin
 @import "./Admin/admin";
 @import "./Admin/role";
@@ -40,8 +35,3 @@
 @import "./Admin/product";
 @import "./Admin/loginad";
 @import "./Admin/chapter";
-
-
-
-
-

@@ -1,0 +1,135 @@
+.container_client {
+    width: 100%;
+    float: left !important;
+    margin-top: 100px !important;
+}
+
+.container_client .trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.ant-layout-sider-collapsed {
+    flex: 0 0 80px !important;
+    max-width: 80px !important;
+    min-width: 80px !important;
+    width: 80px !important;
+}
+
+.container_client .boxleft {
+    flex: 0 0 240px;
+    max-width: 240px;
+    min-width: 240px;
+    width: 240px;
+    background-color: white;
+    box-shadow: #e2e2e2 0px 0px 5px 3px;
+    border-right: 1px #e2e2e2 solid;
+}
+
+.container_client .trigger:hover {
+    color: #1890ff;
+}
+
+.container_client .logo {
+    // margin: 16px;
+    padding: 30px 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 20px;
+}
+
+.container_client .Dangxuat {
+    margin: 0;
+    color: red;
+    height: auto;
+    box-shadow: none;
+    font-size: 16px;
+    padding: 0;
+    line-height: 40px;
+    border: none;
+}
+
+.ant-menu-item-selected {
+    color: black;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: none !important;
+}
+
+.container_client .Dangxuat::after {
+    background-color: none;
+    --antd-wave-shadow-color: none;
+}
+
+.container_client .Dangxuat .anticon-login {
+    transform: rotate(180deg);
+}
+
+.ant-divider-horizontal.ant-divider-with-text {
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+.ant-divider-horizontal.ant-divider-with-text-left::before {
+    width: 0%;
+}
+
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+.TitleUser {
+    padding: 30px 30px;
+}
+
+.ant-list-items {
+    display: flex;
+    padding-left: 65px;
+}
+
+.Vip {
+    padding: 30px 0px;
+}
+
+.dislike {
+    float: right;
+}
+
+.ant-typography.ant-typography-secondary {
+    margin-top: 5px !important;
+}
+
+.Thongtin {
+    margin-top: 0px;
+}
+
+.Thongtin .Item {
+    padding: 20px 170px;
+}
+
+.TitleDanhgia {
+    padding: 10px 0px;
+}
+
+.ListFeedback {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #e2e2e2;
+}
+
+.ImgDanhgia {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.Trai {
+    margin-right: 20px;
+}
+
+h3.ant-typography {
+    margin-bottom: 0px;
+}

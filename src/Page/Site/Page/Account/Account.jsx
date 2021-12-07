@@ -1,7 +1,7 @@
 import { Button, Comment, Tooltip , Skeleton,  DatePicker , Divider , Layout, Menu, Input , 
     Breadcrumb, Avatar,Typography , Image ,Space ,Card ,List ,Rate   ,message ,Popconfirm  } from 'antd';
 import { Row, Col } from 'antd';
-import { BrowserRouter , Route, NavLink, Redirec } from "react-router-dom";
+import { BrowserRouter , Route, NavLink, Redirect } from "react-router-dom";
 import {
 DesktopOutlined,
 PieChartOutlined,
@@ -34,6 +34,9 @@ import { Link } from 'react-scroll';
 import { useHistory } from 'react-router';
 
 
+// import { Redirect } from 'react-router'
+
+
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -44,8 +47,9 @@ const { Meta } = Card;
 const desc = ['Rất tệ', 'Tệ', 'Bình thường', 'Hay', 'Rất hay'];
 const text = 'Bạn không thích sản phẩm này nữa?';
 function confirm() {
-message.info('Đã xóa khỏi danh sách.');
+     message.info('Đã xóa khỏi danh sách.');
 }
+
 
 const listData = [];
 // danh gia
@@ -99,7 +103,7 @@ const IconText = ({ icon, text }) => (
 
 class Account extends React.Component {
 constructor(props){
-    super();
+    super(props);
     this.state = {collapsed: false , user_info: [] , item:{} , vip:Boolean , lg:"" , local:[] }
     this.state.local = JSON.parse(localStorage.getItem('user-info'));
     if (this.state.local) {
@@ -134,17 +138,7 @@ constructor(props){
 handleChange = value => {
 this.setState({ value });
 };
-// logout 
-logout(e){
-     e.preventDefault();
-     const h = useHistory();
-     if (localStorage.getItem('user-info')) {
-          localStorage.clear(); //try this to clear all local storage
-          h.push("/login");
-          console.log("dang xuat");
-      }
-  
-}
+
 toggle = () => {
   this.setState({
     collapsed: !this.state.collapsed,
@@ -152,7 +146,7 @@ toggle = () => {
 };
 
 render() {
-   console.log(this.state.item.blockMail);
+//    console.log(this.state.item.blockMail);
   return (
   <div className="container_client">
   <Layout>
@@ -173,7 +167,7 @@ render() {
      </Link>
       </Menu.Item>
       <Menu.Item key="3" icon={<StarOutlined />}>
-     <Link to="danhgia" smooth={true} duration={1000}>
+     <Link to="danhgia" smooth={true} >
          Đánh giá
      </Link>
       </Menu.Item>
@@ -191,7 +185,7 @@ render() {
       <Menu.Item key="8" disabled="disabled">
       </Menu.Item>
       <Menu.Item disabled="disabled">
-      <Button onClick={logout} className="Dangxuat"  icon={<LoginOutlined />}>
+      <Button  className="Dangxuat"  icon={<LoginOutlined />}>
       Đăng xuất
       </Button>
       </Menu.Item>

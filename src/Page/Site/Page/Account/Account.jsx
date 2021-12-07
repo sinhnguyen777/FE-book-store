@@ -20,7 +20,8 @@ HeartOutlined,
 ProfileOutlined,
 StarOutlined,
 ReadOutlined,
-LoginOutlined
+LoginOutlined,
+LogoutOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import React, { useState , createElement } from 'react';
@@ -30,6 +31,7 @@ import logouser from '../../../../Assets/Images/Account/meow.jpg'
 import logovip from '../../../../Assets/Images/Account/logovip.png'
 import logoclient from '../../../../Assets/Images/Account/logoclient.png'
 import { Link } from 'react-scroll';
+import { useHistory } from 'react-router';
 
 
 
@@ -41,10 +43,10 @@ const dateFormat = 'YYYY-MM-DD';
 const { Meta } = Card;
 const desc = ['Rất tệ', 'Tệ', 'Bình thường', 'Hay', 'Rất hay'];
 const text = 'Bạn không thích sản phẩm này nữa?';
-
 function confirm() {
 message.info('Đã xóa khỏi danh sách.');
 }
+
 const listData = [];
 // danh gia
 const data = [
@@ -132,7 +134,17 @@ constructor(props){
 handleChange = value => {
 this.setState({ value });
 };
-
+// logout 
+logout(e){
+     e.preventDefault();
+     const h = useHistory();
+     if (localStorage.getItem('user-info')) {
+          localStorage.clear(); //try this to clear all local storage
+          h.push("/login");
+          console.log("dang xuat");
+      }
+  
+}
 toggle = () => {
   this.setState({
     collapsed: !this.state.collapsed,
@@ -179,7 +191,7 @@ render() {
       <Menu.Item key="8" disabled="disabled">
       </Menu.Item>
       <Menu.Item disabled="disabled">
-      <Button className="Dangxuat"  icon={<LoginOutlined />}>
+      <Button onClick={logout} className="Dangxuat"  icon={<LoginOutlined />}>
       Đăng xuất
       </Button>
       </Menu.Item>

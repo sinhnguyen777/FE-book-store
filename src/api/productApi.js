@@ -115,6 +115,10 @@ const prouctApi={
         })
         return res
     },
+    DelProducts(id){
+        const url = `/products/del/${id}`;
+        return axiosClient.delete(url)
+    },
 };
 
 export default prouctApi; 

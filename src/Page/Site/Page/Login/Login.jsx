@@ -155,7 +155,7 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                          else {
                               message.success('Đăng nhập thành công');
                               localStorage.setItem('user-info' , JSON.stringify(result));
-                              history.push("/account");
+                              history.push("/client");
                          }
                     }
           }
@@ -172,25 +172,8 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                     'avatar': avatar,
                     'blockMail': false
                };
-               let result = await fetch('https://beonlinelibrary.herokuapp.com/users/register', {
-                   method: 'POST',
-                   headers: {
-                       "Content-Type": "application/json",
-                       "Accept": "application/json"
-                   },
-                   body: JSON.stringify(item)
-               });
-               // console.log(result);
-                    if (result.status===200) {
-                         result = await result.json();
-                         if (result.message) {
-                              message.error(result.message);
-                         }
-                         else {
-                              message.success('Hợp lệ');
-                              setVisible(true);
-                         }
-                    }
+               console.log(avatar);
+            
           }
 
  

@@ -134,7 +134,7 @@ export default function ProductDetail() {
                                     {productDetail[0].productHot== true ? <p className="price_product_detail_sp_hot">hot <CheckOutlined /></p> : null}
                                     {productDetail[0].productHot== true ? <p className="price_product_detail_sp_sale">sale <CheckOutlined /></p> : null}
                                 </div>
-                                <p className="price_product_detail_price">Giá: {productDetail[0].price}</p>
+                                <p className="price_product_detail_price">Giá: {productDetail[0].price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</p>
                                 <Link to={`/read-book/${productDetail[0]._id}`}>
                                     <button  className="btn">Đọc thử</button>
                                 </Link>

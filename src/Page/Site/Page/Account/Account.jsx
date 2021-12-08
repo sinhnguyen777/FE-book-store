@@ -299,6 +299,7 @@ render() {
           <Divider orientation="left" id="danhgia">Đánh giá</Divider>
           
           <List
+               className="acount-list-item"
               dataSource={data}
               renderItem={item => (
              

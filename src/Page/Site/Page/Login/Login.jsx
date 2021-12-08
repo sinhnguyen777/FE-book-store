@@ -255,21 +255,21 @@ const [confirmLoading, setConfirmLoading] = React.useState(false);
                          </Form.Item>
     
                          <div>
-                              <a href='#'>
+                              {/* <a href='#'>
                                    <div id='facebook' className='button'>Facebook
                                         <div className='cover facebook'>
                                    <img src={logoFB} alt=""/>
                                         </div>
                                    </div>
-                              </a>
+                              </a> */}
                          
-                              <a href='#'>
+                              {/* <a href='#'>
                                    <div id='google' className='button'>Google+
                                         <div className='cover google'>
                                    <img src={logoGG} alt=""/>
                                         </div>
                                    </div>
-                              </a>
+                              </a> */}
                               {/* Quen mat khau */}
                               <div className="forgot">
                               <a href="#">Quên mật khẩu?</a>

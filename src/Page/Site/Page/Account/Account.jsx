@@ -267,6 +267,7 @@ render() {
          {/* Yêu thích*/}
          <Divider orientation="left" id="yeuthich">Yêu thích</Divider>
          <List
+               className="acount-list-item"
               itemLayout="vertical"
               size="large"
               pagination={{

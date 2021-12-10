@@ -10,6 +10,7 @@ import Vip from "../Page/Vip/Vip";
 import EditVip from "../Page/Vip/pages/editVip";
 import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
+import EditProducts from "../Page/Products/pages/EditProducts";
 
 
 
@@ -31,6 +32,11 @@ const routes = [
     {
         path: '/admin/products',
         component: Product,
+        exact: true,
+    },
+    {
+        path: '/admin/products/edit/:id',
+        component: EditProducts,
         exact: true,
     },
     {

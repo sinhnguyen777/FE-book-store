@@ -19,9 +19,7 @@ const style = {
     textAlign: 'center',
     fontSize: 14,
 };
-function onChange(value) {
-    console.log(`selected ${value}`);
-  }
+
   
   function onBlur() {
     console.log('blur');
@@ -48,7 +46,7 @@ const Readbook = () => {
              if(!valueChapter){
                 setContentChapter(res.data[0])
              }else{
-                const data =res.data.filter(item=>item._id == valueChapter);
+                const data =res.data.filter(item=>item._id === valueChapter);
                 setContentChapter(data[0]);
              }
         }

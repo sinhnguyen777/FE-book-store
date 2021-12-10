@@ -32,7 +32,7 @@ const EditVip = () => {
         const fetchUpdateVip = async (data) => {
             try {
                 const res = await vipApi.UpdateVip(data);
-                if (res.status == 200) {
+                if (res.status === 200) {
                     Swal.fire('...', 'Sửa Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
                             history.push({ pathname: '/admin/vip' })

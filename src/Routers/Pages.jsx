@@ -10,6 +10,7 @@ import Readbook from '../Page/Site/Page/Readbook/Readbook';
 import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
 import Account from '../Page/Site/Page/Account/Account';
 import Login from '../Page/Site/Page/Login/Login';
+import OrderDetail from '../Page/Site/Page/OrderDetail/OrderDetail';
 
 const routes = [
     {
@@ -71,7 +72,12 @@ const routes = [
         path: '/account',
         component: Account,
         exact: true,
-    }
+    },
+    {
+        path: '/order-detail',
+        component: OrderDetail,
+        exact: true,
+    },
 ];
 
 export default routes;

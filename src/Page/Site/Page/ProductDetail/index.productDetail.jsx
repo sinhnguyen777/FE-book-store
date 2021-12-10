@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -5,14 +6,9 @@ import {
     Row,
     Col,
     Image,
-    Rate,
-    Tabs,
-    Avatar,
-    Input,
     
 } from 'antd';
 import { BannerProduct } from '../../Components/Common/Banner/banner';
-import FormReview from './Components/FormReview';
 import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
 import { useRouteMatch } from 'react-router';
@@ -28,7 +24,6 @@ export default function ProductDetail() {
     const handleClickLike = ()=>{
         setLike(!like);
       }
-    const { TabPane } = Tabs;
     const match =  useRouteMatch()
     const [productDetail, setProductDetail] = useState({})
     useEffect(() => {
@@ -39,11 +34,10 @@ export default function ProductDetail() {
         }
         fetchProductID(slug)
     }, [])
-    console.log(productDetail);
+    // console.log(productDetail);
 
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
-    
     return (
         <div style={{ width: '100%' }}>
             <BannerProduct>
@@ -100,18 +94,6 @@ export default function ProductDetail() {
                             
                             
                         </Slider>
-                            {/* <Image
-                                preview={{ visible: false }}
-
-                                src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg"
-                                onClick={() => setVisible(true)}
-                            />
-                            <div style={{ display: 'none' }}>
-                                <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
-                                    <Image src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4.jpg" />
-                                </Image.PreviewGroup>
-                            </div> */}
-
                         </div>
                     </Col>
                     <Col
@@ -131,8 +113,8 @@ export default function ProductDetail() {
                                 <h2 className="title_product_detail">{productDetail[0].nameProduct}</h2>
                                 <p className="price_product_detail">Nhà xuất bản: {productDetail[0].nxb}</p>
                                 <div className="price_product_detail_sp">
-                                    {productDetail[0].productHot== true ? <p className="price_product_detail_sp_hot">hot <CheckOutlined /></p> : null}
-                                    {productDetail[0].productHot== true ? <p className="price_product_detail_sp_sale">sale <CheckOutlined /></p> : null}
+                                    {productDetail[0].productHot=== true ? <p className="price_product_detail_sp_hot">hot <CheckOutlined /></p> : null}
+                                    {productDetail[0].productHot=== true ? <p className="price_product_detail_sp_sale">sale <CheckOutlined /></p> : null}
                                 </div>
                                 <p className="price_product_detail_price">Giá: {productDetail[0].price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</p>
                                 <Link to={`/read-book/${productDetail[0]._id}`}>
@@ -161,49 +143,7 @@ export default function ProductDetail() {
                 </Row>
                 <Row className="tabs_product_detail">
                 <Comments />
-                    {/* <Tabs className="description_tab" defaultActiveKey="1" centered >
-                        <TabPane tab="Bình luận" key="2">
-                            <div className="content_tab_infomation">
-                                <div className="content_tab_infomation_avatar">
-                                    <Avatar
-                                        className="avatar_comment"
-                                        src="https://znews-photo.zadn.vn/w660/Uploaded/unvjuas/2021_10_14/rose_blackpink_vogue_korea_x_ysl_may_2021_3.jpg"
-                                        alt="Han Solo"
-                                        size={{
-                                            xs: 24,
-                                            sm: 32,
-                                            md: 40,
-                                            lg: 64,
-                                            xl: 60,
-                                            xxl: 100,
-                                        }}
-                                    />
-                                </div>
-                                <div className="content_tab_infomation_content">
-                                    <form style={{width: '100%'}} action="">
-                                        <div className="form-comment">
-                                            <input className="comment-field" type="text" placeholder="Viết bình luận..."/>
-                                            <button type="submit" className="comment-submit comment-field">
-                                                <span><EnterOutlined /></span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                    
-
-                                </div>
-                            </div>
-                        </TabPane>
-                        <TabPane tab="Đánh giá" key="3">
-                            <div className="content_tab_reviews">
-                                <p>There are no reviews yet.</p>
-                                <span className="rely_title">
-                                    <span>Be the first to review “Amster Hamster Trip”</span>
-                                    <Rate allowClear={false} defaultValue={0} />
-                                </span>
-                                <FormReview />
-                            </div>
-                        </TabPane>
-                    </Tabs> */}
+                    
                 </Row>
                 <RelatedProducts />
             </Layout>

@@ -16,8 +16,8 @@ const ItemProduct = (props) => {
                                 <div className="ItemProduct_inner_image">
                                     <img style={{width: '100%', height: '400px'}} src={`https://beonlinelibrary.herokuapp.com/${item.images[0].image}`} alt={item.nameProduct} />
                                     <div className="ItemProduct_inner_image_sold">
-                                        {item.productHot == true ? <span className="ItemProduct_inner_image_sold1">HOT</span> : null}
-                                        {item.productSale == true ? <span className="ItemProduct_inner_image_sold1">SALE</span> : null}
+                                        {item.productHot === true ? <span className="ItemProduct_inner_image_sold1">HOT</span> : null}
+                                        {item.productSale === true ? <span className="ItemProduct_inner_image_sold1">SALE</span> : null}
                                     </div>
                                     
                                     <div className="ItemProduct_inner_image_text">

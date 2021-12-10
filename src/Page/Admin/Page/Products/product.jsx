@@ -1,5 +1,5 @@
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Col, Input, PageHeader, Row, Select } from "antd";
+import { Button, Col, Input, Modal, PageHeader, Row, Select, Upload } from "antd";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -74,9 +74,12 @@ const Product = () => {
             formData.append('productHot', values.productHot);
             formData.append('productSale', values.productSale);
 
-            for (let i = 0; i < multipleFiles.length; i++) {
-                formData.append('images', multipleFiles[i]);
+            for (let i = 0; i < fileList.length; i++) {
+                formData.append('images', fileList[i].originFileObj);
             }
+
+            // console.log(multipleFiles);
+            // console.log(fileList);
 
             await axios.post('https://beonlinelibrary.herokuapp.com/products/create', formData);
         }
@@ -129,7 +132,7 @@ const Product = () => {
 
                 <form encType="multipart/form-data" onSubmit={forms.handleSubmit(handleSubmitFrom)}>
                     <div className="BoxForm">
-                        {/* <Upload
+                        <Upload
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                             listType="picture-card"
                             fileList={fileList}
@@ -145,12 +148,12 @@ const Product = () => {
                             onCancel={handleCancel}
                         >
                             <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                        </Modal> */}
+                        </Modal>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label style={{ width: '100%',display: 'block', margin: '10px 0'}}>Hình</label> 
                             <input type="file" onChange={(e) => MultipleFileChange(e)} className="form-control" multiple />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="BoxForm">

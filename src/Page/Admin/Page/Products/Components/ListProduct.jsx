@@ -15,7 +15,6 @@ const ListProduct = (props) => {
       dataIndex: 'images',
       key: 'images',
       render: (record) => {
-        console.log(record);
         return <>
           <Image
             width={50}
@@ -54,7 +53,7 @@ const ListProduct = (props) => {
       key: 'edit',
       render: (record) => {
         return <>
-          <Button><Link to={`/`}>Sửa</Link></Button>
+          <Button><Link to={`/admin/products/edit/${record._id}`}>Sửa</Link></Button>
         </>
       },
     },

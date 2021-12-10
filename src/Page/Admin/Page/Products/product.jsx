@@ -3,6 +3,8 @@ import { Button, Col, Input, PageHeader, Row, Select } from "antd";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router';
+import Swal from 'sweetalert2';
 import cataApi from "../../../../api/cataApi";
 import prouctApi from '../../../../api/productApi';
 import InputField from "../../Components/Common/FromControl/InputField";
@@ -22,6 +24,9 @@ const Product = () => {
     const [ValueSelect, setValueSelect] = useState("");
     const [ValueCata, setValueCata] = useState([])
     const [ValuesProduct, setValuesProduct] = useState([])
+    const [render,setRender] = useState(0);
+    let history = useHistory();
+
 
     const [multipleFiles, setMultipleFiles] = useState('');
     const forms = useForm({
@@ -50,10 +55,14 @@ const Product = () => {
         fetchProducts()
 
         console.log();
-    }, [])
+    }, [render])
 
     function handleChange(value) {
         setValueSelect(value)
+    }
+
+    const handleRender = () => {
+        setRender(pre=>pre+1);
     }
 
     const MultipleFileChange = (e) => {
@@ -79,9 +88,16 @@ const Product = () => {
             }
 
             await axios.post('https://beonlinelibrary.herokuapp.com/products/create', formData);
+            Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
+                if (result.isConfirmed) {
+                    setRender(pre=>pre+1);
+                    history.push({ pathname: '/admin/products' })
+                }
+            })
         }
         catch (err) {
             console.log(err);
+            Swal.fire('...', 'Thêm Thất bại!', 'error')
         }
 
     }
@@ -193,14 +209,14 @@ const Product = () => {
 
                     <div className="BoxForm">
 
-                        <div className="GroupForm">
+                        <div className="GroupForm  D-Flex">
                             <label htmlFor="productHot">Sản phẩm hot</label>
-                            <input name="productHot" ref={forms.register} type="checkbox" />
+                            <input name="productHot" className="CheckProducts" ref={forms.register} type="checkbox" />
                         </div>
 
-                        <div className="GroupForm">
+                        <div className="GroupForm  D-Flex">
                             <label htmlFor="productSale">Sản phẩm Giảm Giá</label>
-                            <input name="productSale" ref={forms.register} type="checkbox" />
+                            <input name="productSale"  className="CheckProducts" ref={forms.register} type="checkbox" />
                         </div>
 
                         <div className="GroupForm">
@@ -218,7 +234,7 @@ const Product = () => {
                     {
                         ValuesProduct.length > 0
                             ?
-                            <ListProduct data={ValuesProduct} dataCata={ValueCata} />
+                            <ListProduct data={ValuesProduct} dataCata={ValueCata} handleRender={handleRender} />
                             :
 
                             <LoadingOutlined />

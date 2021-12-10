@@ -17,13 +17,17 @@ import RelatedProducts from './Components/RelatedProducts';
 import Comments from './Components/Comments';
 import { useRouteMatch } from 'react-router';
 import prouctApi from '../../../../api/productApi';
-import { CheckOutlined, EnterOutlined, LoadingOutlined } from '@ant-design/icons';
+
+import { CheckOutlined, HeartOutlined, LoadingOutlined } from '@ant-design/icons';
 import Slider from "react-slick";
 
 export default function ProductDetail() {
 
     const [visible, setVisible] = useState(false);
-
+    const [like, setLike] = useState(false);
+    const handleClickLike = ()=>{
+        setLike(!like);
+      }
     const { TabPane } = Tabs;
     const match =  useRouteMatch()
     const [productDetail, setProductDetail] = useState({})
@@ -130,13 +134,23 @@ export default function ProductDetail() {
                                     {productDetail[0].productHot== true ? <p className="price_product_detail_sp_hot">hot <CheckOutlined /></p> : null}
                                     {productDetail[0].productHot== true ? <p className="price_product_detail_sp_sale">sale <CheckOutlined /></p> : null}
                                 </div>
-                                <p className="price_product_detail_price">Giá: {productDetail[0].price}</p>
+                                <p className="price_product_detail_price">Giá: {productDetail[0].price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</p>
                                 <Link to={`/read-book/${productDetail[0]._id}`}>
                                     <button  className="btn">Đọc thử</button>
                                 </Link>
                                 <Link to='/cart'>
                                     <button style={{marginLeft: '40px'}} className="btn ButtonBanner">Mua sách</button>
                                 </Link>
+
+                                <span className="btn-heart" style={{marginLeft: '40px'}}>
+                                   {
+                                       like ?
+                                       <button onClick={handleClickLike} className="btn-heart_true"> <HeartOutlined/> </button>
+                                       :
+                                       <button onClick={handleClickLike} className="btn-heart_false"> <HeartOutlined/> </button>
+
+                                   }
+                               </span>
                                 <div className="description_product_detail">
                                     <p dangerouslySetInnerHTML={{ __html: productDetail[0].description }}/>
                                 </div>

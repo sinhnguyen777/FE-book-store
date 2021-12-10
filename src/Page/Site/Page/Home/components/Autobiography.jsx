@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ButtonMain from '../../../Components/Common/Button/Button'
 import month1 from '../../../../../Assets/Images/Home/home-2-rev-2-img-2.jpg'
 import month2 from '../../../../../Assets/Images/Home/3309.jpg'
@@ -11,13 +11,16 @@ import year2 from '../../../../../Assets/Images/Home/mga.jpg'
 import year3 from '../../../../../Assets/Images/Home/home-2-rev-3-image-4.png'
 import year4 from '../../../../../Assets/Images/Home/home-2-rev-3-image-1.png'
 import year5 from '../../../../../Assets/Images/Home/home-2-rev-3-image-2.png'
+import { Link } from 'react-router-dom'
+import prouctApi from '../../../../../api/productApi'
+
 
 const Autobiography = () => {
     return (
         <>
         <div className="AutobiographyItemMonth">
             <div className="AutobiographyItemMonth_text">
-                <div className="AutobiographyItemMonth_text_subtitle">hồi ký</div>
+                <div className="AutobiographyItemMonth_text_subtitle">sách</div>
                 <div className="AutobiographyItemMonth_text_title">Đắc nhân tâm</div>
                 <div className="AutobiographyItemMonth_text_content">
                     Đắc Nhân Tâm là cuốn sách đưa ra các lời khuyên về cách thức cư xử,
@@ -26,7 +29,9 @@ const Autobiography = () => {
                     để dẫn đạo người, để gây thiện cảm và dẫn dắt người khác,...
                 </div>
                 <div className="AutobiographyItemMonth_text_read">
-                    <ButtonMain/>
+                    <Link to="/product-detail/dac-nhan-tam">
+                        <ButtonMain/>
+                    </Link>
                 </div>
             </div>
             <div className="fancy1"></div>
@@ -38,7 +43,7 @@ const Autobiography = () => {
         </div>
         <div className="AutobiographyItemYear">
             <div className="AutobiographyItemYear_text">
-            <div className="AutobiographyItemYear_text_subtitle">hồi ký</div>
+            <div className="AutobiographyItemYear_text_subtitle">sách</div>
                 <div className="AutobiographyItemYear_text_title">Chuyện người tùy nữ</div>
                 <div className="AutobiographyItemYear_text_content">
                     Một tác phẩm phản địa đàng là một tác phẩm hư cấu 
@@ -46,7 +51,9 @@ const Autobiography = () => {
                     nơi đó mọi thứ đều trở nên trần trụi, ngột ngạt.
                 </div>
                 <div className="AutobiographyItemYear_text_read">
-                    <ButtonMain/>
+                    <Link to="/product-detail/chuyen-nguoi-tuy-nu">
+                        <ButtonMain/>
+                    </Link>
                 </div>
             </div>
             <div className="fancy1"></div>

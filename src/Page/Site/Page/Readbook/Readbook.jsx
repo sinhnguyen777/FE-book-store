@@ -4,7 +4,11 @@ import { BackTop, Select } from 'antd';
 import ChapterApi from '../../../../api/chapterApi';
 import { useRouteMatch } from 'react-router';
 import { LoadingOutlined, UpOutlined } from '@ant-design/icons';
+import prouctApi from '../../../../api/productApi';
+
+
 const { Option } = Select;
+
 const style = {
     height: 40,
     width: 40,
@@ -35,6 +39,7 @@ const Readbook = () => {
     const [chapter, setChapter] = useState();
     const [valueChapter, setvalueChapter] = useState();
     const [ContentChapter, setContentChapter] = useState()
+    const [productValue, setproductValue] = useState()
     useEffect(() => {
         const idProduct = match.params.id;
         const fetchCataByID = async () => {
@@ -50,13 +55,17 @@ const Readbook = () => {
 
         fetchCataByID(idProduct)
 
-        
+        const fetchProduct = async () => {
+            const res  = await prouctApi.GetProductsById(idProduct)
+            setproductValue(res.data)
+        }
+        fetchProduct()
+
     }, [valueChapter])
 
     const handleChange =(value) => {
         setvalueChapter(value)
     }
-
     
     return (
        <>
@@ -66,7 +75,12 @@ const Readbook = () => {
             <div className="layout">
                 <div className="chapter-title">
                     <div className="chapter-title_name">
-                        Đắc nhân tâm
+                        {
+                            productValue ?
+                            productValue.nameProduct
+                            : <LoadingOutlined />
+                        
+                        }
                     </div>
                     <div className="chapter-title_chapter">
                         {
@@ -111,6 +125,7 @@ const Readbook = () => {
                         null
 
                     }
+                   
                 </div>
             </div>
             <BackTop>

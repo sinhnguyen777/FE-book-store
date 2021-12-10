@@ -3,18 +3,26 @@ import prouctApi from '../../../../../api/productApi'
 import ItemProduct from '../../ListProduct/Components/ItemProduct'
 
 const ListHot = () => {
-    // const [productHot, setProductHot] = useState([])
-    // useEffect(() => {
-    //    const fetchProductHot = async () => {
-    //        const res = await prouctApi.GetProductsNew()
-    //        setProductHot(res)
-    //    }
-    //    fetchProductHot()
-    // }, [])
-    // console.log(productHot);
+    const [DataHot, setDataHot] = useState([]);
+
+    useEffect(() => {
+        const filter = {
+            productHot:true
+        }
+        const fetchProductHot = async (filter) =>{
+
+            const res = await prouctApi.GetProducts(filter);
+            setDataHot(res.data);
+        }
+
+        fetchProductHot(filter)
+    }, [])
+
+    const data = DataHot.slice(0,5);
+    console.log(data);
     return (
         <div className="List-product">
-            {/* <ItemProduct data={product.data}/> */}
+            <ItemProduct data={data}/>
         
         </div>
     )

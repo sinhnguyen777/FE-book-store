@@ -86,9 +86,12 @@
     padding: 30px 30px;
 }
 
-.ant-list-items {
-    display: flex;
-    padding-left: 65px;
+.acount-list-item {
+    .ant-list-items{
+        display: flex;
+        padding-left: 65px;
+    }
+    
 }
 
 .Vip {

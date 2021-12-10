@@ -20,8 +20,7 @@ HeartOutlined,
 ProfileOutlined,
 StarOutlined,
 ReadOutlined,
-LoginOutlined,
-LogoutOutlined
+LoginOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import React, { useState , createElement } from 'react';
@@ -31,7 +30,6 @@ import logouser from '../../../../Assets/Images/Account/meow.jpg'
 import logovip from '../../../../Assets/Images/Account/logovip.png'
 import logoclient from '../../../../Assets/Images/Account/logoclient.png'
 import { Link } from 'react-scroll';
-import { useHistory } from 'react-router';
 
 
 // import { Redirect } from 'react-router'
@@ -46,10 +44,10 @@ const dateFormat = 'YYYY-MM-DD';
 const { Meta } = Card;
 const desc = ['Rất tệ', 'Tệ', 'Bình thường', 'Hay', 'Rất hay'];
 const text = 'Bạn không thích sản phẩm này nữa?';
+
 function confirm() {
      message.info('Đã xóa khỏi danh sách.');
 }
-
 
 const listData = [];
 // danh gia
@@ -273,6 +271,7 @@ render() {
          {/* Yêu thích*/}
          <Divider orientation="left" id="yeuthich">Yêu thích</Divider>
          <List
+               className="acount-list-item"
               itemLayout="vertical"
               size="large"
               pagination={{
@@ -304,6 +303,7 @@ render() {
           <Divider orientation="left" id="danhgia">Đánh giá</Divider>
           
           <List
+               className="acount-list-item"
               dataSource={data}
               renderItem={item => (
              

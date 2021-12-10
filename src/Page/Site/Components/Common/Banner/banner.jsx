@@ -42,7 +42,7 @@ const Banner = () => {
                                 chẳng hạn như khó khăn và đau đớn lớn
                             </p>
                             <p className="banner_item_txt_read three_txt_read">
-                                <Link to='/'>
+                                <Link to='/shop'>
                                     <ButtonBanner/>
                                 </Link>
                             </p>
@@ -64,7 +64,7 @@ const Banner = () => {
                                 chẳng hạn như khó khăn và đau đớn lớn
                             </p>
                             <p className="banner_item_txt_read true_txt_read">
-                                <Link to='/'>
+                                <Link to='/shop'>
                                     <ButtonBanner/>
                                 </Link>
                             </p>
@@ -83,7 +83,7 @@ const Banner = () => {
                                 chẳng hạn như khó khăn và đau đớn lớn
                             </p>
                             <p className="banner_item_txt_read one_txt_read">
-                                <Link to='/'>
+                                <Link to='/shop'>
                                     <ButtonBanner/>
                                 </Link>
                             </p>

@@ -142,8 +142,13 @@ export default function ProductDetail() {
                     </Col>
                 </Row>
                 <Row className="tabs_product_detail">
-                <Comments />
-                    
+                {
+                    productDetail[0]
+                    ?
+                    <Comments idProduct = {productDetail[0]._id} />
+                    :
+                    <LoadingOutlined />
+                }                    
                 </Row>
                 <RelatedProducts />
             </Layout>

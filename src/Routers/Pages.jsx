@@ -74,7 +74,7 @@ const routes = [
         exact: true,
     },
     {
-        path: '/order-detail',
+        path: '/order-detail/:id',
         component: OrderDetail,
         exact: true,
     },

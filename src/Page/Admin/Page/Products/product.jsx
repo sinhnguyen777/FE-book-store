@@ -27,8 +27,6 @@ const Product = () => {
     const [render,setRender] = useState(0);
     let history = useHistory();
 
-
-    const [multipleFiles, setMultipleFiles] = useState('');
     const forms = useForm({
         defaultValues: {
             nameProduct: "",
@@ -65,10 +63,6 @@ const Product = () => {
         setRender(pre=>pre+1);
     }
 
-    const MultipleFileChange = (e) => {
-        setMultipleFiles(e.target.files);
-    }
-
     const handleSubmitFrom = async (values) => {
         try {
 
@@ -94,6 +88,17 @@ const Product = () => {
             Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
                 if (result.isConfirmed) {
                     setRender(pre=>pre+1);
+                    setValueSelect('');
+                    setfileList([]);
+                    forms.reset({
+                        defaultValues: {
+                            nameProduct: "",
+                            price: "",
+                            author: "",
+                            idCata: "",
+                            Nbx: ""
+                        }
+                      })
                     history.push({ pathname: '/admin/products' })
                 }
             })
@@ -166,10 +171,6 @@ const Product = () => {
                             <img alt="example" style={{ width: '100%' }} src={previewImage} />
                         </Modal>
 
-                        {/* <div className="form-group">
-                            <label style={{ width: '100%',display: 'block', margin: '10px 0'}}>Hình</label> 
-                            <input type="file" onChange={(e) => MultipleFileChange(e)} className="form-control" multiple />
-                        </div> */}
                     </div>
 
                     <div className="BoxForm">

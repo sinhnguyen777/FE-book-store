@@ -1,12 +1,11 @@
 import axiosClient from "./axiosCilent";
-import axiosClientForm from "./axiosCilentForm";
 
 
 const prouctApi={
 
     AddProduct(data){
         const url = '/products/create';
-        return axiosClientForm.post(url , data)
+        return axiosClient.post(url , data)
     },
     GetProducts(filter) {
         const url = '/products';

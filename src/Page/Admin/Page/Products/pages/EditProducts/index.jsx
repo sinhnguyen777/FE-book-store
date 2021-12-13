@@ -1,5 +1,5 @@
 import { CloseSquareOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Image, Modal, PageHeader, Select, Upload } from 'antd';
+import { Button, DatePicker, Image, Modal, PageHeader, Select, Upload } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useRouteMatch } from 'react-router';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import cataApi from '../../../../../../api/cataApi';
 import prouctApi from '../../../../../../api/productApi';
 import InputField from '../../../../Components/Common/FromControl/InputField';
+import moment from 'moment';
 
 const { Option } = Select;
 
@@ -22,6 +23,8 @@ const EditProducts = () => {
     const [DataProduct, setDataProduct] = useState({})
     const [ValueCata, setValueCata] = useState([])
     const [ValueSelect, setValueSelect] = useState("");
+    const [ValueDate, setValueDate] = useState('');
+    const dateFormat = 'YYYY-MM-DD';
     const [oldImg, setoldImg] = useState([])
     const [ResetImg, SetResetImg] = useState(0)
 
@@ -87,6 +90,8 @@ const EditProducts = () => {
             formData.append('productHot', values.productHot);
             formData.append('productSale', values.productSale);
             formData.append('oldImages', old);
+            formData.append('quantity', values.quantity);
+            formData.append('dateDebut', ValueDate);
 
             for (let i = 0; i < fileList.length; i++) {
                 formData.append('images', fileList[i].originFileObj);
@@ -131,6 +136,7 @@ const EditProducts = () => {
             setValueSelect(res.data.idCatalog);
             setoldImg(res.data.images);
             setDataProduct(res.data);
+            setValueDate(res.data.dateDebut)
             forms.reset({
                 nameProduct: res.data.nameProduct,
                 price: res.data.price,
@@ -139,6 +145,7 @@ const EditProducts = () => {
                 productHot: res.data.productHot,
                 productSale: res.data.productSale,
                 description: res.data.description,
+                quantity: res.data.quantity,
             })
         }
 
@@ -152,6 +159,12 @@ const EditProducts = () => {
         const data = newValue.filter(item => item._id != id);
         setoldImg(data)
     }
+
+    const handleChangeDate = (values) => {
+        setValueDate(values)
+    }
+
+    console.log(ValueDate);
     return (
         <div className="ProductPage">
             <PageHeader
@@ -237,6 +250,11 @@ const EditProducts = () => {
                                     <label htmlFor="nxb">Nhà Xuất Bản</label>
                                     <InputField name="nxb" type='text' form={forms}></InputField>
                                 </div>
+
+                                <div className="GroupForm">
+                                    <label htmlFor="dateDebut">Ngày Ra Mắt</label>
+                                    <DatePicker defaultValue={moment(ValueDate, dateFormat)} value={moment(ValueDate, dateFormat)} style={{ width: '100%' }} onChange={handleChangeDate} />
+                                </div>
                             </div>
 
                             <div className="BoxForm">
@@ -250,14 +268,17 @@ const EditProducts = () => {
                                     <label htmlFor="productSale">Sản phẩm Giảm Giá</label>
                                     <input name="productSale" className="CheckProducts" ref={forms.register} type="checkbox" />
                                 </div>
-
+                                <div className="GroupForm">
+                                    <label htmlFor="quantity">Số Lượng Sách</label>
+                                    <InputField name="quantity" type='text' form={forms}></InputField>
+                                </div>
                                 <div className="GroupForm">
                                     <label htmlFor="description">Mô tả</label>
                                     <textarea name="description" ref={forms.register} ></textarea>
                                 </div>
 
                                 <Button htmlType='submit'>submit</Button>
-                                <Button style={{margin:"0 10px"}} onClick={()=>SetResetImg(ResetImg + 1)} >Đặt về ban đầu</Button>
+                                <Button style={{ margin: "0 10px" }} onClick={() => SetResetImg(ResetImg + 1)} >Đặt về ban đầu</Button>
                             </div>
                         </form>
                     </div>

@@ -6,6 +6,7 @@ const Event = () => {
     const [timerHours, setTimerHours] = useState()
     const [timerMinutes, setTimerMinutes] = useState()
     const [timerSeconds, setTimerSeconds] = useState()
+    const [dataBook, setdataBook] = useState()
     let interval 
     const startTimer = () => {
         const countDownDate = new Date("February 1, 2022").getTime();

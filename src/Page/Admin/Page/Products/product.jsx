@@ -1,5 +1,5 @@
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Col, Input, Modal, PageHeader, Row, Select, Upload } from "antd";
+import { Button, Col, DatePicker, Input, Modal, PageHeader, Row, Select, Upload } from "antd";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -22,9 +22,10 @@ const uploadButton = () => {
 
 const Product = () => {
     const [ValueSelect, setValueSelect] = useState("");
+    const [ValueDate, setValueDate] = useState('');
     const [ValueCata, setValueCata] = useState([])
     const [ValuesProduct, setValuesProduct] = useState([])
-    const [render,setRender] = useState(0);
+    const [render, setRender] = useState(0);
     let history = useHistory();
 
     const forms = useForm({
@@ -60,7 +61,7 @@ const Product = () => {
     }
 
     const handleRender = () => {
-        setRender(pre=>pre+1);
+        setRender(pre => pre + 1);
     }
 
     const handleSubmitFrom = async (values) => {
@@ -76,15 +77,14 @@ const Product = () => {
             formData.append('idCatalog', ValueSelect);
             formData.append('productHot', values.productHot);
             formData.append('productSale', values.productSale);
+            formData.append('quantity', values.quantity);
+            formData.append('dateDebut', ValueDate);
 
             for (let i = 0; i < fileList.length; i++) {
                 formData.append('images', fileList[i].originFileObj);
             }
 
-            // console.log(multipleFiles);
-            // console.log(fileList);
-
-            await axios.post('https://beonlinelibrary.herokuapp.com/products/create', formData);
+            await prouctApi.AddProduct(formData);
             Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
                 if (result.isConfirmed) {
                     setRender(pre=>pre+1);
@@ -140,7 +140,11 @@ const Product = () => {
     const handleChangeUpload = ({ fileList }) => {
         setfileList(fileList)
     }
-    
+
+    const handleChangeDate = (values) => {
+        setValueDate(values)
+    }
+
     return (
         <div className="ProductPage">
             <PageHeader
@@ -209,10 +213,15 @@ const Product = () => {
                             <label htmlFor="nxb">Nhà Xuất Bản</label>
                             <InputField name="nxb" type='text' form={forms}></InputField>
                         </div>
+
+                        <div className="GroupForm">
+                            <label htmlFor="dateDebut">Ngày Ra Mắt</label>
+                            <DatePicker style={{ width: '100%' }} onChange={handleChangeDate} />
+                        </div>
                     </div>
 
                     <div className="BoxForm">
-
+                      
                         <div className="GroupForm  D-Flex">
                             <label htmlFor="productHot">Sản phẩm hot</label>
                             <input name="productHot" className="CheckProducts" ref={forms.register} type="checkbox" />
@@ -220,7 +229,12 @@ const Product = () => {
 
                         <div className="GroupForm  D-Flex">
                             <label htmlFor="productSale">Sản phẩm Giảm Giá</label>
-                            <input name="productSale"  className="CheckProducts" ref={forms.register} type="checkbox" />
+                            <input name="productSale" className="CheckProducts" ref={forms.register} type="checkbox" />
+                        </div>
+
+                        <div className="GroupForm">
+                            <label htmlFor="quantity">Số Lượng Sách</label>
+                            <InputField name="quantity" type='text' form={forms}></InputField>
                         </div>
 
                         <div className="GroupForm">

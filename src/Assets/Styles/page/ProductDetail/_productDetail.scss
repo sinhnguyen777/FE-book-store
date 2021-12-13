@@ -153,6 +153,12 @@
       margin: 15px 0 -3px;
       font-size: $txt-p;
     }
+    .description_delete {
+      @include flex(center, center);
+      letter-spacing: -0.01em;
+      padding-right: 50px;
+      font-size: 19px;
+    }
   }
 
   .comment-list {

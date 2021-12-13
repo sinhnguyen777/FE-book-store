@@ -4,8 +4,8 @@ import axiosClientAuth from "./axiosClientAuth";
 
 const commentApi={
 
-    GetComment(){
-        const url = '/comment';
+    GetComment(id){
+        const url = `/comment/idProduct/${id}`;
         const res = axiosClient.get(url)
         .then(res=>{
             return res.data;
@@ -22,15 +22,15 @@ const commentApi={
     },
     UpdateComment(data){
         const url = '/comment/edit';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
     },
     AddComment(data){
         const url = '/comment/create';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     DelComment(id){
         const url = `/comment/del/${id}`;
-        return axiosClient.delete(url)
+        return axiosClientAuth.delete(url)
     },
 };
 

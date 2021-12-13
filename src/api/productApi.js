@@ -77,7 +77,7 @@ const prouctApi={
             return res.data;
         })
         .then(data=>{
-            const getdata = data.filter(item=>item.idCatalog == id);
+            const getdata = data.filter(item=>item.idCatalog === id);
             return getdata
         })
         return res

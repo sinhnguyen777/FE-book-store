@@ -42,6 +42,35 @@
     text-align: left;
     padding: 10px 0;
 
+    .ImgOld {
+      margin-right: 10px;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      display: inline-block;
+
+      .ant-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      span.anticon.anticon-close-square {
+        position: relative;
+        top: 0;
+        transform: translate(90px, -10px);
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+      }
+    }
+
+    .TitleImg {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
     form {
       display: flex;
       justify-content: space-between;

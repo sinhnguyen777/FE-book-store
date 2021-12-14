@@ -136,7 +136,12 @@ const EditProducts = () => {
             setValueSelect(res.data.idCatalog);
             setoldImg(res.data.images);
             setDataProduct(res.data);
-            setValueDate(res.data.dateDebut)
+            if(res.data.dateDebut === null ){
+                setValueDate('')
+            }
+            else{
+                setValueDate(res.data.dateDebut)
+            }
             forms.reset({
                 nameProduct: res.data.nameProduct,
                 price: res.data.price,
@@ -163,8 +168,6 @@ const EditProducts = () => {
     const handleChangeDate = (values) => {
         setValueDate(values)
     }
-
-    console.log(ValueDate);
     return (
         <div className="ProductPage">
             <PageHeader
@@ -253,7 +256,13 @@ const EditProducts = () => {
 
                                 <div className="GroupForm">
                                     <label htmlFor="dateDebut">Ngày Ra Mắt</label>
+                                    {
+                                        ValueDate
+                                    ?
                                     <DatePicker defaultValue={moment(ValueDate, dateFormat)} value={moment(ValueDate, dateFormat)} style={{ width: '100%' }} onChange={handleChangeDate} />
+                                    :
+                                    <DatePicker style={{ width: '100%' }} onChange={handleChangeDate} />
+                                    }
                                 </div>
                             </div>
 

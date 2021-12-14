@@ -20,12 +20,12 @@ const userApi={
         })
         return res;
     },
-    UpdateCata(data){
-        const url = '/catalogs/edit';
-        return axiosClient.put(url , data)
+    Register(data){
+        const url = '/users/register';
+        return axiosClient.post(url , data)
     },
-    AddCata(data){
-        const url = '/catalogs/create';
+    Login(data){
+        const url = '/users/login';
         return axiosClient.post(url , data)
     },
     DelCata(id){

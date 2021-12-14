@@ -3,11 +3,20 @@ import {
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
 const HeaderCmp = (props) => {
     const location = useLocation();
+    const removeUserSession = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user-info');
+    }
+    let history = useHistory();
+    const handleLogout = () => {
+        removeUserSession();
+        history.push('/login');
+    }
     return (
         <div>
             <Menu
@@ -25,7 +34,7 @@ const HeaderCmp = (props) => {
                 <Menu.Item key="/account/order" icon={<ContainerOutlined />}>
                     <Link to="/account/order">Đơn hàng</Link>
                 </Menu.Item>
-                <Menu.Item icon={<LogoutOutlined />}>
+                <Menu.Item icon={<LogoutOutlined />}  onClick={handleLogout}>
                     Đăng xuất
                 </Menu.Item>
             </Menu>

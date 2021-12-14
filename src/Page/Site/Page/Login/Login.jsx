@@ -64,7 +64,7 @@ function Register() {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
+    if (localStorage.getItem("token")) {
       history.push("/account");
     }
   }, []);
@@ -141,12 +141,16 @@ function Register() {
       if (result.data[0].success === false) {
         message.error(result.data[0].error);
       } else {
-        Swal.fire('Đăng Nhập Thành Công', `Chào Mừng  đã đến với chúng tôi `, 'success');
+        Swal.fire(
+          "Đăng Nhập Thành Công",
+          `Chào Mừng  đã đến với chúng tôi `,
+          "success"
+        );
         message.success("Đăng nhập thành công");
         console.log(result);
         localStorage.setItem("user-info", JSON.stringify(result));
-        localStorage.setItem('token', result.token);
-        history.push("/");
+        localStorage.setItem("token", result.token);
+        history.push("/account");
       }
     }
   }
@@ -249,7 +253,6 @@ function Register() {
                 </Form.Item>
 
                 <div>
-                  
                   <div className="forgot">
                     <a href="#">Quên mật khẩu?</a>
                   </div>

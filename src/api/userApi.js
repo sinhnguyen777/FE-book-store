@@ -28,6 +28,10 @@ const userApi={
         const url = '/users/login';
         return axiosClient.post(url , data)
     },
+    AccessToken(data){
+        const url = '/users/verify-email';
+        return axiosClient.post(url , data)
+    },
     DelCata(id){
         const url = `/catalogs/del/${id}`;
         return axiosClientAuth.delete(url)

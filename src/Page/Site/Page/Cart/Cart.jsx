@@ -160,7 +160,7 @@ const Cart = () => {
                                 </tr>
                             </tbody>
                         </table>
-                        <Link to='/checkout' style={{ margin: '20px 0'}}type="submit" className="ButtonBanner btn">thanh toán</Link>
+                        <Link to='/' style={{ margin: '20px 0'}}type="submit" className="ButtonBanner btn">thanh toán</Link>
                     </div>
                 </div>
             </div>

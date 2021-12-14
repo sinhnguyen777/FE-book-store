@@ -132,7 +132,7 @@ const Infor = () => {
             </Col>
           </Row>
           <Row style={{marginLeft:'20px'}}>
-            <button className="btn ButtonMain">Sửa thông tin</button>
+            <button className="btn ButtonMain">Lưu</button>
           </Row>
         </Content>
       </Layout>

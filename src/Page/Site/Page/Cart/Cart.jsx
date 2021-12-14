@@ -1,24 +1,16 @@
-import { Input, Select  } from 'antd'
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Input, Select } from 'antd'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
 const { Option } = Select;
+
+
+
 function onChange(value) {
     console.log(`selected ${value}`);
-  }
-  
-  function onBlur() {
-    console.log('blur');
-  }
-  
-  function onFocus() {
-    console.log('focus');
-  }
-  
-  function onSearch(val) {
-    console.log('search:', val);
-  }
+}
 const Cart = () => {
     // const updateQuantity = (opt) => {
     //     if (opt === '+') {
@@ -30,6 +22,121 @@ const Cart = () => {
     //         // setQuantity(quantity - 1 === 0 ? 1 : quantity - 1)
     //     }
     // }
+    const [GetTinh, setGetTinh] = useState()
+    const [GetQuan, setGetQuan] = useState()
+    const [GetXa, setGetXa] = useState()
+    const [ValueQuan, setValueQuan] = useState()
+    const [ValueXa, setValueXa] = useState()
+    const [PriceShip, setPriceShip] = useState(0)
+
+    useEffect(() => {
+
+        fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/province', {
+            method: 'GET', // or 'PUT'
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setGetTinh(data.data)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [])
+
+    useEffect(() => {
+        const data = {
+            from_district_id: 1454,
+            service_id: 53321,
+            to_district_id: ValueQuan,
+            to_ward_code: ValueXa,
+            height: 50,
+            length: 20,
+            weight: 200,
+            width: 20,
+            insurance_value: 1000000
+        }
+
+        console.log(data);
+       if(ValueXa){
+        fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setPriceShip(data.data.total)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+       }
+    }, [ValueXa])
+
+    const handleGetQuan = (values) => {
+        const data = {
+            province_id: Number(values)
+        }
+        fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/district', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setGetQuan(data.data)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    const handleGetXa = (values) => {
+        const data = {
+            district_id: Number(values)
+        }
+        console.log(data.district_id);
+
+        setValueQuan(data.district_id)
+        fetch(`https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?${data.district_id}`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setGetXa(data.data)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    const handleGetPhuong = (values) => {
+        setValueXa(values)
+    }
+
     return (
         <div>
             <BannerProduct>
@@ -48,32 +155,32 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ItemCart/>
+                        <ItemCart />
                     </tbody>
-                    
+
                 </table>
-                <div className="cart-apply"  style={{display: 'flex', justifyContent: 'space-between'}}>
+                <div className="cart-apply" style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div className="cart-apply_coupon">
-                        <input style={{textAlign: 'center', margin: '10px'}} type="text" name="" id="" className="ButtonPara btn" placeholder="Mã giảm giá"/>
+                        <input style={{ textAlign: 'center', margin: '10px' }} type="text" name="" id="" className="ButtonPara btn" placeholder="Mã giảm giá" />
                         <button type="submit" className="ButtonBanner btn">áp dụng mã</button>
                     </div>
-                    <button style={{ margin: '10px 0'}}type="submit" className="ButtonBanner btn">Cập nhật giỏ hàng</button>
+                    <button style={{ margin: '10px 0' }} type="submit" className="ButtonBanner btn">Cập nhật giỏ hàng</button>
                 </div>
                 <div className="cart-form">
                     <div className="cart-form_shipping">
                         <h2>Thông tin</h2>
                         <form action="">
                             <div className="cart-form_box">
-                                <Input type="email" placeholder="Email"/>
+                                <Input type="email" placeholder="Email" />
                             </div>
                             <div className="cart-form_box">
-                                <Input type="text" placeholder="Họ và tên"/>
+                                <Input type="text" placeholder="Họ và tên" />
                             </div>
                             <div className="cart-form_box">
-                                <Input type="text" placeholder="Số điện thoại"/>
+                                <Input type="text" placeholder="Số điện thoại" />
                             </div>
                             <div className="cart-form_box">
-                                <Input type="text" placeholder="Địa chỉ"/>
+                                <Input type="text" placeholder="Địa chỉ" />
                             </div>
                             <div className="cart-form_box">
                                 <Select
@@ -81,59 +188,68 @@ const Cart = () => {
                                     style={{ width: 200 }}
                                     placeholder="Tỉnh thành"
                                     optionFilterProp="children"
-                                    onChange={onChange}
-                                    onFocus={onFocus}
-                                    onBlur={onBlur}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                    onChange={handleGetQuan}
+                                >{
+                                        GetTinh &&
+
+                                        GetTinh.map(item => (
+                                            <Option key={item.ProvinceID} value={item.ProvinceID}>{item.ProvinceName}</Option>
+                                        ))
                                     }
-                                >
-                                    <Option value="lan1">Lan1</Option>
-                                    <Option value="lan2">Lan2</Option>
-                                    <Option value="lan3">Lan3</Option>
-                                    <Option value="lan">Vậy là có 3 con lan</Option>
                                 </Select>
                             </div>
                             <div className="cart-form_box">
-                                <Select
-                                    showSearch
-                                    style={{ width: 200 }}
-                                    placeholder="Quân huyện"
-                                    optionFilterProp="children"
-                                    onChange={onChange}
-                                    onFocus={onFocus}
-                                    onBlur={onBlur}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                    }
-                                >
-                                    <Option value="lan1">Lan1</Option>
-                                    <Option value="lan2">Lan2</Option>
-                                    <Option value="lan3">Lan3</Option>
-                                    <Option value="lan">Vậy là có 3 con lan</Option>
-                                </Select>
+                                {
+                                    GetQuan
+                                        ?
+                                        <Select
+                                            showSearch
+                                            style={{ width: 200 }}
+                                            placeholder="Quân huyện"
+                                            optionFilterProp="children"
+                                            onChange={handleGetXa}
+                                        >
+                                            {GetQuan.map(item => (
+                                                <Option key={item.DistrictID} value={item.DistrictID}>{item.DistrictName}</Option>
+
+                                            ))}
+                                        </Select>
+                                        :
+                                        <Select
+                                            showSearch
+                                            style={{ width: 200 }}
+                                            placeholder="Quân huyện"
+                                            optionFilterProp="children"
+                                            disabled
+                                        />
+                                }
+
                             </div>
                             <div className="cart-form_box">
-                                <Select
-                                    showSearch
-                                    style={{ width: 200 }}
-                                    placeholder="Phường xã"
-                                    optionFilterProp="children"
-                                    onChange={onChange}
-                                    onFocus={onFocus}
-                                    onBlur={onBlur}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                                    }
-                                >
-                                    <Option value="lan1">Lan1</Option>
-                                    <Option value="lan2">Lan2</Option>
-                                    <Option value="lan3">Lan3</Option>
-                                    <Option value="lan">Vậy là có 3 con lan</Option>
-                                </Select>
+                                {
+                                    GetXa
+                                        ?
+                                        <Select
+                                            showSearch
+                                            style={{ width: 200 }}
+                                            placeholder="Phường xã"
+                                            optionFilterProp="children"
+                                            onChange={handleGetPhuong}
+                                        >
+                                            {GetXa.map(item => (
+                                                <Option key={item.WardCode} value={item.WardCode}>{item.WardName}</Option>
+
+                                            ))}
+                                        </Select>
+                                        :
+                                        <Select
+                                            showSearch
+                                            style={{ width: 200 }}
+                                            placeholder="Phường xã"
+                                            optionFilterProp="children"
+                                            disabled
+                                        />
+                                }
                             </div>
                             <div className="cart-form_box">
                                 <textarea name="" id="" placeholder="Ghi chú"></textarea>
@@ -146,21 +262,21 @@ const Cart = () => {
                             <tbody>
                                 <tr>
                                     <th>Tạm tính</th>
-                                    <td>000</td>
+                                    <td>5000</td>
                                 </tr>
                                 <tr>
                                     <th>Phí vận chuyển</th>
-                                    <td>30000</td>
+                                    <td>{PriceShip}</td>
                                 </tr>
                                 <tr>
                                     <th>Tổng</th>
                                     <td>
-                                        <strong>0000</strong>
+                                        <strong>50000</strong>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <Link to='/' style={{ margin: '20px 0'}}type="submit" className="ButtonBanner btn">thanh toán</Link>
+                        <Link to='/' style={{ margin: '20px 0' }} type="submit" className="ButtonBanner btn">thanh toán</Link>
                     </div>
                 </div>
             </div>

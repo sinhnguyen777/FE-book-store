@@ -1,69 +1,109 @@
 .ProductPage {
+  width: 100%;
+
+  .D-Flex {
+    display: flex;
+    align-items: center;
+  }
+  .ListProduct {
     width: 100%;
-    .ListProduct {
-        width: 100%;
 
-        .BoxList {
-            display: flex;
-            flex-direction: column;
+    .BoxList {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-shadow: $box-shadow;
+
+      .BoxProduct {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        background: #fff;
+        padding: 10px;
+
+        margin: 10px 0;
+
+        .imgItem {
+          width: 30%;
+          height: 100%;
+
+          img {
             width: 100%;
-            box-shadow: $box-shadow;
-
-            .BoxProduct {
-                width: 100%;
-                height: 300px;
-                display: flex;
-                background: #fff;
-                padding: 10px;
-
-                margin: 10px 0;
-
-                .imgItem {
-                    width: 30%;
-                    height: 100%;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-            }
+            height: 100%;
+            object-fit: cover;
+          }
         }
+      }
+    }
+  }
+
+  .BoxForm {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+
+    .ImgOld {
+      margin-right: 10px;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      display: inline-block;
+
+      .ant-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      span.anticon.anticon-close-square {
+        position: relative;
+        top: 0;
+        transform: translate(90px, -10px);
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+      }
     }
 
-    .BoxForm {
+    .TitleImg {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+
+      .BoxForm {
+        width: 33%;
+        background: #fff;
+        box-shadow: $box-shadow;
+        padding: 20px;
+
+        .GroupForm {
+          margin-bottom: 10px;
+          textarea {
+            width: 100%;
+            height: 200px;
+            resize: none;
+            border: 1px solid #eaeaea;
+            outline: none;
+            padding: 10px;
+          }
+
+          .CheckProducts {
+            display: inline-block;
+            position: unset;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .BoxSelect {
         width: 100%;
-        text-align: left;
-        padding: 10px 0;
-
-        form {
-            display: flex;
-            justify-content: space-between;
-
-            .BoxForm {
-                width: 33%;
-                background: #fff;
-                box-shadow: $box-shadow;
-                padding: 20px;
-
-                .GroupForm {
-                    margin-bottom: 10px;
-                    textarea {
-                        width: 100%;
-                        height: 200px;
-                        resize: none;
-                        border: 1px solid #eaeaea;
-                        outline: none;
-                        padding: 10px;
-                    }
-                }
-            }
-
-            .BoxSelect {
-                width: 100%;
-                display: block;
-            }
-        }
+        display: block;
+      }
     }
+  }
 }

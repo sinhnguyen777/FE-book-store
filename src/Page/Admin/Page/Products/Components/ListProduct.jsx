@@ -1,8 +1,27 @@
 import { Button, Image, Table } from 'antd';
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
+import prouctApi from '../../../../../api/productApi';
 
 const ListProduct = (props) => {
+
+
+  const handleDelProduct = async (id)=>{
+    try {
+
+      await prouctApi.DelProducts(id);
+
+        Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
+                if (result.isConfirmed) {
+                    props.handleRender();
+                }
+            })
+    } catch (error) {
+      console.log(error);
+      Swal.fire('...', 'Xóa Thất Bại!', 'error')
+    }
+  }
 
   const columns = [
     {
@@ -15,7 +34,6 @@ const ListProduct = (props) => {
       dataIndex: 'images',
       key: 'images',
       render: (record) => {
-        console.log(record);
         return <>
           <Image
             width={50}
@@ -54,7 +72,7 @@ const ListProduct = (props) => {
       key: 'edit',
       render: (record) => {
         return <>
-          <Button><Link to={`/`}>Sửa</Link></Button>
+          <Button><Link to={`/admin/products/edit/${record._id}`}>Sửa</Link></Button>
         </>
       },
     },
@@ -64,7 +82,7 @@ const ListProduct = (props) => {
       key: 'edit',
       render: (record) => {
         return <>
-          <Button><Link to={`/`}>Xóa</Link></Button>
+          <Button onClick={() =>handleDelProduct(record._id)}>Xóa</Button>
         </>
       },
     },

@@ -10,25 +10,25 @@ const ItemProduct = (props) => {
             {
                 data ?
                 data.map((item, index) => (
-                    <div className="ItemProduct" key={index}>
-                        <Link to="/product-detail">
+                    <div className="ItemProduct ItemProductHome" key={index}>
+                        <Link to={`/product-detail/${item.slug}`}>
                             <div className="ItemProduct_inner">
                                 <div className="ItemProduct_inner_image">
                                     <img style={{width: '100%', height: '400px'}} src={`https://beonlinelibrary.herokuapp.com/${item.images[0].image}`} alt={item.nameProduct} />
                                     <div className="ItemProduct_inner_image_sold">
-                                        {item.productHot == true ? <span className="ItemProduct_inner_image_sold1">HOT</span> : null}
-                                        {item.productSale == true ? <span className="ItemProduct_inner_image_sold1">SALE</span> : null}
+                                        {item.productHot === true ? <span className="ItemProduct_inner_image_sold1">HOT</span> : null}
+                                        {item.productSale === true ? <span className="ItemProduct_inner_image_sold1">SALE</span> : null}
                                     </div>
                                     
                                     <div className="ItemProduct_inner_image_text">
-                                        <Link to='/cart' className="ItemProduct_inner_image_text_readmore">Đọc Thêm</Link>
+                                        <Link to={`/read-book/${item._id}`} className="ItemProduct_inner_image_text_readmore">Đọc Ngay</Link>
                                     </div>
                                 </div>
                             </div>
                         
                             <div className="ItemProduct_text">
                                 <div className="ItemProduct_text_author">
-                                    <Link to='/'>{item.author}</Link>
+                                    {item.author}
                                 </div>
                                 <h5 className="ItemProduct_text_title">
                                     {item.nameProduct}

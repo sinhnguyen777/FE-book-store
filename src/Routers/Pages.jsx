@@ -6,7 +6,11 @@ import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
 import Option from '../Page/Site/Page/Option/Option';
 import About from '../Page/Site/Page/About/About';
 import Event from '../Page/Site/Page/Event/Event';
+import Readbook from '../Page/Site/Page/Readbook/Readbook';
 import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
+import Account from '../Page/Site/Page/Account/Account';
+import Login from '../Page/Site/Page/Login/Login';
+import OrderDetail from '../Page/Site/Page/OrderDetail/OrderDetail';
 
 const routes = [
     {
@@ -20,8 +24,13 @@ const routes = [
         exact: true,
     },
     {
-        path: '/product-detail/:id',
+        path: '/product-detail/:slug',
         component: ProductDetail,
+        exact: true,
+    },
+    {
+        path: '/read-book/:id',
+        component: Readbook,
         exact: true,
     },
     {
@@ -52,6 +61,21 @@ const routes = [
     {
         path: '/event',
         component: Event,
+        exact: true,
+    },
+    {
+        path: '/login',
+        component: Login,
+        exact: true,
+    },
+    {
+        path: '/account',
+        component: Account,
+        exact: true,
+    },
+    {
+        path: '/order-detail/:id',
+        component: OrderDetail,
         exact: true,
     },
 ];

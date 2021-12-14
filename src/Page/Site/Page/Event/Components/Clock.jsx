@@ -9,19 +9,19 @@ const Clock = ({timerDays,timerHours,timerMinutes,timerSeconds}) => {
                     <div className="clock">
                         <section>
                             <p>{timerDays}</p>
-                            <small>Days</small>
+                            <small>Ngày</small>
                         </section>
                         <section>
                             <p>{timerHours}</p>
-                            <small>Hours</small>
+                            <small>Giờ</small>
                         </section>
                         <section>
                             <p>{timerMinutes}</p>
-                            <small>Minutes</small>
+                            <small>Phút</small>
                         </section>
                         <section>
                             <p>{timerSeconds}</p>
-                            <small>Seconds</small>
+                            <small>Giây</small>
                         </section>
                     </div>
                 </section>

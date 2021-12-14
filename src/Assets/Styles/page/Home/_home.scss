@@ -10,7 +10,7 @@
         &_categories{
             width: 100%;
             padding-top: 150px;
-            padding-bottom: 110px;
+            // padding-bottom: 110px;
 
             &_list{
                 width: 100%;
@@ -176,6 +176,9 @@
             padding: 0 15px;
         }
     }
+}
+.ant-tabs-tabpane .ItemProductHome{
+    width: 20% ;
 }
 @keyframes showBox {
     from {

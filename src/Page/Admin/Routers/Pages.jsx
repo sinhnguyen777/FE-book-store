@@ -10,7 +10,7 @@ import Vip from "../Page/Vip/Vip";
 import EditVip from "../Page/Vip/pages/editVip";
 import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
-import Member from "../Page/Member";
+import EditProducts from "../Page/Products/pages/EditProducts";
 
 
 
@@ -35,6 +35,11 @@ const routes = [
         exact: true,
     },
     {
+        path: '/admin/products/edit/:id',
+        component: EditProducts,
+        exact: true,
+    },
+    {
         path: '/admin/products/Listchapter/:id',
         component: Chapter,
         exact: true,
@@ -52,8 +57,6 @@ const routes = [
     {
         path: '/admin/permission/edit/:id',
         component: EditPermission,
-        exact: true,
-
     },
     {
         path: '/admin/order',
@@ -62,21 +65,10 @@ const routes = [
     },
     {
         path: '/admin/role',
-        exact: true,
         component: Role,
     },
     {
-        path: '/admin/role/edit/:id',
-        component: EditPermission,
-        exact: true,
-    },
-    {
-        path: '/admin/member',
-        exact: true,
-        component: Member,
-    },
-    {
-        path:'/admin/vip',
+        path: '/admin/vip',
         component: Vip,
         exact: true,
     },
@@ -84,6 +76,8 @@ const routes = [
         path: '/admin/vip/edit/:id',
         component: EditVip,
     }
+    
+
 ];
 
 export default routes;

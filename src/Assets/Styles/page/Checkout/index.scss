@@ -1,50 +1,50 @@
 .layout {
-  padding: 80px 80px;
-  background: none;
-  @include tablet {
-    padding: 80px 70px;
-  }
-  @include tablets {
-    padding: 80px 25px;
-  }
-  .layout_product_detail {
-    padding: "0 22px 0 0" !important;
-  }
-  .woocommerce {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding: 20px 30px;
-    margin: 0 0 30px;
-    line-height: 50px;
-    list-style: none;
-    background-color: transparent;
-    border: 1px solid #e1e1e1;
-    p {
-      margin: 0;
-      font-size: $txt-p;
+    padding: 80px 80px;
+    background: none;
+    @include tablet {
+      padding: 80px 70px;
+    }
+    @include tablets {
+      padding: 80px 25px;
+    }
+    .layout_product_detail {
+      padding: "0 22px 0 0" !important;
+    }
+    .woocommerce {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 20px 30px;
+      margin: 0 0 30px;
+      line-height: 50px;
+      list-style: none;
+      background-color: transparent;
+      border: 1px solid #e1e1e1;
+      p {
+        margin: 0;
+        font-size: $txt-p;
+      }
+    }
+    .form_checkout {
+      h3 {
+        font-size: 30px;
+      }
+      table {
+        font-size: $txt-p;
+      }
+      p {
+        font-size: $txt-p;
+      }
+      button {
+        background-color: #d14031;
+        padding: 9px 27px 5px 32px;
+        border: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
+        font-weight: 400;
+        border-radius: 0;
+        font-size: 12px;
+        font-family: "Josefin Sans",sans-serif;
+      }
     }
   }
-  .form_checkout {
-    h3 {
-      font-size: 30px;
-    }
-    table {
-      font-size: $txt-p;
-    }
-    p {
-      font-size: $txt-p;
-    }
-    button {
-      background-color: #d14031;
-      padding: 9px 27px 5px 32px;
-      border: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      font-weight: 400;
-      border-radius: 0;
-      font-size: 12px;
-      font-family: "Josefin Sans",sans-serif;
-    }
-  }
-}

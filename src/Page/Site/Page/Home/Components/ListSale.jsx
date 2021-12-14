@@ -2,18 +2,26 @@ import React, { useEffect, useState } from 'react'
 import prouctApi from '../../../../../api/productApi'
 import ItemProduct from '../../ListProduct/Components/ItemProduct'
 const ListSale = () => {
-    const [productSale, setProductSale] = useState([])
+    const [DataHot, setDataHot] = useState([]);
+
     useEffect(() => {
-       const fetchProductSale = async () => {
-           const res = await prouctApi.GetProductsSale()
-           setProductSale(res)
-       }
-       fetchProductSale()
+        const filter = {
+            productSale:true
+        }
+        const fetchProductHot = async (filter) =>{
+
+            const res = await prouctApi.GetProducts(filter);
+            setDataHot(res.data);
+        }
+
+        fetchProductHot(filter)
     }, [])
-    console.log(productSale);
+
+    const data = DataHot.slice(0,5);
+    console.log(data);
     return (
         <div className="List-product">
-            <ItemProduct data={productSale.data}/>
+            <ItemProduct data={data}/>
     
         </div>
     )

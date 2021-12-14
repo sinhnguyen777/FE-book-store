@@ -4,16 +4,23 @@ import ItemProduct from '../../ListProduct/Components/ItemProduct'
 const ListNew = () => {
     const [productNew, setProductNew] = useState([])
     useEffect(() => {
-       const fetchProductNew = async () => {
-            const res = await prouctApi.GetProducts()
-            setProductNew(res)
-       }
-       fetchProductNew()
+        const filter =  {
+            createdAt:""
+        }
+        const fetchProductHot = async (filter) =>{
+
+            const res = await prouctApi.GetProducts(filter);
+            setProductNew(res.data);
+        }
+
+        fetchProductHot(filter)
     }, [])
-    console.log(productNew);
+
+    const data = productNew.slice(0,5);
+    console.log(data);
     return (
         <div className="List-product">
-            <ItemProduct data={productNew.data}/>
+            <ItemProduct data={data}/>
         
         </div>
     )

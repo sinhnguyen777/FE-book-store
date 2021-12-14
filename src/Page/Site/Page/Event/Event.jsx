@@ -6,9 +6,11 @@ const Event = () => {
     const [timerHours, setTimerHours] = useState()
     const [timerMinutes, setTimerMinutes] = useState()
     const [timerSeconds, setTimerSeconds] = useState()
+    const [dataBook, setdataBook] = useState()
     let interval 
     const startTimer = () => {
-        const countDownDate = new Date("February 30, 2022 ").getTime()
+        const countDownDate = new Date("February 1, 2022").getTime();
+        console.log(countDownDate);
         interval = setInterval(() => {
             const now = new Date().getTime()
             const distance = countDownDate - now 

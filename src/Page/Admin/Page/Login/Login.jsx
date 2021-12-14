@@ -34,7 +34,6 @@ const LoginAd = () => {
         console.log(res.data.data[0].fullName);
         }
         catch(err){
-            console.log(1);
             Swal.fire('Đăng Nhập Thất Bại', 'Tên đăng nhập hoặc mật khẩu không chính xác vui lòng kiểm tra lại', 'error');
             console.log(err);
         }

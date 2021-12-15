@@ -1,42 +1,45 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { removeFormCart } from "../cartSlide";
 
 const ItemCart = (props) => {
-    
-    
-    return (
-        <>
-            <tr className="cart-item">
-                <td className="cart-product-remove">x</td>
-                <td className="cart-product-image">
-                    <Link to='/'>
-                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-4-600x829.jpg" alt="" />
-                    </Link>
-                </td>
-                <td className="cart-product-name">
-                    <Link to='/'>
-                        Ho Thi lan
-                    </Link>
-                </td>
-                <td className="cart-product-price">000</td>
-                <td className="cart-product-quantity">
-                    <div className="cart-product-quantity_item">
-                        <div className="cart-product-quantity_item_btn">
-                            -
-                        </div>
-                        <div className="cart-product-quantity_item_input">
-                            {/* {quantity} */} 1
-                        </div>
-                        <div className="cart-product-quantity_item_btn">
-                            +
-                    </div>
-                </div>
-                </td>
-                <td className="cart-product-total">000</td>
-            </tr>
-        </>
-    )
-}
+  const { item } = props;
+  const dispatch = useDispatch();
+  const remove = (id) => {
+    const action = removeFormCart(id);
+    console.log(action);
+    dispatch(action);
+  };
 
-export default ItemCart
+  return (
+    <>
+      <tr className="cart-item">
+        <td className="cart-product-remove" onClick={()=>{remove(item.id)}}>x</td>
+        <td className="cart-product-image">
+          <Link to="/">
+            <img
+              src={`https://beonlinelibrary.herokuapp.com/${item.productDetail.images[0].image}`}
+              alt={item.productDetail.nameProduct}
+            />
+          </Link>
+        </td>
+        <td className="cart-product-name">
+          <Link to="/">{item.productDetail.nameProduct}</Link>
+        </td>
+        <td className="cart-product-price">{item.productDetail.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+        <td className="cart-product-quantity">
+          <div className="cart-product-quantity_item">
+            <div className="cart-product-quantity_item_input">
+                {item.quantity}
+            </div>
+          </div>
+        </td>
+        <td className="cart-product-total">{(item.quantity*item.productDetail.price).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+      </tr>
+    </>
+  );
+};
+
+export default ItemCart;

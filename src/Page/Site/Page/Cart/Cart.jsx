@@ -1,8 +1,10 @@
-import { Input, Select  } from 'antd'
+import { Empty, Input, Select  } from 'antd'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
+import { cartItemTotalSelector } from './selector'
 const { Option } = Select;
 function onChange(value) {
     console.log(`selected ${value}`);
@@ -20,16 +22,10 @@ function onChange(value) {
     console.log('search:', val);
   }
 const Cart = () => {
-    // const updateQuantity = (opt) => {
-    //     if (opt === '+') {
-    //         dispatch(updateItem({...item, quantity: quantity + 1}))
-    //         // setQuantity(quantity + 1)
-    //     }
-    //     if (opt === '-') {
-    //         dispatch(updateItem({...item, quantity: quantity - 1 === 0 ? 1 : quantity - 1}))
-    //         // setQuantity(quantity - 1 === 0 ? 1 : quantity - 1)
-    //     }
-    // }
+    const totalCart = useSelector(cartItemTotalSelector);
+    const listCart = useSelector(state => state.cart);
+    console.log(listCart.cartItem);
+    
     return (
         <div>
             <BannerProduct>
@@ -48,7 +44,14 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ItemCart/>
+                    {
+                        listCart.cartItem.length === 0?
+                            <tbody className="Emty"><Empty /></tbody>
+                        :
+                        listCart.cartItem.map(item=>(
+                            <ItemCart item={item}></ItemCart>
+                        ))
+                    }
                     </tbody>
                     
                 </table>
@@ -146,7 +149,7 @@ const Cart = () => {
                             <tbody>
                                 <tr>
                                     <th>Tạm tính</th>
-                                    <td>000</td>
+                                    <td>{totalCart.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
                                 </tr>
                                 <tr>
                                     <th>Phí vận chuyển</th>

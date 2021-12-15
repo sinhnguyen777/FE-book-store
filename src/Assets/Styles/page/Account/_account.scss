@@ -85,6 +85,8 @@
 }
 
 .acount-list-item {
+  display: flex;
+  flex-wrap: wrap;
   .ant-list-items {
     display: flex;
     padding-left: 65px;
@@ -109,10 +111,10 @@
 
 .Thongtin .Item {
   padding: 20px;
-  p{
+  p {
     font-size: 20px;
   }
-  input{
+  input {
     padding: 10px;
   }
 }

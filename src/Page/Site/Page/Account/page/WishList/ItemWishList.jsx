@@ -8,7 +8,6 @@ import wishlistApi from "../../../../../../api/wishlistApi";
 
 const ItemWishList = (props) => {
   const { data, idUser } = props;
-  const [demo, setdemo] = useState('')
   const [product, setproduct] = useState();
   useEffect(() => {
     const fetchDataUser = async (idProduct) => {
@@ -20,38 +19,46 @@ const ItemWishList = (props) => {
   }, []);
   let history = useHistory();
 
-  const handleRemove = async (idUser, id)=>{
+  const handleRemove = async (idUser, id) => {
     try {
-        const list = {
-            idUser: idUser,
-            id: id
-        }
-        const res = await wishlistApi.DelWishList(list);
-        if (res.status === 200) {
-            Swal.fire('Xóa khỏi danh sách sản phẩm yêu thích', 'Xóa Thành Công!', 'success').then((result) => {
-                if (result.isConfirmed) {
-                    setdemo(pre=>pre+1);
-                    history.push({ pathname: '/account/wish-list' })
-                }
-            })
-        }
+      const list = {
+        idUser: idUser,
+        id: id,
+      };
+      const res = await wishlistApi.DelWishList(list);
+      if (res.data.code === "200") {
+        Swal.fire(
+          "Xóa Thành Công!",
+          "Xóa khỏi danh sách sản phẩm yêu thích",
+          "success"
+        ).then((result) => {
+          if (result.isConfirmed) {
+            props.handleRender();
+            history.push({ pathname: "/account/wish-list" });
+          }
+        });
+      } else {
+        Swal.fire("Mày là hacker đúng ko ", "đéo xóa được đâu", "error");
+      }
     } catch (err) {
-        console.log(err);
-        Swal.fire('Ôi lỗi rồi', 'Xóa thất bại', 'error').then((result) => {
-            if (result.isConfirmed) {
-                setdemo(pre=>pre+1);
-                history.push('/account/wish-list')
-            }
-        })
+      console.log(err);
+      Swal.fire("Ôi lỗi rồi", "Xóa thất bại", "error").then((result) => {
+        if (result.isConfirmed) {
+          history.push("/account/wish-list");
+        }
+      });
     }
-}
+  };
   return (
     <>
       {product ? (
         <div className="ItemWishList ItemProduct">
-            <button className="ItemWishList_delete" onClick={() => handleRemove()}>
-                <CloseCircleOutlined />
-            </button>
+          <button
+            className="ItemWishList_delete"
+            onClick={() => handleRemove(idUser, data._id)}
+          >
+            <CloseCircleOutlined />
+          </button>
           <Link to={`/product-detail/${product.slug}`}>
             <div className="ItemProduct_inner">
               <div className="ItemProduct_inner_image">

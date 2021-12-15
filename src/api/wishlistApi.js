@@ -14,7 +14,7 @@ const wishlistApi={
     },
     DelWishList(data){
         const url = '/wishlish/del/';
-        return axiosClientAuth.delete(url,data)
+        return axiosClientAuth.delete(url,{params: data})
     },
 };
 

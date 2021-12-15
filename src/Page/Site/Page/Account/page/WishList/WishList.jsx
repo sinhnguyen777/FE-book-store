@@ -9,6 +9,8 @@ const WishList = () => {
     else return null;
   };
 
+  const [Render, setRender] = useState(0);
+
   const user = getUser();
   const [wishList, setwishList] = useState([]);
   const idUser = user.data[0]._id;
@@ -19,15 +21,24 @@ const WishList = () => {
       };
       const res = await wishlistApi.GetWishlist(data);
       setwishList(res.data);
-      
     };
     fetchWishList();
-  }, []);
+  }, [Render]);
+
+  const handleRender = () => {
+    setRender(Render + 1);
+  };
   return (
     <div className="acount-list-item">
-        {wishList
-          ? wishList.map((item) => <ItemWishList idUser={idUser} data={item} />)
-          : ""}
+      {wishList
+        ? wishList.map((item) => (
+            <ItemWishList
+              idUser={idUser}
+              data={item}
+              handleRender={handleRender}
+            />
+          ))
+        : ""}
     </div>
   );
 };

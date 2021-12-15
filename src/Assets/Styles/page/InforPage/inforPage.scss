@@ -7,9 +7,9 @@
   .ContentPage {
     overflow-y: auto;
   }
-  .ItemWishList{
+  .ItemWishList {
     width: 25%;
-    &_delete{
+    &_delete {
       position: absolute;
       top: -20px;
       right: 4px;
@@ -19,14 +19,39 @@
       outline: none;
       background: none;
       border: 0;
+      cursor: pointer;
     }
   }
-  .ItemWishList:hover .ItemWishList_delete{
+  .ItemWishList:hover .ItemWishList_delete {
     display: block;
   }
-  .InforOrder{
+  .InforOrder {
     display: block;
     width: 100%;
     padding: 20px;
+    table{
+      text-transform: none;
+      tbody{
+        tr{
+          th{
+            width: 15%;
+          }
+        }
+      }
+    }
+    
+  }
+  .OrderInforList{
+    width: 100%;
+    .OrderInforQuantity{
+      color: $black;
+      font: 18px;
+    }
+    .OrderInforPrice{
+      color: $black;
+      font-size: 20px;
+      font-weight: 600;
+    }
   }
 }
+

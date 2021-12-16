@@ -11,6 +11,7 @@ import EditVip from "../Page/Vip/pages/editVip";
 import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 import EditProducts from "../Page/Products/pages/EditProducts";
+import Member from "../Page/Member";
 
 
 
@@ -66,6 +67,10 @@ const routes = [
     {
         path: '/admin/role',
         component: Role,
+    },
+    {
+        path: '/admin/Member',
+        component: Member,
     },
     {
         path: '/admin/vip',

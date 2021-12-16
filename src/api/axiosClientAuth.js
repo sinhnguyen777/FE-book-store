@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClientAuth = axios.create({
-    baseURL: 'http://localhost:5000/',
+    baseURL: 'https://beonlinelibrary.herokuapp.com',
     // https://beonlinelibrary.herokuapp.com
     headers: {
         'Content-Type' : 'application/json',

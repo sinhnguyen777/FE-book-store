@@ -1,9 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Input, Select } from 'antd'
-import React, { useState, useEffect } from 'react'
+
+import { Empty, Input, Select  } from 'antd'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
+import { cartItemTotalSelector } from './selector'
 const { Option } = Select;
 
 
@@ -137,6 +139,10 @@ const Cart = () => {
         setValueXa(values)
     }
 
+    const totalCart = useSelector(cartItemTotalSelector);
+    const listCart = useSelector(state => state.cart);
+    console.log(listCart.cartItem);
+
     return (
         <div>
             <BannerProduct>
@@ -155,7 +161,14 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ItemCart />
+                    {
+                        listCart.cartItem.length === 0?
+                            <tbody className="Emty"><Empty /></tbody>
+                        :
+                        listCart.cartItem.map(item=>(
+                            <ItemCart item={item}></ItemCart>
+                        ))
+                    }
                     </tbody>
 
                 </table>
@@ -262,7 +275,8 @@ const Cart = () => {
                             <tbody>
                                 <tr>
                                     <th>Tạm tính</th>
-                                    <td>5000</td>
+
+                                    <td>{totalCart.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
                                 </tr>
                                 <tr>
                                     <th>Phí vận chuyển</th>

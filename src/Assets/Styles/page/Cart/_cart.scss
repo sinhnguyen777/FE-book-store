@@ -25,6 +25,9 @@
     }
   }
   tbody {
+    .Emty{
+      @include flex(center, center);
+    }
     tr {
       border: 0;
       td {
@@ -36,6 +39,7 @@
       .cart-product-remove {
         padding-left: 10px;
         padding-right: 10px;
+        cursor: pointer;
       }
       .cart-product-image {
         width: 86px;
@@ -47,7 +51,6 @@
           width: 100px;
           @include flex(center, center);
           padding: 10px;
-          border: 1px solid #999;
           &_input {
             margin: 0 20px;
           }

@@ -1,6 +1,6 @@
 import Home from "../page/InforPage/index";
-import Order from "../page/Order/index";
-import WishList from "../page/WishList/index";
+import Order from "../page/Order/Order";
+import WishList from "../page/WishList/WishList";
 
 
 const routes = [

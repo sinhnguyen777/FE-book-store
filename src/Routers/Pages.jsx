@@ -6,7 +6,8 @@ import Event from "../Page/Site/Page/Event/Event";
 import Home from "../Page/Site/Page/Home/Home";
 import ProductCategory from "../Page/Site/Page/ListProduct/Components/ProductCategory";
 import ListProduct from "../Page/Site/Page/ListProduct/ListProduct";
-import Confirm from "../Page/Site/Page/Login/Confirm";
+import ConfirmRegister from "../Page/Site/Page/Login/Confirm";
+import ConfirmOrder from "../Page/Site/Page/OrderDetail/Confirm";
 import Login from "../Page/Site/Page/Login/Login";
 import Option from "../Page/Site/Page/Option/Option";
 import OrderDetail from "../Page/Site/Page/OrderDetail/OrderDetail";
@@ -75,13 +76,18 @@ const routes = [
     exact: false,
   },
   {
-    path: "/order-detail/",
+    path: "/order-detail/:id",
     component: OrderDetail,
     exact: true,
   },
   {
     path: "/confirm/:token",
-    component: Confirm,
+    component: ConfirmRegister,
+    exact: false,
+  },
+  {
+    path: "/order/confirm/:token",
+    component: ConfirmOrder,
     exact: false,
   },
 ];

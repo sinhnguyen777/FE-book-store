@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { Bar } from 'react-chartjs-2'
+import statisticalApi from "../../../../../api/statistical";
 
 const BoxChart =  () =>{
 
+    const [Datalabels, setDatalabels] = useState([])
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+       const fetchGetChart = async () => {
+            const res = await statisticalApi.GetDataChart();
+            res.data.map(item=>{
+                const newData = data;
+                newData.push(item.Total)
+                const newDatalabels = Datalabels
+                newDatalabels.push(`${item._id.Date}-${item._id.Month}`)
+                setData(newData); 
+                setDatalabels(newDatalabels)
+            })
+       }
+       fetchGetChart()
+    }, [])
+
+
     return(
         <div className="BoxChart">
-            <h1>Biểu đồ theo đơn hàng theo ngày</h1>
+            <h1>Biểu đồ đơn hàng theo ngày</h1>
             <Bar
                 data= {{
-                    labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+                    labels: Datalabels,
                     datasets: [{
                         label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        data:data,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

@@ -151,20 +151,11 @@ function Register() {
       avatar: avatar,
       blockMail: false,
     };
-    let result = await fetch(
-      "https://beonlinelibrary.herokuapp.com/users/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(item),
-      }
-    );
-    console.log(avatar);
+    console.log(item);
+    let result = await userApi.Register(item)
+    
+    console.log(result);
   }
-
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select

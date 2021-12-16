@@ -3,6 +3,15 @@ import axiosClient from "./axiosCilent";
 
 const adminApi={
 
+    GetAll(filter){
+        const url = '/admins/';
+        console.log(filter);
+        const res = axiosClient.get(url,{ params: filter })
+            .then(res => {
+                return res.data;
+            })
+        return res
+    },
     Register(data){
         const url = '/admins/register';
         return axiosClient.post(url , data)

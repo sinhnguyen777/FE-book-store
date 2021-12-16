@@ -7,6 +7,7 @@ import RelatedProducts from "./Components/RelatedProducts";
 import Comments from "./Components/Comments";
 import { useRouteMatch } from "react-router";
 import prouctApi from "../../../../api/productApi";
+import wishlistApi from "../../../../api/wishlistApi";
 
 import {
   CheckOutlined,
@@ -16,15 +17,35 @@ import {
 import Slider from "react-slick";
 import { useDispatch } from "react-redux";
 import { addtoCart } from "../Cart/cartSlide";
+import Swal from "sweetalert2";
 
 export default function ProductDetail() {
+  const dispatch = useDispatch();
+
   const [visible, setVisible] = useState(false);
+
   const [like, setLike] = useState(false);
-  const handleClickLike = () => {
-    setLike(!like);
-  };
+
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+
+  const [count, setCount] = useState(1);
+
+  
+
+  const [wishList, setwishList] = useState([]);
+
   const match = useRouteMatch();
   const [productDetail, setProductDetail] = useState();
+
+  const getUser = () => {
+    const userStr = localStorage.getItem("user-info");
+    if (userStr) return JSON.parse(userStr);
+    else return null;
+  };
+  const user = getUser();
+  const idUser = user.data[0]._id;
+
   useEffect(() => {
     const slug = match.params.slug;
     const fetchProductID = async () => {
@@ -33,13 +54,6 @@ export default function ProductDetail() {
     };
     fetchProductID(slug);
   }, []);
-  // console.log(productDetail);
-
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-  const dispatch = useDispatch();
-
-  const [count, setCount] = useState(1);
 
   const handleAddtocart = (productDetail) => {
     console.log("SubmitCart", productDetail);
@@ -48,10 +62,40 @@ export default function ProductDetail() {
       productDetail,
       quantity: count,
     });
-    // console.log(action);
     dispatch(action);
   };
-  console.log(productDetail);
+  const handleClickLike = async (idUser, idProduct) => {
+    try {
+      const data = {
+        idUser: idUser,
+        idProduct: idProduct,
+      };
+      const res = await wishlistApi.AddWishlist(data);
+      setwishList(res.data);
+      setLike(!like);
+      if (res.data.code === "200") {
+        Swal.fire(
+          "Thêm vào sản sản phẩm yêu thích",
+          "Thêm Thành Công!",
+          "success"
+        );
+      } else {
+        Swal.fire(
+          "Lỗi",
+          "Thêm Thất bại, sản phẩm đã có trong danh sách yêu thích!",
+          "error"
+        );
+      }
+      console.log(res);
+    } catch (err) {
+      Swal.fire(
+        "Ôi lỗi rồi",
+        "Thêm thất bại, sản phẩm đã có trong danh sách yêu thích!",
+        "error"
+      );
+    }
+  };
+  const idProduct = productDetail ? productDetail._id : "";
   return (
     <div style={{ width: "100%" }}>
       <BannerProduct>
@@ -174,23 +218,9 @@ export default function ProductDetail() {
                 </button>
 
                 <span className="btn-heart" style={{ marginLeft: "40px" }}>
-                  {like ? (
-                    <button
-                      onClick={handleClickLike}
-                      className="btn-heart_true"
-                    >
-                      {" "}
-                      <HeartOutlined />{" "}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handleClickLike}
-                      className="btn-heart_false"
-                    >
-                      {" "}
-                      <HeartOutlined />{" "}
-                    </button>
-                  )}
+                  <button onClick={() => handleClickLike(idUser, idProduct)}>
+                    <HeartOutlined />
+                  </button>
                 </span>
                 <div className="description_product_detail">
                   <p

@@ -1,24 +1,8 @@
-import { Image, List, Tabs, Avatar, Space } from "antd";
-import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { Image, Tabs} from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 const { TabPane } = Tabs;
-const listData = [];
-for (let i = 0; i < 10; i++) {
-  listData.push({
-    href: "https://ant.design",
-    title: `ant design part ${i}`,
-    price: 100000,
-    quantity: 1,
-  });
-}
 
-const IconText = ({ icon, text }) => (
-  <Space>
-    {React.createElement(icon)}
-    {text}
-  </Space>
-);
 const Order = () => {
   return (
     <>

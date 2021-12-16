@@ -3,6 +3,7 @@ import $ from "jquery";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
+import userApi from "../../../../api/userApi";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -64,19 +65,32 @@ function Register() {
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      history.push("/account");
-    }
-  }, []);
+    const fetchAccessToken = async () => {
+      try {
+        const adminToken = await localStorage.getItem("token");
+        const data = {
+          token: adminToken,
+        };
+        const res = await userApi.AccessToken(data);
+        history.push("/account");
+      } catch (err) {
+        console.log(err);
+        const adminToken = await localStorage.getItem("token");
+        if (adminToken) {
+          Swal.fire(
+            "Phiên đăng nhập hết hạn",
+            "vui lòng đăng nhập lại",
+            "error"
+          );
+          history.push("/login");
+        } else {
+          history.push("/login");
+        }
+      }
+    };
 
-  // form token
-  const handleOk = () => {
-    setConfirmLoading(true);
-    setTimeout(() => {
-      // Chọn OK và xác thực
-      authen();
-    }, 1000);
-  };
+    fetchAccessToken();
+  }, []);
 
   const handleCancel = () => {
     setVisible(false);
@@ -89,36 +103,6 @@ function Register() {
   }
 
   //  Asset Token
-  async function authen() {
-    let code = { token };
-    let result = await fetch(
-      "https://beonlinelibrary.herokuapp.com/users/verify-email",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(code),
-      }
-    );
-    if (result.status === 200) {
-      result = await result.json();
-      console.log(result);
-      if (result.code === "200") {
-        resetForm(); // reset form
-        setVisible(false); //đóng form
-        message.success(result.message); // success từ message BE
-      } else {
-        message.error(result.message); //  fail! từ message BE
-        setConfirmLoading(false); // stop loading
-      }
-    } else {
-      message.error("Mã xác thực không đúng"); // Add user fail! từ message BE
-      setConfirmLoading(false); // stop loading
-    }
-  }
-
   //Login
   async function logIn(e) {
     e.preventDefault();
@@ -167,6 +151,17 @@ function Register() {
       avatar: avatar,
       blockMail: false,
     };
+    let result = await fetch(
+      "https://beonlinelibrary.herokuapp.com/users/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
     console.log(avatar);
   }
 
@@ -393,7 +388,6 @@ function Register() {
                 <Modal
                   title="Vui lòng kiểm tra Email và nhập mã xác thực"
                   visible={visible}
-                  onOk={handleOk}
                   confirmLoading={confirmLoading}
                   onCancel={handleCancel}
                 >

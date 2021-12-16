@@ -12,6 +12,10 @@ const wishlistApi={
         })
         return res
     },
+    AddWishlist(data){
+        const url = '/wishlish/create';
+        return axiosClientAuth.post(url , data)
+    },
     DelWishList(data){
         const url = '/wishlish/del/';
         return axiosClientAuth.delete(url,{params: data})

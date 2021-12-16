@@ -1,6 +1,6 @@
 
 import { Empty, Input, Select  } from 'antd'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { BannerProduct } from '../../Components/Common/Banner/banner'

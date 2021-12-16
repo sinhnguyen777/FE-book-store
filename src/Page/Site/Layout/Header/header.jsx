@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../../../Assets/Images/logo.png'
 import { BarsOutlined, CloseOutlined, SearchOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
-import { Drawer } from 'antd';
+import { Badge, Drawer } from 'antd';
 import CartHeader from './cartHeader';
 import { useForm } from 'react-hook-form';
 import prouctApi from '../../../../api/productApi';
+import { useSelector } from 'react-redux';
+import { cartItemCountSelector } from '../../Page/Cart/selector';
 
 const mainNav = [
     {
@@ -79,6 +81,7 @@ const Header = () => {
         const res = await prouctApi.GetProductsByauthor(search);
         console.log(res);
     }
+    const cartItemCount = useSelector(cartItemCountSelector)
     return (
         <header className="header" ref={headerRef}>
             <div className="header_container">
@@ -114,7 +117,10 @@ const Header = () => {
                             <SearchOutlined />
                         </div>
                         <div className="header_menu_item header_menu_right_item" onClick={showDrawer}>
+                        <Badge count={cartItemCount} className="badgecart">
                             <ShoppingOutlined />
+                        </Badge>
+                           
                         </div>
                         <div className="header_menu_item header_menu_right_item">
                             <Link to='/login'>

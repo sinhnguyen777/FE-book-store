@@ -24,7 +24,7 @@ const Order = () => {
   };
   return (
     <div className="CatalogsPage">
-      <PageHeader className="site-page-header" title="Trang Danh mục" />
+      <PageHeader className="site-page-header" title="Trang Đơn hàng" />
 
       <Row className="ListCata">
         <Col span={24}>

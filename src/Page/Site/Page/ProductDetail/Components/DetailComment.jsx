@@ -56,7 +56,7 @@ function DetailComment(props) {
           avatar={
             <Avatar
               className="avatar_comment"
-              src="https://vcdn-vnexpress.vnecdn.net/2021/09/24/lisa-6874-1632475092.jpg"
+              src={`https://beonlinelibrary.herokuapp.com/${DataUser.avatar}`}
               alt="Han Solo"
               size={{
                 xs: 24,
@@ -75,7 +75,7 @@ function DetailComment(props) {
                 <p className="description_comment">{data.content}</p>
                 
               </div>
-              <div onClick={() => handleRemove(data._id)} className="description_delete">Xóa</div>
+              {/* <div onClick={() => handleRemove(data._id)} className="description_delete">Xóa</div> */}
             </div>
           }
         />

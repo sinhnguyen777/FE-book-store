@@ -1,16 +1,16 @@
+import About from '../Page/Site/Page/About/About';
+import InforPage from '../Page/Site/Page/Account';
 import Cart from '../Page/Site/Page/Cart/Cart';
+import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
+import Event from '../Page/Site/Page/Event/Event';
 import Home from '../Page/Site/Page/Home/Home';
 import ProductCategory from '../Page/Site/Page/ListProduct/Components/ProductCategory';
 import ListProduct from '../Page/Site/Page/ListProduct/ListProduct';
-import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
-import Option from '../Page/Site/Page/Option/Option';
-import About from '../Page/Site/Page/About/About';
-import Event from '../Page/Site/Page/Event/Event';
-import Readbook from '../Page/Site/Page/Readbook/Readbook';
-import Checkout from '../Page/Site/Page/Checkout/index.Checkout';
-import Account from '../Page/Site/Page/Account/Account';
 import Login from '../Page/Site/Page/Login/Login';
+import Option from '../Page/Site/Page/Option/Option';
 import OrderDetail from '../Page/Site/Page/OrderDetail/OrderDetail';
+import ProductDetail from '../Page/Site/Page/ProductDetail/index.productDetail';
+import Readbook from '../Page/Site/Page/Readbook/Readbook';
 
 const routes = [
     {
@@ -70,8 +70,8 @@ const routes = [
     },
     {
         path: '/account',
-        component: Account,
-        exact: true,
+        component: InforPage,
+        exact: false,
     },
     {
         path: '/order-detail/:id',

@@ -1,41 +1,71 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { ButtonCart, ButtonCheckout } from '../../Components/Common/Button/Button'
-import { CloseCircleOutlined } from '@ant-design/icons';
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import {
+  ButtonCart,
+  ButtonCheckout,
+} from "../../Components/Common/Button/Button";
+import { CloseCircleOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { Empty } from "antd";
+import { removeFormCart } from "../../Page/Cart/cartSlide";
 
 const CartHeader = () => {
-    
-    return (
-        <>
-            <div className="CartHeaderItem">
-                <div className="CartHeaderItem_image">
-                    <Link to='/'>
-                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-3-600x829.jpg" alt="" />
-                    </Link>
-                </div>
-                <div className="CartHeaderItem_content">
-                    <h6 className="CartHeaderItem_content_title">
-                        <Link to='/'>đắc nhân tâm</Link>
-                    </h6>
-                    <p className="CartHeaderItem_content_price">
-                        1 x 
-                        <span className="CartHeaderItem_content_amount">1.000 VNĐ</span>
-                    </p>
-                    <p className="CartHeaderItem_content_remove">
-                        <Link>
-                            <CloseCircleOutlined />
-                        </Link>
-                    </p>
-                </div>
-            </div>
-            
-            <div className="CartHeaderItem_bton">
-                <p><Link to='/cart'><ButtonCart/></Link></p>
-                <p><ButtonCheckout/></p>
-            </div>
-            
-        </>
-    )
-}
+  const ListCart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-export default CartHeader
+  const remove = (id) => {
+    const action = removeFormCart(id);
+    console.log(action);
+    dispatch(action);
+  };
+  let history = useHistory();
+  const handleCartClick = () => {
+    history.push('/cart')
+  }
+  return (
+    <>
+      {ListCart.cartItem.length === 0 ? (
+        <Empty />
+      ) : (
+        ListCart.cartItem.map((item, index) => (
+          <div className="CartHeaderItem" key={index}>
+            <div className="CartHeaderItem_image">
+              <Link to="/">
+                <img
+                  src={`https://beonlinelibrary.herokuapp.com/${item.productDetail.images[0].image}`}
+                  alt={item.productDetail.nameProduct}
+                />
+              </Link>
+            </div>
+            <div className="CartHeaderItem_content">
+              <h6 className="CartHeaderItem_content_title">
+                <Link to="/">{item.productDetail.nameProduct}</Link>
+              </h6>
+              <p className="CartHeaderItem_content_price">
+                {item.quantity}x
+                <span className="CartHeaderItem_content_amount">
+                  {item.productDetail.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}
+                </span>
+              </p>
+              <p className="CartHeaderItem_content_remove" onClick={()=>{remove(item.id)}}>
+                <CloseCircleOutlined />
+              </p>
+            </div>
+          </div>
+        ))
+      )}
+      {ListCart.cartItem.length === 0 ? (
+        ""
+      ) : (
+        <div className="CartHeaderItem_bton">
+          <p onClick={handleCartClick}>
+            <ButtonCart />
+          </p>
+          
+        </div>
+      )}
+    </>
+  );
+};
+
+export default CartHeader;

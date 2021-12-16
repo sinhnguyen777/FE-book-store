@@ -1,26 +1,25 @@
+import { UploadOutlined } from "@ant-design/icons";
 import {
   Avatar,
-  Card,
+  Button,
   Col,
-  Divider,
   Image,
   Input,
   Layout,
   Row,
   Typography,
+  Upload,
 } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
 import userApi from "../../../../../../api/userApi";
-const { Header, Content, Sider } = Layout;
+const { Content } = Layout;
 const { Title, Text } = Typography;
-const dateFormat = "YYYY-MM-DD";
-const { Meta } = Card;
-const text = "Bạn không thích sản phẩm này nữa?";
 
 const Infor = () => {
   let history = useHistory();
+  const [ValueAvata, setValueAvata] = useState();
+  const [ValueSdt, setValueSdt] = useState();
 
   useEffect(() => {
     const userToken = localStorage.getItem("token");
@@ -51,6 +50,38 @@ const Infor = () => {
   };
 
   const user = getUser();
+  const dateCreate = new Date(user.data[0].updatedAt);
+  const dateUpdate =
+    dateCreate.getDate() +
+    "-" +
+    (dateCreate.getMonth() + 1) +
+    "-" +
+    dateCreate.getFullYear();
+
+  const DateVip = new Date(user.data[0].vip);
+  const NewDateVip =
+    DateVip.getDate() +
+    "-" +
+    (DateVip.getMonth() + 1) +
+    "-" +
+    DateVip.getFullYear();
+
+  const imagesAvt = {
+    onChange: (info) => {
+      setValueAvata(info.fileList);
+    },
+  };
+  const handleSubmitFrom = async () => {
+    const formData = new FormData();
+    formData.append("phone", ValueSdt);
+    formData.append("avatar", ValueAvata[0].originFileObj);
+    console.log(formData);
+    console.log(ValueSdt);
+    console.log(ValueAvata[0].originFileObj);
+    const res = await userApi.Update(formData.getAll);
+  };
+
+  // console.log(ValueAvata[0].originFileObj);
   return (
     <div className="container_client">
       <Layout className="site-layout">
@@ -72,6 +103,10 @@ const Infor = () => {
                   />
                 }
               />
+
+              <Upload {...imagesAvt}>
+                <Button icon={<UploadOutlined />}>Upload png only</Button>
+              </Upload>
             </Col>
             <Col className="TitleUser">
               <span className="mock-block">
@@ -79,7 +114,7 @@ const Infor = () => {
                   {user.data[0].fullName}
                 </Title>
                 <Title type="secondary" className="code-box-demo" level={4}>
-                  Ngày cập nhật : {user.data[0].updatedAt}
+                  Ngày cập nhật : {dateUpdate}
                 </Title>
               </span>
             </Col>
@@ -89,14 +124,18 @@ const Infor = () => {
               <p>
                 <Text strong>Số điện thoại</Text>
               </p>
-              <Input
-                placeholder=""
-                value={
-                  user.data[0].phone
-                    ? user.data[0].phone
-                    : "Chưa có số điện thoại"
-                }
-              />
+              {user.data[0].phone ? (
+                <Input
+                  onChange={(e) => setValueSdt(e.target.value)}
+                  placeholder=""
+                  value={user.data[0].phone}
+                />
+              ) : (
+                <Input
+                  onChange={(e) => setValueSdt(e.target.value)}
+                  placeholder="Chưa có số điện thoại"
+                />
+              )}
             </Col>
             <Col span={12} className="Item">
               <p>
@@ -113,26 +152,15 @@ const Infor = () => {
             </Col>
             <Col span={12} className="Item">
               <p>
-                <Text strong>Địa chỉ</Text>
-              </p>
-              <Input
-                placeholder=""
-                value={
-                  user.data[0].address
-                    ? user.data[0].address
-                    : "Chưa có địa chỉ"
-                }
-              />
-            </Col>
-            <Col span={12} className="Item">
-              <p>
                 <Text strong>Gói dịch vụ</Text>
               </p>
-              <p>{user.data[0].vip ? user.data[0].vip : "Chưa có"}</p>
+              <p>{NewDateVip}</p>
             </Col>
           </Row>
-          <Row style={{marginLeft:'20px'}}>
-            <button className="btn ButtonMain">Lưu</button>
+          <Row style={{ marginLeft: "20px" }}>
+            <button onClick={handleSubmitFrom} className="btn ButtonMain">
+              Lưu
+            </button>
           </Row>
         </Content>
       </Layout>

@@ -75,7 +75,7 @@ function DetailComment(props) {
                 <p className="description_comment">{data.content}</p>
                 
               </div>
-              <div onClick={() => handleRemove(data._id)} className="description_delete">Xóa</div>
+              {/* <div onClick={() => handleRemove(data._id)} className="description_delete">Xóa</div> */}
             </div>
           }
         />

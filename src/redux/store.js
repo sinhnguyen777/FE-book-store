@@ -1,11 +1,14 @@
 import userReducer from "../Page/Site/Page/Account/userSlice"
+import cartReducer from "../Page/Site/Page/Cart/cartSlide"
 import { configureStore } from "@reduxjs/toolkit";
 const rootReducers = {
     user: userReducer, 
+    cart: cartReducer,
 }
 
 const store = configureStore({
     reducer : rootReducers
+    
 })
 export default store
 // import { createStore, applyMiddleware } from "redux";

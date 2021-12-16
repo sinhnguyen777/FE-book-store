@@ -125,6 +125,12 @@
       font-size: 22px;
       &_item {
         @include flex(center, center);
+        font-size: 22px;
+        cursor: pointer;
+        .badgecart{
+        font-size: 22px;
+        font-family: "Montserrat", sans-serif;
+        }
       }
 
       @include mobile {

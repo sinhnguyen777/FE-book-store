@@ -1,73 +1,67 @@
-import { CaretDownOutlined } from "@ant-design/icons";
+import { CaretDownOutlined, SyncOutlined } from "@ant-design/icons";
 import { Image } from "antd";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useRouteMatch } from "react-router-dom";
+import orderApi from "../../../../api/orderApi";
+import ListItem from "./component/ListItem";
 
 const OrderDetail = () => {
+  const match = useRouteMatch();
+  const [DataOrder, setDataOrder] = useState();
+  useEffect(() => {
+    const fetchGetOrder = async (id) => {
+      const res = await orderApi.GetOrderById(id);
+      setDataOrder(res.data);
+    };
+
+    fetchGetOrder(match.params.id);
+  }, []);
   const showPro = useRef(null);
   const productToggle = () => showPro.current.classList.toggle("show");
   return (
     <>
-      <div className="orderdetail_banner">
-        <div className="orderdetail_banner_title">
-          <h6>Thông tin</h6>
-          <h2>Chi tiết đơn hàng</h2>
-        </div>
-      </div>
-      <div className="layout">
-        <div className="orderdetail-content">
-          <h2>Thông tin đơn hàng</h2>
-          <div className="orderdetail-content_title">Khách hàng: User Name</div>
-          <div className="orderdetail-content_phone">
-            Số điện thoại: 0123456789
+      {DataOrder ? (
+        <>
+          <div className="orderdetail_banner">
+            <div className="orderdetail_banner_title">
+              <h6>Thông tin</h6>
+              <h2>Chi tiết đơn hàng</h2>
+            </div>
           </div>
-          <div className="orderdetail-content_address">
-            Địa chỉ: ấp Cây Me xã Cây Chuối huyện Cai Lậy Tỉnh Sầu Riêng
-          </div>
-          <div className="orderdetail-content_price">Giá : 0000000</div>
-          <div className="orderdetail-content_price">
-            Trạng thái đơn hàng: đang giao
-          </div>
-          <div className="orderdetail-content_product">
-            <h3 onClick={productToggle}>
-              Sản phẩm <CaretDownOutlined />
-            </h3>
-            <div ref={showPro} className="orderdetail-content_product_list">
-              <table className="orderdetail-content_product_list_table">
-                <tbody>
-                  <tr>
-                    <th>
-                      <Image
-                        width={100}
-                        src="https://kenh14cdn.com/203336854389633024/2021/11/11/2545480766251655485000658965182106882304688n-16366293619091765901198.jpg"
-                      />
-                    </th>
-                    <td>:) :) :)</td>
-                    <td>000 đ</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <th>
-                    <Image
-                        width={100}
-                        src="https://kenh14cdn.com/203336854389633024/2021/11/11/2545480766251655485000658965182106882304688n-16366293619091765901198.jpg"
-                      />
-                    </th>
-                    <td>:) :) :)</td>
-                    <td>000 đ</td>
-                    <td>2</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="orderdetail-content_product_list_total">
-                Tổng: 0000
+          <div className="layout">
+            <div className="orderdetail-content">
+              <h2>Thông tin đơn hàng</h2>
+              <div className="orderdetail-content_title">
+                Khách hàng: {DataOrder.fullName}
+              </div>
+              <div className="orderdetail-content_phone">
+                Số điện thoại: {DataOrder.phone}
+              </div>
+              <div className="orderdetail-content_address">
+                Địa chỉ: {DataOrder.address}
+              </div>
+              <div className="orderdetail-content_price">Giá : 100000</div>
+              <div className="orderdetail-content_price">
+                Trạng thái đơn hàng:{" "}
+                {DataOrder.status ? `Đang Giao` : "Đang Chờ Xác Nhận"}
+              </div>
+              <div className="orderdetail-content_product">
+                <h3 onClick={productToggle}>
+                  Sản phẩm <CaretDownOutlined />
+                </h3>
+                <div ref={showPro} className="orderdetail-content_product_list">
+                  <ListItem id={DataOrder._id} />
+                </div>
+                <button type="error" className="btn ButtonBanner">
+                  Hủy
+                </button>
               </div>
             </div>
-            <button type="error" className="btn ButtonBanner">
-              Hủy
-            </button>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <SyncOutlined spin />
+      )}
     </>
   );
 };

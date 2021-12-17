@@ -146,7 +146,7 @@ const Header = () => {
             </div>
             <div className="header_cart">
                 <Drawer title="Shopping" placement="right" onClose={onClose} visible={visible}>
-                    <CartHeader/>
+                    <CartHeader onClose={onClose} />
                 </Drawer>
             </div>
         </header>

@@ -18,7 +18,7 @@ const ItemCart = (props) => {
       <tr className="cart-item">
         <td className="cart-product-remove" onClick={()=>{remove(item.id)}}>x</td>
         <td className="cart-product-image">
-          <Link to="/">
+          <Link to={`/product-detail/${item.productDetail.slug}`}>
             <img
               src={`https://beonlinelibrary.herokuapp.com/${item.productDetail.images[0].image}`}
               alt={item.productDetail.nameProduct}
@@ -26,7 +26,7 @@ const ItemCart = (props) => {
           </Link>
         </td>
         <td className="cart-product-name">
-          <Link to="/">{item.productDetail.nameProduct}</Link>
+          <Link to={`/product-detail/${item.productDetail.slug}`}>{item.productDetail.nameProduct}</Link>
         </td>
         <td className="cart-product-price">{item.productDetail.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
         <td className="cart-product-quantity">

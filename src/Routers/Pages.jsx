@@ -13,6 +13,8 @@ import Option from "../Page/Site/Page/Option/Option";
 import OrderDetail from "../Page/Site/Page/OrderDetail/OrderDetail";
 import ProductDetail from "../Page/Site/Page/ProductDetail/index.productDetail";
 import Readbook from "../Page/Site/Page/Readbook/Readbook";
+import Search from "../Page/Site/Page/Search/Search";
+import SearchAuthor from "../Page/Site/Page/ListProduct/Components/SearchAuthor";
 
 const routes = [
   {
@@ -88,6 +90,16 @@ const routes = [
   {
     path: "/order/confirm/:token",
     component: ConfirmOrder,
+    exact: false,
+  },
+  {
+    path: "/search/:values",
+    component: Search,
+    exact: false,
+  },
+  {
+    path: "/search-author/:values",
+    component: SearchAuthor,
     exact: false,
   },
 ];

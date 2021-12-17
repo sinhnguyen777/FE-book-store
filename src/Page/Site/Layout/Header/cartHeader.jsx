@@ -2,14 +2,13 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   ButtonCart,
-  ButtonCheckout,
 } from "../../Components/Common/Button/Button";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Empty } from "antd";
 import { removeFormCart } from "../../Page/Cart/cartSlide";
 
-const CartHeader = () => {
+const CartHeader = (props) => {
   const ListCart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -21,6 +20,7 @@ const CartHeader = () => {
   let history = useHistory();
   const handleCartClick = () => {
     history.push('/cart')
+    props.onClose()
   }
   return (
     <>
@@ -30,7 +30,7 @@ const CartHeader = () => {
         ListCart.cartItem.map((item, index) => (
           <div className="CartHeaderItem" key={index}>
             <div className="CartHeaderItem_image">
-              <Link to="/">
+              <Link to={`/product-detail/${item.productDetail.slug}`}>
                 <img
                   src={`https://beonlinelibrary.herokuapp.com/${item.productDetail.images[0].image}`}
                   alt={item.productDetail.nameProduct}
@@ -39,7 +39,7 @@ const CartHeader = () => {
             </div>
             <div className="CartHeaderItem_content">
               <h6 className="CartHeaderItem_content_title">
-                <Link to="/">{item.productDetail.nameProduct}</Link>
+                <Link to={`/product-detail/${item.productDetail.slug}`}>{item.productDetail.nameProduct}</Link>
               </h6>
               <p className="CartHeaderItem_content_price">
                 {item.quantity}x

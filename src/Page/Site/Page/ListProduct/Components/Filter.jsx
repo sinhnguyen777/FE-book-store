@@ -26,7 +26,7 @@ const Filter = (props) => {
     return (
         <>
             <div className="Filter-search">
-                <InputSearch />
+                <InputSearch handleListAuthour ={props.handleListAuthour}/>
             </div>
             <div className="Filter-price">
                 <div className="Filter-price_title">Lọc theo giá</div>

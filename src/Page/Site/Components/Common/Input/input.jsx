@@ -1,31 +1,38 @@
-import { SearchOutlined } from '@ant-design/icons';
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import prouctApi from '../../../../../api/productApi';
+import { SearchOutlined } from "@ant-design/icons";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
-const InputSearch = () => {
-    const forms = useForm();
-    const handleSearchName = async (values) => {
-        const { search } = values;
-        const res = await prouctApi.GetProductsByname(search);
-        console.log(res);
-    }
-    const handleSearchAuthor = async (values) => {
-        const { search } = values;
-        const res = await prouctApi.GetProductsByauthor(search);
-        console.log(res);
-    }
-    console.log(forms);
-    return (
-        <form onSubmit={forms.handleSubmit(handleSearchName)} onSubmit={forms.handleSubmit(handleSearchAuthor)}>
-            <div className="form_holder" >
-                <input type="text" name="search" id="search" autocomplete="off" required className="search_field" placeholder="Search" ref={forms.register} />
-                <button type="submit" className="search_submit">
-                    <span className="search_label"><SearchOutlined /></span>
-                </button>
-            </div>
-        </form>
-    )
-}
+const InputSearch = (props) => {
+  const forms = useForm();
+  let history = useHistory();
 
-export default InputSearch
+  const handleSearchAuthor = async (values) => {
+    const { search } = values;
+    props.handleListAuthour(search);
+  };
+  console.log(forms);
+  return (
+    <form onSubmit={forms.handleSubmit(handleSearchAuthor)}>
+      <div className="form_holder">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          autocomplete="off"
+          required
+          className="search_field"
+          placeholder="Search"
+          ref={forms.register}
+        />
+        <button type="submit" className="search_submit">
+          <span className="search_label">
+            <SearchOutlined />
+          </span>
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default InputSearch;

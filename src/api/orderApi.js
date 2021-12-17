@@ -45,8 +45,8 @@ const orderApi = {
     const url = "/catalogs/edit";
     return axiosClient.put(url, data);
   },
-  AddCata(data) {
-    const url = "/catalogs/create";
+  AddOrder(data) {
+    const url = "orders/create";
     return axiosClient.post(url, data);
   },
   DelCata(id) {

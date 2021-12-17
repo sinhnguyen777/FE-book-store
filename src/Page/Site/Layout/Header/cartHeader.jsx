@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Empty } from "antd";
 import { removeFormCart } from "../../Page/Cart/cartSlide";
 
-const CartHeader = () => {
+const CartHeader = (props) => {
   const ListCart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -20,6 +20,7 @@ const CartHeader = () => {
   let history = useHistory();
   const handleCartClick = () => {
     history.push('/cart')
+    props.onClose()
   }
   return (
     <>

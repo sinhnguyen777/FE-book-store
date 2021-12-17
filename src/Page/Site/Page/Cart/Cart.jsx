@@ -1,18 +1,14 @@
 
-import { Empty, Input, Select  } from 'antd'
+import { Button, Empty, Input, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import orderApi from '../../../../api/orderApi'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
 import { cartItemTotalSelector } from './selector'
 const { Option } = Select;
 
-
-
-function onChange(value) {
-    console.log(`selected ${value}`);
-}
 const Cart = () => {
     // const updateQuantity = (opt) => {
     //     if (opt === '+') {
@@ -30,9 +26,15 @@ const Cart = () => {
     const [ValueQuan, setValueQuan] = useState()
     const [ValueXa, setValueXa] = useState()
     const [PriceShip, setPriceShip] = useState(0)
+    const [nameTinh, setnameTinh] = useState()
+    const [nameQuan, setnameQuan] = useState()
+    const [nameHuyen, setnameHuyen] = useState()
+
+    const [ValueName, setValueName] = useState()
+    const [ValuePhone, setValuePhone] = useState()
+    const [ValueEmail, setValueEmail] = useState()
 
     useEffect(() => {
-
         fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/province', {
             method: 'GET', // or 'PUT'
             headers: {
@@ -65,31 +67,34 @@ const Cart = () => {
         }
 
         console.log(data);
-       if(ValueXa){
-        fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setPriceShip(data.data.total)
+        if (ValueXa) {
+            fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+                },
+                body: JSON.stringify(data)
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-       }
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    setPriceShip(data.data.total)
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
     }, [ValueXa])
 
     const handleGetQuan = (values) => {
         const data = {
             province_id: Number(values)
         }
+        const name = GetTinh.filter(item => item.ProvinceID == values);
+        console.log(name);
+        setnameTinh(name[0].ProvinceName)
         fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/district', {
             method: 'POST', // or 'PUT'
             headers: {
@@ -114,6 +119,8 @@ const Cart = () => {
             district_id: Number(values)
         }
         console.log(data.district_id);
+        const name = GetQuan.filter(item => item.DistrictID == values);
+        setnameQuan(name[0].DistrictName)
 
         setValueQuan(data.district_id)
         fetch(`https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?${data.district_id}`, {
@@ -137,11 +144,50 @@ const Cart = () => {
 
     const handleGetPhuong = (values) => {
         setValueXa(values)
+        const name = GetXa.filter(item => item.WardCode == values);
+        setnameHuyen(name[0].WardName)
+
     }
 
     const totalCart = useSelector(cartItemTotalSelector);
     const listCart = useSelector(state => state.cart);
-    console.log(listCart.cartItem);
+
+    const handleSubmitOrder = () => {
+        try {
+            const newDataCart = [...listCart.cartItem];
+            const dataCart = []
+            newDataCart.map(item => {
+                const CartItem = {
+                    idProduct: item.id,
+                    quantity: item.quantity,
+                    price: item.productDetail.price
+                }
+                dataCart.push(CartItem);
+            })
+            const DataAddress = `${nameHuyen} - ${nameQuan} - Tỉnh ${nameTinh}`
+            const total = totalCart + PriceShip
+            const DataOrder = {
+                fullName: ValueName,
+                phone: ValuePhone,
+                address: DataAddress,
+                email: ValueEmail,
+                orderDetail: dataCart,
+                total
+            }
+            console.log(DataOrder);
+
+            const fetchAddOrder = async (DataOrder) =>{
+                const res = orderApi.AddOrder(DataOrder)
+                console.log(res);
+            }
+
+            fetchAddOrder(DataOrder)
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
 
     return (
         <div>
@@ -161,14 +207,14 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {
-                        listCart.cartItem.length === 0?
-                            <tbody className="Emty"><Empty /></tbody>
-                        :
-                        listCart.cartItem.map(item=>(
-                            <ItemCart item={item}></ItemCart>
-                        ))
-                    }
+                        {
+                            listCart.cartItem.length === 0 ?
+                                <tbody className="Emty"><Empty /></tbody>
+                                :
+                                listCart.cartItem.map(item => (
+                                    <ItemCart item={item}></ItemCart>
+                                ))
+                        }
                     </tbody>
 
                 </table>
@@ -184,16 +230,13 @@ const Cart = () => {
                         <h2>Thông tin</h2>
                         <form action="">
                             <div className="cart-form_box">
-                                <Input type="email" placeholder="Email" />
+                                <Input onChange={e => setValueEmail(e.target.value)} type="email" placeholder="Email" />
                             </div>
                             <div className="cart-form_box">
-                                <Input type="text" placeholder="Họ và tên" />
+                                <Input onChange={e => setValueName(e.target.value)} type="text" placeholder="Họ và tên" />
                             </div>
                             <div className="cart-form_box">
-                                <Input type="text" placeholder="Số điện thoại" />
-                            </div>
-                            <div className="cart-form_box">
-                                <Input type="text" placeholder="Địa chỉ" />
+                                <Input onChange={e => setValuePhone(e.target.value)} type="text" placeholder="Số điện thoại" />
                             </div>
                             <div className="cart-form_box">
                                 <Select
@@ -276,21 +319,21 @@ const Cart = () => {
                                 <tr>
                                     <th>Tạm tính</th>
 
-                                    <td>{totalCart.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                                    <td>{totalCart.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
                                 </tr>
                                 <tr>
                                     <th>Phí vận chuyển</th>
-                                    <td>{PriceShip}</td>
+                                    <td>{PriceShip.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
                                 </tr>
                                 <tr>
                                     <th>Tổng</th>
                                     <td>
-                                        <strong>50000</strong>
+                                        <strong>{(totalCart + PriceShip).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</strong>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <Link to='/' style={{ margin: '20px 0' }} type="submit" className="ButtonBanner btn">thanh toán</Link>
+                        <span style={{ margin: '20px 0', padding: '20px 30px' }} className="ButtonBanner btn" onClick={handleSubmitOrder}>thanh toán</span>
                     </div>
                 </div>
             </div>

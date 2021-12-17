@@ -2,7 +2,8 @@
 import { Button, Empty, Input, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import orderApi from '../../../../api/orderApi'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
@@ -10,16 +11,6 @@ import { cartItemTotalSelector } from './selector'
 const { Option } = Select;
 
 const Cart = () => {
-    // const updateQuantity = (opt) => {
-    //     if (opt === '+') {
-    //         dispatch(updateItem({...item, quantity: quantity + 1}))
-    //         // setQuantity(quantity + 1)
-    //     }
-    //     if (opt === '-') {
-    //         dispatch(updateItem({...item, quantity: quantity - 1 === 0 ? 1 : quantity - 1}))
-    //         // setQuantity(quantity - 1 === 0 ? 1 : quantity - 1)
-    //     }
-    // }
     const [GetTinh, setGetTinh] = useState()
     const [GetQuan, setGetQuan] = useState()
     const [GetXa, setGetXa] = useState()
@@ -151,7 +142,6 @@ const Cart = () => {
 
     const totalCart = useSelector(cartItemTotalSelector);
     const listCart = useSelector(state => state.cart);
-
     const handleSubmitOrder = () => {
         try {
             const newDataCart = [...listCart.cartItem];
@@ -182,6 +172,10 @@ const Cart = () => {
             }
 
             fetchAddOrder(DataOrder)
+            Swal.fire("Đặt hàng thành công", `<div>
+            <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>
+            <p><a style="padding: 5px;background: #e4f4da;text-decoration: none;border-radius: 3px;font-weight:600" href='https://mail.google.com/mail'>Đến trang gmail</a></p>
+            </div> `, "success");
         }
         catch (err) {
             console.log(err);

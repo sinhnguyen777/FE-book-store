@@ -34,6 +34,13 @@ const orderApi = {
     });
     return res;
   },
+  Cancel(data) {
+    const url = "/orders/cancle";
+    const res = axiosClient.put(url, data).then((res) => {
+      return res.data;
+    });
+    return res;
+  },
   GetCataById(id) {
     const url = `/catalogs/${id}`;
     const res = axiosClient.get(url).then((res) => {

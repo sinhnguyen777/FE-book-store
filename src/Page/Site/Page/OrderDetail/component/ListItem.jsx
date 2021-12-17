@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Image, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import orderApi from "../../../../../api/orderApi";
 import prouctApi from "../../../../../api/productApi";
@@ -27,14 +27,17 @@ const ListItem = (props) => {
     };
     fetchGetDetail(props.id);
   }, []);
-
+console.log(DataItem.price);
   const columns = [
     {
       title: "Hình",
       dataIndex: "images",
       key: "images",
       render: (record) => {
-        // console.log(record);
+        console.log(record);
+        return <>
+          <Image width={70} src={`https://beonlinelibrary.herokuapp.com/${record[0].image}`}alt="" />
+        </>
       }
     },
     {
@@ -46,6 +49,11 @@ const ListItem = (props) => {
       title: "Số lượng",
       dataIndex: "quantity",
       key: "quantity",
+    },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      key: "price",
     },
   ];
   return (
@@ -78,6 +86,11 @@ const ListItem = (props) => {
                    </tr>
                  </tbody>
                </table> */}
+               Tổng : {DataItem.map(item => (
+                 <>
+                  {(item.price*item.quantity).toLocaleString('vi', { style: 'currency', currency: 'VND' })}
+                 </>
+               ))}
     </div>
   );
 };

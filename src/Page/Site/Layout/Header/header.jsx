@@ -170,7 +170,7 @@ const Header = () => {
           onClose={onClose}
           visible={visible}
         >
-          <CartHeader />
+          <CartHeader onClose={onClose}/>
         </Drawer>
       </div>
     </header>

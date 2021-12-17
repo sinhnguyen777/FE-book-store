@@ -19,9 +19,9 @@ const Tab = () => {
             <TabPane tab="Đang giảm giá" key="3">
                 <ListSale/>
             </TabPane>
-            <TabPane tab="Bán chạy nhất" key="4">
+            {/* <TabPane tab="Bán chạy nhất" key="4">
                 <ListBestSeller/>
-            </TabPane>
+            </TabPane> */}
         </Tabs>
     )
 }

@@ -10,7 +10,7 @@ const ItemProduct = (props) => {
             {
                 data ?
                 data.map((item, index) => (
-                    <div className="ItemProduct ItemProductHome" key={index}>
+                    <div className="ItemProduct ItemProductHome SearchAuthor" key={index}>
                         <Link to={`/product-detail/${item.slug}`}>
                             <div className="ItemProduct_inner">
                                 <div className="ItemProduct_inner_image">

@@ -50,12 +50,15 @@ function changeForm() {
 //  end change form
 function Register() {
   const [form] = Form.useForm();
+  const [emailDN, setEmailDN] = useState("");
+  const [passwordDN, setPasswordDN] = useState("");
+  //register
   const [fullName, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
-  //register
+  const [password_confirm, setPassword_confirm] = useState("");
   const [sdt, setSdt] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [address, setAddress] = useState("");
   //authentication
   const [token, setToken] = useState("");
@@ -64,6 +67,14 @@ function Register() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
+  // show button
+    let show = "";
+    let show2= "";
+     if (emailDN ==="" || passwordDN === "")  show = "disable";
+     else show = "";
+     if (email ==="" || password === "" || sdt === "" || fullName === "" || password !== password_confirm) show2 = "disable";     
+     else show2 = "";
+ 
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
@@ -92,21 +103,75 @@ function Register() {
     fetchAccessToken();
   }, []);
 
-  const handleCancel = () => {
-    setVisible(false);
-  };
+  // form token
+  // const handleOk = () => {
+  //   setConfirmLoading(true);
+  //   setTimeout(() => {
+  //     // Chọn OK và xác thực
+  //     authen();
+  //   }, 1000);
+  // };
+  
+  // const handleCancel = () => {
+  //   setVisible(false);
+  // };
   //  end form token
 
   // reset form
   function resetForm() {
     form.resetFields();
   }
+// clear useState
+function clearUseState(){
+  setEmailDN("");
+  setPasswordDN("");
+  setFullname("");
+  setSdt("");
+  setPassword("");
+  setPassword_confirm("");
+  setEmail("");
+  setAddress("");
+} 
+
 
   //  Asset Token
+  // async function authen() {
+  //   let code = { token };
+  //   let result = await fetch(
+  //     "https://beonlinelibrary.herokuapp.com/users/verify-email",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //       body: JSON.stringify(code),
+  //     }
+  //   );
+  //   if (result.status === 200) {
+  //     result = await result.json();
+  //     console.log(result);
+  //     if (result.code === "200") {
+  //       changeForm();
+  //       resetForm(); // reset form
+  //       clearUseState(); //clear useState
+  //       setVisible(false); //đóng form
+  //       message.success(result.message); // success từ message BE
+  //     } else {
+  //       message.error(result.message); //  fail! từ message BE
+  //       setConfirmLoading(false); // stop loading
+  //     }
+  //   } else {
+  //     message.error("Mã xác thực không đúng"); // Add user fail! từ message BE
+  //     setConfirmLoading(false); // stop loading
+  //   }
+  // }
   //Login
   async function logIn(e) {
+    const key = 'loading';
+    message.loading({ content: 'Vui lòng chờ...', key });
     e.preventDefault();
-    let item = { email, password };
+    let item = { email: emailDN, password: passwordDN };
     let result = await fetch(
       "https://beonlinelibrary.herokuapp.com/users/login",
       {
@@ -118,44 +183,56 @@ function Register() {
         body: JSON.stringify(item),
       }
     );
-    // console.log(result);
     if (result.status === 200) {
-      // return res;
       result = await result.json();
+      setTimeout(() => {
       if (result.data[0].success === false) {
         message.error(result.data[0].error);
       } else {
-        Swal.fire(
-          "Đăng Nhập Thành Công",
-          `Chào Mừng  đã đến với chúng tôi `,
-          "success"
-        );
+        Swal.fire('Đăng Nhập Thành Công', `Chào Mừng  đã đến với chúng tôi `, 'success');
         message.success("Đăng nhập thành công");
-        console.log(result);
         localStorage.setItem("user-info", JSON.stringify(result));
-        localStorage.setItem("token", result.token);
-        history.push("/account");
+        localStorage.setItem('token', result.token);
+        history.push("/");
       }
+      },2500);
     }
   }
 
-  //Register
-  async function register(e) {
-    e.preventDefault();
-    let item = {
-      fullName: fullName,
-      email: email,
-      phone: Number(sdt),
-      password: password,
-      address: address,
-      avatar: avatar,
-      blockMail: false,
-    };
-    console.log(item);
+ //Register
+async function register(e) {
+  const key = 'loading';
+  message.loading({ content: 'Vui lòng chờ...', key });
+  e.preventDefault();
+  let item = {
+       'fullName': fullName,
+       'email': email,
+       'phone': Number(sdt),
+       'password': password,
+       'address': address,
+       'avatar': avatar,
+       'blockMail': false
+  };
+  console.log(item);
     let result = await userApi.Register(item)
-    
     console.log(result);
-  }
+       if (result.status===200) {
+            setTimeout(() => {
+            if (result.data.message) {
+                 message.error(result.data.message);
+            }
+            else {
+                 message.success({ content: 'Vui lòng kiểm tra email và xác nhận!', key, duration: 2 });
+                 changeForm();
+                 resetForm(); // reset form
+                 clearUseState(); //clear useState
+                 setVisible(false); //đóng form
+                }
+            }, 2500);
+       }
+       else message.error('Thất bại!')
+
+}
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -168,7 +245,6 @@ function Register() {
     </Form.Item>
   );
 
-  //  test truoc khi xoa  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
   return (
     <>
@@ -213,7 +289,7 @@ function Register() {
                     },
                   ]}
                 >
-                  <Input onChange={(e) => setEmail(e.target.value)} />
+                <Input onChange={(e) => setEmailDN(e.target.value)} />
                 </Form.Item>
 
                 <Form.Item
@@ -228,21 +304,21 @@ function Register() {
                   hasFeedback
                 >
                   <Input.Password
-                    onChange={(e) => setPassword(e.target.value)}
+                       onChange={(e) => setPasswordDN(e.target.value)}
                   />
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
-                  <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" disabled={show}>
                     Đăng nhập
                   </Button>
                 </Form.Item>
 
-                <div>
+                {/* 
                   <div className="forgot">
                     <a href="#">Quên mật khẩu?</a>
                   </div>
-                </div>
+                 */}
               </Form>
             </form>
 
@@ -352,7 +428,7 @@ function Register() {
                     }),
                   ]}
                 >
-                  <Input.Password />
+                      <Input.Password onChange={(e) => setPassword_confirm(e.target.value)}/>
                 </Form.Item>
 
                 <Form.Item
@@ -364,7 +440,7 @@ function Register() {
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
-                  <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" disabled={show2}>
                     Đăng ký
                   </Button>
                   <Button
@@ -376,7 +452,7 @@ function Register() {
                     Đặt lại
                   </Button>
                 </Form.Item>
-                <Modal
+                {/* <Modal
                   title="Vui lòng kiểm tra Email và nhập mã xác thực"
                   visible={visible}
                   confirmLoading={confirmLoading}
@@ -386,7 +462,7 @@ function Register() {
                     placeholder="TOKEN"
                     onChange={(e) => setToken(e.target.value)}
                   />
-                </Modal>
+                </Modal> */}
               </Form>
             </form>
           </div>

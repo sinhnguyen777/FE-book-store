@@ -50,7 +50,7 @@ const Member = () => {
                 title="Trang Danh sách Admin"
             />
 
-            <div className="BoxForm">
+            <div style={{width: '100%' }} className="BoxForm">
                 <div className="title">Thêm chức vụ</div>
                 <FromRoleAdd handleSubmitFrom={handleSubmitFrom} />
             </div>

@@ -2,8 +2,8 @@ import axiosClient from "./axiosCilent";
 import axiosClientAuth from "./axiosClientAuth";
 
 const userApi = {
-  GetCata() {
-    const url = "/catalogs";
+  GetAll() {
+    const url = "/users";
     const res = axiosClient.get(url).then((res) => {
       return res.data;
     });

@@ -1,7 +1,8 @@
 import { CaretDownOutlined, SyncOutlined } from "@ant-design/icons";
 import { Image } from "antd";
 import React, { useEffect, useRef, useState } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
+import Swal from "sweetalert2";
 import orderApi from "../../../../api/orderApi";
 import ListItem from "./component/ListItem";
 
@@ -18,6 +19,26 @@ const OrderDetail = () => {
   }, []);
   const showPro = useRef(null);
   const productToggle = () => showPro.current.classList.toggle("show");
+  let history = useHistory();
+  const handleCancel = async (id) => {
+    try {
+      const data = {
+        id: id,
+      };
+      const res = await orderApi.Cancel(data);
+      console.log(res);
+      if (res.code === "404") {
+        Swal.fire("Lỗi", "Bạn không thể hủy đơn hàng đã giao", "error");
+      }
+
+      if (res.code === "200") {
+        Swal.fire("Hủy", "Hủy đơn thành công", "success");
+        history.push('/')
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       {DataOrder ? (
@@ -40,7 +61,7 @@ const OrderDetail = () => {
               <div className="orderdetail-content_address">
                 Địa chỉ: {DataOrder.address}
               </div>
-              <div className="orderdetail-content_price">Giá : 100000</div>
+              {/* <div className="orderdetail-content_price">Giá : 100000</div> */}
               <div className="orderdetail-content_price">
                 Trạng thái đơn hàng:{" "}
                 {DataOrder.status ? `Đang Giao` : "Đang Chờ Xác Nhận"}
@@ -52,7 +73,7 @@ const OrderDetail = () => {
                 <div ref={showPro} className="orderdetail-content_product_list">
                   <ListItem id={DataOrder._id} />
                 </div>
-                <button type="error" className="btn ButtonBanner">
+                <button type="error" className="btn ButtonBanner" onClick={() => handleCancel(DataOrder._id)}>
                   Hủy
                 </button>
               </div>

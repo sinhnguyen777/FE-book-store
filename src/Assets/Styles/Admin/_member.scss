@@ -1,0 +1,9 @@
+.GroupFormList{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    .GroupForm{
+        width: 20%;
+        padding:0 5px;
+    }
+}

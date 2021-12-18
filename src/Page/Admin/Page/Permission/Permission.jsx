@@ -12,28 +12,6 @@ const Permission = () => {
     const [DataPermission, setDataPermission] = useState([]);
     let history = useHistory();
 
-    const handleSubmitFrom = (values)=>{
-        const fetchUpdatePermission = async (data) => {
-            try {
-                const res = await permissionApi.AddPermission(data);
-                if (res.status == 200) {
-                    Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
-                        if (result.isConfirmed) {
-                            console.log(1);
-                            setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/permission' })
-                        }
-                    })
-                }
-                console.log(res);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-
-        fetchUpdatePermission(values);
-    };
-
     const handleRemove = (id)=>{
         try{
             const fetchRemovePermissions = async (data) => {
@@ -84,11 +62,7 @@ const Permission = () => {
                 title="Trang quyền"
             />
 
-            <div className="BoxForm">
-                <div className="title">Thêm quyền</div>
-                <FromPermisAdd handleSubmitFrom={handleSubmitFrom} />
-            </div>
-
+           
             <Row className='ListCata'>
                 <Col span={24}>
                     <ListPermission data={DataPermission.data} handleRemove={handleRemove} />

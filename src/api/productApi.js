@@ -122,6 +122,10 @@ const prouctApi={
         const url = `/products/del/${id}`;
         return axiosClient.delete(url)
     },
+    ProductsSelling(){
+        const url = '/products/selling';
+        return axiosClient.delete(url)
+    },
 };
 
 export default prouctApi; 

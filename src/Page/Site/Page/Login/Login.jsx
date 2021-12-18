@@ -72,7 +72,7 @@ function Register() {
     let show2= "";
      if (emailDN ==="" || passwordDN === "")  show = "disable";
      else show = "";
-     if (email ==="" || password === "" || sdt === "" || fullName === "" || password !== password_confirm) show2 = "disable";     
+     if (email ==="" || password === "" ||  fullName === "" || password !== password_confirm) show2 = "disable";     
      else show2 = "";
  
   useEffect(() => {
@@ -126,11 +126,11 @@ function clearUseState(){
   setEmailDN("");
   setPasswordDN("");
   setFullname("");
-  setSdt("");
+  // setSdt("");
   setPassword("");
   setPassword_confirm("");
   setEmail("");
-  setAddress("");
+  // setAddress("");
 } 
 
 
@@ -222,6 +222,7 @@ async function register(e) {
                  message.error(result.data.message);
             }
             else {
+                Swal.fire('Đăng Ký Thành Công', `Vui lòng kiểm tra email và xác nhận!`, 'success');
                  message.success({ content: 'Vui lòng kiểm tra email và xác nhận!', key, duration: 2 });
                  changeForm();
                  resetForm(); // reset form
@@ -369,7 +370,7 @@ async function register(e) {
                   <Input onChange={(e) => setEmail(e.target.value)} />
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                   name="phone_dk"
                   label="Số điện thoại"
                   rules={[
@@ -387,7 +388,7 @@ async function register(e) {
                       width: "100%",
                     }}
                   />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                   name="password_dk"
@@ -431,13 +432,13 @@ async function register(e) {
                       <Input.Password onChange={(e) => setPassword_confirm(e.target.value)}/>
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                   name="address_dk"
                   label="Địa chỉ"
                   rules={[{ required: true }]}
                 >
                   <Input onChange={(e) => setAddress(e.target.value)} />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit" disabled={show2}>

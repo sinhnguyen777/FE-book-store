@@ -8,6 +8,8 @@ import orderApi from '../../../../api/orderApi'
 import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
 import { cartItemTotalSelector } from './selector'
+import userApi from "../../../../api/userApi";
+
 const { Option } = Select;
 
 const Cart = () => {
@@ -20,6 +22,7 @@ const Cart = () => {
     const [nameTinh, setnameTinh] = useState()
     const [nameQuan, setnameQuan] = useState()
     const [nameHuyen, setnameHuyen] = useState()
+    const [IdUser, setIdUser] = useState()
 
     const [ValueName, setValueName] = useState()
     const [ValuePhone, setValuePhone] = useState()
@@ -42,6 +45,24 @@ const Cart = () => {
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+        const fetchAccessToken = async () => {
+            try {
+                const adminToken = await localStorage.getItem("token");
+                const data = {
+                    token: adminToken,
+                };
+                const res = await userApi.AccessToken(data);
+                const User = JSON.parse(localStorage.getItem("user-info"));
+                setIdUser(User.data[0]._id)
+                setValueName(User.data[0].fullName)
+                setValueEmail(User.data[0].email)
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchAccessToken()
     }, [])
 
     useEffect(() => {
@@ -156,7 +177,9 @@ const Cart = () => {
             })
             const DataAddress = `${nameHuyen} - ${nameQuan} - Tỉnh ${nameTinh}`
             const total = totalCart + PriceShip
+            const idUser = IdUser
             const DataOrder = {
+                idUser,
                 fullName: ValueName,
                 phone: ValuePhone,
                 address: DataAddress,
@@ -166,16 +189,20 @@ const Cart = () => {
             }
             console.log(DataOrder);
 
-            const fetchAddOrder = async (DataOrder) =>{
+            const fetchAddOrder = async (DataOrder) => {
                 const res = orderApi.AddOrder(DataOrder)
                 console.log(res);
             }
 
             fetchAddOrder(DataOrder)
-            Swal.fire("Đặt hàng thành công", `<div>
+            if (IdUser) {
+                Swal.fire("Đặt hàng thành công", "success");
+            } else {
+                Swal.fire("Đặt hàng thành công", `<div>
             <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>
             <p><a style="padding: 5px;background: #e4f4da;text-decoration: none;border-radius: 3px;font-weight:600" href='https://mail.google.com/mail'>Đến trang gmail</a></p>
             </div> `, "success");
+            }
         }
         catch (err) {
             console.log(err);
@@ -224,10 +251,10 @@ const Cart = () => {
                         <h2>Thông tin</h2>
                         <form action="">
                             <div className="cart-form_box">
-                                <Input onChange={e => setValueEmail(e.target.value)} type="email" placeholder="Email" />
+                                <Input onChange={e => setValueEmail(e.target.value)} value={ValueEmail} type="email" placeholder="Email" />
                             </div>
                             <div className="cart-form_box">
-                                <Input onChange={e => setValueName(e.target.value)} type="text" placeholder="Họ và tên" />
+                                <Input onChange={e => setValueName(e.target.value)} value={ValueName} type="text" placeholder="Họ và tên" />
                             </div>
                             <div className="cart-form_box">
                                 <Input onChange={e => setValuePhone(e.target.value)} type="text" placeholder="Số điện thoại" />

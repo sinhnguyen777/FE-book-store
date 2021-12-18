@@ -104,9 +104,11 @@ const Infor = () => {
                 }
               />
 
-              <Upload {...imagesAvt}>
-                <Button icon={<UploadOutlined />}>Upload png only</Button>
-              </Upload>
+              <div style={{marginTop: '10px'}}>
+                <Upload {...imagesAvt}>
+                  <Button icon={<UploadOutlined />}>Upload png only</Button>
+                </Upload>
+              </div>
             </Col>
             <Col className="TitleUser">
               <span className="mock-block">

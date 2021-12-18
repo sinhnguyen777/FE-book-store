@@ -12,6 +12,7 @@ import Chapter from "../Page/Products/pages/Chapter";
 import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 import EditProducts from "../Page/Products/pages/EditProducts";
 import Member from "../Page/Member";
+import User from "../Page/User/User";
 
 
 
@@ -80,7 +81,12 @@ const routes = [
     {
         path: '/admin/vip/edit/:id',
         component: EditVip,
-    }
+    }, 
+    {
+        path: '/admin/user',
+        component: User,
+        exact: true,
+    },
     
 
 ];

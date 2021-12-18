@@ -29,7 +29,7 @@ const ListCata = (props) => {
 
   return (
     <>
-      <Table dataSource={props.data} columns={columns} />
+      <Table className="ListCataTable" dataSource={props.data} columns={columns} />
     </>
   );
 }

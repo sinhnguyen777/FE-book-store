@@ -24,3 +24,10 @@
   align-items: flex-start;
   align-content: stretch;
 }
+.GmailConfirm{
+  margin-top: 10px;
+  
+}
+.GmailConfirm a{
+  padding: 10px 0;background: #000;color: #fff;text-decoration: none;
+}

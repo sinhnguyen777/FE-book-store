@@ -7,7 +7,7 @@ import RouterWrapper from './Routers/Routes';
 import LoginAd from './Page/Admin/Page/Login/Login'
 import AccessToken from "./Page/Admin/Page/resetPass";
 import ChangePass from "./Page/Admin/Page/ChangePass/ChangePass";
-
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 function App() {
   return (
     <div>
@@ -38,6 +38,8 @@ function App() {
           <Error />
         </Route>
       </Router>
+      <MessengerCustomerChat pageId={process.env.PAGEID} appId={process.env.APPID}
+      />
     </div>
   );
 }

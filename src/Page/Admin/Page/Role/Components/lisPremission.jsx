@@ -1,81 +1,97 @@
-import { Button, Checkbox } from "antd";
+import { Button, Checkbox, Card } from "antd";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import roleApi from "../../../../../api/roleApi";
 const ListPermission = (props) => {
-    const { data } = props;
-    console.log(data);
-    const [demo, setdemo] = useState('')
-  
-  
+  const { data } = props;
+  console.log(data[9].status);
+  const [demo, setdemo] = useState("");
+
   let history = useHistory();
-  const handleRemove = (id)=>{
-    try{
-        const fetchRemoveRole = async (data) => {
-            try {
-                const res = await roleApi.DelRole(data);
-                if (res.status == 200) {
-                    Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
-                        if (result.isConfirmed) {
-                            console.log(1);
-                            setdemo(pre=>pre+1);
-                            history.push({ pathname: '/admin/role' })
-                        }
-                    })
-                }
-            } catch (err) {
-                console.log(err);
-                Swal.fire('...', 'Không đủ Thẩm quyền đề xóa', 'error').then((result) => {
-                    if (result.isConfirmed) {
-                        console.log(1);
-                        setdemo(pre=>pre+1);
-                        history.push({ pathname: '/admin/role' })
-                    }
-                })
+  const handleRemove = (id) => {
+    try {
+      const fetchRemoveRole = async (data) => {
+        try {
+          const res = await roleApi.DelRole(data);
+          if (res.status == 200) {
+            Swal.fire("...", "Xóa Thành Công!", "success").then((result) => {
+              if (result.isConfirmed) {
+                console.log(1);
+                setdemo((pre) => pre + 1);
+                history.push({ pathname: "/admin/role" });
+              }
+            });
+          }
+        } catch (err) {
+          console.log(err);
+          Swal.fire("...", "Không đủ Thẩm quyền đề xóa", "error").then(
+            (result) => {
+              if (result.isConfirmed) {
+                console.log(1);
+                setdemo((pre) => pre + 1);
+                history.push({ pathname: "/admin/role" });
+              }
             }
+          );
         }
+      };
 
-        fetchRemoveRole(id);
-
+      fetchRemoveRole(id);
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-        console.log(err);
-    }
-}
+  };
+  const handleAdd = () => {};
+  function onChange(checkedValues) {
+    console.log("checked = ", checkedValues);
+  }
   return (
     <div className="BoxListPM">
       <table>
-        <thead>
-          <tr>
-            <td></td>
-            <td>Thêm</td>
-            <td>Sửa</td>
-            <td>Xóa</td>
-            <td>Duyệt đơn</td>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <th>Danh mục</th>
-            <td><Checkbox checked/></td>
-            <td><Checkbox checked/></td>
-            <td><Checkbox checked/></td>
-            <td><Checkbox /></td>
+            <td>
+              {data[0].name}{" "}
+              <Checkbox defaultChecked={data[0].status} onChange={onChange} />
+            </td>
+            <td>
+              {data[1].name} <Checkbox defaultChecked={data[1].status} />
+            </td>
+            <td>
+              {data[2].name} <Checkbox defaultChecked={data[2].status} />
+            </td>
           </tr>
           <tr>
             <th>Sản phẩm</th>
-            <td><Checkbox checked/></td>
-            <td><Checkbox checked/></td>
-            <td><Checkbox checked/></td>
-            <td><Checkbox /></td>
+            <td>
+              {data[4].name} <Checkbox defaultChecked={data[4].status} />
+            </td>
+            <td>
+              {data[5].name} <Checkbox defaultChecked={data[5].status} />
+            </td>
+            <td>
+              {data[3].name} <Checkbox defaultChecked={data[3].status} />
+            </td>
+          </tr>
+          <tr>
+            <th>Mã giảm giá</th>
+            <td>
+              {data[6].name} <Checkbox defaultChecked={data[6].status} />
+            </td>
+            <td>
+              {data[7].name} <Checkbox defaultChecked={data[7].status} />
+            </td>
+            <td>
+              {data[8].name} <Checkbox defaultChecked={data[8].status} />
+            </td>
           </tr>
           <tr>
             <th>Đơn hàng</th>
-            <td><Checkbox/></td>
-            <td><Checkbox/></td>
-            <td><Checkbox/></td>
-            <td><Checkbox checked/></td>
+            <td>
+              {data[9].name} <Checkbox defaultChecked={data[9].status} />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -86,9 +102,12 @@ const ListPermission = (props) => {
                     </Card>
                 ))
             } */}
-            <div className="RemoveRole">
-                <Button onClick={() => handleRemove(data._id)}>Xóa Chức Vụ</Button>
-            </div>
+      <div className="RemoveRole">
+        <Button onClick={() => handleAdd(data._id)}>Lưu</Button>
+      </div>
+      <div className="RemoveRole">
+        <Button onClick={() => handleRemove(data._id)}>Xóa Chức Vụ</Button>
+      </div>
     </div>
   );
 };

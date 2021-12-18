@@ -8,6 +8,7 @@ const {TabPane } = Tabs;
 const ListRole = (props) => {
 
   const {data} = props;
+  console.log(data);
   
   return (
     <>
@@ -17,8 +18,7 @@ const ListRole = (props) => {
           data ?
           data.map((item,index)=> (
             <TabPane tab={item.name} key={index}>
-              <ListPermission data={item.listPermissions} />
-              
+              <ListPermission idRole = {item._id} data={item.listPermissions} />
             </TabPane>
           ))
         :

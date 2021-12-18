@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import roleApi from "../../../../../api/roleApi";
 const ListPermission = (props) => {
-  const { data } = props;
-  console.log(data[9].status);
+  const { data, idRole } = props;
   const [demo, setdemo] = useState("");
 
   let history = useHistory();
@@ -46,6 +45,27 @@ const ListPermission = (props) => {
   function onChange(checkedValues) {
     console.log("checked = ", checkedValues);
   }
+
+  const handleChange = async (values) => {
+    try {
+      console.log(values.target.checked);
+      const newData = [...data];
+      newData.map((item) => {
+        if (item.idPermissions === values.target.value) {
+          item.status = values.target.checked;
+        }
+      });
+      const dataUpdate = {
+        id: idRole,
+        listPermissions: newData,
+      };
+      console.log(newData);
+      const res = await roleApi.UpdateRole(dataUpdate);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="BoxListPM">
       <table>
@@ -54,43 +74,91 @@ const ListPermission = (props) => {
             <th>Danh mục</th>
             <td>
               {data[0].name}{" "}
-              <Checkbox defaultChecked={data[0].status} onChange={onChange} />
+              <Checkbox
+                value={data[0].idPermissions}
+                defaultChecked={data[0].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[1].name} <Checkbox defaultChecked={data[1].status} />
+              {data[1].name}{" "}
+              <Checkbox
+                value={data[1].idPermissions}
+                defaultChecked={data[1].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[2].name} <Checkbox defaultChecked={data[2].status} />
+              {data[2].name}{" "}
+              <Checkbox
+                value={data[2].idPermissions}
+                defaultChecked={data[2].status}
+                onChange={handleChange}
+              />
             </td>
           </tr>
           <tr>
             <th>Sản phẩm</th>
             <td>
-              {data[4].name} <Checkbox defaultChecked={data[4].status} />
+              {data[4].name}{" "}
+              <Checkbox
+                value={data[4].idPermissions}
+                defaultChecked={data[4].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[5].name} <Checkbox defaultChecked={data[5].status} />
+              {data[5].name}{" "}
+              <Checkbox
+                value={data[5].idPermissions}
+                defaultChecked={data[5].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[3].name} <Checkbox defaultChecked={data[3].status} />
+              {data[3].name}{" "}
+              <Checkbox
+                value={data[3].idPermissions}
+                defaultChecked={data[3].status}
+                onChange={handleChange}
+              />
             </td>
           </tr>
           <tr>
             <th>Mã giảm giá</th>
             <td>
-              {data[6].name} <Checkbox defaultChecked={data[6].status} />
+              {data[6].name}{" "}
+              <Checkbox
+                value={data[6].idPermissions}
+                defaultChecked={data[6].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[7].name} <Checkbox defaultChecked={data[7].status} />
+              {data[7].name}{" "}
+              <Checkbox
+                value={data[7].idPermissions}
+                defaultChecked={data[7].status}
+                onChange={handleChange}
+              />
             </td>
             <td>
-              {data[8].name} <Checkbox defaultChecked={data[8].status} />
+              {data[8].name}{" "}
+              <Checkbox
+                value={data[8].idPermissions}
+                defaultChecked={data[8].status}
+                onChange={handleChange}
+              />
             </td>
           </tr>
           <tr>
             <th>Đơn hàng</th>
             <td>
-              {data[9].name} <Checkbox defaultChecked={data[9].status} />
+              {data[9].name}{" "}
+              <Checkbox
+                value={data[9].idPermissions}
+                defaultChecked={data[9].status}
+              />
             </td>
           </tr>
         </tbody>
@@ -102,9 +170,6 @@ const ListPermission = (props) => {
                     </Card>
                 ))
             } */}
-      <div className="RemoveRole">
-        <Button onClick={() => handleAdd(data._id)}>Lưu</Button>
-      </div>
       <div className="RemoveRole">
         <Button onClick={() => handleRemove(data._id)}>Xóa Chức Vụ</Button>
       </div>

@@ -2,6 +2,9 @@ import { Card, Col, Row } from "antd";
 import React , { useEffect, useState }from "react";
 import statisticalApi from "../../../../api/statistical";
 import BoxChart from "./Components/chart";
+import {
+    LoadingOutlined,
+  } from '@ant-design/icons';
 
 
 const Home = () => {
@@ -60,7 +63,7 @@ console.log(TotalOrderDone);
                 </Col>
                 <Col span={6} xl={6} md={12} sm={24} xs={24}>
                     <Card title="Tổng Doanh thu " bordered={false}>
-                        <p style={{fontSize:20}}>{TotalOrderDone[0].totalAmount}</p>
+                        <p style={{fontSize:20}}>{TotalOrderDone?TotalOrderDone[0].totalAmount.toLocaleString('vi', {style : 'currency', currency : 'VND'}): <LoadingOutlined />}</p>
                     </Card>
                 </Col>
             </Row>

@@ -14,6 +14,7 @@ import EditProducts from "../Page/Products/pages/EditProducts";
 import Member from "../Page/Member";
 import User from "../Page/User/User";
 import ProductSelling from "../Page/ProductSelling/ProductSelling";
+import Coupon from "../Page/Coupon/Coupon";
 
 
 
@@ -91,6 +92,11 @@ const routes = [
     {
         path: '/admin/best-product',
         component: ProductSelling,
+        exact: true,
+    },
+    {
+        path: '/admin/coupon',
+        component: Coupon,
         exact: true,
     },
     

@@ -3,6 +3,7 @@ import {
   CloudOutlined,
   ContainerOutlined,
   DollarOutlined,
+  GiftOutlined,
   FormOutlined,
   HomeOutlined,
   InboxOutlined,
@@ -47,6 +48,9 @@ const HeaderCmp = (props) => {
         </Menu.Item>
         <Menu.Item key="/admin/vip" icon={<StrikethroughOutlined />}>
           <Link to="/admin/vip">Gói VIP</Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/coupon" icon={<GiftOutlined />}>
+          <Link to="/admin/coupon">Mã giảm giá</Link>
         </Menu.Item>
         <SubMenu key="sub2" icon={<SettingOutlined />} title="Quản trị">
           <Menu.Item key="/admin/Member" icon={<TeamOutlined />}>

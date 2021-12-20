@@ -16,10 +16,9 @@ const Role = () => {
         const fetchUpdateRole = async (data) => {
             try {
                 const res = await roleApi.AddRole(data);
-                if (res.status == 200) {
-                    Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
+                if (res.status === 200) {
+                    Swal.fire('Thêm chức vụ', 'Thêm Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
-                            console.log(1);
                             setdemo(pre=>pre+1);
                             history.push({ pathname: '/admin/role' })
                         }
@@ -27,7 +26,7 @@ const Role = () => {
                 }
                 console.log(res);
             } catch (err) {
-                console.log(err);
+                Swal.fire('Không thể thêm', 'Chức vụ đã có trong danh sách', 'error')
             }
         }
 

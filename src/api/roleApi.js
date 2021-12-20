@@ -26,7 +26,7 @@ const roleApi={
     },
     AddRole(data){
         const url = '/roles/create';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     DelRole( id){
         const url = `/roles/del/${id}`;

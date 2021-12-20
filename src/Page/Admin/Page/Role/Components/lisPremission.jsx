@@ -18,7 +18,7 @@ const ListPermission = (props) => {
               if (result.isConfirmed) {
                 console.log(1);
                 setdemo((pre) => pre + 1);
-                history.push({ pathname: "/admin/role" });
+                history.push({ pathname: "/admin/Member" });
               }
             });
           }
@@ -41,10 +41,6 @@ const ListPermission = (props) => {
       console.log(err);
     }
   };
-  const handleAdd = () => {};
-  function onChange(checkedValues) {
-    console.log("checked = ", checkedValues);
-  }
 
   const handleChange = async (values) => {
     try {
@@ -171,7 +167,7 @@ const ListPermission = (props) => {
                 ))
             } */}
       <div className="RemoveRole">
-        <Button onClick={() => handleRemove(data._id)}>Xóa Chức Vụ</Button>
+        <Button onClick={() => handleRemove(idRole)}>Xóa Chức Vụ</Button>
       </div>
     </div>
   );

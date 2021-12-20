@@ -15,6 +15,7 @@ import ProductDetail from "../Page/Site/Page/ProductDetail/index.productDetail";
 import Readbook from "../Page/Site/Page/Readbook/Readbook";
 import Search from "../Page/Site/Page/Search/Search";
 import SearchAuthor from "../Page/Site/Page/ListProduct/Components/SearchAuthor";
+import Paymemt from "../Page/Site/Page/Payment/index.Payment";
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
   {
     path: "/option",
     component: Option,
+    exact: true,
+  },
+  {
+    path: "/payment",
+    component: Paymemt,
     exact: true,
   },
   {

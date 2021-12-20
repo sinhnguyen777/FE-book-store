@@ -1,3 +1,4 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { Col, PageHeader, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
 import prouctApi from '../../../../api/productApi'
@@ -12,6 +13,7 @@ const ProductSelling = () => {
         }
         fetchProductsSelling()
     }, [])
+    // console.log(productSelling);
     return (
         <div className="CatalogsPage">
             <PageHeader
@@ -21,7 +23,8 @@ const ProductSelling = () => {
 
             <Row className='ListCata'>
                 <Col span={24}>
-                    <ListProducts data={productSelling.data} />
+                <ListProducts data={productSelling}/>
+                    
                 </Col>
             </Row>
         </div>

@@ -2,10 +2,10 @@ import axiosClient from "./axiosCilent";
 import axiosClientAuth from "./axiosClientAuth";
 
 
-const cataApi={
+const couponApi={
 
-    GetCata(){
-        const url = '/catalogs';
+    GetCoupon(){
+        const url = '/discountCodes';
         const res = axiosClient.get(url)
         .then(res=>{
             return res.data;
@@ -34,4 +34,4 @@ const cataApi={
     },
 };
 
-export default cataApi; 
+export default couponApi; 

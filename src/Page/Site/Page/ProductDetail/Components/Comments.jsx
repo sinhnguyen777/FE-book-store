@@ -5,6 +5,7 @@ import { EnterOutlined } from "@ant-design/icons";
 import DetailComment from "./DetailComment";
 import commentApi from "../../../../../api/commentApi";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 export default function Comments(props) {
   const [DataComments, setDataComments] = useState([]);
@@ -24,19 +25,23 @@ export default function Comments(props) {
   }, [render]);
 
   const handleSubmitForm = (values) => {
-    values.idUser = dataUser.data[0]._id;
-    values.idProduct = props.idProduct;
-    console.log(values);
-    const fetchAddComments = async (values) => {
+    if (dataUser) {
+      values.idUser = dataUser.data[0]._id;
+      values.idProduct = props.idProduct;
       console.log(values);
-      await commentApi.AddComment(values);
-      setrender((pre) => (pre = pre + 1));
-      form.reset({
-        content: ""
-      })
-    };
+      const fetchAddComments = async (values) => {
+        console.log(values);
+        await commentApi.AddComment(values);
+        setrender((pre) => (pre = pre + 1));
+        form.reset({
+          content: "",
+        });
+      };
 
-    fetchAddComments(values);
+      fetchAddComments(values);
+    } else {
+      Swal.fire("vui Lòng đăng nhập để bình luận");
+    }
   };
   const data = [
     {

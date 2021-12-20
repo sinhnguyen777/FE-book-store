@@ -2,9 +2,9 @@ import axiosClient from "./axiosCilent";
 import axiosClientAuth from "./axiosClientAuth";
 
 const orderApi = {
-  GetOrder() {
+  GetOrder(filter) {
     const url = "/orders/";
-    const res = axiosClient.get(url).then((res) => {
+    const res = axiosClient.get(url,{ params: filter }).then((res) => {
       return res.data;
     });
     return res;
@@ -29,7 +29,7 @@ const orderApi = {
   },
   Send(data) {
     const url = "/orders/confirm";
-    const res = axiosClient.put(url, data).then((res) => {
+    const res = axiosClientAuth.put(url, data).then((res) => {
       return res.data;
     });
     return res;

@@ -13,6 +13,7 @@ import CartHeader from "./cartHeader";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { cartItemCountSelector } from "../../Page/Cart/selector";
+import GoToTop from "../../Components/Common/GoToTop";
 
 const mainNav = [
   {
@@ -173,6 +174,7 @@ const Header = () => {
           <CartHeader onClose={onClose}/>
         </Drawer>
       </div>
+      <GoToTop />
     </header>
   );
 };

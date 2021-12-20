@@ -192,17 +192,18 @@ const Cart = () => {
             const fetchAddOrder = async (DataOrder) => {
                 const res = orderApi.AddOrder(DataOrder)
                 console.log(res);
+                if (IdUser) {
+                    Swal.fire("Đặt hàng thành công", "success");
+                } else {
+                    Swal.fire("Đặt hàng thành công", `<div>
+                <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>
+                <p><a style="padding: 5px;background: #e4f4da;text-decoration: none;border-radius: 3px;font-weight:600" href='https://mail.google.com/mail'>Đến trang gmail</a></p>
+                </div> `, "success");
+                }
             }
 
             fetchAddOrder(DataOrder)
-            if (IdUser) {
-                Swal.fire("Đặt hàng thành công", "success");
-            } else {
-                Swal.fire("Đặt hàng thành công", `<div>
-            <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>
-            <p><a style="padding: 5px;background: #e4f4da;text-decoration: none;border-radius: 3px;font-weight:600" href='https://mail.google.com/mail'>Đến trang gmail</a></p>
-            </div> `, "success");
-            }
+            
         }
         catch (err) {
             console.log(err);

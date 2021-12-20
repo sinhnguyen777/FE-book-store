@@ -41,7 +41,7 @@ const ChapterApi={
 
     DelChapter(id){
         const url = `/chapter/del/${id}`;
-        return axiosClientAuth.delete(url)
+        return axiosClient.delete(url)
     },
 };
 

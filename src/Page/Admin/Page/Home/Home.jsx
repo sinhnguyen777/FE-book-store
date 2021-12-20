@@ -2,12 +2,16 @@ import { Card, Col, Row } from "antd";
 import React , { useEffect, useState }from "react";
 import statisticalApi from "../../../../api/statistical";
 import BoxChart from "./Components/chart";
+import {
+    LoadingOutlined,
+  } from '@ant-design/icons';
 
 
 const Home = () => {
     const [CountOrder, setCountOrder] = useState(0)
     const [CountOrderWait, setCountOrderWait] = useState(0)
     const [CountOrderDone, setCountOrderDone] = useState(0)
+    const [TotalOrderDone, setTotalOrderDone] = useState(0)
 
     useEffect(() => {
         const fetchGetAllOrder = async () =>{
@@ -30,8 +34,15 @@ const Home = () => {
         }
 
         fetchGetAllOrderDone()
-    }, [])
 
+        const fetchGetTotalOrderDone = async () =>{
+            const res = await statisticalApi.GetTotal();
+            setTotalOrderDone(res.data)
+        }
+
+        fetchGetTotalOrderDone()
+    }, [])
+console.log(TotalOrderDone);
     return (
         <div className="Home">
             <Row  gutter={[16, 24]}>
@@ -52,7 +63,7 @@ const Home = () => {
                 </Col>
                 <Col span={6} xl={6} md={12} sm={24} xs={24}>
                     <Card title="Tổng Doanh thu " bordered={false}>
-                        <p style={{fontSize:20}}>Card content</p>
+                        <p style={{fontSize:20}}>{TotalOrderDone?TotalOrderDone[0].totalAmount.toLocaleString('vi', {style : 'currency', currency : 'VND'}): <LoadingOutlined />}</p>
                     </Card>
                 </Col>
             </Row>

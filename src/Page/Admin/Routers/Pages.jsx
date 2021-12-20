@@ -13,6 +13,7 @@ import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 import EditProducts from "../Page/Products/pages/EditProducts";
 import Member from "../Page/Member";
 import User from "../Page/User/User";
+import ProductSelling from "../Page/ProductSelling/ProductSelling";
 
 
 
@@ -85,6 +86,11 @@ const routes = [
     {
         path: '/admin/user',
         component: User,
+        exact: true,
+    },
+    {
+        path: '/admin/best-product',
+        component: ProductSelling,
         exact: true,
     },
     

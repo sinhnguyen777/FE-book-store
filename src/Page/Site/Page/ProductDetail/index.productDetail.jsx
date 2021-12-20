@@ -18,6 +18,7 @@ import Slider from "react-slick";
 import { useDispatch } from "react-redux";
 import { addtoCart } from "../Cart/cartSlide";
 import Swal from "sweetalert2";
+import GoToTop from "../../Components/Common/GoToTop";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
@@ -244,6 +245,7 @@ export default function ProductDetail() {
         </Row>
         <RelatedProducts />
       </Layout>
+      <GoToTop />
     </div>
   );
 }

@@ -29,7 +29,7 @@ const orderApi = {
   },
   Send(data) {
     const url = "/orders/confirm";
-    const res = axiosClient.put(url, data).then((res) => {
+    const res = axiosClientAuth.put(url, data).then((res) => {
       return res.data;
     });
     return res;

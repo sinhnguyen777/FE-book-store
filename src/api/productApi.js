@@ -118,6 +118,10 @@ const prouctApi={
         const url = '/products/update';
         return axiosClient.put(url , data)
     },
+    UpdateDateDebut(data){
+        const url = '/products//update-dateDebut';
+        return axiosClient.put(url , data)
+    },
     DelProducts(id){
         const url = `/products/del/${id}`;
         return axiosClient.delete(url)

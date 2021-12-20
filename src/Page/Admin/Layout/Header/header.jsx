@@ -67,7 +67,9 @@ const HeaderCmp = (props) => {
           <Menu.Item key="9">
             <Link to="/admin/user">Danh sách người dùng</Link>
           </Menu.Item>
-          <Menu.Item key="10">Top người dùng mua nhiều</Menu.Item>
+          <Menu.Item key="10">
+            <Link to="/admin/user-top">Top người dùng mua nhiều</Link>
+          </Menu.Item>
         </SubMenu>
       </Menu>
     </div>

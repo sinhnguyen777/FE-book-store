@@ -6,16 +6,25 @@ import Swal from "sweetalert2";
 import couponApi from "../../../../api/couponApi";
 import InputField from "../../Components/Common/FromControl/InputField";
 import ListCoupon from "./Components/ListCoupon";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const Coupon = () => {
     const [demo, setdemo] = useState("");
     const [DataCata, setDataCata] = useState([]);
+    const schema = yup
+    .object({
+      code: yup.string().required("Vui lòng nhập trường này"),
+      percent: yup.string().required("Vui lòng nhập trường này"),
+    })
+    .required();
     const forms = useForm({
       defaultValues: {
           code: '',
           percent: '',
       },
-      });
+    resolver: yupResolver(schema),
+  });
     let history = useHistory();
   
     const handleSubmitFrom = (values) => {
@@ -37,9 +46,16 @@ const Coupon = () => {
               }
             });
           }
-          console.log(res);
+          if (res.data.code === 404) {
+            Swal.fire(
+              "Không thể thêm",
+              "Dịch vụ này đã có trong danh sách",
+              "error"
+            )
+           
+          }
         } catch (err) {
-          console.log(err);
+          Swal.fire('Không thể thêm', 'Mã code này đã có trong danh sách', 'error')
         }
       };
   
@@ -60,7 +76,6 @@ const Coupon = () => {
               });
             }
           } catch (err) {
-            console.log(err);
             Swal.fire("Rất tiếc!", "Không đủ Thẩm quyền đề xóa", "error").then(
               (result) => {
                 if (result.isConfirmed) {
@@ -96,10 +111,16 @@ const Coupon = () => {
           <div className="GroupForm">
             <label htmlFor="code">Mã code</label>
             <InputField name="code" type="text" form={forms}></InputField>
+            {forms.errors.code && (
+              <p className="CatchError">* Vui lòng nhập trường này</p>
+            )}
           </div>
           <div className="GroupForm">
             <label htmlFor="percent">Số tiền giảm</label>
             <InputField name="percent" type="text" form={forms}></InputField>
+            {forms.errors.percent && (
+              <p className="CatchError">* Vui lòng nhập trường này</p>
+            )}
           </div>
           <Button htmlType="submit">Lưu</Button>
         </form>

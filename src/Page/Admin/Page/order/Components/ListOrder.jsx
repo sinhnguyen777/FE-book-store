@@ -85,7 +85,7 @@ const ListOrder = (props) => {
         return (
           <>
             <Button>
-              <Link to={`/order-detail/${record._id}`}>Chi tiết...</Link>
+              <Link to={`/side/order-detail/${record._id}`}>Chi tiết...</Link>
             </Button>
           </>
         );

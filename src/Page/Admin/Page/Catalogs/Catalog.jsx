@@ -7,39 +7,69 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import InputField from "../../Components/Common/FromControl/InputField";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const CatalogPage = () => {
   const [demo, setdemo] = useState("");
   const [DataCata, setDataCata] = useState([]);
+  const schema = yup
+    .object({
+      nameCata: yup.string().required("Vui lòng nhập trường này"),
+    })
+    .required();
   const forms = useForm({
     defaultValues: {
-        nameCata: '',
+      nameCata: "",
     },
-    });
+    resolver: yupResolver(schema),
+  });
   let history = useHistory();
 
   const handleSubmitFrom = (values) => {
     const fetchUpdateCata = async (data) => {
       try {
         const res = await cataApi.AddCata(data);
-        if (res.status == 200) {
-          Swal.fire("...", "Thêm Thành Công!", "success").then((result) => {
+        if (res.status === 200) {
+          Swal.fire("Thêm", "Thêm Thành Công!", "success").then((result) => {
             if (result.isConfirmed) {
               console.log(1);
               setdemo((pre) => pre + 1);
-                forms.reset({ 
-                    defaultValues: {
-                        nameCata: '',
-                    },
-                });
+              forms.reset({
+                defaultValues: {
+                  nameCata: "",
+                },
+              });
 
               history.push({ pathname: "/admin/cata" });
             }
           });
         }
-        console.log(res);
+        if (res.data.code === 404) {
+          Swal.fire(
+            "Không thể thêm",
+            "Danh mục này đã có trong danh sách",
+            "error"
+          ).then((result) => {
+            if (result.isConfirmed) {
+              console.log(1);
+              setdemo((pre) => pre + 1);
+              forms.reset({
+                defaultValues: {
+                  nameCata: "",
+                },
+              });
+
+              history.push({ pathname: "/admin/cata" });
+            }
+          });
+        }
       } catch (err) {
-        console.log(err);
+        Swal.fire(
+          "Không thể thêm",
+          "Danh mục này đã có trong danh sách",
+          "error"
+        );
       }
     };
 
@@ -51,7 +81,7 @@ const CatalogPage = () => {
       const fetchRemoveCata = async (data) => {
         try {
           const res = await cataApi.DelCata(data);
-          if (res.status == 200) {
+          if (res.status === 200) {
             Swal.fire("...", "Xóa Thành Công!", "success").then((result) => {
               if (result.isConfirmed) {
                 console.log(1);
@@ -100,6 +130,9 @@ const CatalogPage = () => {
           <div className="GroupForm">
             <label htmlFor="nameCata">Tên Danh mục</label>
             <InputField name="nameCata" type="text" form={forms}></InputField>
+            {forms.errors.nameCata && (
+              <p className="CatchError">* Vui lòng nhập trường này</p>
+            )}
           </div>
 
           <Button htmlType="submit">Lưu</Button>

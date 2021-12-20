@@ -10,7 +10,6 @@ const prouctApi={
     },
     GetProducts(filter) {
         const url = '/products';
-        console.log(filter);
         const res = axiosClient.get(url,{ params: filter })
             .then(res => {
                 return res.data;
@@ -121,7 +120,7 @@ const prouctApi={
     },
     UpdateDateDebut(data){
         const url = '/products//update-dateDebut';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
     },
     DelProducts(id){
         const url = `/products/del/${id}`;
@@ -129,7 +128,15 @@ const prouctApi={
     },
     ProductsSelling(){
         const url = '/products/selling';
-        const res = axiosClient.delete(url)
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
+    ProductsUserTop(){
+        const url = '/products/user-sell';
+        const res = axiosClient.get(url)
         .then(res=>{
             return res.data;
         })

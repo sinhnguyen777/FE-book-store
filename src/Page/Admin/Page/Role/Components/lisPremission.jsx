@@ -13,10 +13,9 @@ const ListPermission = (props) => {
       const fetchRemoveRole = async (data) => {
         try {
           const res = await roleApi.DelRole(data);
-          if (res.status == 200) {
-            Swal.fire("...", "Xóa Thành Công!", "success").then((result) => {
+          if (res.status === 200) {
+            Swal.fire("Xóa", "Xóa Thành Công!", "success").then((result) => {
               if (result.isConfirmed) {
-                console.log(1);
                 setdemo((pre) => pre + 1);
                 history.push({ pathname: "/admin/Member" });
               }
@@ -24,10 +23,9 @@ const ListPermission = (props) => {
           }
         } catch (err) {
           console.log(err);
-          Swal.fire("...", "Không đủ Thẩm quyền đề xóa", "error").then(
+          Swal.fire("Lỗi", "Không đủ Thẩm quyền đề xóa", "error").then(
             (result) => {
               if (result.isConfirmed) {
-                console.log(1);
                 setdemo((pre) => pre + 1);
                 history.push({ pathname: "/admin/role" });
               }
@@ -143,6 +141,14 @@ const ListPermission = (props) => {
               <Checkbox
                 value={data[8].idPermissions}
                 defaultChecked={data[8].status}
+                onChange={handleChange}
+              />
+            </td>
+            <td>
+              {data[10].name}{" "}
+              <Checkbox
+                value={data[10].idPermissions}
+                defaultChecked={data[10].status}
                 onChange={handleChange}
               />
             </td>

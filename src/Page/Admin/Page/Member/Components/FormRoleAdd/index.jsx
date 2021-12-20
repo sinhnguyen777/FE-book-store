@@ -1,9 +1,11 @@
-import { Button } from "antd";
+import { Button, Select } from "antd";
 import React from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../../../../Components/Common/FromControl/InputField/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+const { Option } = Select;
 
 const FromAdminAdd = (props) => {
   const schema = yup
@@ -18,7 +20,7 @@ const FromAdminAdd = (props) => {
         .string()
         .email("Email không hợp lệ")
         .required("Vui lòng nhập email"),
-      name: yup.string().required("Vui lòng nhập chức vụ"),
+      role: yup.string().required("Vui lòng chọn chức vụ"),
     })
     .required();
   const forms = useForm({
@@ -27,7 +29,7 @@ const FromAdminAdd = (props) => {
       username: "",
       password: "",
       email: "",
-      name: "",
+      role: "",
     },
     resolver: yupResolver(schema),
   });
@@ -68,9 +70,18 @@ const FromAdminAdd = (props) => {
         </div>
 
         <div className="GroupForm">
-          <label htmlFor="name">Chức vụ</label>
-          <InputField name="name" type="text" form={forms}></InputField>
-          <p className="CatchError">* {forms.errors.name?.message}</p>
+          <label htmlFor="role">Chức vụ</label>
+          <Select name="role" defaultValue="lucy" form={forms}>
+            <Option value="lucy">Lucy</Option>
+            <Option value="lucy">Lucy</Option>
+            <Option value="lucy">Lucy</Option>
+            <Option value="lucy">Lucy</Option>
+          </Select>
+          {forms.errors.role && (
+            <p className="CatchError">
+              * Vui lòng chọn chức vụ
+            </p>
+          )}
         </div>
       </div>
 

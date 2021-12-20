@@ -22,7 +22,7 @@ const roleApi={
     },
     UpdateRole(data){
         const url = '/roles/edit';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
     },
     AddRole(data){
         const url = '/roles/create';

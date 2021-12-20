@@ -1,5 +1,7 @@
 import { Button, Form, Input, message, Modal, Select } from "antd";
 import $ from "jquery";
+import LoginFB from './LoginFB';
+import LoginGG from './LoginGG';
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
@@ -67,6 +69,9 @@ function Register() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
+//   const responseFacebook = (response) => {
+//      console.log(response);
+//   }
   // show button
     let show = "";
     let show2= "";
@@ -314,14 +319,15 @@ async function register(e) {
                     Đăng nhập
                   </Button>
                 </Form.Item>
-
-                {/* 
-                  <div className="forgot">
+                </Form>
+                    {/* login fb */}
+                         <LoginFB/>
+                    {/* login gg */}
+                         <LoginGG/>
+                  {/* <div className="forgot">
                     <a href="#">Quên mật khẩu?</a>
-                  </div>
-                 */}
-              </Form>
-            </form>
+               </div> */}
+               </form>
 
             {/* Register */}
             <form className="form-signup" name="form">

@@ -16,14 +16,42 @@ const Items = (props) => {
   return (
     <>
       {DataDetail ? (
-        <div className="BoxItem">
-          <Image
-            width={100}
-            src={`https://beonlinelibrary.herokuapp.com/${DataDetail.images[0].image}`}
-          />
-          <div className="BoxContent">{quantity}</div>
+        <div className="BoxItemCartOrder">
+          <div className="BoxItemCartOrder_content">
+            <Image
+              width={100}
+              src={`https://beonlinelibrary.herokuapp.com/${DataDetail.images[0].image}`}
+            />
+          </div>
+
+          <div className="BoxItemCartOrder_content">
+            <div className="BoxItemCartOrder_content_item">
+              <p className="BoxItemCartOrder_content_item_name">
+                {DataDetail.nameProduct}
+              </p>
+              <p className="BoxItemCartOrder_content_item_price">
+                Giá:{" "}
+                {DataDetail.price.toLocaleString("vi", {
+                  style: "currency",
+                  currency: "VND",
+                })}
+              </p>
+              <p className="BoxItemCartOrder_content_item_quantity">
+                Số lượng: {quantity}
+              </p>
+              <p className="BoxItemCartOrder_content_item_quantity">
+                Tổng:{" "}
+                {(quantity *
+                  DataDetail.price).toLocaleString("vi", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+              </p>
+            </div>
+          </div>
         </div>
       ) : null}
+      
     </>
   );
 };

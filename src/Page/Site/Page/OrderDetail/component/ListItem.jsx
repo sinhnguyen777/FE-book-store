@@ -18,14 +18,18 @@ const ListItem = (props) => {
     };
     fetchGetDetail(props.id);
   }, []);
-  console.log(DataItem.price);
+  console.log(DataItem);
 
   return (
-    <div>
+    <>
+    <div className="ListOrder">
       {DataItem.map((item) => (
-        <Items idProduct={item.idProduct} quantity={item.quantity} />
+        
+          <Items idProduct={item.idProduct} quantity={item.quantity} />
       ))}
-      Tổng :{" "}
+      
+    </div>
+    Tổng :{" "}
       {DataItem.map((item) => (
         <>
           {(item.price * item.quantity).toLocaleString("vi", {
@@ -34,7 +38,7 @@ const ListItem = (props) => {
           })}
         </>
       ))}
-    </div>
+    </>
   );
 };
 

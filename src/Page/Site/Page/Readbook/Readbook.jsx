@@ -5,6 +5,7 @@ import ChapterApi from '../../../../api/chapterApi';
 import { useRouteMatch } from 'react-router';
 import { LoadingOutlined, UpOutlined } from '@ant-design/icons';
 import prouctApi from '../../../../api/productApi';
+import GoToTop from '../../Components/Common/GoToTop';
 
 
 const { Option } = Select;
@@ -129,6 +130,7 @@ const Readbook = () => {
             <BackTop>
                 <div style={style}><UpOutlined /></div>
             </BackTop>
+            <GoToTop />
        </>
     )
 }

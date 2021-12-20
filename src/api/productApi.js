@@ -10,7 +10,7 @@ const prouctApi={
     },
     GetProducts(filter) {
         const url = '/products';
-        console.log(filter);
+        // console.log(filter);
         const res = axiosClient.get(url,{ params: filter })
             .then(res => {
                 return res.data;

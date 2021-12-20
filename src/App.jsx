@@ -38,8 +38,9 @@ function App() {
           <Error />
         </Route>
       </Router>
-      <MessengerCustomerChat pageId={process.env.PAGEID} appId={process.env.APPID}
-      />
+      {/* open deployed */}
+      {/* <MessengerCustomerChat pageId={process.env.PAGEID} appId={process.env.APPID}
+      /> */}
     </div>
   );
 }

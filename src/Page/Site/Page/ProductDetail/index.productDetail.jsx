@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from "react-router-dom";
 import { Layout, Row, Col, Image } from "antd";
 import { BannerProduct } from "../../Components/Common/Banner/banner";
 import RelatedProducts from "./Components/RelatedProducts";
@@ -33,8 +33,6 @@ export default function ProductDetail() {
 
   const [count, setCount] = useState(1);
 
-  
-
   const [wishList, setwishList] = useState([]);
 
   const match = useRouteMatch();
@@ -45,14 +43,16 @@ export default function ProductDetail() {
     if (userStr) return JSON.parse(userStr);
     else return null;
   };
-  const user = getUser();
-  const idUser = user.data[0]._id;
 
+  const user = getUser();
+  if (user) {
+    var idUser = user.data[0]._id;
+  }
   useEffect(() => {
     const slug = match.params.slug;
     const fetchProductID = async () => {
       const res = await prouctApi.GetProductsBySlug(slug);
-      if(res.data[0].statusDebut){
+      if (res.data[0].statusDebut) {
         history.push(`/product-wait/${res.data[0].slug}`);
       }
       setProductDetail(res.data[0]);

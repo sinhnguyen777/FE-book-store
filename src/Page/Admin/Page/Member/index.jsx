@@ -8,32 +8,7 @@ import ListRole from "./Components/ListMember";
 
 
 const Member = () => {
-    const [render, setrender] = useState('')
     const [DataRole, setDataRole] = useState([]);
-
-    let history = useHistory();
-    const handleSubmitFrom = (values)=>{
-        const fetchUpdateRole = async (data) => {
-            try {
-                const res = await roleApi.AddRole(data);
-                if (res.status === 200) {
-                    Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
-                        if (result.isConfirmed) {
-                            console.log(1);
-                            setrender(pre=>pre+1);
-                            history.push({ pathname: '/admin/role' })
-                        }
-                    })
-                }
-               
-                console.log(res);
-            } catch (err) {
-                Swal.fire('Lỗi', 'Chức vụ đã có trong danh sách', 'error')
-            }
-        }
-
-        fetchUpdateRole(values);
-    };
 
     useEffect(() => {
         const fetchRole = async () => {
@@ -42,7 +17,7 @@ const Member = () => {
         }
     
         fetchRole();
-      }, [render])
+      }, [])
 
     return (
         <div className="CatalogsPage">
@@ -53,7 +28,7 @@ const Member = () => {
 
             <div className="BoxFormMember">
                 <div className="title">Thêm chức vụ</div>
-                <FromRoleAdd handleSubmitFrom={handleSubmitFrom} />
+                <FromRoleAdd />
             </div>
 
             <Row className='ListCata'>

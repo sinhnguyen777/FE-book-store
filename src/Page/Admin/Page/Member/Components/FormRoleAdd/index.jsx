@@ -1,13 +1,18 @@
 import { Button, Select } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../../../../Components/Common/FromControl/InputField/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import roleApi from "../../../../../../api/roleApi";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
+import adminApi from "../../../../../../api/adminApi";
 
 const { Option } = Select;
 
-const FromAdminAdd = (props) => {
+const FromAdminAdd = () => {
+
   const schema = yup
     .object({
       fullName: yup.string().required("Vui lòng nhập Họ và tên"),
@@ -32,9 +37,55 @@ const FromAdminAdd = (props) => {
     },
     resolver: yupResolver(schema),
   });
+  const [RoleValue, setRoleValue] = useState([]);
+  useEffect(() => {
+    const fetchRole = async () => {
+      const res = await roleApi.GetRole();
+      setRoleValue(res.data);
+    };
+    fetchRole();
+  }, []);
 
+  const [ValueSelect, setValueSelect] = useState("");
+
+  function handleChange(value) {
+    setValueSelect(value);
+  }
+  let history = useHistory();
+  const handleSubmitFrom = (values) => {
+    const fetchUpdateRole = async (data) => {
+      try {
+        values.idRole = ValueSelect;
+
+        const res = await adminApi.Register(data);
+        if (res.status === 200) {
+          Swal.fire("...", "Thêm Thành Công!", "success").then((result) => {
+            if (result.isConfirmed) {
+              setValueSelect("");
+              forms.reset({
+                defaultValues: {
+                  fullName: "",
+                  username: "",
+                  password: "",
+                  email: "",
+                  role: "",
+                },
+              });
+
+              history.push({ pathname: "/admin/Member" });
+            }
+          });
+        }
+
+      } catch (err) {
+        Swal.fire("Lỗi", "Chức vụ đã có trong danh sách", "error");
+      }
+    };
+
+    fetchUpdateRole(values);
+  };
   return (
-    <form onSubmit={forms.handleSubmit(props.handleSubmitFrom)}>
+    <form onSubmit={forms.handleSubmit(handleSubmitFrom)}>
       <div className="GroupFormList">
         <div className="GroupForm">
           <label htmlFor="fullName">Họ và Tên</label>
@@ -70,13 +121,20 @@ const FromAdminAdd = (props) => {
 
         <div className="GroupForm">
           <label htmlFor="role">Chức vụ</label>
-          <Select name="role" defaultValue="lucy" form={forms} className="MemberRoleSelect">
-            <Option value="lucy">Lucy</Option>
-            <Option value="lucy">Lucy</Option>
-            <Option value="lucy">Lucy</Option>
-            <Option value="lucy">Lucy</Option>
+          <Select
+            name="role"
+            form={forms}
+            className="MemberRoleSelect"
+            onChange={handleChange}
+          >
+            {RoleValue
+              ? RoleValue.map((item) => (
+                  <Option key={item._id} value={item._id}>
+                    {item.name}
+                  </Option>
+                ))
+              : ""}
           </Select>
-         
         </div>
       </div>
 

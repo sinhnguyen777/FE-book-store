@@ -1,4 +1,5 @@
 import axiosClient from "./axiosCilent";
+import axiosClientAuth from "./axiosClientAuth";
 
 
 const adminApi={
@@ -14,7 +15,7 @@ const adminApi={
     },
     Register(data){
         const url = '/admins/register';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     LoginAdmin(data){
         const url = '/admins/login';

@@ -125,7 +125,6 @@
   }
 }
 .ListOrder {
-  display: flex;
   .BoxItemCartOrder {
     display: flex;
     padding: 0 10px;
@@ -133,7 +132,7 @@
     &_content {
       @include flex(center, center);
       flex-wrap: wrap;
-
+      font-size: 20px;
       &_item {
         padding: 0 20px;
         p {

@@ -20,7 +20,6 @@ const FromAdminAdd = (props) => {
         .string()
         .email("Email không hợp lệ")
         .required("Vui lòng nhập email"),
-      role: yup.string().required("Vui lòng chọn chức vụ"),
     })
     .required();
   const forms = useForm({
@@ -77,11 +76,7 @@ const FromAdminAdd = (props) => {
             <Option value="lucy">Lucy</Option>
             <Option value="lucy">Lucy</Option>
           </Select>
-          {forms.errors.role && (
-            <p className="CatchError">
-              * Vui lòng chọn chức vụ
-            </p>
-          )}
+         
         </div>
       </div>
 

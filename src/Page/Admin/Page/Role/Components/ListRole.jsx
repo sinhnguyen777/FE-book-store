@@ -8,8 +8,6 @@ const {TabPane } = Tabs;
 const ListRole = (props) => {
 
   const {data} = props;
-  console.log(data);
-  
   return (
     <>
       <Tabs tabPosition="left" theme="light">

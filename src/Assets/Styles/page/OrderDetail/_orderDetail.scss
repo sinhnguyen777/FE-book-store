@@ -124,3 +124,35 @@
     }
   }
 }
+.ListOrder {
+  display: flex;
+  .BoxItemCartOrder {
+    display: flex;
+    padding: 0 10px;
+    height: 200px;
+    &_content {
+      @include flex(center, center);
+      flex-wrap: wrap;
+
+      &_item {
+        padding: 0 20px;
+        p {
+          margin: 0;
+          letter-spacing: 1px;
+          text-transform: none;
+        }
+        &_name {
+          font-weight: 500;
+          font-size: 20px;
+
+          text-transform: capitalize;
+        }
+        &_price,
+        &_quantity {
+          font-size: 17px;
+          font-weight:normal;
+        }
+      }
+    }
+  }
+}

@@ -53,7 +53,6 @@ const Product = () => {
 
         fetchProducts()
 
-        console.log();
     }, [render])
 
     function handleChange(value) {
@@ -84,28 +83,51 @@ const Product = () => {
                 formData.append('images', fileList[i].originFileObj);
             }
 
-            await prouctApi.AddProduct(formData);
-            Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
-                if (result.isConfirmed) {
-                    setRender(pre=>pre+1);
-                    setValueSelect('');
-                    setfileList([]);
-                    forms.reset({
-                        defaultValues: {
-                            nameProduct: "",
-                            price: "",
-                            author: "",
-                            idCata: "",
-                            Nbx: ""
-                        }
-                      })
-                    history.push({ pathname: '/admin/products' })
-                }
-            })
+            const res= await prouctApi.AddProduct(formData);
+            console.log(res);
+            if(res.status === 200) {
+
+                Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
+                    if (result.isConfirmed) {
+                        setRender(pre=>pre+1);
+                        setValueSelect('');
+                        setfileList([]);
+                        forms.reset({
+                            defaultValues: {
+                                nameProduct: "",
+                                price: "",
+                                author: "",
+                                idCata: "",
+                                Nbx: ""
+                            }
+                          })
+                        history.push({ pathname: '/admin/products' })
+                    }
+                })
+            }
+            if(res.data.code === 404) {
+
+                Swal.fire('Không thể thêm', 'Sản phẩm này đã có trong danh sách', 'error').then((result) => {
+                    if (result.isConfirmed) {
+                        setRender(pre=>pre+1);
+                        setValueSelect('');
+                        setfileList([]);
+                        forms.reset({
+                            defaultValues: {
+                                nameProduct: "",
+                                price: "",
+                                author: "",
+                                idCata: "",
+                                Nbx: ""
+                            }
+                          })
+                        history.push({ pathname: '/admin/products' })
+                    }
+                })
+            }
         }
         catch (err) {
-            console.log(err);
-            Swal.fire('...', 'Thêm Thất bại!', 'error')
+            Swal.fire('Không thể thêm', 'Sản phẩm này đã có trong danh sách', 'error')
         }
 
     }

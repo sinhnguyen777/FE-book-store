@@ -46,6 +46,7 @@ function LoginGG(props) {
       />
     </div>
   );
+
 }
 
 export default LoginGG;

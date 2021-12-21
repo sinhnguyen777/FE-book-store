@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
 import userApi from "../../../../api/userApi";
+import { string } from "yup";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -72,12 +73,13 @@ function Register() {
 //   const responseFacebook = (response) => {
 //      console.log(response);
 //   }
+
   // show button
     let show = "";
     let show2= "";
-     if (emailDN ==="" || passwordDN === "")  show = "disable";
+     if (emailDN ==="" || passwordDN === "" || passwordDN.length < 4)  show = "disable";
      else show = "";
-     if (email ==="" || password === "" ||  fullName === "" || password !== password_confirm) show2 = "disable";     
+     if (email ==="" || password === "" ||  fullName === ""|| password.length < 4 || password !== password_confirm ||  /[a-z]{3}/.test(fullName) !== true) show2 = "disable";     
      else show2 = "";
  
   useEffect(() => {
@@ -295,7 +297,10 @@ async function register(e) {
                     },
                   ]}
                 >
-                <Input onChange={(e) => setEmailDN(e.target.value)} />
+                <Input
+                    onChange={(e) => setEmailDN(e.target.value)}
+                    maxLength="28" allowClear
+               />
                 </Form.Item>
 
                 <Form.Item
@@ -306,11 +311,16 @@ async function register(e) {
                       required: true,
                       message: "Hãy nhập mật khẩu của bạn!",
                     },
+                    {
+                         min:4,
+                         message: "Vui lòng nhập ít nhất 4 chữ số!",
+                       },
                   ]}
                   hasFeedback
                 >
                   <Input.Password
                        onChange={(e) => setPasswordDN(e.target.value)}
+                       maxLength="20"
                   />
                 </Form.Item>
 
@@ -346,17 +356,21 @@ async function register(e) {
               >
                 <Form.Item
                   name="nickname_dk"
-                  label="Tên đầy đủ"
+                  label="Tên"
                   tooltip="Bạn muốn người khác gọi bạn là gì?"
                   rules={[
                     {
                       required: true,
-                      message: "Hãy nhập tên đầy đủ của bạn!",
-                      whitespace: true,
+                      message: "Hãy nhập tên của bạn!",
+                    //   whitespace: true,
                     },
+                    {
+                         pattern: /[a-z]{3}/,
+                         message: "Tên không đúng định dạng!"
+                    }
                   ]}
                 >
-                  <Input onChange={(e) => setFullname(e.target.value)} />
+                  <Input allowClear  maxLength="30" onChange={(e) => setFullname(e.target.value)} />
                 </Form.Item>
 
                 <Form.Item
@@ -373,7 +387,7 @@ async function register(e) {
                     },
                   ]}
                 >
-                  <Input onChange={(e) => setEmail(e.target.value)} />
+                  <Input maxLength="28" allowClear onChange={(e) => setEmail(e.target.value)} />
                 </Form.Item>
 
                 {/* <Form.Item
@@ -404,10 +418,16 @@ async function register(e) {
                       required: true,
                       message: "Hãy nhập mật khẩu của bạn!",
                     },
+                    {
+                         min:4,
+                         message: "Vui lòng nhập ít nhất 4 chữ số!",
+                       },
+
                   ]}
                   hasFeedback
                 >
                   <Input.Password
+                    maxLength="20"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Item>

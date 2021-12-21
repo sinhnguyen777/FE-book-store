@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Layout, Row, Col, Image } from "antd";
 import { BannerProduct } from "../../Components/Common/Banner/banner";
 import RelatedProducts from "./Components/RelatedProducts";
@@ -22,6 +22,7 @@ import GoToTop from "../../Components/Common/GoToTop";
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [visible, setVisible] = useState(false);
 
@@ -31,8 +32,6 @@ export default function ProductDetail() {
   const [nav2, setNav2] = useState(null);
 
   const [count, setCount] = useState(1);
-
-  
 
   const [wishList, setwishList] = useState([]);
 
@@ -44,13 +43,18 @@ export default function ProductDetail() {
     if (userStr) return JSON.parse(userStr);
     else return null;
   };
-  const user = getUser();
-  const idUser = user.data[0]._id;
 
+  const user = getUser();
+  if (user) {
+    var idUser = user.data[0]._id;
+  }
   useEffect(() => {
     const slug = match.params.slug;
     const fetchProductID = async () => {
       const res = await prouctApi.GetProductsBySlug(slug);
+      if (res.data[0].statusDebut) {
+        history.push(`/product-wait/${res.data[0].slug}`);
+      }
       setProductDetail(res.data[0]);
     };
     fetchProductID(slug);

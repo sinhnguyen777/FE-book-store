@@ -19,7 +19,7 @@ const ListHot = () => {
     }, [])
 
     const data = DataHot.slice(0,5);
-    console.log(data);
+    // console.log(data);
     return (
         <div className="List-product">
             <ItemProduct data={data}/>

@@ -13,6 +13,10 @@ import ContentChapter from "../Page/Products/pages/Chapter/pages/detail";
 import EditProducts from "../Page/Products/pages/EditProducts";
 import Member from "../Page/Member";
 import User from "../Page/User/User";
+import ProductSelling from "../Page/ProductSelling/ProductSelling";
+import Coupon from "../Page/Coupon/Coupon";
+import EditCoupon from "../Page/Coupon/pages/editCoupon/EditCoupon";
+import UserTop from "../Page/User/Components/UserTop";
 
 
 
@@ -86,6 +90,25 @@ const routes = [
         path: '/admin/user',
         component: User,
         exact: true,
+    },
+    {
+        path: '/admin/user-top',
+        component: UserTop,
+        exact: true,
+    },
+    {
+        path: '/admin/best-product',
+        component: ProductSelling,
+        exact: true,
+    },
+    {
+        path: '/admin/coupon',
+        component: Coupon,
+        exact: true,
+    },
+    {
+        path: '/admin/coupon/edit/:id',
+        component: EditCoupon,
     },
     
 

@@ -9,6 +9,9 @@ import { BannerProduct } from '../../Components/Common/Banner/banner'
 import ItemCart from './Components/ItemCart'
 import { cartItemTotalSelector } from './selector'
 import userApi from "../../../../api/userApi";
+import { ResetCart } from "../Cart/cartSlide";
+import { useDispatch } from "react-redux";
+
 
 const { Option } = Select;
 
@@ -27,6 +30,10 @@ const Cart = () => {
     const [ValueName, setValueName] = useState()
     const [ValuePhone, setValuePhone] = useState()
     const [ValueEmail, setValueEmail] = useState()
+
+    const history = useHistory();
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/province', {
@@ -190,10 +197,13 @@ const Cart = () => {
             console.log(DataOrder);
 
             const fetchAddOrder = async (DataOrder) => {
-                const res = orderApi.AddOrder(DataOrder)
+                const res = await orderApi.AddOrder(DataOrder)
                 console.log(res);
                 if (IdUser) {
                     Swal.fire("Đặt hàng thành công", "success");
+                    const action = ResetCart({});
+                    dispatch(action);
+                    history.push(`order-detail/${res.data.data.idOrder}`)
                 } else {
                     Swal.fire("Đặt hàng thành công", `<div>
                 <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>

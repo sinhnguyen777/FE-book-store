@@ -13,21 +13,19 @@ const ListPermission = (props) => {
       const fetchRemoveRole = async (data) => {
         try {
           const res = await roleApi.DelRole(data);
-          if (res.status == 200) {
-            Swal.fire("...", "Xóa Thành Công!", "success").then((result) => {
+          if (res.status === 200) {
+            Swal.fire("Xóa", "Xóa Thành Công!", "success").then((result) => {
               if (result.isConfirmed) {
-                console.log(1);
                 setdemo((pre) => pre + 1);
-                history.push({ pathname: "/admin/role" });
+                history.push({ pathname: "/admin/Member" });
               }
             });
           }
         } catch (err) {
           console.log(err);
-          Swal.fire("...", "Không đủ Thẩm quyền đề xóa", "error").then(
+          Swal.fire("Lỗi", "Không đủ Thẩm quyền đề xóa", "error").then(
             (result) => {
               if (result.isConfirmed) {
-                console.log(1);
                 setdemo((pre) => pre + 1);
                 history.push({ pathname: "/admin/role" });
               }
@@ -41,10 +39,6 @@ const ListPermission = (props) => {
       console.log(err);
     }
   };
-  const handleAdd = () => {};
-  function onChange(checkedValues) {
-    console.log("checked = ", checkedValues);
-  }
 
   const handleChange = async (values) => {
     try {
@@ -150,6 +144,14 @@ const ListPermission = (props) => {
                 onChange={handleChange}
               />
             </td>
+            <td>
+              {data[10].name}{" "}
+              <Checkbox
+                value={data[10].idPermissions}
+                defaultChecked={data[10].status}
+                onChange={handleChange}
+              />
+            </td>
           </tr>
           <tr>
             <th>Đơn hàng</th>
@@ -171,7 +173,7 @@ const ListPermission = (props) => {
                 ))
             } */}
       <div className="RemoveRole">
-        <Button onClick={() => handleRemove(data._id)}>Xóa Chức Vụ</Button>
+        <Button onClick={() => handleRemove(idRole)}>Xóa Chức Vụ</Button>
       </div>
     </div>
   );

@@ -39,10 +39,15 @@ const Readbook = () => {
     const [valueChapter, setvalueChapter] = useState();
     const [ContentChapter, setContentChapter] = useState()
     const [productValue, setproductValue] = useState()
+    const [StatusBook, setStatusBook] = useState(false)
     useEffect(() => {
         const idProduct = match.params.id;
         const fetchCataByID = async () => {
             const res = await ChapterApi.GetChapterByIdProduct(idProduct)
+            if(res.data[0] != undefined){
+                console.log(1);
+                setStatusBook(true)
+            }
              setChapter(res.data);
              if(!valueChapter){
                 setContentChapter(res.data[0])
@@ -71,7 +76,10 @@ const Readbook = () => {
             <BannerProduct>
                 <h2>Đọc sách</h2>
             </BannerProduct>
-            <div className="layout">
+            {
+                StatusBook
+                ?
+                <div className="layout">
                 <div className="chapter-title">
                     <div className="chapter-title_name">
                         {
@@ -127,6 +135,9 @@ const Readbook = () => {
                    
                 </div>
             </div>
+                :
+                `Đang Cập Nhật`
+            }
             <BackTop>
                 <div style={style}><UpOutlined /></div>
             </BackTop>

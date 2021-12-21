@@ -42,6 +42,14 @@ const  statisticalApi={
         })
         return res
     },
+    GetTotal(){
+        const url = 'statistical/order/revenue';
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
 };
 
 export default statisticalApi; 

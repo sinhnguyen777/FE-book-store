@@ -16,7 +16,7 @@ const Member = () => {
         const fetchUpdateRole = async (data) => {
             try {
                 const res = await roleApi.AddRole(data);
-                if (res.status == 200) {
+                if (res.status === 200) {
                     Swal.fire('...', 'Thêm Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
                             console.log(1);
@@ -25,9 +25,10 @@ const Member = () => {
                         }
                     })
                 }
+               
                 console.log(res);
             } catch (err) {
-                console.log(err);
+                Swal.fire('Lỗi', 'Chức vụ đã có trong danh sách', 'error')
             }
         }
 

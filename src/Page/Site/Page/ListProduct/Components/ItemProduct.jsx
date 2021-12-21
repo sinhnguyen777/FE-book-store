@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const ItemProduct = (props) => {
     const {data} = props
-    console.log(data);
+    // console.log(data);
     return (
         <>
             {

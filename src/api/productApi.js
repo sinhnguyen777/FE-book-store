@@ -1,15 +1,15 @@
 import axiosClient from "./axiosCilent";
+import axiosClientAuth from "./axiosClientAuth";
 
 
 const prouctApi={
 
     AddProduct(data){
         const url = '/products/create';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     GetProducts(filter) {
         const url = '/products';
-        console.log(filter);
         const res = axiosClient.get(url,{ params: filter })
             .then(res => {
                 return res.data;
@@ -116,11 +116,31 @@ const prouctApi={
     },
     UpdateProduct(data){
         const url = '/products/update';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
+    },
+    UpdateDateDebut(data){
+        const url = '/products//update-dateDebut';
+        return axiosClientAuth.put(url , data)
     },
     DelProducts(id){
         const url = `/products/del/${id}`;
-        return axiosClient.delete(url)
+        return axiosClientAuth.delete(url)
+    },
+    ProductsSelling(){
+        const url = '/products/selling';
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
+    },
+    ProductsUserTop(){
+        const url = '/products/user-sell';
+        const res = axiosClient.get(url)
+        .then(res=>{
+            return res.data;
+        })
+        return res
     },
 };
 

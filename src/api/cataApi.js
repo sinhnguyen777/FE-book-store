@@ -22,11 +22,11 @@ const cataApi={
     },
     UpdateCata(data){
         const url = '/catalogs/edit';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
     },
     AddCata(data){
         const url = '/catalogs/create';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     DelCata(id){
         const url = `/catalogs/del/${id}`;

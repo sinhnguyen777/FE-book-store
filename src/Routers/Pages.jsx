@@ -15,6 +15,9 @@ import ProductDetail from "../Page/Site/Page/ProductDetail/index.productDetail";
 import Readbook from "../Page/Site/Page/Readbook/Readbook";
 import Search from "../Page/Site/Page/Search/Search";
 import SearchAuthor from "../Page/Site/Page/ListProduct/Components/SearchAuthor";
+import Paymemt from "../Page/Site/Page/Payment/index.Payment";
+import ProductWait from "../Page/Site/Page/ProductWait/Event";
+
 
 const routes = [
   {
@@ -30,6 +33,11 @@ const routes = [
   {
     path: "/product-detail/:slug",
     component: ProductDetail,
+    exact: true,
+  },
+  {
+    path: "/product-wait/:slug",
+    component: ProductWait,
     exact: true,
   },
   {
@@ -55,6 +63,11 @@ const routes = [
   {
     path: "/option",
     component: Option,
+    exact: true,
+  },
+  {
+    path: "/payment",
+    component: Paymemt,
     exact: true,
   },
   {

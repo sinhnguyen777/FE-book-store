@@ -22,11 +22,11 @@ const roleApi={
     },
     UpdateRole(data){
         const url = '/roles/edit';
-        return axiosClient.put(url , data)
+        return axiosClientAuth.put(url , data)
     },
     AddRole(data){
         const url = '/roles/create';
-        return axiosClient.post(url , data)
+        return axiosClientAuth.post(url , data)
     },
     DelRole( id){
         const url = `/roles/del/${id}`;

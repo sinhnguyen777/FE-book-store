@@ -37,7 +37,7 @@ const Confirm = () => {
   return (
     <div className="confirm">
       <div className="error-container">
-        <h2>Đang Xác thực tài khoản</h2>
+        <h2>Đang thực hiện vui lòng chờ...</h2>
         <SyncOutlined spin />
       </div>
     </div>

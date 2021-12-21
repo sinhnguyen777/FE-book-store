@@ -35,5 +35,33 @@
       font-size: 19px;
       margin: 7px 0 0;
     }
+    .ant-card-cover {
+      position: relative;
+      &:hover {
+        &::before {
+          position: absolute;
+          display: block;
+          z-index: 1;
+          content: "ĐỌC THÊM";
+          width: 100%;
+          height: 100%;
+          background-color: #d14031;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-weight: 400;
+          text-transform: uppercase;
+          letter-spacing: 0.35em;
+          font-family: "Josefin Sans", sans-serif;
+          transition: opacity 0.2s ease-out;
+          &:hover {
+            border-bottom: 1px solid #fff;
+            transition: opacity 0.2s ease-out;
+          }
+        }
+        transition: opacity 0.2s ease-out;
+      }
+    }
   }
 }

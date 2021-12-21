@@ -12,6 +12,7 @@ import adminApi from "../../../../../../api/adminApi";
 const { Option } = Select;
 
 const FromAdminAdd = () => {
+  const [demo, setdemo] = useState("");
 
   const schema = yup
     .object({
@@ -44,7 +45,7 @@ const FromAdminAdd = () => {
       setRoleValue(res.data);
     };
     fetchRole();
-  }, []);
+  }, [demo]);
 
   const [ValueSelect, setValueSelect] = useState("");
 
@@ -61,7 +62,9 @@ const FromAdminAdd = () => {
         if (res.status === 200) {
           Swal.fire("...", "Thêm Thành Công!", "success").then((result) => {
             if (result.isConfirmed) {
+              setdemo((pre) => pre + 1);
               setValueSelect("");
+
               forms.reset({
                 defaultValues: {
                   fullName: "",

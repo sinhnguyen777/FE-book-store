@@ -32,6 +32,10 @@ const userApi = {
     const url = "/users/login";
     return axiosClient.post(url, data);
   },
+  LoginGG(data) {
+    const url = "/users/login-gg";
+    return axiosClient.post(url, data);
+  },
   Update(data) {
     const url = "/users/edit";
     return axiosClient.post(url, data);

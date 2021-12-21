@@ -34,7 +34,7 @@ const userApi = {
   },
   Update(data) {
     const url = "/users/edit";
-    return axiosClient.put(url, data);
+    return axiosClient.post(url, data);
   },
   DelCata(id) {
     const url = `/catalogs/del/${id}`;

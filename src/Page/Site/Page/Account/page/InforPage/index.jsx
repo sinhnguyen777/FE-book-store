@@ -10,6 +10,7 @@ import {
   Typography,
   Upload,
 } from "antd";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import userApi from "../../../../../../api/userApi";
@@ -68,20 +69,34 @@ const Infor = () => {
 
   const imagesAvt = {
     onChange: (info) => {
-      setValueAvata(info.fileList);
+      console.log(info);
     },
   };
-  const handleSubmitFrom = async () => {
-    const formData = new FormData();
-    formData.append("phone", ValueSdt);
-    formData.append("avatar", ValueAvata[0].originFileObj);
-    console.log(formData);
-    console.log(ValueSdt);
-    console.log(ValueAvata[0].originFileObj);
-    const res = await userApi.Update(formData.getAll);
+
+  const avatarUpload = file => {
+    // const userId = this.props.userdetail.data.data.id;
+    const data = new FormData();
+    data.append('avatar', file);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    axios.post(`https://beonlinelibrary.herokuapp.com/users/upload-avt`, data, config)
+      .then(res => setValueAvata(res.data.path))
+      .catch(err => console.log(err));
   };
 
-  // console.log(ValueAvata[0].originFileObj);
+  const handleSubmitFrom = async () => {
+    const data = {
+      id: user.data[0]._id,
+      phone:ValueSdt,
+      avatar:ValueAvata
+    }
+    const res = await userApi.Update(data);
+    console.log(res);
+  };
+
   return (
     <div className="container_client">
       <Layout className="site-layout">
@@ -105,8 +120,8 @@ const Infor = () => {
               />
 
               <div style={{marginTop: '10px'}}>
-                <Upload {...imagesAvt}>
-                  <Button icon={<UploadOutlined />}>Upload png only</Button>
+                <Upload /*  action="https://beonlinelibrary.herokuapp.com/users/upload-avt" */  action={avatarUpload} name="avatar" {...imagesAvt}>
+                  <Button  icon={<UploadOutlined />}>Upload png only</Button>
                 </Upload>
               </div>
             </Col>

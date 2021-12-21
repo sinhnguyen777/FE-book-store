@@ -13,11 +13,11 @@ function LoginFB(props) {
      return (
           <div>
                 <FacebookLogin
-                    appId="1110791159754153"
+                    appId="1046843472762294"
                     autoLoad={true}
                     fields="name,email,picture"
-                    // onClick={componentClicked}
-                    isSignedIn={true}
+                    onClick={componentClicked}
+                    isSignedIn={false}
                     callback={responseFacebook}
                     render={renderProps => (
                          <button id='facebook' className='button' onClick={renderProps.onClick}>

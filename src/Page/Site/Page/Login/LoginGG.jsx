@@ -13,11 +13,11 @@ function LoginGG(props) {
      return (
           <div>
                     <GoogleLogin
-                    clientId="650061717314-m60a3dm92k0gu990bi0hbiriddmc9etp.apps.googleusercontent.com"
+                    clientId="889724260424-oo07diopjh9i536lkreeg6gkvo5m9sq1.apps.googleusercontent.com"
                     buttonText="Đăng nhập"
                     onSuccess={dangNhhapThanhCong} onFailure={dangNhapThatBai}
                     cookiePolicy={'single_host_origin'}
-                    isSignedIn={true}
+                    isSignedIn={false}
                     render={renderProps => (
                       <button onClick={renderProps.onClick} disabled={renderProps.disabled} id='google' className='button'>
                                     Google+

@@ -241,7 +241,9 @@ const Cart = () => {
                     <tbody>
                         {
                             listCart.cartItem.length === 0 ?
-                                <tbody className="Emty"><Empty /></tbody>
+                                <tbody className="Emty">
+                                    <tr><Empty /></tr>
+                                </tbody>
                                 :
                                 listCart.cartItem.map(item => (
                                     <ItemCart item={item}></ItemCart>
@@ -250,12 +252,12 @@ const Cart = () => {
                     </tbody>
 
                 </table>
-                <div className="cart-apply" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="cart-apply" >
                     <div className="cart-apply_coupon">
-                        <input style={{ textAlign: 'center', margin: '10px' }} type="text" name="" id="" className="ButtonPara btn" placeholder="Mã giảm giá" />
+                        <input type="text" name="" id="" className="ButtonPara btn" placeholder="Mã giảm giá" />
                         <button type="submit" className="ButtonBanner btn">áp dụng mã</button>
                     </div>
-                    <button style={{ margin: '10px 0' }} type="submit" className="ButtonBanner btn">Cập nhật giỏ hàng</button>
+                    <button type="submit" className="ButtonBanner btn buttoncart">Cập nhật giỏ hàng</button>
                 </div>
                 <div className="cart-form">
                     <div className="cart-form_shipping">

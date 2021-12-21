@@ -29,7 +29,7 @@ const ListMember = (props) => {
   console.log(data);
   return (
     <>
-      <Tabs tabPosition="left" theme="light">
+      <Tabs tabPosition="left" theme="light" className="TabMember">
         {
           data ?
             data.map((item, index) => (

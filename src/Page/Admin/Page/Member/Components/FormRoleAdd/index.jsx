@@ -70,7 +70,7 @@ const FromAdminAdd = (props) => {
 
         <div className="GroupForm">
           <label htmlFor="role">Chức vụ</label>
-          <Select name="role" defaultValue="lucy" form={forms}>
+          <Select name="role" defaultValue="lucy" form={forms} className="MemberRoleSelect">
             <Option value="lucy">Lucy</Option>
             <Option value="lucy">Lucy</Option>
             <Option value="lucy">Lucy</Option>

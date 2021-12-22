@@ -70,7 +70,7 @@ const ItemOption = () => {
                             <div className="Option-item_content">
                                 <div className="Option-item_content_title">{item.name}</div>
                                 <div className="Option-item_content_text">
-                                    <div className="Option-item_content_price">Giá: {item.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</div>
+                                    <div className="Option-item_content_price">Giá: {item.price.toLocaleString('en', { style: 'currency', currency: 'USD' })}</div>
                                     <div className="Option-item_content_price">Thời hạn: {item.time} ngày</div>
                                 </div>
                                 <div className="Option-item_content_button">

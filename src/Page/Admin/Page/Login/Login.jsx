@@ -62,7 +62,7 @@ const LoginAd = () => {
                   type="text"
                   name="username"
                   id
-                  placeholder="Username"
+                  placeholder="Tên tài khoản"
                   ref={form.register({
                     required: true,
                   })}
@@ -76,13 +76,15 @@ const LoginAd = () => {
                   type="password"
                   name="password"
                   id
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   ref={form.register({ required: true })}
                 />
                 {form.errors.password && (
                   <p className="CatchError">* Vui lòng nhập password</p>
                 )}
                 <button type="submit">Đăng Nhập</button>
+                <button style={{background: "#d33"}} onClick={() =>  history.push('/')}>Quay lại</button>
+
                 <p className="signup">
                   Bạn Quên Mật Khẩu?{" "}
                   <span onClick={toggleForm}>Lấy Lại Mật Khẩu.</span>

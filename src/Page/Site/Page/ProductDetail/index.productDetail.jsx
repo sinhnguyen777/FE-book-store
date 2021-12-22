@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Layout, Row, Col, Image } from "antd";
+import { Layout, Row, Col, Image, BackTop } from "antd";
 import { BannerProduct } from "../../Components/Common/Banner/banner";
 import RelatedProducts from "./Components/RelatedProducts";
 import Comments from "./Components/Comments";
@@ -13,13 +13,23 @@ import {
   CheckOutlined,
   HeartOutlined,
   LoadingOutlined,
+  UpOutlined,
 } from "@ant-design/icons";
 import Slider from "react-slick";
 import { useDispatch } from "react-redux";
 import { addtoCart } from "../Cart/cartSlide";
 import Swal from "sweetalert2";
 import GoToTop from "../../Components/Common/GoToTop";
-
+const style = {
+  height: 40,
+  width: 40,
+  lineHeight: '40px',
+  borderRadius: 4,
+  backgroundColor: '#d14031',
+  color: '#fff',
+  textAlign: 'center',
+  fontSize: 14,
+};
 export default function ProductDetail() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -248,7 +258,11 @@ export default function ProductDetail() {
         </Row>
         <RelatedProducts />
       </Layout>
+      <BackTop>
+            <div style={style}><UpOutlined /></div>
+        </BackTop>
       <GoToTop />
     </div>
+    
   );
 }

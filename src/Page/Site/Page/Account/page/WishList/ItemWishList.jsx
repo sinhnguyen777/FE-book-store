@@ -1,5 +1,6 @@
-import { CloseCircleOutlined, LoadingOutlined } from "@ant-design/icons";
+import { DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
 import { data } from "jquery";
+import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -53,12 +54,7 @@ const ItemWishList = (props) => {
     <>
       {product ? (
         <div className="ItemWishList ItemProduct">
-          <button
-            className="ItemWishList_delete"
-            onClick={() => handleRemove(idUser, data._id)}
-          >
-            <CloseCircleOutlined />
-          </button>
+          
           <Link to={`/product-detail/${product.slug}`}>
             <div className="ItemProduct_inner">
               <div className="ItemProduct_inner_image">
@@ -98,6 +94,7 @@ const ItemWishList = (props) => {
               </div>
             </div>
           </Link>
+          <Button type="primary" danger onClick={() => handleRemove(idUser, data._id)} className="ItemWishList_delete">Bỏ thích</Button>
         </div>
       ) : (
         <LoadingOutlined />

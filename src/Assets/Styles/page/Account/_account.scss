@@ -11,7 +11,7 @@
 
 .container_client .trigger {
     padding: 0 24px;
-    font-size: 18px;
+    // font-size: 18px;
     line-height: 64px;
     cursor: pointer;
     transition: color 0.3s;
@@ -24,16 +24,27 @@
     width: 80px !important;
 }
 
-.container_client .boxleft {
-    flex: 0 0 240px;
-    max-width: 240px;
-    min-width: 240px;
-    width: 240px;
-    background-color: white;
-    box-shadow: #e2e2e2 0px 0px 5px 3px;
-    border-right: 1px #e2e2e2 solid;
-}
-
+// .container_client .boxleft {
+//     flex: 0 0 240px;
+//     max-width: 240px;
+//     min-width: 240px;
+//     width: 240px;
+//     background-color: white;
+//     box-shadow: #e2e2e2 0px 0px 5px 3px;
+//     border-right: 1px #e2e2e2 solid;
+//     @include tablet {
+//         flex: 0 0 80px;
+//         max-width: 80px;
+//         min-width: 80px;
+//         width: 80px;
+//     }
+//     @include mobile {
+//         flex: 0 0 80px;
+//         max-width: 80px;
+//         min-width: 80px;
+//         width: 80px;
+//     }
+// }
 .container_client .trigger:hover {
     color: #1890ff;
 }
@@ -116,8 +127,55 @@
     margin-top: 0px;
 }
 
+// .ant-layout-sider-has-trigger {
+//     flex: 0 0 200px !important;
+//     max-width: 200px !important;
+//     min-width: 200px !important;
+//     width: 200px !important;
+// }
+.ant-layout-sider-light .ant-layout-sider-trigger {
+    width: 200px !important;
+    @include tablet {
+        width: 80px !important;
+    }
+    @include mobile {
+        width: 80px !important;
+    }
+    @include large {
+        width: 80px !important;
+    }
+    @media (max-width:1600px) {
+        width: 80px !important;
+    }
+}
+
+.header {
+    box-shadow: grey 0px 0px 7px;
+}
+
+.ant-layout-sider-children {
+    padding: 20px 0px;
+}
+
+.ant-layout-sider-trigger {
+    bottom: 10px !important;
+    @media (max-width: 1600px) {
+        bottom: 310px !important;
+    }
+}
+
 .Thongtin .Item {
     padding: 20px;
+    @include tablet {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    @include mobile {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     p {
         font-size: 20px;
     }

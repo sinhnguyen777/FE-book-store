@@ -1,8 +1,14 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import vipApi from '../../../../../api/vipApi'
+import { Button, notification } from 'antd';
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
+
+
+
 const ItemOption = () => {
+    const history = useHistory()
     const [vip, setvip] = useState()
     useEffect(() => {
         const fetchVip = async () => {
@@ -12,33 +18,48 @@ const ItemOption = () => {
         fetchVip()
     }, [])
 
+
     const handleClick = async (values) => {
-        const data = {
-            name: values.name,
-            price: values.price
+        const user = JSON.parse(localStorage.getItem('user-info'))
+        if (!user) {
+            notification.open({
+                message: 'Bạn chưa đăng nhập',
+                description:
+                    'Bạn cần phải đăng nhập để thực hiện chức năng n',
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
+            });
+        } else {
+            const data = {
+                id: values._id,
+                name: values.name,
+                price: values.price
+            }
+
+            axios({
+                maxRedirects: 0,
+                method: 'post',
+                url: 'http://localhost:5000/pay',
+                data: data,
+            })
+                .then((res) => {
+                    if (res.status === 200) {
+                        console.log(res.data)
+                        window.location = res.data.forwardLink
+                        // history.push('/congratulation', values.id)
+                    } else {
+                        console.log('error');
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
 
-        axios({
-            maxRedirects: 0,
-            method: 'post',
-            url: 'https://beonlinelibrary.herokuapp.com/pay',
-            data: data,
-        })
-            .then((res) => {
-                if (res.status === 200) {
-                    console.log(res.data)
-                    window.location = res.data.forwardLink
-                } else {
-                    console.log('error');
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-        // return await PostDataPayment(data)
-        // history.push('/payment')
     }
+
+
 
     return (
         <>
@@ -49,10 +70,11 @@ const ItemOption = () => {
                             <div className="Option-item_content">
                                 <div className="Option-item_content_title">{item.name}</div>
                                 <div className="Option-item_content_text">
-                                    <div className="Option-item_content_price">Giá: {item.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</div>
+                                    <div className="Option-item_content_price">Giá: {item.price.toLocaleString('en', { style: 'currency', currency: 'USD' })}</div>
                                     <div className="Option-item_content_price">Thời hạn: {item.time} ngày</div>
                                 </div>
                                 <div className="Option-item_content_button">
+
                                     <button className="btn ButtonBanner" onClick={() => handleClick(item)}>Mua Ngay</button>
                                 </div>
                             </div>

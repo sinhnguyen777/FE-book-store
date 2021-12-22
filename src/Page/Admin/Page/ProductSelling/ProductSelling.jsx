@@ -13,12 +13,12 @@ const ProductSelling = () => {
         }
         fetchProductsSelling()
     }, [])
-    // console.log(productSelling);
+    console.log(productSelling);
     return (
         <div className="CatalogsPage">
             <PageHeader
                 className="site-page-header"
-                title="Sách bán chạy"
+                title="Top 5 sách bán chạy"
             />
 
             <Row className='ListCata'>

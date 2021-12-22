@@ -108,12 +108,13 @@ const Infor = () => {
             <Row>
               <Col>
                 <Avatar
-                  size={130}
+                  // size={130}
                   src={
                     <Image
                       src={`https://beonlinelibrary.herokuapp.com/${DataUser.data[0].avatar}`}
                     />
                   }
+                  className="AvatarUser"
                 />
 
                 <div style={{ marginTop: "10px" }}>
@@ -123,7 +124,7 @@ const Infor = () => {
                     }
                     name="avatar"
                   >
-                    <Button icon={<UploadOutlined />}>Upload png only</Button>
+                    <Button icon={<UploadOutlined />}  className="ButtonUploadAvatar">Sửa ảnh đại diện</Button>
                   </Upload>
                 </div>
               </Col>
@@ -139,7 +140,7 @@ const Infor = () => {
               </Col>
             </Row>
             <Row className="Thongtin">
-              <Col span={12} className="Item">
+              <div className="Item">
                 <p>
                   <Text strong>Số điện thoại</Text>
                 </p>
@@ -155,8 +156,8 @@ const Infor = () => {
                     placeholder="Chưa có số điện thoại"
                   />
                 )}
-              </Col>
-              <Col span={12} className="Item">
+              </div>
+              <div className="Item">
                 <p>
                   <Text strong>Email</Text>
                 </p>
@@ -168,13 +169,13 @@ const Infor = () => {
                       : "Chưa có địa chỉ email "
                   }
                 />
-              </Col>
-              <Col span={12} className="Item">
+              </div>
+              <div className="Item">
                 <p>
                   <Text strong>Gói dịch vụ</Text>
                 </p>
                 <p>{Datevip}</p>
-              </Col>
+              </div>
             </Row>
             <Row style={{ marginLeft: "20px" }}>
               <button onClick={handleSubmitFrom} className="btn ButtonMain">

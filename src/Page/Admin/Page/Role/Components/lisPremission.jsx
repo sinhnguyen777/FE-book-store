@@ -163,6 +163,30 @@ const ListPermission = (props) => {
               />
             </td>
           </tr>
+          <tr>
+            <th>Chương</th>
+            <td>
+              {data[11].name}{" "}
+              <Checkbox
+                value={data[11].idPermissions}
+                defaultChecked={data[11].status}
+              />
+            </td>
+            <td>
+              {data[13].name}{" "}
+              <Checkbox
+                value={data[13].idPermissions}
+                defaultChecked={data[13].status}
+              />
+            </td>
+            <td>
+              {data[12].name}{" "}
+              <Checkbox
+                value={data[12].idPermissions}
+                defaultChecked={data[12].status}
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
       {/* {

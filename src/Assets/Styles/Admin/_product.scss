@@ -7,7 +7,55 @@
   }
   .ListProduct {
     width: 100%;
-
+    table {
+      font-size: 17px;
+      @include tablet {
+        border: 0;
+      }
+      caption {
+        @include tablet {
+          font-size: 1.3em;
+        }
+      }
+      thead {
+        @include tablet {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+      }
+      tr {
+        @include tablet {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: 0.625em;
+        }
+      }
+      td {
+        @include tablet {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: 0.8em;
+          text-align: right;
+        }
+      }
+      td::before {
+        @include tablet {
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+      td:last-child {
+        border-bottom: 0;
+      }
+    }
     .BoxList {
       display: flex;
       flex-direction: column;
@@ -74,13 +122,19 @@
     form {
       display: flex;
       justify-content: space-between;
-
+      flex-wrap: wrap;
       .BoxForm {
         width: 33%;
         background: #fff;
         box-shadow: $box-shadow;
         padding: 20px;
-
+        @include tablet{
+          width: 48%;
+          margin-bottom: 10px;
+        }
+        @include mobile{
+          width: 100%;
+        }
         .GroupForm {
           margin-bottom: 10px;
           textarea {

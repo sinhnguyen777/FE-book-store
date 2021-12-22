@@ -10,7 +10,7 @@ const ListRole = (props) => {
   const {data} = props;
   return (
     <>
-      <Tabs tabPosition="left" theme="light">
+      <Tabs tabPosition="left" theme="light" className="TabMember">
         
         {
           data ?

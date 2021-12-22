@@ -1,7 +1,6 @@
 import { Image, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import orderApi from "../../../../../api/orderApi";
-import prouctApi from "../../../../../api/productApi";
 import Items from "./Items";
 
 const ListItem = (props) => {
@@ -18,7 +17,6 @@ const ListItem = (props) => {
     };
     fetchGetDetail(props.id);
   }, []);
-  console.log(DataItem);
 
   return (
     <>

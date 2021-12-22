@@ -14,7 +14,7 @@ function LoginFB(props) {
           <div>
                 <FacebookLogin
                     appId="1046843472762294"
-                    autoLoad={true}
+                    autoLoad={false}
                     fields="name,email,picture"
                     onClick={componentClicked}
                     isSignedIn={false}

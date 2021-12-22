@@ -179,6 +179,18 @@
 }
 .ant-tabs-tabpane .ItemProductHome{
     width: 20% ;
+    @include large{
+    width: 25% ;
+
+    }
+    @include tablet{
+        width: 50% ;
+    
+        }
+        @include mobile{
+            width: 100% ;
+        
+            }
 }
 @keyframes showBox {
     from {

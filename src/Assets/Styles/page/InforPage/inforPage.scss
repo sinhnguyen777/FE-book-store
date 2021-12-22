@@ -6,9 +6,72 @@
 
   .ContentPage {
     overflow-y: auto;
+    .ListOrder{
+      width: 100%;
+      .BoxItemCartOrder_content_item{
+        @include mobile {
+          padding: 0;
+         }
+      }
+      .BoxItemCartOrder_item{
+        flex-wrap: wrap;
+      }
+      .BoxItemCartOrder_content{
+        @include mobile {
+         width: 100%;
+         display: block;
+        }
+      }
+      .BoxItemCartOrder_content_item_name{
+        @include mobile {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      .BoxItemCartOrder{
+        @include flex(center, space-between);
+        flex-wrap: wrap;
+        @include tablet {
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #eaeaea;
+        }
+        @include mobile {
+          height: max-content;
+        }
+        
+        &_item{
+          @include tablet {
+            width: 100%;
+          }
+          &_content{
+            width: 100%;
+            margin: 10px 0;
+            &_item{
+              padding: 0;
+              
+              
+            }
+          }
+        }
+      }
+    }
   }
+  
   .ItemWishList {
     width: 25%;
+    @include large {
+      width: 33%;
+    }
+    @include tablet {
+      width: 50%;
+    }
+    @include mobile {
+      width: 100%;
+    }
     &_delete {
       position: absolute;
       top: -20px;
@@ -29,29 +92,27 @@
     display: block;
     width: 100%;
     padding: 20px;
-    table{
+    table {
       text-transform: none;
-      tbody{
-        tr{
-          th{
+      tbody {
+        tr {
+          th {
             width: 15%;
           }
         }
       }
     }
-    
   }
-  .OrderInforList{
+  .OrderInforList {
     width: 100%;
-    .OrderInforQuantity{
+    .OrderInforQuantity {
       color: $black;
       font: 18px;
     }
-    .OrderInforPrice{
+    .OrderInforPrice {
       color: $black;
       font-size: 20px;
       font-weight: 600;
     }
   }
 }
-

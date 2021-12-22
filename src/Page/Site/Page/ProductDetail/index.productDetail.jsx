@@ -216,8 +216,7 @@ export default function ProductDetail() {
                 </Link>
                 <button
                   onClick={() => handleAddtocart(productDetail)}
-                  style={{ marginLeft: "40px" }}
-                  className="btn ButtonBanner"
+                  className="btn ButtonBanner ButtonDetail"
                 >
                   Mua sách
                 </button>

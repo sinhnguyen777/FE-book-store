@@ -39,13 +39,7 @@ const FromAdminAdd = () => {
     resolver: yupResolver(schema),
   });
   const [RoleValue, setRoleValue] = useState([]);
-  useEffect(() => {
-    const fetchRole = async () => {
-      const res = await roleApi.GetRole();
-      setRoleValue(res.data);
-    };
-    fetchRole();
-  }, [demo]);
+  
 
   const [ValueSelect, setValueSelect] = useState("");
 
@@ -87,6 +81,13 @@ const FromAdminAdd = () => {
 
     fetchUpdateRole(values);
   };
+  useEffect(() => {
+    const fetchRole = async () => {
+      const res = await roleApi.GetRole();
+      setRoleValue(res.data);
+    };
+    fetchRole();
+  }, [demo]);
   return (
     <form onSubmit={forms.handleSubmit(handleSubmitFrom)}>
       <div className="GroupFormList">

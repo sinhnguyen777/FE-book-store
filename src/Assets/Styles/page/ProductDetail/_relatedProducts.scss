@@ -18,11 +18,21 @@
       font-size: 12px;
       text-transform: uppercase;
       color: #999;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .title {
       margin: 3px 0;
       font-size: 21px;
       line-height: 1.19em;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     p {
       margin: 0;

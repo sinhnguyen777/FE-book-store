@@ -35,6 +35,15 @@ body {
     font-size: 14px;
     float: left;
     color: rgba(0, 0, 0, 0.7);
+    @include tablet {}
+}
+
+@media (max-width: 575px) {
+    .ant-col-xs-24.ant-form-item-label>label {
+        width: 200px;
+        margin: 0;
+        height: 21px;
+    }
 }
 
 .frame-child {

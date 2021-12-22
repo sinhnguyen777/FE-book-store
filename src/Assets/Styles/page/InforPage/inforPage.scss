@@ -1,118 +1,57 @@
 .InforPage {
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-  padding-top: 100px;
-
-  .ContentPage {
+    width: 100%;
+    height: 100vh;
     overflow-y: auto;
-    .ListOrder{
-      width: 100%;
-      .BoxItemCartOrder_content_item{
-        @include mobile {
-          padding: 0;
-         }
-      }
-      .BoxItemCartOrder_item{
-        flex-wrap: wrap;
-      }
-      .BoxItemCartOrder_content{
-        @include mobile {
-         width: 100%;
-         display: block;
+    padding-top: 100px;
+    .ContentPage {
+        overflow-y: auto;
+    }
+    .ItemWishList {
+        width: 25%;
+        &_delete {
+            position: absolute;
+            top: 5px;
+            height: auto;
+            right: 20px;
+            z-index: 1;
+            display: none;
+            cursor: pointer;
         }
-      }
-      .BoxItemCartOrder_content_item_name{
-        @include mobile {
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-      .BoxItemCartOrder{
-        @include flex(center, space-between);
-        flex-wrap: wrap;
         @include tablet {
-          margin-bottom: 20px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid #eaeaea;
+            width: 50%;
         }
         @include mobile {
-          height: max-content;
+            width: 100%;
         }
-        
-        &_item{
-          @include tablet {
-            width: 100%;
-          }
-          &_content{
-            width: 100%;
-            margin: 10px 0;
-            &_item{
-              padding: 0;
-              
-              
+    }
+    .ItemWishList:hover .ItemWishList_delete {
+        display: block;
+    }
+    .InforOrder {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        table {
+            text-transform: none;
+            tbody {
+                tr {
+                    th {
+                        width: 15%;
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
-  
-  .ItemWishList {
-    width: 25%;
-    @include large {
-      width: 33%;
-    }
-    @include tablet {
-      width: 50%;
-    }
-    @include mobile {
-      width: 100%;
-    }
-    &_delete {
-      position: absolute;
-      top: -20px;
-      right: 4px;
-      font-size: 30px;
-      z-index: 1;
-      display: none;
-      outline: none;
-      background: none;
-      border: 0;
-      cursor: pointer;
-    }
-  }
-  .ItemWishList:hover .ItemWishList_delete {
-    display: block;
-  }
-  .InforOrder {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    table {
-      text-transform: none;
-      tbody {
-        tr {
-          th {
-            width: 15%;
-          }
+    .OrderInforList {
+        width: 100%;
+        .OrderInforQuantity {
+            color: $black;
+            font: 18px;
         }
-      }
+        .OrderInforPrice {
+            color: $black;
+            font-size: 20px;
+            font-weight: 600;
+        }
     }
-  }
-  .OrderInforList {
-    width: 100%;
-    .OrderInforQuantity {
-      color: $black;
-      font: 18px;
-    }
-    .OrderInforPrice {
-      color: $black;
-      font-size: 20px;
-      font-weight: 600;
-    }
-  }
 }

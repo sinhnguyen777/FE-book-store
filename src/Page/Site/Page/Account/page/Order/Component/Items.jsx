@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "antd";
 import prouctApi from "../../../../../../../api/productApi";
+import { Link } from "react-router-dom";
 
 const Items = (props) => {
   const { quantity, idProduct ,createdAt} = props;
@@ -12,12 +13,12 @@ const Items = (props) => {
     };
     fetchGetDetail();
   }, []);
-  
+  console.log(DataDetail);
 
   return (
     <>
       {DataDetail ? (
-        <div className="BoxItemCartOrder" style={{display: 'flex',alignItems: 'center',justifyContent: 'space-between'}}>
+        <div className="BoxItemCartOrder" >
           <div className="BoxItemCartOrder_item" style={{display: 'flex'}}>
             <div className="BoxItemCartOrder_content">
               <Image
@@ -29,7 +30,7 @@ const Items = (props) => {
             <div className="BoxItemCartOrder_content">
               <div className="BoxItemCartOrder_content_item">
                 <p className="BoxItemCartOrder_content_item_name">
-                  {DataDetail.nameProduct}
+                  <Link to={`/read-book/${DataDetail._id}`}>{DataDetail.nameProduct}</Link>
                 </p>
                 <p className="BoxItemCartOrder_content_item_price">
                   Giá:{" "}

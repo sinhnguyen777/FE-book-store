@@ -2,9 +2,9 @@ import axiosClient from "./axiosCilent";
 import axiosClientAuth from "./axiosClientAuth";
 
 const couponApi = {
-  GetCoupon() {
+  GetCoupon(filter) {
     const url = "/discountCodes";
-    const res = axiosClient.get(url).then((res) => {
+    const res = axiosClient.get(url,{ params: filter }).then((res) => {
       return res.data;
     });
     return res;

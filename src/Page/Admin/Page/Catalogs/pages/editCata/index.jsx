@@ -34,16 +34,20 @@ const EditCata = () => {
         const fetchUpdateCata = async (data) => {
             try {
                 const res = await cataApi.UpdateCata(data);
-                if (res.status == 200) {
+                if (res.data.status == 200) {
                     Swal.fire('...', 'Sửa Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
-                            history.push({ pathname: '/admin/cata' })
+                            // history.push({ pathname: '/admin/cata' })
                         }
                     })
                 }
-                console.log(res);
+
+                if (res.data.status == 403) {
+                    Swal.fire('...', 'Bạn không đủ thẩm quyền để sửa', 'error')
+                }
             } catch (err) {
                 console.log(err);
+               
             }
         }
 

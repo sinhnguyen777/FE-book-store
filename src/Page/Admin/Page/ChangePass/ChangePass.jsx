@@ -66,6 +66,41 @@ const ChangePass = () => {
             console.log(err);
         }
     }
+
+    const handleChangePass = async (values)=>{
+        try{
+            const admin = JSON.parse(localStorage.getItem("admin"))
+            const data={};
+            data.id = admin._id
+            data.password = values.password; 
+            data.newPassword = values.newPassword; 
+            // console.log(data);
+             await adminApi.ChangePass(data).then((res) => {
+                if (res.status === 200) {
+                    Swal.fire({
+                        title : 'Đổi mật khẩu thành công',
+                        icon : 'success',
+                    });
+                    history.push("/admin");
+                }
+            })
+        }catch(err){
+                Swal.fire({
+                title: 'Người quản trị không tồn tại hoặc bạn nhập sai mật khẩu!',
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Nhập lại',
+                cancelButtonText: 'Thoát'
+              }).then((result) => {
+                if (!result.isConfirmed) {
+                    history.push("/admin");
+                }
+              })
+            // console.log(err);
+        }
+    }
     return (
         <div className="BoxContent">
             <section>
@@ -87,10 +122,31 @@ const ChangePass = () => {
 
                     <div className="user signinBx">
                         <div className="formBx">
-                            <form onSubmit={form.handleSubmit(handleForgot)}>
+                            <form onSubmit={form.handleSubmit(handleChangePass)}>
                                 <h2>Đổi Mật Khẩu</h2>
-                                <input type="email" name="email" id placeholder="Nhập Email" ref={form.register} />
-                                <button type="submit">Lấy Lại Mật Khẩu</button>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id
+                                    placeholder="Mật khẩu cũ"
+                                    ref={form.register({ required: true })}
+                                    />
+                                    {form.errors.password && (
+                                    <p className="CatchError">* Vui lòng nhập mật khẩu cũ</p>
+                                    )}
+                                     <input
+                                    type="password"
+                                    name="newPassword"
+                                    id
+                                    placeholder="Mật khẩu mới"
+                                    ref={form.register({ required: true,pattern:/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/ })}
+                                    />
+                                    {form.errors.password && (
+                                    <p className="CatchError">* Vui lòng nhập mật khẩu an toàn hơn</p>
+                                    )}
+                                {/* <input type="email" name="email" id placeholder="Nhập Email" ref={form.register} /> */}
+                                <button type="submit">Thay đổi</button>
+                                <button style={{background: "#d33"}} onClick={() =>  history.push('/admin')}>Quay lại</button>
                                 {/* <p className="signup">Bạn Đã Có Tài Khoản ? <span onClick={toggleForm}>Đăng Nhập.</span></p> */}
                             </form>
 

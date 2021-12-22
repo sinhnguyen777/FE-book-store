@@ -27,6 +27,7 @@ function LoginGG(props) {
       history.push("/");
     }
   }
+
   return (
     <div>
       <GoogleLogin

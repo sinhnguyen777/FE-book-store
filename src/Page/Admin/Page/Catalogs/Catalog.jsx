@@ -30,7 +30,8 @@ const CatalogPage = () => {
     const fetchUpdateCata = async (data) => {
       try {
         const res = await cataApi.AddCata(data);
-        if (res.status === 200) {
+        console.log(res);
+        if (res.data.code === '200') {
           Swal.fire("Thêm", "Thêm Thành Công!", "success").then((result) => {
             if (result.isConfirmed) {
               console.log(1);
@@ -64,6 +65,25 @@ const CatalogPage = () => {
             }
           });
         }
+        if (res.data.status === 403) {
+          Swal.fire(
+            "Không thể thêm",
+            "Không đủ thẩm quyền để thêm",
+            "error"
+          ).then((result) => {
+            if (result.isConfirmed) {
+              console.log(1);
+              setdemo((pre) => pre + 1);
+              forms.reset({
+                defaultValues: {
+                  nameCata: "",
+                },
+              });
+
+              history.push({ pathname: "/admin/cata" });
+            }
+          });
+        }
       } catch (err) {
         Swal.fire(
           "Không thể thêm",
@@ -81,7 +101,8 @@ const CatalogPage = () => {
       const fetchRemoveCata = async (data) => {
         try {
           const res = await cataApi.DelCata(data);
-          if (res.status === 200) {
+          console.log(res);
+          if (res.data.code === '200') {
             Swal.fire("...", "Xóa Thành Công!", "success").then((result) => {
               if (result.isConfirmed) {
                 console.log(1);
@@ -90,9 +111,12 @@ const CatalogPage = () => {
               }
             });
           }
+           if (res.data.status === 403) {
+            Swal.fire("...", "Không đủ thẩm quyền để xóa", "error")
+          }
         } catch (err) {
           console.log(err);
-          Swal.fire("...", "Không đủ Thẩm quyền đề xóa", "error").then(
+          Swal.fire("...", "Lỗi Rồi", "error").then(
             (result) => {
               if (result.isConfirmed) {
                 console.log(1);

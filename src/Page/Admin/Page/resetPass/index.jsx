@@ -17,7 +17,7 @@ const ResetPass = () => {
       values.token = match.params.token;
       console.log(values);
       const res = await adminApi.NewPass(values);
-      console.log(res);
+      // console.log(res);
       Swal.fire("Đổi mật khẩu thành công", `Đăng nhập để tiếp tục`, "success");
       history.push("/admins/login");
     } catch (err) {

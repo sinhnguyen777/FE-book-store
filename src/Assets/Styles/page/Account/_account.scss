@@ -89,6 +89,15 @@
 
 .TitleUser {
     padding: 30px 30px;
+    @include tablets{
+        padding: 0;
+    }
+    h2{
+        @include tablets{
+            margin-top:10px;
+            font-size:25px;
+        }
+    }
 }
 
 .acount-list-item {
@@ -114,15 +123,40 @@
 
 .Thongtin {
     margin-top: 0px;
+    display: flex;
+
+    @include tablets{
+        flex-wrap: wrap;
+    }
+    .Item {
+        width: 50%;
+        padding: 20px;
+        @include tablets{
+            width: 100%;
+            padding: 0px;
+        }
+        p {
+            font-size: 20px;
+        }
+        input {
+            padding: 10px;
+        }
+    }
 }
 
-.Thongtin .Item {
-    padding: 20px;
-    p {
-        font-size: 20px;
+.AvatarUser{
+    width: 130px;
+    height: 130px;
+    @include tablets{
+        width: 100px;
+    height: 100px;
     }
-    input {
-        padding: 10px;
+}
+.ButtonUploadAvatar{
+    width: 140px;
+    @include mobile{
+        width: 100px;
+        overflow: hidden;
     }
 }
 

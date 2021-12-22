@@ -31,7 +31,7 @@ const InforPage = () => {
         const res = await userApi.AccessToken(data);
       } catch (err) {
         console.log(err);
-        history.push("/login");
+        history.push("/account");
       }
     };
 

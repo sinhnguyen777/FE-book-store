@@ -159,7 +159,7 @@ const Header = () => {
               {
                 render
                   ?
-                  <Link to="/login">
+                  <Link to="/account">
                     <UserOutlined />
                   </Link>
                   :

@@ -2,7 +2,7 @@ import {  Image, Select, Table } from "antd";
 import React from "react";
 
 const ListUser = (props) => {
- 
+ console.log(props.data);
   const columns = [
     {
       title: "Họ và tên",
@@ -31,11 +31,7 @@ const ListUser = (props) => {
       dataIndex: "vip",
       key: "vip",
     },
-    {
-      title: "Đã mua",
-      dataIndex: "",
-      key: "",
-    },
+    
   ];
   return (
     <div>

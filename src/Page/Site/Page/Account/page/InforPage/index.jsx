@@ -22,28 +22,6 @@ const Infor = () => {
   const [ValueAvata, setValueAvata] = useState();
   const [ValueSdt, setValueSdt] = useState();
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("token");
-    if (!userToken) {
-      history.push("/login");
-    }
-
-    const fetchAccessToken = async () => {
-      try {
-        const userToken = await localStorage.getItem("token");
-        const data = {
-          token: userToken,
-        };
-        const res = await userApi.AccessToken(data);
-      } catch (err) {
-        console.log(err);
-        // Swal.fire("Phiên đăng nhập hết hạn", "vui lòng đăng nhập lại", "error");
-      }
-    };
-
-    fetchAccessToken();
-  }, []);
-
   const getUser = () => {
     const userStr = localStorage.getItem("user-info");
     if (userStr) return JSON.parse(userStr);

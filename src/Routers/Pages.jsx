@@ -17,6 +17,7 @@ import Search from "../Page/Site/Page/Search/Search";
 import SearchAuthor from "../Page/Site/Page/ListProduct/Components/SearchAuthor";
 import Paymemt from "../Page/Site/Page/Payment/index.Payment";
 import ProductWait from "../Page/Site/Page/ProductWait/Event";
+import Congratulation from "../Page/Site/Page/Congratulation/index.Congratulation";
 
 
 const routes = [
@@ -68,6 +69,11 @@ const routes = [
   {
     path: "/payment",
     component: Paymemt,
+    exact: true,
+  },
+  {
+    path: "/congratulation",
+    component: Congratulation,
     exact: true,
   },
   {

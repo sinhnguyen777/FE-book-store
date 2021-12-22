@@ -28,7 +28,7 @@ const ListPermission = (props) => {
   ];
   return (
     <>
-      <Table dataSource={props.data} columns={columns} />
+      <Table dataSource={props.data} columns={columns}/>
     </>
   );
 }

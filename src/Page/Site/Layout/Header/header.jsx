@@ -93,11 +93,11 @@ const Header = () => {
       <div className="header_container">
         <div className="header_menu">
           <div className="header_menu_left">
-            <div className="header_menu_left_logo">
-              <Link to="/">
-                <img src={logo} alt="" />
-              </Link>
-            </div>
+            <Link to="/">
+             <div className="header_menu_left_logo">
+                <img  src={logo} alt="" />
+             </div>
+            </Link>
             <div className="header_menu_left_nav" ref={menuLeft}>
               <div className="header_menu_left_nav_close" onClick={menuToggle}>
                 <CloseOutlined />

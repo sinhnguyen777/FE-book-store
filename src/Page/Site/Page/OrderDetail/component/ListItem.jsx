@@ -28,14 +28,10 @@ const ListItem = (props) => {
       
     </div>
     Tổng :{" "}
-      {DataItem.map((item) => (
-        <>
-          {(item.price * item.quantity).toLocaleString("vi", {
+          {(props.total).toLocaleString("vi", {
             style: "currency",
             currency: "VND",
           })}
-        </>
-      ))}
     </>
   );
 };

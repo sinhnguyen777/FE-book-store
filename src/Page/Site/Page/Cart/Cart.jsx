@@ -1,16 +1,16 @@
 
-import { Button, Empty, Input, Select } from 'antd'
+import { Empty, Input, message, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import orderApi from '../../../../api/orderApi'
+import userApi from "../../../../api/userApi"
+import couponApi from "../../../../api/couponApi"
 import { BannerProduct } from '../../Components/Common/Banner/banner'
+import { ResetCart } from "../Cart/cartSlide"
 import ItemCart from './Components/ItemCart'
 import { cartItemTotalSelector } from './selector'
-import userApi from "../../../../api/userApi";
-import { ResetCart } from "../Cart/cartSlide";
-import { useDispatch } from "react-redux";
 
 
 const { Option } = Select;
@@ -26,6 +26,9 @@ const Cart = () => {
     const [nameQuan, setnameQuan] = useState()
     const [nameHuyen, setnameHuyen] = useState()
     const [IdUser, setIdUser] = useState()
+    const [ValueCoupon, setValueCoupon] = useState()
+    const [IdCode, setIdCode] = useState()
+    const [PriceCoupon, setPriceCoupon] = useState(0)
 
     const [ValueName, setValueName] = useState()
     const [ValuePhone, setValuePhone] = useState()
@@ -73,38 +76,65 @@ const Cart = () => {
     }, [])
 
     useEffect(() => {
-        const data = {
-            from_district_id: 1454,
-            service_id: 53321,
-            to_district_id: ValueQuan,
-            to_ward_code: ValueXa,
-            height: 50,
-            length: 20,
-            weight: 200,
-            width: 20,
-            insurance_value: 1000000
+        const fetchGetPriceShip = async (serviceId) => {
+            const data = {
+                from_district_id: 1454,
+                service_id: serviceId,
+                to_district_id: ValueQuan,
+                to_ward_code: ValueXa,
+                height: 50,
+                length: 20,
+                weight: 200,
+                width: 20,
+                insurance_value: 1000000
+            }
+
+            console.log(data);
+            if (ValueXa) {
+                fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee', {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        setPriceShip(data.data.total)
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
         }
 
-        console.log(data);
-        if (ValueXa) {
-            fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee', {
-                method: 'POST', // or 'PUT'
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    setPriceShip(data.data.total)
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+        const dataSevice = {
+            shop_id: 2334706,
+            from_district: 1454,
+            to_district: ValueQuan
         }
+
+        fetch('https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/available-services', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "token": "35fd8432-5c92-11ec-bde8-6690e1946f41"
+            },
+            body: JSON.stringify(dataSevice)
+        })
+            .then(response => response.json())
+            .then(data => {
+                fetchGetPriceShip(data.data[0].service_id);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+
     }, [ValueXa])
 
     const handleGetQuan = (values) => {
@@ -127,6 +157,7 @@ const Cart = () => {
             .then(data => {
                 console.log(data);
                 setGetQuan(data.data)
+                setGetXa()
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -168,11 +199,16 @@ const Cart = () => {
 
     }
 
+
     const totalCart = useSelector(cartItemTotalSelector);
     const listCart = useSelector(state => state.cart);
-    const handleSubmitOrder = () => {
+    const handleSubmitOrder = async () => {
         try {
             const newDataCart = [...listCart.cartItem];
+            console.log(newDataCart);
+            // if (!newDataCart[0]) {
+            //     return message.error("Bạn Cần Thêm Sản Phẩm vào giỏ hàng trước")
+            // }
             const dataCart = []
             newDataCart.map(item => {
                 const CartItem = {
@@ -183,8 +219,35 @@ const Cart = () => {
                 dataCart.push(CartItem);
             })
             const DataAddress = `${nameHuyen} - ${nameQuan} - Tỉnh ${nameTinh}`
-            const total = totalCart + PriceShip
-            const idUser = IdUser
+            const total = totalCart + PriceShip - PriceCoupon
+            const idUser = IdUser;
+            if (!ValueEmail) {
+                return message.error("Email không được để trắng")
+            }
+
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (ValueEmail.match(mailformat) == null) {
+                return message.error("Vui lòng nhập đúng định dạng của email")
+            }
+
+            if (!ValueName) {
+                return message.error("Tên không được để trắng")
+            }
+
+            if (!ValuePhone) {
+                return message.error("Số điện thoại không được để trắng")
+            }
+
+            var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+
+            if (ValuePhone.match(phoneno) == null) {
+                return message.error("Vui lòng nhập Số điện thoại đúng")
+            }
+
+            if (!nameHuyen) {
+                return message.error("Vui lòng thêm địa chỉ")
+            }
+
             const DataOrder = {
                 idUser,
                 fullName: ValueName,
@@ -192,33 +255,54 @@ const Cart = () => {
                 address: DataAddress,
                 email: ValueEmail,
                 orderDetail: dataCart,
-                total
+                total,
+                code: IdCode
             }
             console.log(DataOrder);
 
-            const fetchAddOrder = async (DataOrder) => {
-                const res = await orderApi.AddOrder(DataOrder)
-                console.log(res);
-                if (IdUser) {
-                    Swal.fire("Đặt hàng thành công", "success");
-                    const action = ResetCart({});
-                    dispatch(action);
-                    history.push(`order-detail/${res.data.data.idOrder}`)
-                } else {
-                    Swal.fire("Đặt hàng thành công", `<div>
+            const res = await orderApi.AddOrder(DataOrder)
+            console.log(res);
+            if (IdUser) {
+                Swal.fire("Đặt hàng thành công", "success");
+                const action = ResetCart({});
+                dispatch(action);
+                history.push(`order-detail/${res.data.data.idOrder}`)
+            } else {
+                const action = ResetCart({});
+                dispatch(action);
+                Swal.fire("Đặt hàng thành công", `<div>
                 <p>Vui lòng kiểm tra mail để xác nhận đơn hàng</p>
                 <p><a style="padding: 5px;background: #e4f4da;text-decoration: none;border-radius: 3px;font-weight:600" href='https://mail.google.com/mail'>Đến trang gmail</a></p>
                 </div> `, "success");
-                }
             }
 
-            fetchAddOrder(DataOrder)
-            
+
         }
         catch (err) {
             console.log(err);
         }
 
+    }
+
+    const handleCheckCoupon = async () => {
+        try {
+            console.log(ValueCoupon);
+            const filter = {
+                code: ValueCoupon
+            }
+            const res = await couponApi.GetCoupon(filter);
+            setPriceCoupon(res.data[0].percent);
+            setIdCode(res.data[0]._id)
+            message.success("Áp dụng thành công");
+        } catch (err) {
+            console.log(err);
+            message.error("Mã giảm giá đã được sử dụng");
+        }
+    }
+    const handleResetCoupon = async () => {
+        setPriceCoupon(0);
+        setIdCode();
+        message.error("Đã Hủy Áp Dụng");
     }
 
     return (
@@ -254,10 +338,10 @@ const Cart = () => {
                 </table>
                 <div className="cart-apply" >
                     <div className="cart-apply_coupon">
-                        <input type="text" name="" id="" className="ButtonPara btn" placeholder="Mã giảm giá" />
-                        <button type="submit" className="ButtonBanner btn">áp dụng mã</button>
+                        <input style={{ color: "#000" }} type="text" name="" id="" onChange={e => setValueCoupon(e.target.value)} value={ValueCoupon} className="ButtonPara btn" placeholder="Mã giảm giá" />
+                        <button className="ButtonBanner btn" onClick={handleCheckCoupon}>Áp Dụng Mã</button>
+                        <button style={{ margin: "0 20px" }} className="ButtonBanner btn" onClick={handleResetCoupon}>Hủy Áp Dụng </button>
                     </div>
-                    <button type="submit" className="ButtonBanner btn buttoncart">Cập nhật giỏ hàng</button>
                 </div>
                 <div className="cart-form">
                     <div className="cart-form_shipping">
@@ -298,6 +382,7 @@ const Cart = () => {
                                             placeholder="Quân huyện"
                                             optionFilterProp="children"
                                             onChange={handleGetXa}
+                                            value={GetQuan[0].DistrictID}
                                         >
                                             {GetQuan.map(item => (
                                                 <Option key={item.DistrictID} value={item.DistrictID}>{item.DistrictName}</Option>
@@ -325,10 +410,10 @@ const Cart = () => {
                                             placeholder="Phường xã"
                                             optionFilterProp="children"
                                             onChange={handleGetPhuong}
+                                            value={GetXa[0].WardCode}
                                         >
                                             {GetXa.map(item => (
                                                 <Option key={item.WardCode} value={item.WardCode}>{item.WardName}</Option>
-
                                             ))}
                                         </Select>
                                         :
@@ -362,7 +447,7 @@ const Cart = () => {
                                 <tr>
                                     <th>Tổng</th>
                                     <td>
-                                        <strong>{(totalCart + PriceShip).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</strong>
+                                        <strong>{((totalCart + PriceShip - PriceCoupon) <= 0 ? 0 : totalCart + PriceShip - PriceCoupon).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</strong>
                                     </td>
                                 </tr>
                             </tbody>

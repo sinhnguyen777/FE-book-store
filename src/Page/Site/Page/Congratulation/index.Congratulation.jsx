@@ -3,13 +3,15 @@ import { Result, Button } from 'antd';
 import paymentApi from '../../../../api/paymentApi';
 import userApi from '../../../../api/userApi';
 import vipApi from '../../../../api/vipApi';
+import { useHistory } from "react-router-dom";
 
 export default function Congratulation() {
     const [dataVipPayment, setdataVipPayment] = useState({})
     const [userStore, setUserStore] = useState('')
-    // const [idUserDB, setidUserDB] = useState('')
     const [timeVip, settimeVip] = useState('')
-
+    const [timeUpdate, settimeUpdate] = useState()
+    const history = useHistory();
+    
     useEffect(() => {
         const Getdata = async () => {
             const res = await paymentApi.GetdataVip()
@@ -18,23 +20,18 @@ export default function Congratulation() {
         Getdata()
     }, [])
 
-    async function getStore() {
-        const user = JSON.parse(localStorage.getItem('user-info'))
-        if (user) {
-            const data = user.data
-            data.map(item => {
-                setUserStore(item);
-            })
+    useEffect(() => {
+        const getStore = async () => {
+            const user = await JSON.parse(localStorage.getItem('user-info'))
+            if (user) {
+                const data = user.data
+                data.map(item => {
+                    setUserStore(item);
+                })
+            }
         }
-    }
-
-    // useEffect(() => {
-    //     const GetUserId = async () => {
-    //         const res = await userApi.GetUserById(idUserStore)
-    //         setidUserDB(res.data)
-    //     }
-    //     GetUserId()
-    // }, [idUserStore])
+        getStore()
+    }, [])
 
     useEffect(() => {
         const GetDataVip = async () => {
@@ -50,25 +47,53 @@ export default function Congratulation() {
     }, [dataVipPayment.id])
 
     const handleClick = async () => {
-        // console.log(dataVipPayment.id);
-        getStore()
-        // console.log(userStore);
-        // const dataNow = 
-        var now = new Date(userStore.vip);
-        var duedate = new Date(now);
-        duedate.setDate(now.getDate() + timeVip);
-        console.log("Now:     ", now);
-        console.log("Due Date:", duedate);
+        console.log(userStore);
 
-        // var today = new Date().toISOString()
-        
-        // if (dataNow > today) {
-        //     console.log(today);
-        // } else {
-        //     var duedate = new Date(dataNow);
-        //     duedate.setDate(dataNow.getDate() + timeVip)
-        //     console.log(duedate);
-        // }
+        const today = new Date()
+        const duedate = new Date(userStore.vip);
+        const handleDate = async () => {
+            if (userStore.vip > today) {
+                duedate.setDate(duedate.getDate() + timeVip)
+                settimeUpdate(duedate.toISOString())
+                console.log(duedate.toISOString());
+                return duedate.toISOString()
+            } else {
+                duedate.setDate(today.getDate() + timeVip)
+                settimeUpdate(duedate.toISOString())
+                console.log(duedate.toISOString());
+                return duedate.toISOString()
+
+            }
+        }
+
+        const fetchUpdateVipUser = async () => {
+            
+            const dateAwait = await handleDate()
+            try {
+                const data = {
+                    id: userStore._id,
+                    fullName: userStore.fullName,
+                    email: userStore.email,
+                    password: userStore.password,
+                    avatar: userStore.avatar,
+                    vip: dateAwait,
+                    createdAt: userStore.createdAt,
+                    updatedAt: today.toISOString(),
+                    __v: userStore.__v,
+                }
+
+                const res = await userApi.Update(data);
+                if (res.status === 200) {
+                    history.push('/account')
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchUpdateVipUser()
+
+
     }
 
     return (

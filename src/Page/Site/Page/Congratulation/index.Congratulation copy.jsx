@@ -6,7 +6,7 @@ import vipApi from '../../../../api/vipApi';
 
 export default function Congratulation() {
     const [dataVipPayment, setdataVipPayment] = useState({})
-    const [userStore, setUserStore] = useState('')
+    const [idUserStore, setIdUserStore] = useState('')
     // const [idUserDB, setidUserDB] = useState('')
     const [timeVip, settimeVip] = useState('')
 
@@ -23,7 +23,7 @@ export default function Congratulation() {
         if (user) {
             const data = user.data
             data.map(item => {
-                setUserStore(item);
+                setIdUserStore(String(item));
             })
         }
     }
@@ -52,22 +52,22 @@ export default function Congratulation() {
     const handleClick = async () => {
         // console.log(dataVipPayment.id);
         getStore()
-        // console.log(userStore);
-        // const dataNow = 
-        var now = new Date(userStore.vip);
-        var duedate = new Date(now);
-        duedate.setDate(now.getDate() + timeVip);
-        console.log("Now:     ", now);
-        console.log("Due Date:", duedate);
+        console.log(idUserStore);
 
-        // var today = new Date().toISOString()
+        // var now = new Date();
+        // var duedate = new Date(now);
+        // duedate.setDate(now.getDate() + 365);
+        // console.log("Now:     ", now);
+        // console.log("Due Date:", duedate);
+
+        const today = new Date()
+        // const duedate = new Date(today);
+        // duedate.setDate(today.getDate() + timeVip)
         
-        // if (dataNow > today) {
-        //     console.log(today);
+        // if (idUserStore.vip > today) {
+
         // } else {
-        //     var duedate = new Date(dataNow);
-        //     duedate.setDate(dataNow.getDate() + timeVip)
-        //     console.log(duedate);
+        //     console.log(false);
         // }
     }
 

@@ -40,12 +40,14 @@ const HeaderCmp = (props) => {
                 {
                     login == 'login-gg'
                         ?
-                        <Menu.Item>
+                        <Menu.Item icon={<LogoutOutlined />}>
                             <GoogleLogout
+                                className="btngg"
                                 buttonText="Logout"
                                 onLogoutSuccess={logOut}
                             >
                             </GoogleLogout>
+                            Đăng xuất
                         </Menu.Item>
                         :
                         <Menu.Item icon={<LogoutOutlined />}>

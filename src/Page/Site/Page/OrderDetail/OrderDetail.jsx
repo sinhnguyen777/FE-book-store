@@ -12,6 +12,7 @@ const OrderDetail = () => {
   useEffect(() => {
     const fetchGetOrder = async (id) => {
       const res = await orderApi.GetOrderById(id);
+      console.log(res);
       setDataOrder(res.data);
     };
 
@@ -71,7 +72,7 @@ const OrderDetail = () => {
                   Sản phẩm <CaretDownOutlined />
                 </h3>
                 <div ref={showPro} className="orderdetail-content_product_list">
-                  <ListItem id={DataOrder._id} />
+                  <ListItem total={DataOrder.total} id={DataOrder._id} />
                 </div>
                 <button type="error" className="btn ButtonBanner" onClick={() => handleCancel(DataOrder._id)}>
                   Hủy

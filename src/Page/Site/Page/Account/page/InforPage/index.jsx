@@ -79,7 +79,7 @@ const Infor = () => {
       fullName:ValueName,
       avatar:ValueAvata,
     }
-    // await userApi.Update(data);
+    await userApi.Update(data);
     console.log(ValueName);
     const userUpdate = {
         data : [{
@@ -165,7 +165,7 @@ const Infor = () => {
               </p>
               <Input
                 placeholder=""
-                defaultValue={
+                value={
                   user.data[0].email
                     ? user.data[0].email
                     : "Chưa có địa chỉ email "

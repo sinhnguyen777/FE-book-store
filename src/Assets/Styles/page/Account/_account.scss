@@ -9,6 +9,17 @@
     }
 }
 
+.btngg {
+    margin-left: 65px;
+    padding-bottom: 10px;
+    margin-top: -6px;
+    padding: 0px 0px !important;
+    /* margin-bottom: 40px; */
+    position: absolute;
+    color: #188fff00 !important;
+    background-color: #e2e2e200 !important;
+}
+
 .container_client .trigger {
     padding: 0 24px;
     // font-size: 18px;
@@ -100,6 +111,15 @@
 
 .TitleUser {
     padding: 30px 30px;
+    @include tablets {
+        padding: 0;
+    }
+    h2 {
+        @include tablets {
+            margin-top: 10px;
+            font-size: 25px;
+        }
+    }
 }
 
 .acount-list-item {
@@ -125,6 +145,24 @@
 
 .Thongtin {
     margin-top: 0px;
+    display: flex;
+    @include tablets {
+        flex-wrap: wrap;
+    }
+    .Item {
+        width: 50%;
+        padding: 20px;
+        @include tablets {
+            width: 100%;
+            padding: 0px;
+        }
+        p {
+            font-size: 20px;
+        }
+        input {
+            padding: 10px;
+        }
+    }
 }
 
 // .ant-layout-sider-has-trigger {
@@ -179,8 +217,13 @@
     p {
         font-size: 20px;
     }
-    input {
-        padding: 10px;
+}
+
+.ButtonUploadAvatar {
+    width: 140px;
+    @include mobile {
+        width: 100px;
+        overflow: hidden;
     }
 }
 

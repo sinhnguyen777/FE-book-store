@@ -20,7 +20,7 @@ function LoginGG(props) {
     const res = await userApi.LoginGG(data);
     console.log(res);
     if (res.status === 200) {
-      // message.success("Đăng nhập thành công");
+      message.success("Đăng nhập thành công");
       localStorage.setItem("user-info", JSON.stringify(res.data));
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("login", 'login-gg');

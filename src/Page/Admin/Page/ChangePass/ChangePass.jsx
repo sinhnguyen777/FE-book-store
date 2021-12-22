@@ -139,10 +139,10 @@ const ChangePass = () => {
                                     name="newPassword"
                                     id
                                     placeholder="Mật khẩu mới"
-                                    ref={form.register({ required: true })}
+                                    ref={form.register({ required: true,pattern:/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/ })}
                                     />
                                     {form.errors.password && (
-                                    <p className="CatchError">* Vui lòng nhập mật khẩu mới</p>
+                                    <p className="CatchError">* Vui lòng nhập mật khẩu an toàn hơn</p>
                                     )}
                                 {/* <input type="email" name="email" id placeholder="Nhập Email" ref={form.register} /> */}
                                 <button type="submit">Thay đổi</button>

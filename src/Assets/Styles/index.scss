@@ -1,23 +1,42 @@
 @import "./variables";
 @import "./mixins.scss";
 @import "./base";
-
 // import Component
-
 @import "./components/header";
 @import "./components/footer";
 @import "./components/section";
 @import "./components/banner";
-
-
+@import "./components/button";
+@import "./components/tab";
+@import "./components/error";
 //  import Page
-
 @import "./page/Home/home";
-@import "./page/ListProduct/listProduct"
-
-
-
-
-
-
-
+@import "./page/Home/cartheader";
+@import "./page/Home/autobiography";
+@import "./page/Home/partner";
+@import "./page/ListProduct/listProduct";
+@import "./page/ListProduct/product";
+@import "./page/Cart/cart";
+@import "./page/Chapter/chapter";
+@import "./page/ListProduct/filter";
+@import './page/Option/option';
+@import './page/About/about';
+@import './page/Event/event';
+@import './page/Event/clock';
+@import './page/Checkout/index.scss';
+@import './page/ProductDetail/index.scss';
+@import './page/Account/formlogin';
+@import './page/Account/account';
+@import './page/OrderDetail/orderDetail';
+@import './page/InforPage/inforPage.scss';
+@import './page/Confirm/confirm';
+@import './page/Search/search';
+// import Admin
+@import "./Admin/admin";
+@import "./Admin/role";
+@import "./Admin/home";
+@import "./Admin/catalogs";
+@import "./Admin/product";
+@import "./Admin/loginad";
+@import "./Admin/chapter";
+@import "./Admin/member";

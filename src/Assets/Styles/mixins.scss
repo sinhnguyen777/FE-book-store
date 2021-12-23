@@ -4,6 +4,30 @@
   justify-content: $justify-content;
 }
 
+@mixin mobile {
+  @media only screen and (max-width: $mobile) {
+      @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: $tablet) {
+      @content;
+  }
+}
+
+@mixin tablets {
+  @media only screen and (max-width: $tablet-s) {
+      @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (max-width: $large) {
+      @content;
+  }
+}
+
 @mixin absoluteCenter($direction: "left") {
   position: absolute;
 

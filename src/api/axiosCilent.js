@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: 'https://beonlinelibrary.herokuapp.com',
+    baseURL: "http://localhost:5000" /* https://beonlinelibrary.herokuapp.com */ /*  http://localhost:5000 */ ,
     headers: {
-        'Content-Type' : 'application/json',
-    }
-})
+        "Content-Type": "application/json",
+    },
+});
 
 export default axiosClient;

@@ -1,0 +1,163 @@
+.ProductPage {
+  width: 100%;
+
+  .D-Flex {
+    display: flex;
+    align-items: center;
+  }
+  .ListProduct {
+    width: 100%;
+    table {
+      font-size: 17px;
+      @include tablet {
+        border: 0;
+      }
+      caption {
+        @include tablet {
+          font-size: 1.3em;
+        }
+      }
+      thead {
+        @include tablet {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+      }
+      tr {
+        @include tablet {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: 0.625em;
+        }
+      }
+      td {
+        @include tablet {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: 0.8em;
+          text-align: right;
+        }
+      }
+      td::before {
+        @include tablet {
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+      td:last-child {
+        border-bottom: 0;
+      }
+    }
+    .BoxList {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-shadow: $box-shadow;
+
+      .BoxProduct {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        background: #fff;
+        padding: 10px;
+
+        margin: 10px 0;
+
+        .imgItem {
+          width: 30%;
+          height: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  .BoxForm {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+
+    .ImgOld {
+      margin-right: 10px;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      display: inline-block;
+
+      .ant-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      span.anticon.anticon-close-square {
+        position: relative;
+        top: 0;
+        transform: translate(90px, -10px);
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+      }
+    }
+
+    .TitleImg {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .BoxForm {
+        width: 33%;
+        background: #fff;
+        box-shadow: $box-shadow;
+        padding: 20px;
+        @include tablet{
+          width: 48%;
+          margin-bottom: 10px;
+        }
+        @include mobile{
+          width: 100%;
+        }
+        .GroupForm {
+          margin-bottom: 10px;
+          textarea {
+            width: 100%;
+            height: 200px;
+            resize: none;
+            border: 1px solid #eaeaea;
+            outline: none;
+            padding: 10px;
+          }
+
+          .CheckProducts {
+            display: inline-block;
+            position: unset;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .BoxSelect {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}

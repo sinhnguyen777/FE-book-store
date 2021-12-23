@@ -1,0 +1,55 @@
+.event_banner {
+  margin-top: 90px;
+  background-image: url(../../../Images/Banner/event-banner.jpg);
+  height: 500px;
+  background-color: #fbf9f6;
+  background-repeat: no-repeat;
+  background-position: top center;
+  @include tablet {
+    margin-top: $header-tablet-height;
+    height: 600px;
+  }
+  @include mobile {
+    margin-top: $header-mobile-height;
+  }
+  &_text {
+    @include absoluteCenter($direction: "left");
+    padding-top: 40px;
+    text-align: center;
+    @include tablets {
+      width: 100%;
+      padding: 20px;
+    }
+    h6 {
+      display: block;
+      margin: 8px 0 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #999;
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      font-family: "Josefin Sans", sans-serif;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 45px;
+      font-weight: 500;
+      margin: 0;
+      color: #000;
+      letter-spacing: 0.01em;
+      line-height: 40px;
+      @include mobile {
+        font-size: 30px;
+      }
+    }
+    p {
+      margin: 18px 0 0;
+      font-size: 22px;
+      color: #555;
+      @include mobile {
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.GroupFormList{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    .GroupForm{
+        width: 20%;
+        padding:0 5px;
+        @include tablets {
+            width: 100%;
+        }
+        .MemberRoleSelect{
+            width: 100%;
+        }
+    }
+}
+.TabMember{
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .ant-tabs-nav{
+        @include tablet {
+            width: 100%;
+        }
+    }
+}

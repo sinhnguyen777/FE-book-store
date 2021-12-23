@@ -1,0 +1,57 @@
+.InforPage {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 100px;
+    .ContentPage {
+        overflow-y: auto;
+    }
+    .ItemWishList {
+        width: 25%;
+        &_delete {
+            position: absolute;
+            top: 5px;
+            height: auto;
+            right: 20px;
+            z-index: 1;
+            display: none;
+            cursor: pointer;
+        }
+        @include tablet {
+            width: 50%;
+        }
+        @include mobile {
+            width: 100%;
+        }
+    }
+    .ItemWishList:hover .ItemWishList_delete {
+        display: block;
+    }
+    .InforOrder {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        table {
+            text-transform: none;
+            tbody {
+                tr {
+                    th {
+                        width: 15%;
+                    }
+                }
+            }
+        }
+    }
+    .OrderInforList {
+        width: 100%;
+        .OrderInforQuantity {
+            color: $black;
+            font: 18px;
+        }
+        .OrderInforPrice {
+            color: $black;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}

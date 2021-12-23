@@ -1,0 +1,251 @@
+.container_client {
+    width: 100%;
+}
+
+.ant-back-top {
+    z-index: 100;
+    div {
+        border-radius: 100% !important;
+    }
+}
+
+.btngg {
+    margin-left: 65px;
+    padding-bottom: 10px;
+    margin-top: -6px;
+    padding: 0px 0px !important;
+    /* margin-bottom: 40px; */
+    position: absolute;
+    color: #188fff00 !important;
+    background-color: #e2e2e200 !important;
+}
+
+.container_client .trigger {
+    padding: 0 24px;
+    // font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.ant-layout-sider-collapsed {
+    flex: 0 0 80px !important;
+    max-width: 80px !important;
+    min-width: 80px !important;
+    width: 80px !important;
+}
+
+// .container_client .boxleft {
+//     flex: 0 0 240px;
+//     max-width: 240px;
+//     min-width: 240px;
+//     width: 240px;
+//     background-color: white;
+//     box-shadow: #e2e2e2 0px 0px 5px 3px;
+//     border-right: 1px #e2e2e2 solid;
+//     @include tablet {
+//         flex: 0 0 80px;
+//         max-width: 80px;
+//         min-width: 80px;
+//         width: 80px;
+//     }
+//     @include mobile {
+//         flex: 0 0 80px;
+//         max-width: 80px;
+//         min-width: 80px;
+//         width: 80px;
+//     }
+// }
+.container_client .trigger:hover {
+    color: #1890ff;
+}
+
+.container_client .logo {
+    // margin: 16px;
+    padding: 30px 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 20px;
+}
+
+.container_client .Dangxuat {
+    margin: 0;
+    color: red;
+    height: auto;
+    box-shadow: none;
+    font-size: 16px;
+    padding: 0;
+    line-height: 40px;
+    border: none;
+}
+
+.ant-menu-item-selected {
+    color: black;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: white !important;
+}
+
+.container_client .Dangxuat::after {
+    background-color: none;
+    --antd-wave-shadow-color: none;
+}
+
+.container_client .Dangxuat .anticon-login {
+    transform: rotate(180deg);
+}
+
+.ant-divider-horizontal.ant-divider-with-text {
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+.ant-divider-horizontal.ant-divider-with-text-left::before {
+    width: 0%;
+}
+
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+.TitleUser {
+    padding: 30px 30px;
+    @include tablets {
+        padding: 0;
+    }
+    h2 {
+        @include tablets {
+            margin-top: 10px;
+            font-size: 25px;
+        }
+    }
+}
+
+.acount-list-item {
+    display: flex;
+    flex-wrap: wrap;
+    .ant-list-items {
+        display: flex;
+        padding-left: 65px;
+    }
+}
+
+.Vip {
+    padding: 30px 0px;
+}
+
+.dislike {
+    float: right;
+}
+
+.ant-typography.ant-typography-secondary {
+    margin-top: 5px !important;
+}
+
+.Thongtin {
+    margin-top: 0px;
+    display: flex;
+    @include tablets {
+        flex-wrap: wrap;
+    }
+    .Item {
+        width: 50%;
+        padding: 20px;
+        @include tablets {
+            width: 100%;
+            padding: 0px;
+        }
+        p {
+            font-size: 20px;
+        }
+        input {
+            padding: 10px;
+        }
+    }
+}
+
+// .ant-layout-sider-has-trigger {
+//     flex: 0 0 200px !important;
+//     max-width: 200px !important;
+//     min-width: 200px !important;
+//     width: 200px !important;
+// }
+.ant-layout-sider-light .ant-layout-sider-trigger {
+    width: 200px !important;
+    @include tablet {
+        width: 80px !important;
+    }
+    @include mobile {
+        width: 80px !important;
+    }
+    @include large {
+        width: 80px !important;
+    }
+    @media (max-width:1600px) {
+        width: 80px !important;
+    }
+}
+
+.header {
+    box-shadow: grey 0px 0px 7px;
+}
+
+.ant-layout-sider-children {
+    padding: 20px 0px;
+}
+
+.ant-layout-sider-trigger {
+    bottom: 10px !important;
+    @media (max-width: 1600px) {
+        bottom: 310px !important;
+    }
+}
+
+.Thongtin .Item {
+    padding: 20px;
+    @include tablet {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    @include mobile {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    p {
+        font-size: 20px;
+    }
+}
+
+.ButtonUploadAvatar {
+    width: 140px;
+    @include mobile {
+        width: 100px;
+        overflow: hidden;
+    }
+}
+
+.TitleDanhgia {
+    padding: 10px 0px;
+}
+
+.ListFeedback {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #e2e2e2;
+}
+
+.ImgDanhgia {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.Trai {
+    margin-right: 20px;
+}
+
+h3.ant-typography {
+    margin-bottom: 0px;
+}

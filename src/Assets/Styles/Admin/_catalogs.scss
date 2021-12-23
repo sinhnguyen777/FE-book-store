@@ -1,0 +1,145 @@
+.CatalogsPage {
+  width: 100%;
+  @include mobile {
+  }
+  .ListCata {
+    margin: 50px 0;
+    @include mobile {
+      margin: 0;
+    }
+    table {
+      font-size: 17px;
+      @include tablet {
+        border: 0;
+      }
+      caption {
+        @include tablet {
+          font-size: 1.3em;
+        }
+      }
+      thead {
+        @include tablet {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+      }
+      tr {
+        @include tablet {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: 0.625em;
+        }
+      }
+      td {
+        @include tablet {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: 0.8em;
+          text-align: right;
+        }
+      }
+      td::before {
+        @include tablet {
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+      td:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .BoxForm {
+    width: 33%;
+    @include tablet {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07);
+
+    .GroupForm {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex;
+      input {
+        width: 100%;
+      }
+    }
+
+    .title {
+      font-size: 22px;
+      color: #000;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      input {
+        height: 42px;
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.EditCataPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .BoxCata {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .BoxFormCata {
+    width: max-content;
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07);
+
+    .title {
+      font-size: 22px;
+      color: #000;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      min-width: 300px;
+
+      input {
+        height: 42px;
+        margin: 10px 0;
+      }
+    }
+  }
+}

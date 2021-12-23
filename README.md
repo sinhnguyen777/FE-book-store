@@ -68,3 +68,30 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+QUY TẮC ĐẶT TÊN :
+Camel case :<div className="containerNe"></div>    |  
+
+          File , function , props , states , get.... , set.... , delete..., ...
+
+Pascal case :<div className="ContainerNe"></div>    |
+          
+          class
+
+Snake case :<div className="Container_Ne"></div>   |
+  
+
+CHO FOLDER:
+- File chính trong 1 folder luôn luôn đặt tên là index
+
+CHO FILE:
+- <Tên file>.<tên folder>
+vd: Folder có tên routers và file index
+Tên file: index.routers
+- Tên Schema: Chữ cái đầu viết hoa và không có " s " ở cuối
+
+URL API:
+- Thêm: /create
+- Xoá: /delete
+        

@@ -78,9 +78,11 @@ Camel case :<div className="containerNe"></div>    |
 Pascal case :<div className="ContainerNe"></div>    |
           
           class
+          
 
 Snake case :<div className="Container_Ne"></div>   |
   
+
 
 CHO FOLDER:
 - File chính trong 1 folder luôn luôn đặt tên là index

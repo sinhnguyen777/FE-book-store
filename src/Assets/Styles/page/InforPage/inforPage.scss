@@ -5,6 +5,68 @@
     padding-top: 100px;
     .ContentPage {
         overflow-y: auto;
+        .ListOrder{
+          width: 100%;
+          .BoxItemCartOrder_content{
+            margin: 0 10px;
+          }
+          .BoxItemCartOrder_content_item{
+            font-size:17px;
+            p{
+              margin: 0;
+            }
+            @include mobile {
+              padding: 0;
+             }
+          }
+          .BoxItemCartOrder_item{
+            flex-wrap: wrap;
+          }
+          .BoxItemCartOrder_content{
+            @include mobile {
+             width: 100%;
+             display: block;
+            }
+          }
+          .BoxItemCartOrder_content_item_name{
+            font-size:19px;
+            @include mobile {
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+          .BoxItemCartOrder{
+            margin-bottom: 35px;
+            @include flex(center, space-between);
+            flex-wrap: wrap;
+            @include tablet {
+              margin-bottom: 20px;
+              padding-bottom: 20px;
+              border-bottom: 1px solid #eaeaea;
+            }
+            @include mobile {
+              height: max-content;
+            }
+            
+            &_item{
+              @include tablet {
+                width: 100%;
+              }
+              &_content{
+                width: 100%;
+                margin: 10px 0;
+                &_item{
+                  padding: 0;
+                  
+                  
+                }
+              }
+            }
+          }
+        }
     }
     .ItemWishList {
         width: 25%;

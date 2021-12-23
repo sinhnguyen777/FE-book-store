@@ -23,8 +23,12 @@ const HeaderCmp = (props) => {
   const location = useLocation();
   const [render, setrender] = useState(false)
   useEffect(() => {
+    
     const adminToken = JSON.parse(localStorage.getItem("admin")); 
-    setrender(adminToken.idRole === "616e9df24610dc3e93caa27f");
+if(adminToken){
+  setrender(adminToken.idRole === "616e9df24610dc3e93caa27f");
+
+}
   }, []);
 
   return (

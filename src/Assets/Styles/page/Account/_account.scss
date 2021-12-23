@@ -172,19 +172,19 @@
 //     width: 200px !important;
 // }
 .ant-layout-sider-light .ant-layout-sider-trigger {
-    width: 200px !important;
-    @include tablet {
-        width: 80px !important;
-    }
-    @include mobile {
-        width: 80px !important;
-    }
-    @include large {
-        width: 80px !important;
-    }
-    @media (max-width:1600px) {
-        width: 80px !important;
-    }
+    // width: 200px !important;
+    // @include tablet {
+    //     width: 80px !important;
+    // }
+    // @include mobile {
+    //     width: 80px !important;
+    // }
+    // @include large {
+    //     width: 80px !important;
+    // }
+    // @media (max-width:1600px) {
+    //     width: 80px !important;
+    // }
 }
 
 .header {
@@ -196,10 +196,10 @@
 }
 
 .ant-layout-sider-trigger {
-    bottom: 10px !important;
-    @media (max-width: 1600px) {
-        bottom: 310px !important;
-    }
+    // bottom: 10px !important;
+    // @media (max-width: 1600px) {
+    //     bottom: 310px !important;
+    // }
 }
 
 .Thongtin .Item {

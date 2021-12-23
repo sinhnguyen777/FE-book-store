@@ -36,7 +36,7 @@ const ItemOption = () => {
             axios({
                 maxRedirects: 0,
                 method: 'post',
-                url: 'http://localhost:5000/pay',
+                url: 'https://beonlinelibrary.herokuapp.com',
                 data: data,
             })
                 .then((res) => {

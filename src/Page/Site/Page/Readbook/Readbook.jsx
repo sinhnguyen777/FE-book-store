@@ -130,7 +130,9 @@ const Readbook = () => {
           token: adminToken,
           idProduct: match.params.id,
         };
+        console.log(data);
         const res = await userApi.AccessToken(data);
+        console.log(res);
         const dateVip = new Date(res.data.data.vip);
         const today = new Date();
         if (dateVip > today || res.data.data.sell) {

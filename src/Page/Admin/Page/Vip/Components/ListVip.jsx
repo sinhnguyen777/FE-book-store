@@ -28,13 +28,7 @@ const ListVip = (props) => {
         </>
       },
     },
-    {
-      title: 'Xóa',
-      key: 'del',
-      render: (record) => (
-        <Button onClick={()=>props.handleRemove(record._id)}>Xóa</Button>
-      ),
-    },
+   
   ];
 
   return (

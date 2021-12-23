@@ -108,34 +108,7 @@ const Vip = () => {
     <div className="CatalogsPage">
       <PageHeader className="site-page-header" title="Trang Gói VIP" />
 
-      <div className="BoxForm">
-        <div className="title">Thêm Gói VIP</div>
-        <form onSubmit={forms.handleSubmit(handleSubmitFrom)}>
-
-            <div className="GroupForm">
-                <label htmlFor="name">Tên Gói VIP</label>
-                <InputField name="name" type='text' form={forms}></InputField>
-                {forms.errors.name && (
-              <p className="CatchError">* Vui lòng nhập trường này</p>
-            )}
-            </div>
-            <div className="GroupForm">
-                <label htmlFor="price">Giá Gói</label>
-                <InputField name="price" type='text' form={forms} ></InputField>
-                {forms.errors.price && (
-              <p className="CatchError">* Vui lòng nhập trường này</p>
-            )}
-            </div>
-            <div className="GroupForm">
-                <label htmlFor="time">Thời gian hết hạn gói</label>
-                <InputField name="time" type='number' form={forms}></InputField>
-                {forms.errors.time && (
-              <p className="CatchError">* Vui lòng nhập trường này</p>
-            )}
-            </div>
-            <Button htmlType='submit'>Lưu</Button>
-        </form>
-      </div>
+    
 
       <Row className="ListCata">
         <Col span={24}>

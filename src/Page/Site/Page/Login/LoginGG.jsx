@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import userApi from '../../../../api/userApi';
 import logoGG from '../../../../Assets/Images/Account/icongg.svg'
 
-function LoginGG(props) {
+function LoginGG() {
   const history = useHistory();
   const dangNhapThatBai = (response) => {
     console.log("Đăng nhập thất bại", response);

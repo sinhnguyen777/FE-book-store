@@ -299,7 +299,7 @@ async function register(e) {
                 >
                 <Input
                     onChange={(e) => setEmailDN(e.target.value)}
-                    maxLength="28" allowClear
+                    maxLength="40" allowClear
                />
                 </Form.Item>
 
@@ -331,7 +331,7 @@ async function register(e) {
                 </Form.Item>
                 </Form>
                     {/* login fb */}
-                         <LoginFB/>
+                         {/* <LoginFB/> */}
                     {/* login gg */}
                          <LoginGG/>
                   {/* <div className="forgot">

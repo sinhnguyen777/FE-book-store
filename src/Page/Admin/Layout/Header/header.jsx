@@ -13,13 +13,20 @@ import {
   TeamOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import adminApi from "../../../../api/adminApi";
 
 const { SubMenu } = Menu;
 
 const HeaderCmp = (props) => {
   const location = useLocation();
+  const [render, setrender] = useState(false)
+  useEffect(() => {
+    const adminToken = JSON.parse(localStorage.getItem("admin")); 
+    setrender(adminToken.idRole === "616e9df24610dc3e93caa27f");
+  }, []);
+
   return (
     <div>
       <Menu
@@ -27,7 +34,7 @@ const HeaderCmp = (props) => {
         mode="inline"
         theme="light"
         inlineCollapsed={props.collapsed}
-        style={{fontSize: '17px',fontWeight: '600'}}
+        style={{ fontSize: '17px', fontWeight: '600' }}
       >
         <Menu.Item key="/admin" icon={<HomeOutlined />}>
           <Link to={"/admin"}>Trang chủ</Link>
@@ -52,17 +59,24 @@ const HeaderCmp = (props) => {
         <Menu.Item key="/admin/coupon" icon={<GiftOutlined />}>
           <Link to="/admin/coupon">Mã giảm giá</Link>
         </Menu.Item>
-        <SubMenu key="sub2" icon={<SettingOutlined />} title="Quản trị">
-          <Menu.Item key="/admin/Member" icon={<TeamOutlined />}>
-            <Link to="/admin/Member">Admin</Link>
-          </Menu.Item>
-          <Menu.Item key="/admin/permission" icon={<FormOutlined />}>
-            <Link to="/admin/permission">Danh sách quyền</Link>
-          </Menu.Item>
-          <Menu.Item key="/admin/role" icon={<ApartmentOutlined />}>
-            <Link to="/admin/role">Chức vụ</Link>
-          </Menu.Item>
-        </SubMenu>
+        {
+          render
+            ?
+            <SubMenu key="sub2" icon={<SettingOutlined />} title="Quản trị">
+              <Menu.Item key="/admin/Member" icon={<TeamOutlined />}>
+                <Link to="/admin/Member">Admin</Link>
+              </Menu.Item>
+              <Menu.Item key="/admin/permission" icon={<FormOutlined />}>
+                <Link to="/admin/permission">Danh sách quyền</Link>
+              </Menu.Item>
+              <Menu.Item key="/admin/role" icon={<ApartmentOutlined />}>
+                <Link to="/admin/role">Chức vụ</Link>
+              </Menu.Item>
+            </SubMenu>
+            :
+            null
+
+        }
         <SubMenu key="sub3" icon={<TeamOutlined />} title="Quản lý người dùng">
           <Menu.Item key="9">
             <Link to="/admin/user">Danh sách người dùng</Link>

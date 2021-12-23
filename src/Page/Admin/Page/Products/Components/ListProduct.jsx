@@ -7,16 +7,23 @@ import prouctApi from '../../../../../api/productApi';
 const ListProduct = (props) => {
 
 
-  const handleDelProduct = async (id)=>{
+  const handleDelProduct = async (id) => {
     try {
 
-      await prouctApi.DelProducts(id);
+      const res = await prouctApi.DelProducts(id);
 
-        Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
-                if (result.isConfirmed) {
-                    props.handleRender();
-                }
-            })
+      Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
+        if (result.isConfirmed) {
+          props.handleRender();
+        }
+      })
+      if (res.data.status === 403) {
+        Swal.fire(
+          "Không thể Xóa",
+          "Không đủ thẩm quyền để Xóa",
+          "error"
+        )
+      }
     } catch (error) {
       console.log(error);
       Swal.fire('...', 'Xóa Thất Bại!', 'error')
@@ -82,7 +89,7 @@ const ListProduct = (props) => {
       key: 'edit',
       render: (record) => {
         return <>
-          <Button onClick={() =>handleDelProduct(record._id)}>Xóa</Button>
+          <Button onClick={() => handleDelProduct(record._id)}>Xóa</Button>
         </>
       },
     },
@@ -90,7 +97,7 @@ const ListProduct = (props) => {
 
   return (
     <>
-      <Table dataSource={props.data} columns={columns}/>;
+      <Table dataSource={props.data} columns={columns} />;
     </>
   );
 }

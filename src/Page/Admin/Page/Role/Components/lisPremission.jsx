@@ -1,4 +1,4 @@
-import { Button, Checkbox, Card } from "antd";
+import { Button, Checkbox, Card, message } from "antd";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -55,9 +55,11 @@ const ListPermission = (props) => {
       };
       console.log(newData);
       const res = await roleApi.UpdateRole(dataUpdate);
+      return message.success("Sửa thành công")
       console.log(res);
     } catch (err) {
       console.log(err);
+      return message.error("Sửa Thất bại")
     }
   };
   return (
@@ -160,6 +162,7 @@ const ListPermission = (props) => {
               <Checkbox
                 value={data[9].idPermissions}
                 defaultChecked={data[9].status}
+                onChange={handleChange}
               />
             </td>
           </tr>
@@ -170,6 +173,7 @@ const ListPermission = (props) => {
               <Checkbox
                 value={data[11].idPermissions}
                 defaultChecked={data[11].status}
+                onChange={handleChange}
               />
             </td>
             <td>
@@ -177,6 +181,7 @@ const ListPermission = (props) => {
               <Checkbox
                 value={data[13].idPermissions}
                 defaultChecked={data[13].status}
+                onChange={handleChange}
               />
             </td>
             <td>
@@ -184,6 +189,7 @@ const ListPermission = (props) => {
               <Checkbox
                 value={data[12].idPermissions}
                 defaultChecked={data[12].status}
+                onChange={handleChange}
               />
             </td>
           </tr>

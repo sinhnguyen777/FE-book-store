@@ -146,6 +146,15 @@ const Product = () => {
           }
         });
       }
+
+      if (res.data.status === 403) {
+        Swal.fire(
+          "Không thể thêm",
+          "Không đủ thẩm quyền để Thêm",
+          "error"
+        )
+      }
+
     } catch (err) {
       Swal.fire(
         "Không thể thêm",

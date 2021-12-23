@@ -14,12 +14,15 @@ const ListOrder = (props) => {
       const res = await orderApi.Send(data);
       console.log(res);
       if (res.code === "404") {
-        Swal.fire("...", "Khong the giao don hang da huy", "error");
+        Swal.fire("...", "Không thể giao đơn đã hủy", "error");
       }
 
       if (res.code === "200") {
-        Swal.fire("...", "giao don hang thanh cong", "success");
+        Swal.fire("...", "Giao đợn hàng thành công", "success");
         props.handleSetRender();
+      }
+      if(res.status === 403){
+        Swal.fire("...", "Không đủ thẩm quyền để giao", "error");
       }
     } catch (err) {
       console.log(err);

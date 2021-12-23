@@ -40,6 +40,14 @@ const EditCoupon = () => {
                         }
                     })
                 }
+                if (res.data.status === 403) {
+                    Swal.fire(
+                        "Không thể Sửa",
+                        "Không đủ thẩm quyền để Sửa",
+                        "error"
+                    )
+                }
+
             } catch (err) {
                 console.log(err);
             }
@@ -49,26 +57,26 @@ const EditCoupon = () => {
     }
     return (
         <div className="EditCataPage">
-        <PageHeader
-            className="site-page-header"
-            onBack={() => window.history.back()}
-            title="Sửa Mã giảm giá"
-        />
-        {
-            DataEdit
-                ?
-                <Row>
-                    <Col span={24} className="BoxCata">
-                        <div className="BoxFormCata">
-                            <div className="title">Sửa Mã giảm giá</div>
-                            <FormCoupon data={DataEdit} handleSubmitFrom={handleSubmitFrom} />
-                        </div>
-                    </Col>
-                </Row>
-                :
-                <LoadingOutlined />
-        }
-    </div>
+            <PageHeader
+                className="site-page-header"
+                onBack={() => window.history.back()}
+                title="Sửa Mã giảm giá"
+            />
+            {
+                DataEdit
+                    ?
+                    <Row>
+                        <Col span={24} className="BoxCata">
+                            <div className="BoxFormCata">
+                                <div className="title">Sửa Mã giảm giá</div>
+                                <FormCoupon data={DataEdit} handleSubmitFrom={handleSubmitFrom} />
+                            </div>
+                        </Col>
+                    </Row>
+                    :
+                    <LoadingOutlined />
+            }
+        </div>
     )
 }
 

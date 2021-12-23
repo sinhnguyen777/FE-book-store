@@ -64,6 +64,8 @@ const Header = () => {
     };
   }, []);
 
+  const routePath = useLocation();
+
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
@@ -81,7 +83,7 @@ const Header = () => {
     };
 
     fetchAccessToken();
-  }, []);
+  }, [routePath]);
 
 
   const menuLeft = useRef(null);

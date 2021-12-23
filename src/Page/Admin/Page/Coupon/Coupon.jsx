@@ -54,6 +54,26 @@ const Coupon = () => {
             )
            
           }
+          if (res.data.status === 403) {
+            Swal.fire(
+              "Không thể thêm",
+              "Không đủ thẩm quyền để thêm",
+              "error"
+            ).then((result) => {
+              if (result.isConfirmed) {
+                setdemo((pre) => pre + 1);
+                  forms.reset({ 
+                    defaultValues: {
+                        code: '',
+                        percent: '',
+                    },
+                  });
+  
+                history.push({ pathname: "/admin/coupon" });
+              }
+            });
+          }
+  
         } catch (err) {
           Swal.fire('Không thể thêm', 'Mã code này đã có trong danh sách', 'error')
         }
@@ -75,6 +95,15 @@ const Coupon = () => {
                 }
               });
             }
+
+            if (res.data.status === 403) {
+              Swal.fire(
+                "Không thể Xóa",
+                "Không đủ thẩm quyền để Xóa",
+                "error"
+              )
+            }
+  
           } catch (err) {
             Swal.fire("Rất tiếc!", "Không đủ Thẩm quyền đề xóa", "error").then(
               (result) => {

@@ -24,7 +24,7 @@ function LoginGG() {
       localStorage.setItem("user-info", JSON.stringify(res.data));
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("login", 'login-gg');
-      history.push("/");
+      history.push("/account");
     }
   }
 

@@ -18,7 +18,7 @@ const Items = (props) => {
   return (
     <>
       {DataDetail ? (
-        <div className="BoxItemCartOrder" style={{display: 'flex',alignItems: 'center',justifyContent: 'space-between'}}>
+        <div className="BoxItemCartOrder" >
           <div className="BoxItemCartOrder_item" style={{display: 'flex'}}>
             <div className="BoxItemCartOrder_content">
               <Image

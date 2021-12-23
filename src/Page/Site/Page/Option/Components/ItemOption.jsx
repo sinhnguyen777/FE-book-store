@@ -1,14 +1,10 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import vipApi from '../../../../../api/vipApi'
-import { Button, notification } from 'antd';
+import { notification } from 'antd';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom';
-
-
 
 const ItemOption = () => {
-    const history = useHistory()
     const [vip, setvip] = useState()
     useEffect(() => {
         const fetchVip = async () => {
@@ -23,9 +19,9 @@ const ItemOption = () => {
         const user = JSON.parse(localStorage.getItem('user-info'))
         if (!user) {
             notification.open({
-                message: 'Bạn chưa đăng nhập',
+                message: 'Bạn chưa đăng nhập !',
                 description:
-                    'Bạn cần phải đăng nhập để thực hiện chức năng n',
+                    'Bạn cần phải đăng nhập để thực hiện chức năng',
                 onClick: () => {
                     console.log('Notification Clicked!');
                 },

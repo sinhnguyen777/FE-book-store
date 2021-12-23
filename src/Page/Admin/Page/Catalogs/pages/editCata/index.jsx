@@ -34,10 +34,11 @@ const EditCata = () => {
         const fetchUpdateCata = async (data) => {
             try {
                 const res = await cataApi.UpdateCata(data);
-                if (res.data.status == 200) {
+                console.log(res);
+                if (res.data.code == '200') {
                     Swal.fire('...', 'Sửa Thành Công!', 'success').then((result) => {
                         if (result.isConfirmed) {
-                            // history.push({ pathname: '/admin/cata' })
+                            history.push({ pathname: '/admin/cata' })
                         }
                     })
                 }

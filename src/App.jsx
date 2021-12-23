@@ -39,8 +39,8 @@ function App() {
         </Route>
       </Router>
       {/* open deployed */}
-      {/* <MessengerCustomerChat pageId={process.env.PAGEID} appId={process.env.APPID}
-      /> */}
+      <MessengerCustomerChat pageId="104140758804829" appId="680551039772652"
+      />
     </div>
   );
 }

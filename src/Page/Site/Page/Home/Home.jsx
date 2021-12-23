@@ -1,4 +1,4 @@
-import React,{useState,useEffect}from 'react'
+import React from 'react'
 import Banner from '../../Components/Common/Banner/banner'
 import Tab from '../../Components/Common/Tabs/tabs'
 import { ParallaxProvider } from 'react-scroll-parallax'

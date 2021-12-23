@@ -45,6 +45,12 @@ const Infor = () => {
       dateCreate.getFullYear();
 
     setDateUpdate(dateUpdate);
+
+    const phone = user.data[0].phone;
+
+    setValueSdt(phone)
+
+
     const DateVip = new Date(user.data[0].vip);
     const NewDateVip =
       DateVip.getDate() +
@@ -148,7 +154,7 @@ const Infor = () => {
                   <Input
                     onChange={(e) => setValueSdt(e.target.value)}
                     placeholder=""
-                    value={DataUser.data[0].phone}
+                    value={ValueSdt}
                   />
                 ) : (
                   <Input

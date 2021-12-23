@@ -72,8 +72,47 @@ const Readbook = () => {
   }, [valueChapter]);
 
   const handleChange = (value) => {
-    setvalueChapter(value);
+    const fetchAccessToken = async () => {
+      try {
+        const adminToken = await localStorage.getItem("token");
+        const data = {
+          token: adminToken,
+          idProduct: match.params.id,
+        };
+        const res = await userApi.AccessToken(data);
+        const dateVip = new Date(res.data.data.vip);
+        const today = new Date();
+        if (dateVip > today || res.data.data.sell) {
+          const index = chapter.filter((item) => item._id == value);
+          const idx = chapter.indexOf(index[0]);
+          setValueIdx(idx + 1)
+          setvalueChapter(value);
+        } else {
+          Swal.fire({
+            text: "Vui Lòng đăng ký gói vip mới để đọc sách",
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        Swal.fire({
+          title: "Có vẻ bạn chưa đăng nhập",
+          text: "Vui Lòng đăng nhập để đọc tiếp cuốn sách này",
+          icon: "error",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Form đăng nhập",
+          cancelButtonText: "ở lại trang này",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push("/login");
+          }
+        });
+      }
+    };
+    fetchAccessToken();
   };
+  console.log(ValueIdx);
 
   const handleChangePre = () => {
     const index = chapter.filter((item) => item._id == valueChapter);
@@ -201,7 +240,13 @@ const Readbook = () => {
           </div>
         </div>
       ) : (
-        `Đang Cập Nhật`
+        <div style={{margin:0}} className="event_banner">
+                <div className="event_banner_text">
+                    <h6>Sách</h6>
+                    <h2>Đang cập nhật</h2>
+                   
+                </div>
+    </div>
       )}
       <BackTop>
         <div style={style}>

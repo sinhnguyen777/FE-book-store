@@ -6,7 +6,7 @@ import ParallaxImg from './Components/ParallaxImg';
 import imgprl from '../../../../Assets/Images/Home/home-2-parallax-image-1.jpg';
 import { ButtonPara } from '../../Components/Common/Button/Button';
 import Autobiography from './Components/Autobiography';
-import Partner from './Components/Partner';
+import PartnerComponent from './Components/PartnerComponent';
 import { BackTop } from 'antd';
 import { UpOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
@@ -64,7 +64,7 @@ const Home = () => {
                         <Autobiography />
                     </div>
                     <div className="home_content_autobiographys_partner">
-                        <Partner />
+                        <PartnerComponent />
                     </div>
                 </div>
             </div>

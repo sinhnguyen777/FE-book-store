@@ -1,13 +1,13 @@
-import React from 'react'
-import dt1 from '../../../../../Assets/Images/Home/dt-5.jpg'
-import dt2 from '../../../../../Assets/Images/Home/dt-6.jpg'
-import dt3 from '../../../../../Assets/Images/Home/dt-9.jpg'
-import dt4 from '../../../../../Assets/Images/Home/dt-10.jpg'
-import dt5 from '../../../../../Assets/Images/Home/dt-11.jpg'
-import dt6 from '../../../../../Assets/Images/Home/dt-19.jpg'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import dt1 from '../../../../../Assets/Images/Home/dt-5.jpg';
+import dt2 from '../../../../../Assets/Images/Home/dt-6.jpg';
+import dt3 from '../../../../../Assets/Images/Home/dt-9.jpg';
+import dt4 from '../../../../../Assets/Images/Home/dt-10.jpg';
+import dt5 from '../../../../../Assets/Images/Home/dt-11.jpg';
+import dt6 from '../../../../../Assets/Images/Home/dt-19.jpg';
+import { Link } from 'react-router-dom';
 
-const Partner = () => {
+const PartnerComponent = () => {
     return (
         <div className="Partner">
             <div className="PartnerItem">
@@ -41,7 +41,7 @@ const Partner = () => {
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Partner
+export default PartnerComponent;

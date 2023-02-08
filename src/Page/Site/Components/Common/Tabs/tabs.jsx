@@ -1,9 +1,7 @@
 import { Tabs } from 'antd';
 import React from 'react';
-import ListBestSeller from '../../../Page/Home/Components/ListBestSeller';
-import ListHot from '../../../Page/Home/Components/ListHot';
-import ListNew from '../../../Page/Home/Components/ListNew';
-import ListSale from '../../../Page/Home/Components/ListSale';
+import { ListHot, ListNew, ListSale } from '../../../Page/Home/Components';
+
 
 
 const { TabPane } = Tabs;

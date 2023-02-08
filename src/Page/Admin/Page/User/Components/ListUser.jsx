@@ -1,8 +1,8 @@
-import {  Image, Select, Table } from "antd";
+import { Image, Select, Table } from "antd";
 import React from "react";
 
 const ListUser = (props) => {
- console.log(props.data);
+  console.log(props.data);
   const columns = [
     {
       title: "Họ và tên",
@@ -21,7 +21,7 @@ const ListUser = (props) => {
         <>
           <Image
             width={70}
-            src={`https://beonlinelibrary.herokuapp.com/${record.avatar}`}
+            src={`https://be-library-online.onrender.com/${record.avatar}`}
           />
         </>
       ),
@@ -31,7 +31,7 @@ const ListUser = (props) => {
       dataIndex: "vip",
       key: "vip",
     },
-    
+
   ];
   return (
     <div>

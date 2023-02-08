@@ -18,7 +18,7 @@ const ListProducts = (props) => {
         return (
           <Image
             width={70}
-            src={`https://beonlinelibrary.herokuapp.com/${record._id[0].images[0].image}`}
+            src={`https://be-library-online.onrender.com/${record._id[0].images[0].image}`}
           />
         );
       },
@@ -44,7 +44,7 @@ const ListProducts = (props) => {
         return <p>{record._id[0].nxb}</p>;
       },
     },
-    
+
     {
       title: "Đã bán",
       key: "total",

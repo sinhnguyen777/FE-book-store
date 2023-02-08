@@ -1,22 +1,22 @@
-import { LoadingOutlined } from '@ant-design/icons'
-import React, { useEffect, useState } from 'react'
-import vipApi from '../../../../../api/vipApi'
+import { LoadingOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+import vipApi from '../../../../../api/vipApi';
 import { notification } from 'antd';
-import axios from 'axios'
+import axios from 'axios';
 
 const ItemOption = () => {
-    const [vip, setvip] = useState()
+    const [vip, setvip] = useState();
     useEffect(() => {
         const fetchVip = async () => {
-            const res = await vipApi.GetVip()
-            setvip(res.data)
-        }
-        fetchVip()
-    }, [])
+            const res = await vipApi.GetVip();
+            setvip(res.data);
+        };
+        fetchVip();
+    }, []);
 
 
     const handleClick = async (values) => {
-        const user = JSON.parse(localStorage.getItem('user-info'))
+        const user = JSON.parse(localStorage.getItem('user-info'));
         if (!user) {
             notification.open({
                 message: 'Bạn chưa đăng nhập !',
@@ -31,18 +31,18 @@ const ItemOption = () => {
                 id: values._id,
                 name: values.name,
                 price: values.price
-            }
+            };
 
             axios({
                 maxRedirects: 0,
                 method: 'post',
-                url: 'https://beonlinelibrary.herokuapp.com',
+                url: 'https://be-library-online.onrender.com',
                 data: data,
             })
                 .then((res) => {
                     if (res.status === 200) {
-                        console.log(res.data)
-                        window.location = res.data.forwardLink
+                        console.log(res.data);
+                        window.location = res.data.forwardLink;
                         // history.push('/congratulation', values.id)
                     } else {
                         console.log('error');
@@ -50,10 +50,10 @@ const ItemOption = () => {
                 })
                 .catch((err) => {
                     console.log(err);
-                })
+                });
         }
 
-    }
+    };
 
 
 
@@ -80,7 +80,7 @@ const ItemOption = () => {
             }
 
         </>
-    )
-}
+    );
+};
 
-export default ItemOption
+export default ItemOption;

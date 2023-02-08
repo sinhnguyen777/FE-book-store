@@ -137,7 +137,7 @@ export default function ProductDetail() {
                     <div style={{ width: "100%" }}>
                       <Image
                         preview={{ visible: false }}
-                        src={`https://beonlinelibrary.herokuapp.com/${item.image}`}
+                        src={`https://be-library-online.onrender.com/${item.image}`}
                         onClick={() => setVisible(true)}
                       />
                       <div style={{ display: "none" }}>
@@ -148,7 +148,7 @@ export default function ProductDetail() {
                           }}
                         >
                           <Image
-                            src={`https://beonlinelibrary.herokuapp.com/${item.image}`}
+                            src={`https://be-library-online.onrender.com/${item.image}`}
                           />
                         </Image.PreviewGroup>
                       </div>
@@ -176,7 +176,7 @@ export default function ProductDetail() {
                 {productDetail ? (
                   productDetail.images.map((item) => (
                     <img
-                      src={`https://beonlinelibrary.herokuapp.com/${item.image}`}
+                      src={`https://be-library-online.onrender.com/${item.image}`}
                     />
                   ))
                 ) : (
@@ -259,10 +259,10 @@ export default function ProductDetail() {
         <RelatedProducts />
       </Layout>
       <BackTop>
-            <div style={style}><UpOutlined /></div>
-        </BackTop>
+        <div style={style}><UpOutlined /></div>
+      </BackTop>
       <GoToTop />
     </div>
-    
+
   );
 }

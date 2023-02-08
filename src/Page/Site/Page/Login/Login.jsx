@@ -70,18 +70,18 @@ function Register() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
-//   const responseFacebook = (response) => {
-//      console.log(response);
-//   }
+  //   const responseFacebook = (response) => {
+  //      console.log(response);
+  //   }
 
   // show button
-    let show = "";
-    let show2= "";
-     if (emailDN ==="" || passwordDN === "" || passwordDN.length < 4)  show = "disable";
-     else show = "";
-     if (email ==="" || password === "" ||  fullName === ""|| password.length < 4 || password !== password_confirm ||  /[a-z]{3}/.test(fullName) !== true) show2 = "disable";     
-     else show2 = "";
- 
+  let show = "";
+  let show2 = "";
+  if (emailDN === "" || passwordDN === "" || passwordDN.length < 4) show = "disable";
+  else show = "";
+  if (email === "" || password === "" || fullName === "" || password.length < 4 || password !== password_confirm || /[a-z]{3}/.test(fullName) !== true) show2 = "disable";
+  else show2 = "";
+
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
@@ -118,7 +118,7 @@ function Register() {
   //     authen();
   //   }, 1000);
   // };
-  
+
   // const handleCancel = () => {
   //   setVisible(false);
   // };
@@ -128,24 +128,24 @@ function Register() {
   function resetForm() {
     form.resetFields();
   }
-// clear useState
-function clearUseState(){
-  setEmailDN("");
-  setPasswordDN("");
-  setFullname("");
-  // setSdt("");
-  setPassword("");
-  setPassword_confirm("");
-  setEmail("");
-  // setAddress("");
-} 
+  // clear useState
+  function clearUseState() {
+    setEmailDN("");
+    setPasswordDN("");
+    setFullname("");
+    // setSdt("");
+    setPassword("");
+    setPassword_confirm("");
+    setEmail("");
+    // setAddress("");
+  }
 
 
   //  Asset Token
   // async function authen() {
   //   let code = { token };
   //   let result = await fetch(
-  //     "https://beonlinelibrary.herokuapp.com/users/verify-email",
+  //     "https://be-library-online.onrender.com/users/verify-email",
   //     {
   //       method: "POST",
   //       headers: {
@@ -180,7 +180,7 @@ function clearUseState(){
     e.preventDefault();
     let item = { email: emailDN, password: passwordDN };
     let result = await fetch(
-      "https://beonlinelibrary.herokuapp.com/users/login",
+      "https://be-library-online.onrender.com/users/login",
       {
         method: "POST",
         headers: {
@@ -193,54 +193,54 @@ function clearUseState(){
     if (result.status === 200) {
       result = await result.json();
       setTimeout(() => {
-      if (result.data[0].success === false) {
-        message.error(result.data[0].error);
-      } else {
-        Swal.fire('Đăng Nhập Thành Công', `Chào Mừng  đã đến với chúng tôi `, 'success');
-        message.success("Đăng nhập thành công");
-        localStorage.setItem("user-info", JSON.stringify(result));
-        localStorage.setItem('token', result.token);
-        history.push("/");
-      }
-      },2500);
+        if (result.data[0].success === false) {
+          message.error(result.data[0].error);
+        } else {
+          Swal.fire('Đăng Nhập Thành Công', `Chào Mừng  đã đến với chúng tôi `, 'success');
+          message.success("Đăng nhập thành công");
+          localStorage.setItem("user-info", JSON.stringify(result));
+          localStorage.setItem('token', result.token);
+          history.push("/");
+        }
+      }, 2500);
     }
   }
 
- //Register
-async function register(e) {
-  const key = 'loading';
-  message.loading({ content: 'Vui lòng chờ...', key });
-  e.preventDefault();
-  let item = {
-       'fullName': fullName,
-       'email': email,
-       'phone': Number(sdt),
-       'password': password,
-       'address': address,
-       'avatar': avatar,
-       'blockMail': false
-  };
-  console.log(item);
-    let result = await userApi.Register(item)
+  //Register
+  async function register(e) {
+    const key = 'loading';
+    message.loading({ content: 'Vui lòng chờ...', key });
+    e.preventDefault();
+    let item = {
+      'fullName': fullName,
+      'email': email,
+      'phone': Number(sdt),
+      'password': password,
+      'address': address,
+      'avatar': avatar,
+      'blockMail': false
+    };
+    console.log(item);
+    let result = await userApi.Register(item);
     console.log(result);
-       if (result.status===200) {
-            setTimeout(() => {
-            if (result.data.message) {
-                 message.error(result.data.message);
-            }
-            else {
-                Swal.fire('Đăng Ký Thành Công', `Vui lòng kiểm tra email và xác nhận!`, 'success');
-                 message.success({ content: 'Vui lòng kiểm tra email và xác nhận!', key, duration: 2 });
-                 changeForm();
-                 resetForm(); // reset form
-                 clearUseState(); //clear useState
-                 setVisible(false); //đóng form
-                }
-            }, 2500);
-       }
-       else message.error('Thất bại!')
+    if (result.status === 200) {
+      setTimeout(() => {
+        if (result.data.message) {
+          message.error(result.data.message);
+        }
+        else {
+          Swal.fire('Đăng Ký Thành Công', `Vui lòng kiểm tra email và xác nhận!`, 'success');
+          message.success({ content: 'Vui lòng kiểm tra email và xác nhận!', key, duration: 2 });
+          changeForm();
+          resetForm(); // reset form
+          clearUseState(); //clear useState
+          setVisible(false); //đóng form
+        }
+      }, 2500);
+    }
+    else message.error('Thất bại!');
 
-}
+  }
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -297,10 +297,10 @@ async function register(e) {
                     },
                   ]}
                 >
-                <Input
+                  <Input
                     onChange={(e) => setEmailDN(e.target.value)}
                     maxLength="28" allowClear
-               />
+                  />
                 </Form.Item>
 
                 <Form.Item
@@ -312,32 +312,32 @@ async function register(e) {
                       message: "Hãy nhập mật khẩu của bạn!",
                     },
                     {
-                         min:4,
-                         message: "Vui lòng nhập ít nhất 4 chữ số!",
-                       },
+                      min: 4,
+                      message: "Vui lòng nhập ít nhất 4 chữ số!",
+                    },
                   ]}
                   hasFeedback
                 >
                   <Input.Password
-                       onChange={(e) => setPasswordDN(e.target.value)}
-                       maxLength="20"
+                    onChange={(e) => setPasswordDN(e.target.value)}
+                    maxLength="20"
                   />
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit" disabled={show}>
+                  <Button type="primary" htmlType="submit" disabled={show}>
                     Đăng nhập
                   </Button>
                 </Form.Item>
-                </Form>
-                    {/* login fb */}
-                         <LoginFB/>
-                    {/* login gg */}
-                         <LoginGG/>
-                  {/* <div className="forgot">
+              </Form>
+              {/* login fb */}
+              <LoginFB />
+              {/* login gg */}
+              <LoginGG />
+              {/* <div className="forgot">
                     <a href="#">Quên mật khẩu?</a>
                </div> */}
-               </form>
+            </form>
 
             {/* Register */}
             <form className="form-signup" name="form">
@@ -362,15 +362,15 @@ async function register(e) {
                     {
                       required: true,
                       message: "Hãy nhập tên của bạn!",
-                    //   whitespace: true,
+                      //   whitespace: true,
                     },
                     {
-                         pattern: /[a-z]{3}/,
-                         message: "Tên không đúng định dạng!"
+                      pattern: /[a-z]{3}/,
+                      message: "Tên không đúng định dạng!"
                     }
                   ]}
                 >
-                  <Input allowClear  maxLength="30" onChange={(e) => setFullname(e.target.value)} />
+                  <Input allowClear maxLength="30" onChange={(e) => setFullname(e.target.value)} />
                 </Form.Item>
 
                 <Form.Item
@@ -419,9 +419,9 @@ async function register(e) {
                       message: "Hãy nhập mật khẩu của bạn!",
                     },
                     {
-                         min:4,
-                         message: "Vui lòng nhập ít nhất 4 chữ số!",
-                       },
+                      min: 4,
+                      message: "Vui lòng nhập ít nhất 4 chữ số!",
+                    },
 
                   ]}
                   hasFeedback
@@ -455,7 +455,7 @@ async function register(e) {
                     }),
                   ]}
                 >
-                      <Input.Password onChange={(e) => setPassword_confirm(e.target.value)}/>
+                  <Input.Password onChange={(e) => setPassword_confirm(e.target.value)} />
                 </Form.Item>
 
                 {/* <Form.Item
@@ -467,7 +467,7 @@ async function register(e) {
                 </Form.Item> */}
 
                 <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit" disabled={show2}>
+                  <Button type="primary" htmlType="submit" disabled={show2}>
                     Đăng ký
                   </Button>
                   <Button

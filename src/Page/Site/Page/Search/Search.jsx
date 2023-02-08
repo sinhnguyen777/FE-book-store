@@ -35,7 +35,7 @@ const Search = () => {
                 avatar={
                   <Image
                     width={70}
-                    src={`https://beonlinelibrary.herokuapp.com/${item.images[0].image}`}
+                    src={`https://be-library-online.onrender.com/${item.images[0].image}`}
                   />
                 }
                 title={

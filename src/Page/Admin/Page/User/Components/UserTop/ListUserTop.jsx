@@ -24,7 +24,7 @@ const ListUserTop = (props) => {
         return (
           <Image
             width={70}
-            src={`https://beonlinelibrary.herokuapp.com/${record._id[0].avatar}`}
+            src={`https://be-library-online.onrender.com/${record._id[0].avatar}`}
           />
         );
       },

@@ -4,7 +4,7 @@ import prouctApi from "../../../../../../../api/productApi";
 import { Link } from "react-router-dom";
 
 const Items = (props) => {
-  const { quantity, idProduct ,createdAt} = props;
+  const { quantity, idProduct, createdAt } = props;
   const [DataDetail, setDataDetail] = useState();
   useEffect(() => {
     const fetchGetDetail = async () => {
@@ -19,11 +19,11 @@ const Items = (props) => {
     <>
       {DataDetail ? (
         <div className="BoxItemCartOrder" >
-          <div className="BoxItemCartOrder_item" style={{display: 'flex'}}>
+          <div className="BoxItemCartOrder_item" style={{ display: 'flex' }}>
             <div className="BoxItemCartOrder_content">
               <Image
                 width={100}
-                src={`https://beonlinelibrary.herokuapp.com/${DataDetail.images[0].image}`}
+                src={`https://be-library-online.onrender.com/${DataDetail.images[0].image}`}
               />
             </div>
 
@@ -52,7 +52,7 @@ const Items = (props) => {
               </div>
             </div>
           </div>
-          <div className="BoxItemCartOrder_item" style={{fontSize: "19px"}}>
+          <div className="BoxItemCartOrder_item" style={{ fontSize: "19px" }}>
             Đơn hàng ngày: {createdAt}
           </div>
         </div>

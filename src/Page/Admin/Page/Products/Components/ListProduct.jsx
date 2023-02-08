@@ -7,21 +7,21 @@ import prouctApi from '../../../../../api/productApi';
 const ListProduct = (props) => {
 
 
-  const handleDelProduct = async (id)=>{
+  const handleDelProduct = async (id) => {
     try {
 
       await prouctApi.DelProducts(id);
 
-        Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
-                if (result.isConfirmed) {
-                    props.handleRender();
-                }
-            })
+      Swal.fire('...', 'Xóa Thành Công!', 'success').then((result) => {
+        if (result.isConfirmed) {
+          props.handleRender();
+        }
+      });
     } catch (error) {
       console.log(error);
-      Swal.fire('...', 'Xóa Thất Bại!', 'error')
+      Swal.fire('...', 'Xóa Thất Bại!', 'error');
     }
-  }
+  };
 
   const columns = [
     {
@@ -37,9 +37,9 @@ const ListProduct = (props) => {
         return <>
           <Image
             width={50}
-            src={`https://beonlinelibrary.herokuapp.com/${record[0].image}`}
+            src={`https://be-library-online.onrender.com/${record[0].image}`}
           />
-        </>
+        </>;
       },
     },
     {
@@ -63,7 +63,7 @@ const ListProduct = (props) => {
       render: (record) => {
         return <>
           <Button><Link to={`/admin/products/Listchapter/${record._id}`}>Xem Chương ...</Link></Button>
-        </>
+        </>;
       },
     },
 
@@ -73,7 +73,7 @@ const ListProduct = (props) => {
       render: (record) => {
         return <>
           <Button><Link to={`/admin/products/edit/${record._id}`}>Sửa</Link></Button>
-        </>
+        </>;
       },
     },
 
@@ -82,19 +82,19 @@ const ListProduct = (props) => {
       key: 'edit',
       render: (record) => {
         return <>
-          <Button onClick={() =>handleDelProduct(record._id)}>Xóa</Button>
-        </>
+          <Button onClick={() => handleDelProduct(record._id)}>Xóa</Button>
+        </>;
       },
     },
   ];
 
   return (
     <>
-      <Table dataSource={props.data} columns={columns}/>;
+      <Table dataSource={props.data} columns={columns} />;
     </>
   );
-}
+};
 
 
 
-export default ListProduct
+export default ListProduct;

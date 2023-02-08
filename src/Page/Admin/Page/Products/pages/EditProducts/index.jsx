@@ -15,18 +15,18 @@ const uploadButton = () => {
     <div>
         <PlusOutlined />
         <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-}
+    </div>;
+};
 
 const EditProducts = () => {
     const match = useRouteMatch();
-    const [DataProduct, setDataProduct] = useState({})
-    const [ValueCata, setValueCata] = useState([])
+    const [DataProduct, setDataProduct] = useState({});
+    const [ValueCata, setValueCata] = useState([]);
     const [ValueSelect, setValueSelect] = useState("");
     const [ValueDate, setValueDate] = useState('');
     const dateFormat = 'YYYY-MM-DD';
-    const [oldImg, setoldImg] = useState([])
-    const [ResetImg, SetResetImg] = useState(0)
+    const [oldImg, setoldImg] = useState([]);
+    const [ResetImg, SetResetImg] = useState(0);
 
     let history = useHistory();
 
@@ -45,13 +45,13 @@ const EditProducts = () => {
         });
     }
 
-    const [fileList, setfileList] = useState([])
+    const [fileList, setfileList] = useState([]);
     const [PreviewVisible, setPreviewVisible] = useState(false);
     const [previewImage, setpreviewImage] = useState('');
-    const [previewTitle, setpreviewTitle] = useState('')
+    const [previewTitle, setpreviewTitle] = useState('');
     const handleCancel = () => {
-        setPreviewVisible(false)
-    }
+        setPreviewVisible(false);
+    };
 
     const handlePreview = async file => {
         if (!file.url && !file.preview) {
@@ -60,17 +60,17 @@ const EditProducts = () => {
 
         setpreviewImage(file.url || file.preview);
         setPreviewVisible(true);
-        setpreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1))
+        setpreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
     };
 
     const handleChangeUpload = ({ fileList }) => {
-        setfileList(fileList)
-    }
+        setfileList(fileList);
+    };
 
     // get values Select
 
     function handleChange(value) {
-        setValueSelect(value)
+        setValueSelect(value);
     }
 
     // Submit Form
@@ -110,37 +110,37 @@ const EditProducts = () => {
                             idCata: "",
                             Nbx: ""
                         }
-                    })
-                    history.push({ pathname: '/admin/products' })
+                    });
+                    history.push({ pathname: '/admin/products' });
                 }
-            })
+            });
 
         }
         catch (err) {
             console.log(err);
-            Swal.fire('...', 'Sửa Thất bại!', 'error')
+            Swal.fire('...', 'Sửa Thất bại!', 'error');
         }
 
-    }
+    };
 
     useEffect(() => {
         const id = match.params.id;
 
         const fetchIdCata = async () => {
             const res = await cataApi.GetCata();
-            setValueCata(res.data)
-        }
+            setValueCata(res.data);
+        };
 
         const fetchProductById = async (id) => {
             const res = await prouctApi.GetProductsById(id);
             setValueSelect(res.data.idCatalog);
             setoldImg(res.data.images);
             setDataProduct(res.data);
-            if(res.data.dateDebut === null ){
-                setValueDate('')
+            if (res.data.dateDebut === null) {
+                setValueDate('');
             }
-            else{
-                setValueDate(res.data.dateDebut)
+            else {
+                setValueDate(res.data.dateDebut);
             }
             forms.reset({
                 nameProduct: res.data.nameProduct,
@@ -151,23 +151,23 @@ const EditProducts = () => {
                 productSale: res.data.productSale,
                 description: res.data.description,
                 quantity: res.data.quantity,
-            })
-        }
+            });
+        };
 
-        fetchIdCata()
+        fetchIdCata();
 
-        fetchProductById(id)
-    }, [ResetImg])
+        fetchProductById(id);
+    }, [ResetImg]);
 
     const handleRemoveOldImg = (id) => {
         const newValue = [...oldImg];
         const data = newValue.filter(item => item._id != id);
-        setoldImg(data)
-    }
+        setoldImg(data);
+    };
 
     const handleChangeDate = (values) => {
-        setValueDate(values)
-    }
+        setValueDate(values);
+    };
     return (
         <div className="ProductPage">
             <PageHeader
@@ -191,7 +191,7 @@ const EditProducts = () => {
                                                 key={idx}
                                                 width={100}
                                                 height={100}
-                                                src={`https://beonlinelibrary.herokuapp.com/${item.image}`}
+                                                src={`https://be-library-online.onrender.com/${item.image}`}
                                             />
                                             <CloseSquareOutlined onClick={() => handleRemoveOldImg(item._id)} />
                                         </div>
@@ -258,10 +258,10 @@ const EditProducts = () => {
                                     <label htmlFor="dateDebut">Ngày Ra Mắt</label>
                                     {
                                         ValueDate
-                                    ?
-                                    <DatePicker defaultValue={moment(ValueDate, dateFormat)} value={moment(ValueDate, dateFormat)} style={{ width: '100%' }} onChange={handleChangeDate} />
-                                    :
-                                    <DatePicker style={{ width: '100%' }} onChange={handleChangeDate} />
+                                            ?
+                                            <DatePicker defaultValue={moment(ValueDate, dateFormat)} value={moment(ValueDate, dateFormat)} style={{ width: '100%' }} onChange={handleChangeDate} />
+                                            :
+                                            <DatePicker style={{ width: '100%' }} onChange={handleChangeDate} />
                                     }
                                 </div>
                             </div>
@@ -296,7 +296,7 @@ const EditProducts = () => {
 
             }
         </div>
-    )
-}
+    );
+};
 
-export default EditProducts
+export default EditProducts;

@@ -19,9 +19,9 @@ const CartHeader = (props) => {
   };
   let history = useHistory();
   const handleCartClick = () => {
-    history.push('/cart')
-    props.onClose()
-  }
+    history.push('/cart');
+    props.onClose();
+  };
   return (
     <>
       {ListCart.cartItem.length === 0 ? (
@@ -32,7 +32,7 @@ const CartHeader = (props) => {
             <div className="CartHeaderItem_image">
               <Link to={`/product-detail/${item.productDetail.slug}`}>
                 <img
-                  src={`https://beonlinelibrary.herokuapp.com/${item.productDetail.images[0].image}`}
+                  src={`https://be-library-online.onrender.com/${item.productDetail.images[0].image}`}
                   alt={item.productDetail.nameProduct}
                 />
               </Link>
@@ -44,10 +44,10 @@ const CartHeader = (props) => {
               <p className="CartHeaderItem_content_price">
                 {item.quantity}x
                 <span className="CartHeaderItem_content_amount">
-                  {item.productDetail.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}
+                  {item.productDetail.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}
                 </span>
               </p>
-              <p className="CartHeaderItem_content_remove" onClick={()=>{remove(item.id)}}>
+              <p className="CartHeaderItem_content_remove" onClick={() => { remove(item.id); }}>
                 <CloseCircleOutlined />
               </p>
             </div>
@@ -61,7 +61,7 @@ const CartHeader = (props) => {
           <p onClick={handleCartClick}>
             <ButtonCart />
           </p>
-          
+
         </div>
       )}
     </>

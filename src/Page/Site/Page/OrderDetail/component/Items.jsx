@@ -20,7 +20,7 @@ const Items = (props) => {
           <div className="BoxItemCartOrder_content">
             <Image
               width={100}
-              src={`https://beonlinelibrary.herokuapp.com/${DataDetail.images[0].image}`}
+              src={`https://be-library-online.onrender.com/${DataDetail.images[0].image}`}
             />
           </div>
 
@@ -51,7 +51,7 @@ const Items = (props) => {
           </div>
         </div>
       ) : null}
-      
+
     </>
   );
 };

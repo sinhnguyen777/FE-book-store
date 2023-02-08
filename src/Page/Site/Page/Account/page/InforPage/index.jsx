@@ -21,7 +21,7 @@ const Infor = () => {
   let history = useHistory();
   const [ValueAvata, setValueAvata] = useState();
   const [ValueSdt, setValueSdt] = useState();
-  const [ValueName , setValueName] = useState();
+  const [ValueName, setValueName] = useState();
 
   const getUser = () => {
     const userStr = localStorage.getItem("user-info");
@@ -30,9 +30,9 @@ const Infor = () => {
   };
 
   const user = getUser();
- 
+
   const dateCreate = new Date(user.data[0].updatedAt);
-   const dateUpdate =
+  const dateUpdate =
     dateCreate.getDate() +
     "-" +
     (dateCreate.getMonth() + 1) +
@@ -47,7 +47,7 @@ const Infor = () => {
     "-" +
     DateVip.getFullYear();
 
-   const imagesAvt = {
+  const imagesAvt = {
     onChange: (info) => {
       console.log(info);
     },
@@ -57,7 +57,7 @@ const Infor = () => {
   const edit = () => {
     let name = prompt("Nhập tên của bạn!");
     setValueName(name);
-  }
+  };
   const avatarUpload = file => {
     // const userId = this.props.userdetail.data.data.id;
     const data = new FormData();
@@ -67,7 +67,7 @@ const Infor = () => {
         'content-type': 'multipart/form-data',
       },
     };
-    axios.post(`https://beonlinelibrary.herokuapp.com/users/upload-avt`, data, config)
+    axios.post(`https://be-library-online.onrender.com/users/upload-avt`, data, config)
       .then(res => setValueAvata(res.data.path))
       .catch(err => console.log(err));
   };
@@ -75,29 +75,29 @@ const Infor = () => {
   const handleSubmitFrom = async () => {
     const data = {
       id: user.data[0]._id,
-      phone:ValueSdt,
-      fullName:ValueName,
-      avatar:ValueAvata,
-    }
+      phone: ValueSdt,
+      fullName: ValueName,
+      avatar: ValueAvata,
+    };
     await userApi.Update(data);
     console.log(ValueName);
     const userUpdate = {
-        data : [{
-        avatar: (data.avatar=== undefined) ? (user.data[0].avatar) : (data.avatar),
+      data: [{
+        avatar: (data.avatar === undefined) ? (user.data[0].avatar) : (data.avatar),
         createdAt: user.data[0].createdAt,
         email: user.data[0].email,
-        fullName: (data.fullName=== undefined) ? (user.data[0].fullName) : (data.fullName),
+        fullName: (data.fullName === undefined) ? (user.data[0].fullName) : (data.fullName),
         password: user.data[0].password,
-        phone:  (data.phone=== undefined) ? (user.data[0].phone) : (data.phone),
+        phone: (data.phone === undefined) ? (user.data[0].phone) : (data.phone),
         updatedAt: user.data[0].updatedAt,
         vip: user.data[0].vip,
         __v: user.data[0].__v,
         _id: user.data[0]._id,
       }],
-      token : user.token,
-    }
+      token: user.token,
+    };
     localStorage.removeItem('user-info');
-    localStorage.setItem("user-info" , JSON.stringify(userUpdate));
+    localStorage.setItem("user-info", JSON.stringify(userUpdate));
     getUser();
     window.location.reload();
   };
@@ -119,14 +119,14 @@ const Infor = () => {
                 size={130}
                 src={
                   <Image
-                    src={`https://beonlinelibrary.herokuapp.com/${user.data[0].avatar}`}
+                    src={`https://be-library-online.onrender.com/${user.data[0].avatar}`}
                   />
                 }
               />
 
-              <div style={{marginTop: '10px'}}>
-                <Upload /*  action="https://beonlinelibrary.herokuapp.com/users/upload-avt" */  action={avatarUpload} name="avatar" {...imagesAvt}>
-                  <Button  icon={<UploadOutlined />}>Upload png only</Button>
+              <div style={{ marginTop: '10px' }}>
+                <Upload /*  action="https://be-library-online.onrender.com/users/upload-avt" */ action={avatarUpload} name="avatar" {...imagesAvt}>
+                  <Button icon={<UploadOutlined />}>Upload png only</Button>
                 </Upload>
               </div>
             </Col>
@@ -134,7 +134,7 @@ const Infor = () => {
               <span className="mock-block">
                 <Title className="code-box-demo" level={2}>
                   {user.data[0].fullName}
-                <img onClick={edit} style={{width: '8%',margin:'3%',cursor:"pointer"}} src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png"/>
+                  <img onClick={edit} style={{ width: '8%', margin: '3%', cursor: "pointer" }} src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png" />
                 </Title>
                 <Title type="secondary" className="code-box-demo" level={4}>
                   Ngày cập nhật : {dateUpdate}

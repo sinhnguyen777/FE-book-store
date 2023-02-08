@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const axiosClientAuth = axios.create({
-    baseURL: 'https://beonlinelibrary.herokuapp.com',
-    // https://beonlinelibrary.herokuapp.com
-    headers: {
-        'Content-Type' : 'application/json',
-    }
-})
+  baseURL: 'https://be-library-online.onrender.com',
+  // https://be-library-online.onrender.com
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
 
 
 // Interceptors

@@ -39,7 +39,7 @@ export default function RelatedProducts() {
               cover={
                 <img
                   alt="example"
-                  src={`https://beonlinelibrary.herokuapp.com/${item._id[0].images[0].image}`}
+                  src={`https://be-library-online.onrender.com/${item._id[0].images[0].image}`}
                 />
               }
             >

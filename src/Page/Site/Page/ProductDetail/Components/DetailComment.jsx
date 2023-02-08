@@ -10,7 +10,7 @@ function DetailComment(props) {
   const { data } = props;
   console.log(data);
   const [DataUser, setDataUser] = useState();
-  const [demo, setdemo] = useState('')
+  const [demo, setdemo] = useState('');
   let history = useHistory();
   useEffect(() => {
     const fetchDataUser = async (id) => {
@@ -21,32 +21,32 @@ function DetailComment(props) {
     fetchDataUser(data.idUser);
   }, []);
   console.log(DataUser);
-  const handleRemove = (id)=>{
-    try{
-        const fetchRemoveCmt = async (data) => {
-            try {
-                const res = await commentApi.DelComment(data);
-                if (res.status === 200) {
-                    Swal.fire('Xóa!!', 'Xóa Thành Công!', 'success').then((result) => {
-                        if (result.isConfirmed) {
-                            setdemo(pre=>pre+1);
-                            history.push({ pathname: '/' })
-                        }
-                    })
-                }
-            } catch (err) {
-                console.log(err);
-                
-            }
+  const handleRemove = (id) => {
+    try {
+      const fetchRemoveCmt = async (data) => {
+        try {
+          const res = await commentApi.DelComment(data);
+          if (res.status === 200) {
+            Swal.fire('Xóa!!', 'Xóa Thành Công!', 'success').then((result) => {
+              if (result.isConfirmed) {
+                setdemo(pre => pre + 1);
+                history.push({ pathname: '/' });
+              }
+            });
+          }
+        } catch (err) {
+          console.log(err);
+
         }
+      };
 
-        fetchRemoveCmt(id);
+      fetchRemoveCmt(id);
 
     }
-    catch(err){
-        console.log(err);
+    catch (err) {
+      console.log(err);
     }
-}
+  };
   return (
     <>
       {DataUser ? (
@@ -56,7 +56,7 @@ function DetailComment(props) {
           avatar={
             <Avatar
               className="avatar_comment"
-              src={`https://beonlinelibrary.herokuapp.com/${DataUser.avatar}`}
+              src={`https://be-library-online.onrender.com/${DataUser.avatar}`}
               alt="Han Solo"
               size={{
                 xs: 24,
@@ -69,11 +69,11 @@ function DetailComment(props) {
             />
           }
           content={
-            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <div>
                 <h3 className="author_comment_title">{DataUser.fullName}</h3>
                 <p className="description_comment">{data.content}</p>
-                
+
               </div>
               {/* <div onClick={() => handleRemove(data._id)} className="description_delete">Xóa</div> */}
             </div>

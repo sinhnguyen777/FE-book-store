@@ -2,15 +2,12 @@ import React from 'react';
 import Banner from '../../Components/Common/Banner/banner';
 import Tab from '../../Components/Common/Tabs/tabs';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import ParallaxImg from './Components/ParallaxImg';
 import imgprl from '../../../../Assets/Images/Home/home-2-parallax-image-1.jpg';
 import { ButtonPara } from '../../Components/Common/Button/Button';
-import Autobiography from './Components/Autobiography';
-import PartnerComponent from './Components/PartnerComponent';
 import { BackTop } from 'antd';
 import { UpOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import AuthorComponent from './Components/AuthorComponent';
+import { AuthorComponent, Autobiography, ParallaxImg, PartnerComponent } from './Components';
 
 const style = {
     height: 40,

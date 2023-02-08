@@ -1,8 +1,8 @@
-import React from 'react'
-import author1 from '../../../../../Assets/Images/Home/3309.jpg'
-import author2 from '../../../../../Assets/Images/Home/5208.jpg'
-import author3 from '../../../../../Assets/Images/Home/mga.jpg'
-import author4 from '../../../../../Assets/Images/Home/lee2.jpg'
+import React from 'react';
+import author1 from '../../../../../Assets/Images/Home/3309.jpg';
+import author2 from '../../../../../Assets/Images/Home/5208.jpg';
+import author3 from '../../../../../Assets/Images/Home/mga.jpg';
+import author4 from '../../../../../Assets/Images/Home/lee2.jpg';
 
 const author = [
     {
@@ -29,17 +29,17 @@ const author = [
         img: author4,
         description: 'Nelle Harper Lee (28 tháng 4 năm 1926 – 19 tháng 2 năm 2016)'
     }
-]
-const Author = () => {
+];
+const AuthorComponent = () => {
     return (
         <>
             <div className="home_content_author_inner">
-                    <div className="home_content_author_inner_subtitle">dịch vụ của chúng tôi</div>
-                    <div className="home_content_author_inner_title">Tác giả nổi bật</div>
-                    <div className="home_content_author_inner_text">
-                        Xây dựng thành công từ thất bại.Sự chán nản và thất bại là
-                        hai bước đệm chắc chắn nhất dẫn tới thành công - Dale Carnegie.
-                    </div>
+                <div className="home_content_author_inner_subtitle">dịch vụ của chúng tôi</div>
+                <div className="home_content_author_inner_title">Tác giả nổi bật</div>
+                <div className="home_content_author_inner_text">
+                    Xây dựng thành công từ thất bại.Sự chán nản và thất bại là
+                    hai bước đệm chắc chắn nhất dẫn tới thành công - Dale Carnegie.
+                </div>
             </div>
             <div className="home_content_author_lists">
                 <div className="home_content_author_list">
@@ -61,11 +61,11 @@ const Author = () => {
                             </div>
                         ))
                     }
-                    
+
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Author
+export default AuthorComponent;

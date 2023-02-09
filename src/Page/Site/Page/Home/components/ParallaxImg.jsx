@@ -1,5 +1,5 @@
-import React from 'react'
-import {ParallaxBanner} from 'react-scroll-parallax'
+import React from 'react';
+import { ParallaxBanner } from 'react-scroll-parallax';
 
 const ParallaxImg = (props) => {
     let contentStyle = {
@@ -10,18 +10,18 @@ const ParallaxImg = (props) => {
         height: '100%',
         color: 'white',
         backgroundColor: `rgba(0, 0, 0, ${props.opacity == null && '0'})`,
-        WebkitFilter : 'blur(0px) saturate(2)'
-    }
+        WebkitFilter: 'blur(0px) saturate(2)'
+    };
     return (
-        <ParallaxBanner 
-            layers={[{image: props.imgsrc, amount: 0.6}]}
-            style={{height: props.height}}
+        <ParallaxBanner
+            layers={[{ image: props.imgsrc, amount: 0.6 }]}
+            style={{ height: props.height }}
         >
             <div style={contentStyle}>
                 {props.children}
             </div>
         </ParallaxBanner>
-    )
-}
+    );
+};
 
-export default ParallaxImg
+export default ParallaxImg;

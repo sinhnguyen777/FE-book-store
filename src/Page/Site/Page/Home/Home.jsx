@@ -7,7 +7,10 @@ import { ButtonPara } from '../../Components/Common/Button/Button';
 import { BackTop } from 'antd';
 import { UpOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { AuthorComponent, Autobiography, ParallaxImg, PartnerComponent } from './Components';
+import ParallaxImg from './Components/ParallaxImg';
+import AuthorComponent from './Components/AuthorComponent';
+import Autobiography from './Components/Autobiography';
+import PartnerComponent from './Components/PartnerComponent';
 
 const style = {
     height: 40,

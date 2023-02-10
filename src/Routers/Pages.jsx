@@ -3,7 +3,6 @@ import InforPage from "../Page/Site/Page/Account";
 import Cart from "../Page/Site/Page/Cart/Cart";
 import Checkout from "../Page/Site/Page/Checkout/index.Checkout";
 import Event from "../Page/Site/Page/Event/Event";
-import Home from "../Page/Site/Page/Home/Home";
 import ProductCategory from "../Page/Site/Page/ListProduct/Components/ProductCategory";
 import ListProduct from "../Page/Site/Page/ListProduct/ListProduct";
 import ConfirmRegister from "../Page/Site/Page/Login/Confirm";
@@ -18,6 +17,7 @@ import SearchAuthor from "../Page/Site/Page/ListProduct/Components/SearchAuthor"
 import Paymemt from "../Page/Site/Page/Payment/index.Payment";
 import ProductWait from "../Page/Site/Page/ProductWait/Event";
 import Congratulation from "../Page/Site/Page/Congratulation/index.Congratulation";
+import Home from "../Page/Site/Page/Home";
 
 
 const routes = [

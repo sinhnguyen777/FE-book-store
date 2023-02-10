@@ -27,7 +27,7 @@ const HeaderCmp = (props) => {
         mode="inline"
         theme="light"
         inlineCollapsed={props.collapsed}
-        style={{fontSize: '17px',fontWeight: '600'}}
+        style={{ fontSize: '17px', fontWeight: '600' }}
       >
         <Menu.Item key="/admin" icon={<HomeOutlined />}>
           <Link to={"/admin"}>Trang chủ</Link>

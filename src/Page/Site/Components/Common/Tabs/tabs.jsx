@@ -1,6 +1,6 @@
 import { Tabs } from 'antd';
 import React from 'react';
-import { ListHot, ListNew, ListSale } from '../../../Page/Home/Components';
+import { ListHot, ListNew, ListSale } from '../../../Page/Home/components';
 
 
 

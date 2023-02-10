@@ -15,7 +15,7 @@ import year2 from '../../../../../Assets/Images/Home/mga.jpg';
 
 
 
-export default function Autobiography() {
+const Autobiography = () => {
   return (
     <>
       <div className="AutobiographyItemMonth">
@@ -65,4 +65,6 @@ export default function Autobiography() {
       </div>
     </>
   );
-}
+};
+
+export default Autobiography;

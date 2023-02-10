@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import ParallaxImg from './components/ParallaxImg';
 import AuthorComponent from './components/AuthorComponent';
 import Autobiography from './components/Autobiography';
-import PartnerComponent from './components/PartnerComponent';
+import { PartnerComponent } from './components';
 
 const style = {
     height: 40,

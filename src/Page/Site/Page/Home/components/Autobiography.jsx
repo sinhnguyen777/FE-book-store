@@ -6,13 +6,13 @@ import month3 from '../../../../../Assets/Images/Home/home-2-rev-2-img-6.png';
 import month4 from '../../../../../Assets/Images/Home/home-2-rev-2-img-7.png';
 import ButtonMain from '../../../Components/Common/Button/Button';
 
-import { Link } from 'react-router-dom';
 import year4 from '../../../../../Assets/Images/Home/home-2-rev-3-image-1.png';
 import year5 from '../../../../../Assets/Images/Home/home-2-rev-3-image-2.png';
 import year3 from '../../../../../Assets/Images/Home/home-2-rev-3-image-4.png';
 import year1 from '../../../../../Assets/Images/Home/home-2-rev-3-img-6.jpg';
 import year2 from '../../../../../Assets/Images/Home/mga.jpg';
 
+import { Link } from 'react-router-dom';
 
 
 const Autobiography = () => {
